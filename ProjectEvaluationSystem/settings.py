@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'ProjectEvaluationSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_hse',
+        'NAME': 'dbprojectevaluationsystem',
         'USER': 'root',
         'PASSWORD': 'n33hB0KLxlw2u7f2qXlsczcd',
         'HOST' : 'arthur.iran.liara.ir',
