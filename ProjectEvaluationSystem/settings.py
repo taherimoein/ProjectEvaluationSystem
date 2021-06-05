@@ -79,14 +79,26 @@ WSGI_APPLICATION = 'ProjectEvaluationSystem.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Postgersql Local DB
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'dbprojectevaluationsystem',
+#     'USER': 'postgres',
+#     'PASSWORD': 'moein@taheri',
+#     'HOST' : 'localhost',
+#     'PORT' : '5432',
+#     }
+# }
+
+# Postgersql Liara DB
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'dbprojectevaluationsystem',
-    'USER': 'postgres',
-    'PASSWORD': 'moein@taheri',
-    'HOST' : 'localhost',
-    'PORT' : '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_hse',
+        'USER': 'root',
+        'PASSWORD': 'n33hB0KLxlw2u7f2qXlsczcd',
+        'HOST' : 'arthur.iran.liara.ir',
+        'PORT' : '30689',
     }
 }
 
