@@ -169,6 +169,22 @@ class User(AbstractBaseUser):
     def is_staff(self):
         return self.staff
 
+    @property
+    def is_governor(self):
+        return self.staff
+
+    def get_access_group(self):
+        try:
+            group = {
+                'user': 'کاربر',
+                'department_of_administration': 'ریاست اداره',
+                'deputy_for_planning_and_civil_affairs': 'معاونت امور برنامه ریزی و عمرانی',
+                'governor': 'فرماندار'
+            }
+            return group[self.access_group]
+        except:
+            return None
+
     def __str__(self):
         return "{} {} ({})".format(self.first_name, self.last_name, self.national_code)
 
