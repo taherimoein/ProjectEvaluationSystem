@@ -1,15 +1,16 @@
 checkLoginFnc = function () {
     var checks = true;
     var errorFields = [];
-    if (!validateIranianNationalCode($("#inputNcode").val()))
+    // !validateIranianNationalCode($("#inputUsername").val())
+    if (0)
     {
         checks = false;
-        errorFields.push('کد ملی');
-        $("#inputNcode").addClass('empty');
+        errorFields.push('نام کاربری');
+        $("#inputUsername").addClass('empty');
     }
     else
     {
-        $("#inputNcode").removeClass('empty');
+        $("#inputUsername").removeClass('empty');
     }
     if ($("#inputPassword").val().length == 0)
     {

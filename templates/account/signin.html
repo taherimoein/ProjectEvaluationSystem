@@ -51,16 +51,16 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputNcode">کد ملی</label>
+                                    <label for="inputUsername">نام کاربری</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد ملی بایستی شامل 10 رقم بوده و معتبر باشد."></i>
-                                    <input type="text" class="form-control" id="inputNcode" placeholder="">
+                                    <input type="text" class="form-control" id="inputUsername">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputPassword">رمز عبور</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن رمز عبور الزامی میباشد."></i>
-                                    <input type="password" class="form-control" id="inputPassword" placeholder="">
+                                    <input type="password" class="form-control" id="inputPassword">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -104,7 +104,7 @@
             {
                 $(".blur").addClass('active disable-form');
                 $(".loading").show();
-                var national_code = $("#inputNcode").val();
+                var username = $("#inputUsername").val();
                 var password = $("#inputPassword").val();
                 var rememberMe = $("#inputRememberMe").prop("checked");
 
@@ -113,7 +113,7 @@
                         method: 'POST',
                         url: '{% url "main:ajax_signin" %}',
                         data: {
-                            national_code: national_code,
+                            username: username,
                             password: password,
                             remember_me:  JSON.stringify(rememberMe),
                             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
