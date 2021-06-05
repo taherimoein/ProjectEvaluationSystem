@@ -1,0 +1,165 @@
+{% load i18n static %}
+
+<div class="col-3">
+    <div class="profile">
+        <img src="{% static "images/profile-pin.jpg" %}">
+        <div class="profile-content">
+            <div class="avatar my-2">
+                <img src="/{{request.user.profile}}" alt="عکس پروفایل" width="60" height="60">
+            </div>
+            <div class="information">
+                <div class="bio">
+                    <span>نام و نام خانوادگی : </span>
+                    <span>{{request.user.get_fullname}}</span>
+                </div>
+                <div class="company">
+                    <span>شرکت : </span>
+                    <span>{.{request.user.get_company.title}}</span>
+                </div>
+                <div class="role">
+                    <span>سمت : </span>
+                    <span>{{request.user.organization_role}}</span>
+                </div>
+            </div>
+            <div class="date mt-3"></div>
+        </div>
+    </div>
+    <div class="side-menu text-right">
+        <div class="menu-item">
+            <div class="menu-item-title d-flex">
+                <div class="item-part collapse-part">
+                    <i class="far fa-plus"></i>
+                </div>
+                <div class="item-part item-title">
+                    <i class="fas fa-database"></i>
+                    اطلاعات پایه
+                </div>
+            </div>
+            <div class="menu-item-subset">
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:deputy_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست معاونت ها
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:job_group_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست گروه های شغلی
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:company_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست شرکت ها
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:personnel_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست پرسنلی
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{.% url 'master_data:work_station_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست ایستگاه های کاری
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{.% url 'master_data:contract_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست قرارداد ها
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{.% url 'master_data:contract_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                فهرست تجهیزات
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-title d-flex">
+                <div class="item-part collapse-part">
+                    <i class="far fa-plus"></i>
+                </div>
+                <div class="item-part item-title">
+                    <i class="fas fa-user-chart"></i>
+                    پروژه ها
+                </div>
+            </div>
+            <div class="menu-item-subset">
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:deputy_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                پروژه جدید
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:deputy_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                پروژه های من
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="menu-item-subset-single">
+                    <a href="{% url 'master_data:deputy_list_page' %}">
+                        <div class="d-flex">
+                            <div class="sub-item-part indent-part"></div>
+                            <div class="sub-item-part item-option">
+                                <i class="fas fa-circle"></i>
+                                وظایف من
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
