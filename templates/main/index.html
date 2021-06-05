@@ -1,0 +1,52 @@
+{% load i18n static %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+    <title>سامانه نظام پیشنهادها</title>
+</head>
+<body>
+    
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+            
+        {% block sidebar %}
+            {% include "parents/sidebar.html" %}
+        {% endblock %}
+
+            <div class="col-9">
+                <div class="main text-center">
+                    <div class="main-content">
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="main-content-map">
+                                    <a class="item lamp" href="#" alt="پیشنهاد جدید" title="پیشنهاد جدید">
+                                        <img src="{% static "images/lamp.png" %}">
+                                    </a>
+                                    <a class="item question" href="#" alt="پیگیری وضعیت" title="پیگیری وضعیت">
+                                        <img src="{% static "images/question.png" %}">
+                                    </a>
+                                    <a class="item diagram" href="#" alt="خلاصه گزارش" title="خلاصه گزارش">
+                                        <img src="{% static "images/diagram.png" %}">
+                                    </a>
+                                    <img class="brain" src="{% static "images/main-page-brain.png" %}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+</body>
+</html>
