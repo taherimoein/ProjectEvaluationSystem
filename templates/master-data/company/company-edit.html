@@ -1,0 +1,592 @@
+{% load i18n static %}
+{% csrf_token %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+<title>سامانه نظام پیشنهادها | ویرایش شرکت</title>
+</head>
+
+<body>
+
+    <div class="loading-fixed d-hide">
+        <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+    </div>
+
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% block sidebar %}
+                {% include "parents/sidebar.html" %}
+            {% endblock %}
+
+            <div class="col-9">
+                <div class="row text-right">
+                    <div class="col-12">
+                        <div class="blur">
+                            <h2 class="title_page">ویرایش شرکت</h2>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert-section">
+                                        <div class="alert-message error-message front text-right mb-3">
+                                            <div class="alert-message-content error-content">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <div class="alert-message-text error-text">
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-error-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                        <div class="alert-message success-message front text-right mb-3">
+                                            <div class="alert-message-content success-content">
+                                                <i class="fas fa-check"></i>
+                                                <div class="alert-message-text success-text">
+                                                    شرکت با موفقیت ویرایش گردید.
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-success-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form>
+                                <div class="form-row justify-content-between">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputLogo">لوگو<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="انتخاب لوگو الزامی میباشد و اطمینان حاصل نمائید که فایل انتخابی حتما فرمت عکس داشته باشد."></i>
+                                        <input type="file" class="form-control-file" id="inputLogo"
+                                            onchange="readURL(this);">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <img class="w-100" id="inputLogoImg"
+                                            src="/{{ThisCompany.logo}}" alt="لوگو" width="180">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputTitle">عنوان شرکت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="عنوان شرکت الزامی میباشد و بایستی در قالب حداکثر 255 کاراکتر وارد گردد."></i>
+                                        <input value="{{ThisCompany.title}}" type="text" class="form-control" id="inputTitle" maxlength="255">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="inputType">نوع شرکت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین نوع شرکت الزامی میباشد"></i>
+                                        <select id="inputType" class="form-control">
+                                            <option value="real" {% if ThisCompany.company_type == 'real' %} selected {% endif %}>حقیقی</option>
+                                            <option value="legal" {% if ThisCompany.company_type == 'legal' %} selected {% endif %}>حقوقی</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="inputCooprationType">نوع همکاری<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="انتخاب نوع همکاری الزامی میباشد."></i>
+                                        <select id="inputCooprationType" class="form-control">
+                                            <option value="employer" {% if ThisCompany.cooperation_type == 'employer' %} selected {% endif %}>کارفرما</option>
+                                            <option value="contractor" {% if ThisCompany.cooperation_type == 'contractor' %} selected {% endif %}>پیمانکار</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputParentCompany">شرکت مالک<span
+                                                class="parent-company necessary d-hide"><code>*</code></span></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="این فیلد در صورتی که نوع همکاری پیمانکار انتخاب شده باشد الزامی میباشد."></i>
+                                        <select id="inputParentCompany" class="form-control select2-ajax" disabled>
+                                          <option value="{{ThisCompany.fk_father_company.id}}" selected>{{ThisCompany.fk_father_company.title}} ({{ThisCompany.fk_father_company.national_code}})</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputRegisterationNumber">شماره ثبت<span
+                                                class="registeration-number necessary d-hide"><code>*</code></span></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="این فیلد برای شرکت های حقوقی الزامی میباشد."></i>
+                                        <input value="{{ThisCompany.registration_number}}" type="number" class="form-control" id="inputRegisterationNumber"
+                                            maxlength="30" disabled>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="inputNationalCode">شماره ملی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="کد ملی الزامی است و بایستی به صورت 11 کاراکتر عددی وارد گشته و معتبر باشد."></i>
+                                        <input value="{{ThisCompany.national_code}}" type="number" class="form-control" id="inputNationalCode" maxlength="11">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputCompanyMembers">لیست کارکنان شرکت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="بایستی حداقل یک کاربر را به عنوان عضو شرکت انتخاب نمائید."></i>
+                                        <select class="form-control select2-ajax-user" id="inputCompanyMembers"
+                                            multiple="multiple">
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputCeo">مدیر عامل<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="انتخاب مدیر عامل شرکت الزامی است."></i>
+                                        <select class="form-control select2-ajax-user" id="inputCeo">
+                                          <option value="{{ThisCompany.fk_ceo.id}}">{{ThisCompany.fk_ceo.fullname}} ({{ThisCompany.fk_ceo.national_code}})</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputRepresentative">نماینده شرکت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="انتخاب نماینده شرکت الزامی میباشد و از لیست کارکنان شرکت بایستی انتخاب شود."></i>
+                                        <select class="form-control select2-component" id="inputRepresentative">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="{{ThisCompany.fk_representative.id}}">{{ThisCompany.fk_representative.fullname}} ({{ThisCompany.fk_representative.national_code}})</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPhoneNumber">شماره ثابت</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="شماره شخص جهت دسترسی و تماس تلفنی که بایستی با 0 شروع شده و شامل 11 رقم باشد."></i>
+                                        <input value="{{ThisCompany.telephone_number}}" type="number" class="form-control" id="inputPhoneNumber" maxlength="11"
+                                            placeholder="مثال: 0343000000">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputMobileNumber-1">تلفن همراه 1</label>
+                                        <code>*</code>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="وارد کردن تلفن همراه 1 الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
+                                        <input value="{{ThisCompany.phone_number_1}}" type="number" class="form-control" id="inputMobileNumber-1"
+                                            maxlength="11">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputMobileNumber-2">تلفن همراه 2</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="تلفن همراه 2 بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
+                                        <input value="{{ThisCompany.phone_number_2}}" type="number" class="form-control" id="inputMobileNumber-2"
+                                            maxlength="11">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="inputAddress">آدرس<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="فیلد آدرس الزامی میباشد."></i>
+                                        <textarea value="{{ThisCompany.address}}" class="form-control" id="inputAddress" rows="1"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZipCode">کد پستی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد کد پستی الزامی میباشد و باید در قالب حداکثر 10 کاراکتر عددی وارد گردد."></i>
+                                        <input value="{{ThisCompany.zip_code}}" type="number" class="form-control" id="inputZipCode" maxlength="10">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail">آدرس الکترونیکی</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد آدرس الکترونیکی الزامی میباشد و بایستی یک آدرس معتبر وارد گردد."></i>
+                                        <input value="{{ThisCompany.email}}" type="email" class="form-control" id="inputEmail"
+                                            placeholder="test@gmail.com">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputSafetyCertificateNumber">شماره گواهینامه صلاحیت
+                                            ایمنی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد شماره گواهینامه صلاحیت ایمنی الزامی میباشد و بایستی تا حداکثر 30 کاراکتر را شامل شود."></i>
+                                        <input value="{{ThisCompany.safety_certificate_number}}" type="number" class="form-control" id="inputSafetyCertificateNumber"
+                                            maxlength="30">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputSafetyCertificateValidationDate">تاریخ اعتبار صلاحیت
+                                            ایمنی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد تاریخ اعتبار صلاحیت ایمنی الزامی میباشد. برای وارد کردن تاریخ از تقویم تعبیه شده در داخل فیلد استفاده نمائید."></i>
+                                        <input value="{{ThisCompany.validity_date_of_safety_certificate}}" type="text" class="form-control"
+                                            id="inputSafetyCertificateValidationDate">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputSafetyCertificateFile">پیوست (نسخه صلاحیت
+                                            ایمنی)<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد پیوست (نسخه صلاحیت ایمنی) الزامی میباشد."></i>
+                                        <input type="file" class="form-control-file" id="inputSafetyCertificateFile">
+                                    </div>
+                                </div>
+                                <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
+                                <br>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+    <script src="{% static "js/jalali-to-georgian.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/control-fields.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/base-information/contractor.js" %}" type="text/javascript"></script>
+
+    <script>
+        kamaDatepicker('inputSafetyCertificateValidationDate', {
+            nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
+            , previousButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_prev.png"
+            , forceFarsiDigits: true
+            , markToday: true
+            , markHolidays: true
+            , highlightSelectedDay: true
+            , sync: true
+        });
+
+        $(".select2-ajax-user").select2({
+            dir: "rtl",
+            ajax: {
+                method: 'POST',
+                url: "{% url 'master_data:ajax_search_in_users' %}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        search: params.term, // search term
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+
+                    return {
+                        results: data.data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'جستجو...',
+            minimumInputLength: 1,
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
+        });
+
+        function formatRepo(repo) {
+            if (repo.loading) {
+                return repo.text;
+            }
+
+            var $container = $(
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "</div>" +
+                "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')');
+
+            return $container;
+        }
+
+        function formatRepoSelection(repo) {
+            if (repo.first_name && repo.last_name && repo.national_code) {
+                return repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')';
+            }
+            return repo.text;
+        }
+
+        $(".select2-ajax").select2({
+            dir: "rtl",
+            ajax: {
+                method: 'POST',
+                url: "{% url 'master_data:ajax_search_in_companies' %}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        search: params.term, // search term
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+
+                    return {
+                        results: data.data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'جستجو...',
+            minimumInputLength: 1,
+            templateResult: formatRepoCompany,
+            templateSelection: formatRepoSelectionCompany
+        });
+
+        function formatRepoCompany(repo) {
+            if (repo.loading) {
+                return repo.text;
+            }
+
+            var $container = $(
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "</div>" +
+                "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
+
+            return $container;
+        }
+
+        function formatRepoSelectionCompany(repo) {
+            if (repo.id && repo.title && repo.national_code) {
+                return repo.title + ' (' + repo.national_code + ')';
+            }
+            return repo.text;
+        }
+
+        $("#inputCompanyMembers").on('select2:select', function (e){
+            var data = e.params.data;
+
+            var memberID = parseInt(data.id);
+            var newOption = new Option(data.first_name + ' ' + data.last_name + ' (' + data.national_code + ')', memberID, false, false);
+            $('#inputRepresentative').append(newOption);
+        })
+
+        $("#inputCompanyMembers").on("select2:unselect", function (e) {
+            var data = e.params.data;
+
+            var memberID = parseInt(data.id);
+            $("#inputRepresentative option[value=" + memberID + "]").remove();
+        });
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            var checks = checkContractorFnc();
+            if (checks) {
+                $(".blur").addClass('active disable-form');
+                $(".loading-fixed").show();
+
+                var data = {};
+                var formData = new FormData();
+
+                // var user = $("#inputUser").val();
+                var companyID = "{{ThisCompany.id}}";
+                var logo = $("#inputLogo")[0].files[0];
+                var title = $("#inputTitle").val();
+                var type = $("#inputType").val();
+                var cooprationType = $("#inputCooprationType").val();
+                var parentCompany = $("#inputParentCompany").val();
+                var registrationNumber = $("#inputRegisterationNumber").val();
+                var nationalCode = $("#inputNationalCode").val();
+                var companyMembers = $("#inputCompanyMembers").val();
+                var ceo = $("#inputCeo").val();
+                var representative = $("#inputRepresentative").val();
+                var phoneNumber = $("#inputPhoneNumber").val();
+                var mobileNumber1 = $("#inputMobileNumber-1").val();
+                var mobileNumber2 = $("#inputMobileNumber-2").val();
+                var address = $("#inputAddress").val();
+                var zipcode = $("#inputZipCode").val();
+                var email = $("#inputEmail").val();
+                var safetyCertificateNumber = $("#inputSafetyCertificateNumber").val();
+                var safetyCertificateValidationDate = customJalaliToGregorianFnc($("#inputSafetyCertificateValidationDate").val());
+                var safetyCertificateFile = $("#inputSafetyCertificateFile")[0].files[0];
+
+                // data.user = user;
+                // data.user = 1;
+                // data.logo = logo;
+                // data.type = type;
+                // data.title = title;
+                // data.registration_number = registrationNumber;
+                // data.national_code = nationalCode;
+                // data.ceo = ceo;
+                // data.contractor_representative = representative;
+                // data.telephone_number = phoneNumber;
+                // data.phone_number_1 = mobileNumber1;
+                // data.phone_number_2 = mobileNumber2;
+                // data.address = address;
+                // data.post_id = zipcode;
+                // data.email = email;
+                // data.safety_certificate_number = safetyCertificateNumber;
+                // data.validity_date_of_safety_certificate = safetyCertificateValidationDate;
+                // data.appendix_certificate = safetyCertificateFile;
+
+                // formData.append('user', 6);
+                formData.append('id', companyID);
+                formData.append('logo', logo);
+                formData.append('title', title);
+                formData.append('company_type', type);
+                formData.append('cooperation_type', cooprationType);
+                formData.append('fk_father_company', parentCompany);
+                formData.append('registration_number', registrationNumber);
+                formData.append('national_code', nationalCode);
+                formData.append('fk_staffs', companyMembers);
+                formData.append('fk_ceo', ceo);
+                formData.append('contractor_representative', representative);
+                formData.append('telephone_number', phoneNumber);
+                formData.append('phone_number_1', mobileNumber1);
+                formData.append('phone_number_2', mobileNumber2);
+                formData.append('address', address);
+                formData.append('post_id', zipcode);
+                formData.append('email', email);
+                formData.append('safety_certificate_number', safetyCertificateNumber);
+                formData.append('validity_date_of_safety_certificate', safetyCertificateValidationDate);
+                formData.append('appendix_certificate', safetyCertificateFile);
+                formData.append('is_active', JSON.stringify(true));
+
+                // data.is_active = JSON.stringify(true);
+
+                console.log(data);
+
+                for (var pair of formData.entries()) { console.log(pair[0] + ', ' + pair[1]); };
+                var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+
+                $.ajax(
+                    {
+                        method: 'POST',
+                        url: '{% url "master_data:api_company_create" %}',
+                        headers: {
+                            'content-type': 'application/json',
+                            'X-CSRFToken': csrftoken
+                        },
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (json, status) {
+                            console.log(json);
+                            console.log(status);
+                            if (status == 'success') {
+                                $(".blur").removeClass('active');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message.success-message").show();
+                                $(".alert-message.error-message").hide();
+                                var redirectURL = '{% url "master_data:company_list_page" %}';
+                                setTimeout(function () {
+                                    location.replace(redirectURL);
+                                }, 1500)
+                            }
+                            else {
+                                $(".blur").removeClass('active disable-form');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                                $(".alert-message.error-message").show();
+                            }
+                        },
+                        error: function (json, status, xhr) {
+                            console.log(json);
+                            console.log(status);
+                            console.log(xhr);
+                            $(".blur").removeClass('active disable-form');
+                            $(".loading-fixed").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                            $(".alert-message.error-message").show();
+                        }
+                    }
+                )
+            }
+            else {
+                $("html, body").animate({
+                    scrollTop: $(".alert-section").offset().top - 20
+                }, 1000);
+            }
+        })
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#inputLogoImg')
+                        .attr('src', e.target.result);
+                    // .width(180)
+                    // .height(180);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#inputCooprationType").change(function () {
+            if ($(this).val() == 'contractor') {
+                $("span.parent-company.necessary").show();
+                $("select#inputParentCompany").prop('disabled', false);
+            }
+            else {
+                $("span.parent-company.necessary").hide();
+                $("select#inputParentCompany").prop('disabled', true);
+            }
+        })
+
+        $("#inputType").change(function () {
+            if ($(this).val() == 'legal') {
+                $("span.registeration-number.necessary").show();
+                $("input#inputRegisterationNumber").prop('disabled', false);
+            }
+            else {
+                $("span.registeration-number.necessary").hide();
+                $("input#inputRegisterationNumber").prop('disabled', true);
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,887 @@
+{% load i18n static %}
+{% load filters %}
+{% csrf_token %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+<title>سامانه نظام پیشنهادها | ویرایش پرسنل</title>
+</head>
+
+<body>
+
+    <div class="loading-fixed d-hide">
+        <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+    </div>
+
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% block sidebar %}
+            {% include "parents/sidebar.html" %}
+            {% endblock %}
+
+            <div class="col-9">
+                <div class="row text-right">
+                    <div class="col-12">
+                        <div class="blur">
+                            <h2 class="title_page">ویرایش پرسنل</h2>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert-section">
+                                        <div class="alert-message error-message front text-right mb-3">
+                                            <div class="alert-message-content error-content">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <div class="alert-message-text error-text">
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-error-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                        <div class="alert-message success-message front text-right mb-3">
+                                            <div class="alert-message-content success-content">
+                                                <i class="fas fa-check"></i>
+                                                <div class="alert-message-text success-text">
+                                                    پرسنل با موفقیت ویرایش گردید.
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-success-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form>
+                                <br>
+                                <div class="form-row justify-content-between">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputFile">عکس پروفایل</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل خود انتخاب نمائید."></i>
+                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                        <input type="file" class="form-control-file" id="inputFile"
+                                            onchange="readURL(this);">
+                                    </div>
+                                    <div class="form-group col-md-3 text-left">
+                                        <img id="profile" class="w-100" src="/{{ThisUser.profile}}" alt="عکس پروفایل">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputFName">نام<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد نام الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                        <input type="text" class="form-control" id="inputFName"
+                                            value="{{ThisUser.first_name}}" maxlength="50">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="inputLName">نام خانوادگی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد نام خانوادگی الزامی است و حداکثر میتواند تا 150 کاراکتر طول داشته باشد."></i>
+                                        <input type="text" class="form-control" id="inputLName"
+                                            value="{{ThisUser.last_name}}" maxlength="150">
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="inputFatherName">نام پدر<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد نام پدر الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                        <input type="text" class="form-control" id="inputFatherName"
+                                            value="{{ThisUser.father_s_name}}" maxlength="50">
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputNationalCode">کد ملی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="کد ملی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
+                                        <input type="number" class="form-control" id="inputNationalCode"
+                                            value="{{ThisUser.national_code}}">
+                                    </div>
+                                    <!-- <div class="form-group col-md-4">
+                                        <label for="inputPassword">رمز عبور<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="شماره شناسنامه الزامی است و بایستی به صورت عددی وارد گشته و حداکثر تا 10 کاراکتر باشد."></i>
+                                        <input type="number" class="form-control" id="inputPassword"
+                                            value="{{ThisUser.password}}">
+                                    </div> -->
+                                    <div class="form-group col-md-4">
+                                        <label for="inputBirthCertificateNo">شماره شناسنامه<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="شماره شناسنامه الزامی است و بایستی به صورت عددی وارد گشته و حداکثر تا 10 کاراکتر باشد."></i>
+                                        <input type="number" class="form-control" id="inputBirthCertificateNo"
+                                            value="{{ThisUser.birth_certificate_id}}">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputGender">جنسیت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین جنسیت الزامی میباشد."></i>
+                                        <select id="inputGender" class="form-control">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="f">زن</option>
+                                            <option value="m">مرد</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputMaritalStatus">وضعیت تاهل<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین وضعیت تأهل الزامی میباشد."></i>
+                                        <select id="inputMaritalStatus" class="form-control">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="s">مجرد</option>
+                                            <option value="m">متاهل</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputBirthPlace">محل تولد<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد محل تولد الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                        <input type="text" class="form-control" id="inputBirthPlace" maxlength="50"
+                                            value="{{ThisUser.birthplace}}">
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputInsuranceNumber">شماره بیمه<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="شماره بیمه الزامی است و بایستی شامل یک رشته عدد 10 رقمی باشد. در صورتی که شماره بیمه شما 8 رقمی میباشد به ابتدای شماره بیمه دو رقم صفر اضافه نمائید. برای مثال چنانچه شماره بیمه برابر با 12345678 میباشد به صورت 0012345678 آن را وارد نمائید."></i>
+                                        <input type="number" class="form-control" id="inputInsuranceNumber"
+                                            value="{{ThisUser.insurance_number}}">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputDegree">مقطع تحصیلی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین مقطع تحصیلی الزامی میباشد."></i>
+                                        <select id="inputDegree" class="form-control">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="elementary">ابتدایی</option>
+                                            <option value="middle-school">سیکل</option>
+                                            <option value="diploma">دیپلم</option>
+                                            <option value="associate">فوق دیپلم</option>
+                                            <option value="bachelor">لیسانس</option>
+                                            <option value="master">فوق لیسانس</option>
+                                            <option value="phd">دکترا</option>
+                                            <option value="post-doctoral">فوق دکترا</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputRole">سمت سازمانی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد سمت سازمانی الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                        <input type="text" class="form-control" id="inputRole"
+                                            value="{{ThisUser.organization_role}}" maxlength="50">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputNumberOfChildren">تعداد فرزندان</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد تعداد فرزندان بایستی به صورت عددی وارد گردد."></i>
+                                        <input type="number" class="form-control" id="inputNumberOfChildren"
+                                            value="{{ThisUser.number_of_children}}">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputMobileNumber">شماره همراه<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="وارد کردن شماره همراه الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
+                                        <input type="number" class="form-control" id="inputMobileNumber"
+                                            value="{{ThisUser.mobile}}">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputLocalPhone">شماره ثابت</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد شماره ثابت بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                        {% if ThisUser.telephone == None or ThisUser.telephone == '' %}
+                                            <input type="number" class="form-control" id="inputLocalPhone"
+                                            placeholder="0343000000">
+                                        {% else %}
+                                            <input type="number" class="form-control" id="inputLocalPhone"
+                                            value="{{ThisUser.telephone}}">
+                                        {% endif %}
+                                    </div>
+                                    <!-- <div class="form-group col-md-4">
+                                        <label for="inputAccessGroup">گروه دسترسی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
+                                        title="تعیین گروه دسترسی الزامی میباشد."></i>
+                                        <select id="inputAccessGroup" class="form-control">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="recommender">پیشنهاد دهنده</option>
+                                            <option value="secretary">دبیر</option>
+                                            <option value="central_committee">کمیته مرکزی</option>
+                                            <option value="technical_team">تیم فنی</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="form-group col-md-4">
+                                        <label for="inputBirthDate">تاریخ تولد<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left"
+                                            title="فیلد تاریخ تولد اجباری است و برای وارد کردن تاریخ از تقویم تعبیه شده درون فیلد استفاده نمائید."></i>
+                                        <input type="number" class="form-control" id="inputBirthDate"
+                                            value="{{ThisUser.birthday|date_to_jalali}}">
+                                    </div>
+                                </div>
+                                <br>
+
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputRelevantDeputy">معاونت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین معاونت الزامی میباشد."></i>
+                                        <select id="inputRelevantDeputy" class="form-control select2-component">
+                                            <option value="0">انتخاب...</option>
+                                            {% for item in Deputies %}
+                                                <option value="{{item.id}}">{{item.title}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputManagement">مدیریت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین مدیریت الزامی میباشد."></i>
+                                        <select id="inputManagement" class="form-control select2-component" disabled>
+                                            <option value="0">انتخاب...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputCompany">شرکت<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین شرکت الزامی میباشد."></i>
+                                        <select id="inputCompany" class="form-control select2-ajax">
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputAddress">آدرس<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="فیلد آدرس اجباری میباشد."></i>
+                                        <textarea name="address" class="form-control" id="inputAddress"
+                                            rows="4">{{ThisUser.address}}</textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputUserStatus">وضعیت کاربر<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="وضعیت کاربر حتما بایستی معین گردد."></i>
+                                        <select id="inputUserStatus" class="form-control">
+                                            <option value="1" selected>فعال</option>
+                                            <option value="2">غیرفعال</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputJobGroup">گروه شغلی<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="گروه شغلی حتما بایستی معین گردد."></i>
+                                        <select id="inputJobGroup" class="form-control select2-component">
+                                            <option value="0">انتخاب...</option>
+                                            {% for item in JobGroups %}
+                                                <option value="{{item.id}}">{{item.title}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputJob">عنوان شغل<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="عنوان شغل حتما بایستی معین گردد."></i>
+                                        <select id="inputJob" class="form-control select2-component" disabled>
+                                            <option value="0">انتخاب...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputWorkstation">ایستگاه کاری<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="ایستگاه کاری حتما بایستی معین گردد."></i>
+                                        <select id="inputWorkstation" class="form-control select2-component"
+                                            multiple="multiple">
+                                            {% for item in WorkStations %}
+                                                <option value="{{item.id}}">{{item.title}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputSection">قسمت کاری<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="قسمت کاری حتما بایستی معین گردد."></i>
+                                        <select id="inputSection" class="form-control select2-component"
+                                            multiple="multiple">
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
+                                <br>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+    <script src="{% static "js/jalali-to-georgian.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/control-fields.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/base-information/personnel.js" %}" type="text/javascript"></script>
+
+    <script>
+        var a = '{{ThisUser.job_title|safe}}';
+        console.log(a);
+        var b = '{{ThisUser.management|safe}}';
+        console.log(b);
+
+        console.log('{{ThisUser.birthday|date_to_jalali}}');
+        
+        //#region Initialization Page
+        kamaDatepicker('inputBirthDate', {
+            nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
+            , previousButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_prev.png"
+            , forceFarsiDigits: true
+            , markToday: true
+            , markHolidays: true
+            , highlightSelectedDay: true
+            , sync: true
+        });
+
+        $(".select2-ajax").select2({
+            dir: "rtl",
+            ajax: {
+                method: 'POST',
+                url: "{% url 'master_data:ajax_search_in_companies' %}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        search: params.term, // search term
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+
+                    return {
+                        results: data.data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'جستجو...',
+            minimumInputLength: 1,
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
+        });
+
+        function formatRepo(repo) {
+            if (repo.loading) {
+                return repo.text;
+            }
+
+            var $container = $(
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "</div>" +
+                "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
+
+            return $container;
+        }
+
+        function formatRepoSelection(repo) {
+            if (repo.id && repo.title && repo.national_code) {
+                return repo.title + ' (' + repo.national_code + ')';
+            }
+            return repo.text;
+        }
+        //#endregion
+
+        //#region Front Functions of Page
+        var managementsStr = '{{Managements|safe}}';
+        var managementsObj = JSON.parse(managementsStr);
+        
+        var jobTitlesStr = '{{JobTitles|safe}}';
+        var jobTitlesObj = JSON.parse(jobTitlesStr);
+
+        // var sectionsStr = '{{Sections|safe}}';
+        // var sectionsObj = JSON.parse(sectionsStr);
+
+        $("#inputRelevantDeputy").on("change", function () {
+            $("#inputManagement").empty().append(new Option("انتخاب...", "0"));
+            var deputyID = $(this).val();
+            if (deputyID != '0')
+            {
+                for (var item of managementsObj)
+                {
+                    if (item.fk_deputy == deputyID)
+                    {
+                        $("#inputManagement").append(new Option(item.title, item.fk_deputy));
+                    }
+                }
+                $("#inputManagement").prop('disabled', false);
+            }
+            else
+            {
+                $("#inputManagement").prop('disabled', true);
+            }
+        })
+
+
+        $("#inputJobGroup").on("change", function () {
+            $("#inputJob").empty().append(new Option("انتخاب...", "0"));
+            var jobGroupID = $(this).val();
+            if (jobGroupID != '0')
+            {
+                for (var item of jobTitlesObj)
+                {
+                    if (item.fk_jobgroup == jobGroupID)
+                    {
+                        $("#inputJob").append(new Option(item.title, item.fk_jobgroup));
+                    }
+                }
+                $("#inputJob").prop('disabled', false);
+            }
+            else
+            {
+                $("#inputJob").prop('disabled', true);
+            }
+        })
+
+
+        // $("#inputWorkstation").on("change", function () {
+        //     $("#inputSection").empty().append(new Option("انتخاب...", "0"));
+        //     var workstationID = $(this).val();
+        //     if (workstationID != '0')
+        //     {
+        //         for (var item of sectionsObj)
+        //         {
+        //             if (item.fk_workstation == workstationID)
+        //             {
+        //                 $("#inputSection").append(new Option(item.title, item.fk_workstation));
+        //             }
+        //         }
+        //         $("#inputSection").prop('disabled', false);
+        //     }
+        //     else
+        //     {
+        //         $("#inputSection").prop('disabled', true);
+        //     }
+        // })
+
+        // var managementsStr = '{{Managements|safe}}';
+        // var managementsObj = JSON.parse(managementsStr);
+        // console.log(managementsObj);
+
+        // var jobTitlesStr = '{{JobTitles|safe}}';
+        // var jobTitlesObj = JSON.parse(jobTitlesStr);
+        // console.log(jobTitlesObj);
+        
+        var sectionsStr = '{{Sections|safe}}';
+        var sectionsObj = JSON.parse(sectionsStr);
+        console.log(sectionsObj);
+
+        // $("#inputJobGroup").on('select2:select', function (e){
+        //     var data = e.params.data;
+
+        //     var jobGroupID = parseInt(data.id);
+        //     console.log(jobGroupID);
+        //     for (var item of jobTitlesObj)
+        //     {
+        //         if (item['fk_jobgroup'] == jobGroupID)
+        //         {
+        //             var newOption = new Option(item.title, item.id, false, false);
+        //             $('#inputJob').append(newOption);
+        //         }
+        //     }
+        // })
+
+        // $("#inputJobGroup").on("select2:unselect", function (e) {
+        //     var data = e.params.data;
+
+        //     var jobGroupID = parseInt(data.id);
+        //     for (var item of jobTitlesObj)
+        //     {
+        //         if (item['fk_jobgroup'] == jobGroupID)
+        //         {
+        //             $("#inputJob option[value=" + item.id + "]").remove();
+        //         }
+        //     }
+        // });
+
+
+        // $("#inputRelevantDeputy").on('select2:select', function (e){
+        //     var data = e.params.data;
+
+        //     var deputyID = parseInt(data.id);
+        //     for (var item of managementsObj)
+        //     {
+        //         if (item['fk_deputy'] == deputyID)
+        //         {
+        //             var newOption = new Option(item.title, item.id, false, false);
+        //             $('#inputManagement').append(newOption);
+        //         }
+        //     }
+        // })
+
+        // $("#inputRelevantDeputy").on("select2:unselect", function (e) {
+        //     var data = e.params.data;
+
+        //     var deputyID = parseInt(data.id);
+        //     for (var item of managementsObj)
+        //     {
+        //         if (item['fk_deputy'] == deputyID)
+        //         {
+        //             $("#inputManagement option[value=" + item.id + "]").remove();
+        //         }
+        //     }
+        // });
+
+        $("#inputWorkstation").on('select2:select', function (e){
+            var data = e.params.data;
+
+            var workstationID = parseInt(data.id);
+            for (var item of sectionsObj)
+            {
+                if (item['father_id'] == workstationID)
+                {
+                    var newOption = new Option(item.title, item.id, false, false);
+                    $('#inputSection').append(newOption);
+                }
+            }
+        })
+
+        $("#inputWorkstation").on("select2:unselect", function (e) {
+            var data = e.params.data;
+
+            var workstationID = parseInt(data.id);
+            for (var item of sectionsObj)
+            {
+                if (item['father_id'] == workstationID)
+                {
+                    $("#inputSection option[value=" + item.id + "]").remove();
+                }
+            }
+        });
+        //#endregion
+        
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            var checks = checkPersonnelFnc();
+            if (checks) {
+                $(".blur").addClass('active disable-form');
+                $(".loading-fixed").show();
+                formData = new FormData();
+                var id = '{{ThisPerson.id}}';
+                var image = $("#inputFile")[0].files[0];
+                var firstName = $("#inputFName").val();
+                var lastName = $("#inputLName").val();
+                var fatherName = $("#inputFatherName").val();
+                var nationalCode = $("#inputNationalCode").val();
+                var password = $("#inputPassword").val();
+                var birthCertificateNo = $("#inputBirthCertificateNo").val();
+                var gender = $("#inputGender").val();
+                var maritalStatus = $("#inputMaritalStatus").val();
+                var birthPlace = $("#inputBirthPlace").val();
+                var insuranceNumber = $("#inputInsuranceNumber").val();
+                var degree = $("#inputDegree").val();
+                var role = $("#inputRole").val();
+                if ($("#inputNumberOfChildren").val().length != 0) {
+                    var numberOfChildren = $("#inputNumberOfChildren").val();
+                    formData.append('number_of_children', numberOfChildren);
+                }
+                var mobileNumber = $("#inputMobileNumber").val();
+                // var email = $("#inputEmail").val();
+                if ($("#inputLocalPhone").val().length != 0) {
+                    var localPhone = $("#inputLocalPhone").val();
+                    formData.append('local_telephone', phoneNumber);
+                }
+                // var accessGroup = $("#inputAccessGroup").val();
+                var birthDate = customJalaliToGregorianFnc($("#inputBirthDate").val());
+                // var relevantDeputy = $("#inputRelevantDeputy").val();
+                var management = $("#inputManagement").val();
+                var company = $("#inputCompany").val();
+                var address = $("#inputAddress").val();
+                // var cooprationType = $("#inputCooprationType").val();
+                // var management = $("#inputManagement").val();
+                var userStatus;
+                if ($("#inputUserStatus").val() == '1') {
+                    userStatus = true;
+                }
+                else {
+                    userStatus = false;
+                }
+                
+                var jobTitle = $("#inputJob").val();
+
+                var section = $("#inputSection").val();
+
+                formData.append('id', id);
+                formData.append('profile', image);
+                formData.append('first_name', firstName);
+                formData.append('last_name', lastName);
+                formData.append('father_s_name', fatherName);
+                formData.append('national_code', nationalCode);
+                formData.append('password', password);
+                formData.append('birth_certificate_no', birthCertificateNo);
+                formData.append('gender', gender);
+                formData.append('marital_status', maritalStatus);
+                formData.append('birth_place', birthPlace);
+                formData.append('insurance_number', insuranceNumber);
+                formData.append('degree', degree);
+                formData.append('role', role);
+                formData.append('mobile', mobileNumber);
+                formData.append('birthdate', birthDate);
+                formData.append('management', management);
+                // formData.append('email', email);
+                // formData.append('access_group', groupUser);
+                // formData.append('relevant_deputy', relevantDeputy);
+                formData.append('company', company);
+                formData.append('address', address);
+                // formData.append('coopration_type', cooprationType);
+                formData.append('active', JSON.stringify(status));
+                formData.append('job_title', jobTitle);
+                formData.append('section', section);
+
+                var ajaxURL = '{% url "master_data:api_personnel_edit" 0 %}';
+                ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + id + '/';
+                
+                var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+                
+                $.ajax(
+                    {
+                        method: 'POST',
+                        url: ajaxURL,
+                        headers: {
+                            'content-type': 'application/json',
+                            'X-CSRFToken': csrftoken
+                        },
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (json, status) {
+                            console.log(json);
+                            console.log(status);
+                            if (status == 'success') {
+                                $(".blur").removeClass('active');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message.success-message").show();
+                                $(".alert-message.error-message").hide();
+                                var redirectURL = '{% url "master_data:personnel_list_page" %}';
+                                setTimeout(function () {
+                                    location.replace(redirectURL);
+                                }, 1500)
+                            }
+                            else {
+                                $(".blur").removeClass('active disable-form');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                                $(".alert-message.error-message").show();
+                            }
+                        },
+                        error: function (json, status, xhr) {
+                            console.log(json.responseJSON.error);
+                            console.log(status);
+                            console.log(xhr);
+                            $(".blur").removeClass('active disable-form');
+                            $(".loading-fixed").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            $(".alert-message-text.error-text").html(json.responseJSON.error + ' - ' + xhr + ' ' + '(' + status + ')');
+                            $(".alert-message.error-message").show();
+                        }
+                    }
+                )
+            }
+            else {
+                $("html, body").animate({
+                    scrollTop: $(".alert-section").offset().top - 20
+                }, 1000);
+            }
+        })
+
+    // var jobsList = [];
+    // // var jobsGroup1Jobs = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var jobsGroup2Jobs = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var jobsGroup3Jobs = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // .
+    // // .
+    // // .
+    // // jobsList.push(jobsGroup1Jobs)
+    // // jobsList.push(jobsGroup2Jobs)
+    // // jobsList.push(jobsGroup3Jobs)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputJobGroup").on("change", function () {
+    //   $("#inputJob").empty().append(new Option("انتخاب...", "0"));
+    //   var jobGroupID = $(this).val();
+    //   if (jobGroupID != '0')
+    //   {
+    //     for (var item of jobsList[parseInt(jobGroupID) - 1])
+    //     {
+    //       $("#inputJob").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputJob").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputJob").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var jobGroupID = '{{jobgroupid}}';
+    //   $("#inputJobGroup").val(jobGroupID);
+
+    //   for (var item of jobsList[parseInt(jobGroupID) - 1])
+    //   {
+    //     $("#inputJob").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputJob").val('{{jobid}}');
+
+    // })
+
+
+    // var managementsList = [];
+    // // var deputy1Managements = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var deputy2Managements = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var deputy3Managements = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // .
+    // // .
+    // // .
+    // // managementsList.push(deputy1Managements)
+    // // managementsList.push(deputy2Managements)
+    // // managementsList.push(deputy3Managements)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputRelevantDeputy").on("change", function () {
+    //   $("#inputManagement").empty().append(new Option("انتخاب...", "0"));
+    //   var deputyID = $(this).val();
+    //   if (deputyID != '0')
+    //   {
+    //     for (var item of managementsList[parseInt(deputyID) - 1])
+    //     {
+    //       $("#inputManagement").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputManagement").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputManagement").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var deputyID = '{{deputy_id}}';
+    //   $("#inputRelevantDeputy").val(deputyID);
+
+    //   for (var item of managementsList[parseInt(deputyID) - 1])
+    //   {
+    //     $("#inputManagement").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputManagement").val('{{management_id}}');
+
+    // })
+
+    // var sectionsList = [];
+    // // var workstation1Sections = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var workstation2Sections = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var workstation3Sections = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // sectionsList.push(workstation1Sections)
+    // // sectionsList.push(workstation2Sections)
+    // // sectionsList.push(workstation3Sections)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputWorkstation").on("change", function () {
+    //   $("#inputSection").empty().append(new Option("انتخاب...", "0"));
+    //   var workstationID = $(this).val();
+    //   if (workstationID != '0')
+    //   {
+    //     for (var item of sectionsList[parseInt(workstationID) - 1])
+    //     {
+    //       $("#inputSection").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputSection").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputSection").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var workstationID = '{{workstation_id}}';
+    //   $("#inputWorkstation").val(workstationID);
+
+    //   for (var item of sectionsList[parseInt(workstationID) - 1])
+    //   {
+    //     $("#inputSection").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputSection").val('{{section_id}}');
+
+    // })
+
+    </script>
+
+</body>
+
+</html>

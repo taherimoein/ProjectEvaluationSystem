@@ -31,3 +31,16 @@ def is_superuser(function = None):
     if function:
         return actual_decorator(function)
     return actual_decorator
+
+
+def is_governor(function = None):
+    """
+    Decorator for views that checks that the user is logged in, redirecting
+    to the log-in page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_governor,
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator

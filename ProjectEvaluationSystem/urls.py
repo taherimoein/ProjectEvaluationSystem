@@ -24,7 +24,7 @@ from django.urls import path
 urlpatterns = [
     path('', include('main.urls.urls', namespace = 'main')),
     path('admin/', admin.site.urls),
-    # path('master-data/', include('main.urls.master_data', namespace = 'master_data')),
+    path('master-data/', include('main.urls.master_data', namespace = 'master_data')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

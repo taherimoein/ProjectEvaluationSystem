@@ -171,7 +171,10 @@ class User(AbstractBaseUser):
 
     @property
     def is_governor(self):
-        return self.staff
+        if self.access_group == 'governor':
+            return True
+        else:
+            return False
 
     def get_access_group(self):
         try:

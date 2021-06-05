@@ -1,0 +1,484 @@
+{% load i18n static %}
+{% load filters %}
+{% csrf_token %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+    <title>سامانه نظام پیشنهادها | پرسنل</title>
+</head>
+<body>
+    
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% block sidebar %}
+                {% include "parents/sidebar.html" %}
+            {% endblock %}
+            
+            <div class="col-9">
+                <div class="row text-right mt-3">
+                    <div class="col-12">
+                        <div class="add-new">
+                            <a href="{% url 'master_data:personnel_create_page' %}" class="btn btn-primary w-100">
+                                افزودن مورد جدید
+                                <i class="far fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="alert-section">
+                            <div class="alert-message error-message front text-right mb-3">
+                                <div class="alert-message-content error-content">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <div class="alert-message-text error-text">
+                                    </div>
+                                </div>
+                                <div class="close-message close-error-message">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="alert-message success-message front text-right mb-3">
+                                <div class="alert-message-content success-content">
+                                  <i class="fas fa-check"></i>
+                                  <div class="alert-message-text success-text">
+                                    پرسنل با موفقیت غیر فعال گردید.
+                                  </div>
+                                </div>
+                                <div class="close-message close-success-message">
+                                  <i class="fas fa-times"></i>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row text-right mt-5">
+                    <div class="col-4 form-group">
+                        <label for="inputCompany">نام دستگاه اجرایی</label>
+                        <select class="select2-ajax form-control" id="inputCompany" multiple="multiple">
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputFullName">نام و نام خانوادگی</label>
+                        <input type="text" id="inputFullName" class="form-control">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputFathersName">نام پدر</label>
+                        <input type="text" id="inputFathersName" class="form-control">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputJobGroups">گروه های شغلی</label>
+                        <select class="select2-component form-control" name="JobGroups" id="inputJobGroups" multiple="multiple">
+                            {% for item in JobGroups %}
+                                <option value="{{item.id}}">{{item.title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputJobTitles">عناوین شغلی</label>
+                        <select class="select2-component form-control" name="JobTitles" id="inputJobTitles" multiple="multiple">
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputRole">سمت سازمانی</label>
+                        <input type="text" id="inputRole" class="form-control">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputDeputy">معاونت ها</label>
+                        <select class="select2-component form-control" name="Deputy" id="inputDeputy" multiple="multiple">
+                            {% for item in Deputies %}
+                                <option value="{{item.id}}">{{item.title}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputManagement">مدیریت ها</label>
+                        <select class="select2-component form-control" name="Management" id="inputManagement" multiple="multiple">
+                        </select>
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="inputStatus">وضعیت کاربر</label>
+                        <select name="status" id="inputStatus" class="form-control">
+                            <option value="0">همه</option>
+                            <option value="1">فعال</option>
+                            <option value="2">غیر فعال</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button id="submit" type="submit" class="btn btn-primary">
+                            اعمال فیلترها
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mt-5 position-relative">
+                    <div class="col-12">
+                        <div class="blur">
+                            <table id="datatable-filterable" class="table table-bordered dt-responsive nowrap info-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            نام کاربری
+                                        </th>
+                                        <th>
+                                            نام و نام خانوادگی
+                                        </th>
+                                        <th>
+                                            نام پدر
+                                        </th>
+                                        <th>
+                                            کد ملی
+                                        </th>
+                                        <th>
+                                            دستگاه اجرایی
+                                        </th>
+                                        <th>
+                                            سمت
+                                        </th>
+                                        <th>
+                                            شماره پرسنلی
+                                        </th>
+                                        <th>
+                                           شماره تماس ضروری
+                                        </th>
+                                        <th>
+                                            تلفن همراه
+                                        </th>
+                                        <th>
+                                            گروه دسترسی
+                                        </th>
+                                        <th>
+                                            وضعیت کاربر
+                                        </th>
+                                        <th>
+                                            ویرایش
+                                        </th>
+                                        <th>
+                                            غیر فعال کردن
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    {% for item in Users %}
+                                        <tr>
+                                            <td class="text-center"><a href="{.% url 'master_data:personnel_details_page' item.username %}">{{item.username}}</a></td>
+                                            <td class="full-name text-center"><a href="{.% url 'master_data:personnel_details_page' item.national_code %}">{{item.fullname}}</a></td>
+                                            <td class="father-name">{{item.father_s_name}}</td>
+                                            <td class="national-code">{{item.national_code}}</td>
+                                            <td class="executive-device">{{item.executive_device}}</td>
+                                            <td class="role">{{item.role}}</td>
+                                            <td class="personnel-id">{{item.personnel_id}}</td>
+                                            <td class="necessary-contact-number">{{item.necessary_contact_number}}</td>
+                                            <td class="mobile">{{item.mobile|default_if_none:"ندارد"}}</td>
+                                            <td class="access_group">{{item.access_group|access_group_to_fa}}</td>
+                                            <td class="status" val="{% if item.active %}accepted{% else %}rejected{% endif %}"><span class="status {% if item.active %}accepted{% else %}rejected{% endif %}">{{item.active|active_to_fa}}</span></td>
+                                            <td class="text-center"><a href="{.% url 'master_data:personnel_edit_page' item.national_code %}"><i class="fas fa-pencil"></i></a></td>
+                                            <td class="text-center"><i val="{{item.id}}" class="cursor-pointer fas fa-trash-alt delete-personnel"></i></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="loading d-hide">
+                        <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+    <script>
+        var managementsStr = '{{Managements|safe}}';
+        var managementsObj = JSON.parse(managementsStr);
+
+        var jobTitlesStr = '{{JobTitles|safe}}';
+        var jobTitlesObj = JSON.parse(jobTitlesStr);
+
+
+        $("#inputJobGroups").on('select2:select', function (e){
+            var data = e.params.data;
+
+            var jobGroupID = parseInt(data.id);
+            for (var item of jobTitlesObj)
+            {
+                if (item['father_id'] == jobGroupID)
+                {
+                    var newOption = new Option(item.title, item.id, false, false);
+                    $('#inputJobTitles').append(newOption);
+                }
+            }
+        })
+
+        $("#inputJobGroups").on("select2:unselect", function (e) {
+            var data = e.params.data;
+
+            var jobGroupID = parseInt(data.id);
+            for (var item of jobTitlesObj)
+            {
+                if (item['father_id'] == jobGroupID)
+                {
+                    $("#inputJobTitles option[value=" + item.id + "]").remove();
+                }
+            }
+        });
+
+
+        $("#inputDeputy").on('select2:select', function (e){
+            var data = e.params.data;
+
+            var deputyID = parseInt(data.id);
+            for (var item of managementsObj)
+            {
+                if (item['father_id'] == deputyID)
+                {
+                    var newOption = new Option(item.title, item.id, false, false);
+                    $('#inputManagement').append(newOption);
+                }
+            }
+        })
+
+        $("#inputDeputy").on("select2:unselect", function (e) {
+            var data = e.params.data;
+
+            var deputyID = parseInt(data.id);
+            for (var item of managementsObj)
+            {
+                if (item['father_id'] == deputyID)
+                {
+                    $("#inputManagement option[value=" + item.id + "]").remove();
+                }
+            }
+        });
+
+
+        var table = $('#datatable-filterable').DataTable({
+            order: [],
+        })
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            var companies = $("#inputCompany").select2('data');
+            var jobGroups = $("#inputJobGroups").select2('data');
+            var jobs = $("#inputJobTitles").select2('data');
+            var deputies = $("#inputDeputy").select2('data');
+            var managements = $("#inputManagement").select2('data');
+            var fullName = $("#inputFullName").val();
+            var fatherName = $("#inputFathersName").val();
+            var role = $("#inputRole").val();
+            var status;
+            if($("#inputStatus").val() == '1')
+            {
+                status = 'فعال';
+            }
+            else if ($("#inputStatus").val() == '2')
+            {
+                status = 'غیرفعال';
+            }
+            else
+            {
+                status = '';
+            }
+
+            var companyRegex = '';
+            for (var item of companies)
+            {
+                companyRegex += '^' + item.title +'$' + '|';
+            }
+            companyRegex = companyRegex.substr(0, companyRegex.length - 1);
+
+            var jobGroupRegex = '';
+            for (var item of jobGroups)
+            {
+                jobGroupRegex += '^' + item.text +'$' + '|';
+            }
+            jobGroupRegex = jobGroupRegex.substr(0, jobGroupRegex.length - 1);
+
+            var jobTitleRegex = '';
+            for (var item of jobs)
+            {
+                jobTitleRegex += '^' + item.text +'$' + '|';
+            }
+            jobTitleRegex = jobTitleRegex.substr(0, jobTitleRegex.length - 1);
+
+            var deputyRegex = '';
+            for (var item of deputies)
+            {
+                deputyRegex += '^' + item.text +'$' + '|';
+            }
+            deputyRegex = deputyRegex.substr(0, deputyRegex.length - 1);
+
+            var managementRegex = '';
+            for (var item of managements)
+            {
+                managementRegex += '^' + item.text +'$' + '|';
+            }
+            managementRegex = managementRegex.substr(0, managementRegex.length - 1);
+
+            table.column(1)
+                 .search(fullName)
+                 .column(2)
+                 .search(fatherName)
+                 .column(3)
+                 .search(companyRegex.length > 0 ? companyRegex : '', true, false)
+                 .column(4)
+                 .search(role)
+                 .column(5)
+                 .search(jobGroupRegex.length > 0 ? jobGroupRegex : '', true, false)
+                 .column(6)
+                 .search(jobTitleRegex.length > 0 ? jobTitleRegex : '', true, false)
+                 .column(7)
+                 .search(deputyRegex.length > 0 ? deputyRegex : '', true, false)
+                 .column(8)
+                 .search(managementRegex.length > 0 ? managementRegex : '', true, false)
+                 .column(10)
+                 .search(status)
+                 .draw();
+
+            
+        })
+        
+
+
+        $(".select2-ajax").select2({
+            dir: "rtl",
+            ajax: {
+                method: 'POST',
+                url: "{.% url 'master_data:ajax_search_in_companies' %}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                    search: params.term, // search term
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    
+                    return {
+                    results: data.data,
+                    pagination: {
+                        more: (params.page * 30) < data.total_count
+                    }
+                    };
+                },
+                cache: true
+            },
+            placeholder: 'جستجو...',
+            minimumInputLength: 1,
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
+        });
+
+        function formatRepo (repo) {
+            if (repo.loading) {
+            return repo.text;
+            }
+
+            var $container = $(
+            "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "</div>" +
+            "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
+
+            return $container;
+        }
+
+        function formatRepoSelection (repo) {
+            if (repo.id && repo.title && repo.national_code)
+            {
+            return repo.title + ' (' + repo.national_code + ')';
+            }
+            return repo.text;
+        }
+        
+        $(document).on('click', ".delete-personnel", function (){
+            $(".blur").addClass('active disable-form');
+            $(".loading-fixed").show();
+
+            var personnelID = $(this).attr('val');
+            console.log(personnelID);
+
+            data = {};
+            data.active = JSON.stringify(false);
+            console.log(data);
+
+            var ajaxURL = '{.% url "master_data:api_personnel_edit" 0 %}';
+            ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + personnelID + '/';
+
+            console.log(ajaxURL);
+
+            var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+
+            $.ajax (
+                {
+                    method: 'PATCH',
+                    url: ajaxURL,
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    success: function (json, status) {
+                        $(".blur").removeClass('active disable-form');
+                        $(".loading").hide();
+                        console.log(status);
+                        console.log(json);
+                        if (status == "success")
+                        {
+                            $(".alert-message.success-message").show();
+                            $(".alert-message.error-message").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            setTimeout( function () {
+                                window.location.reload(false);
+                            }, 1500)
+                        }
+                        else
+                        {
+                            $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                            $(".alert-message.error-message").show();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                        }
+                    },
+                    error: function (json, xhr, status) {
+                        console.log(json);
+                        // console.log(json.responseJSON.error);
+                        console.log(xhr);
+                        console.log(status);
+                        $(".blur").removeClass('active disable-form');
+                        $(".loading").hide();
+                        $(".alert-message-text.error-text").html(' ' + '(' + status + ')');
+                        $(".alert-message.error-message").show();
+                        $("html, body").animate({
+                            scrollTop: $(".alert-section").offset().top - 20
+                        }, 1000);
+                    }
+                }
+            )
+        })
+    </script>
+    
+</body>
+</html>
