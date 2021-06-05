@@ -5,7 +5,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-    <title>سامانه نظام پیشنهادها | ورود</title>
+    <title>سامانه پروژه ها | ورود</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -14,9 +14,9 @@
                 <div class="loginpage">
                     <div class="blur">
                         <div class="login_header">
-                            <img src="{% static "images/left-logo.png" %}" alt="لوگوی سیستم نظام پیشنهادات">
-                            <h2>سامانه نظام پیشنهادات</h2>
-                            <h4>شرکت توسعه آهن و فولاد گل گهر</h4>
+                            
+                            <h2>سامانه بررسی پروژه ها</h2>
+                            <h4>فرمانداری استان کرمان</h4>
                             <br><br>
                             <h5>ورود به سامانه</h5>
                         </div>
@@ -74,8 +74,10 @@
                                     <a href="{% url 'main:forget_password_page' %}" class="blue-underlined" id="forget-password">فراموشی رمز عبور</a>
                                 </div>
                             </div>
-                            <br>
+                            
                             <button id="submit" type="submit" class="btn btn-primary w-100">ورود</button>
+                            <br><br>
+                            <a href="{% url 'main:signup_page' %}"><button class="btn btn-primary w-100">ثبت نام در سامانه</button></a>
                             <br><br>
                         </form>
                     </div>

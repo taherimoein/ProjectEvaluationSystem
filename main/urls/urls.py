@@ -8,6 +8,7 @@ urlpatterns = [
     path('', base_views.index_page, name = 'index_page'),
     # sign in path <----------------------------------------------->
     path('signin/', base_views.signin_page, name ='sign_page'),
+    path('signup/', base_views.signup_page , name ='signup_page'),
     path('ajax-signin/', base_views.signin, name = 'ajax_signin'),
     # sign out path <----------------------------------------------->
     path('signout/', base_views.signout, name = 'sign_out_page'),

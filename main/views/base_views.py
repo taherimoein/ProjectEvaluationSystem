@@ -23,6 +23,12 @@ def signin_page(request):
     else:
         return redirect('main:index_page')
 
+def signup_page(request):
+    if not request.user.is_authenticated:
+        return render(request, 'account/signup.html')
+    else:
+        return redirect('main:index_page')
+
 
 def signout(request):
     if request.user.is_authenticated:
