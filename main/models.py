@@ -1,8 +1,9 @@
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
 from django.utils.deconstruct import deconstructible
 from django.db.models import JSONField
+from django.utils import timezone
+import random, string, datetime
 from django.db import models
-import random, string
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ class Validation(models.Model):
 # --------------------------------------------------------------------------------------------------------------------------------------
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, issueplace, password, **kwargs):
+    def create_user(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, password, **kwargs):
         if not username:
             raise ValueError("Users must have username")
         if not first_name:
@@ -45,8 +46,6 @@ class UserManager(BaseUserManager):
             raise ValueError("Users must have birth certificate id")
         if not national_code:
             raise ValueError("Users must have national_code")
-        if not issueplace:
-            raise ValueError("Users must have issue place")
         if not password:
             raise ValueError("Users must have password")
 
@@ -56,31 +55,28 @@ class UserManager(BaseUserManager):
         user.father_s_name = father_s_name
         user.birth_certificate_id = birth_certificate_id
         user.national_code = national_code
-        user.issueplace = issueplace
         user.set_password(password)
         user.save()
         return user
 
-    def create_staffuser(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, issueplace, password, **kwargs):
+    def create_staffuser(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, password, **kwargs):
         user = self.model(username = username, staff = True, **kwargs)
         user.first_name = first_name
         user.last_name = last_name
         user.father_s_name = father_s_name
         user.birth_certificate_id = birth_certificate_id
         user.national_code = national_code
-        user.issueplace = issueplace
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, issueplace, password, **kwargs):
+    def create_superuser(self, username, first_name, last_name, father_s_name, birth_certificate_id, national_code, password, **kwargs):
         user = self.model(username = username, staff = True, superuser = True, **kwargs)
         user.first_name = first_name
         user.last_name = last_name
         user.father_s_name = father_s_name
         user.birth_certificate_id = birth_certificate_id
         user.national_code = national_code
-        user.issueplace = issueplace
         user.set_password(password)
         user.save()
         return user
@@ -101,7 +97,7 @@ class User(AbstractBaseUser):
     birth_certificate_id = models.CharField(verbose_name = 'birth certificate id', max_length = 10, unique = True, db_index = True)
     national_code = models.CharField(verbose_name = 'national code', max_length = 10, unique = True, db_index = True)
     birthday = models.DateField(verbose_name = 'تاریخ تولد', null = True)
-    issueplace = models.CharField(verbose_name = 'issue place', max_length = 50)
+    issue_place = models.CharField(verbose_name = 'issue place', max_length = 50)
     # Educational Information
     DEGREE_TYPE = (
         ('elementary ', 'ابتدایی'),
@@ -153,7 +149,7 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'username'
 
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'father_s_name', 'birth_certificate_id', 'national_code', 'issueplace']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'father_s_name', 'birth_certificate_id', 'national_code']
 
     objects = UserManager()
 
@@ -199,6 +195,15 @@ class User(AbstractBaseUser):
 
     def get_fullname(self):
         return ' '.join([self.first_name, self.last_name])
+
+    def add_history(self, status, user, add_datetime = None, other_fileds = None):
+        if add_datetime is None:
+            add_datetime = timezone.localtime(datetime.datetime.now())
+        if this_status == 'create':
+            self.history = {'list': [{'status': status, 'user': int(user), 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M")}]}
+        elif this_status == 'edit':
+            self.history['list'].append({'status': status, 'user': int(user), 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M"), 'fields' : other_fileds})
+        self.save()
 
     class Meta:
         ordering = ('id', 'create_date',)
