@@ -168,17 +168,6 @@ def create_personnel(request):
         return JsonResponse(response_data)
 
 
-
-@login_required(login_url = 'main:sign_page')
-def personnel_edit_page(request, username):
-    this_user = get_object_or_404(User, username = username)
-
-    context = {
-        'ThisUser': get_user_details(this_user)
-    }
-    return render(request, 'master-data/personnel/personnel-edit.html', context)
-
-
 def get_user_details(this_user):
     this_user_details = {
         'national_code': this_user.national_code,
@@ -212,14 +201,24 @@ def get_user_details(this_user):
     return this_user_details
 
 
-# # @login_required(login_url = 'main:sign_page')
-# # def personnel_details_page(request, this_national_code):
-# #     this_user = get_object_or_404(User, national_code = this_national_code)
+@login_required(login_url = 'main:sign_page')
+def personnel_details_page(request, username):
+    this_user = get_object_or_404(User, username = username)
 
-# #     context = {
-# #         'ThisUser': get_user_details(this_user)
-# #     }
-# #     return render(request, 'master-data/personnel/personnel-details.html', context)
+    context = {
+        'ThisUser': get_user_details(this_user)
+    }
+    return render(request, 'master-data/personnel/personnel-details.html', context)
+
+
+@login_required(login_url = 'main:sign_page')
+def personnel_edit_page(request, username):
+    this_user = get_object_or_404(User, username = username)
+
+    context = {
+        'ThisUser': get_user_details(this_user)
+    }
+    return render(request, 'master-data/personnel/personnel-edit.html', context)
 
 
 # def search_in_users(request):
