@@ -30,7 +30,7 @@ urlpatterns = [
     path('personnel/', personnelviews.personnel_list_page, name = 'personnel_list_page'),
     path('personnel/create/', personnelviews.personnel_create_page, name = 'personnel_create_page'),
     path('ajax/personnel/create/', personnelviews.create_personnel, name = 'ajax_create_personnel'),
-#     path('personnel/edit/<str:this_national_code>/', personnelviews.personnel_edit_page, name='personnel_edit_page'),
+    path('personnel/edit-<str:username>/', personnelviews.personnel_edit_page, name = 'personnel_edit_page'),
 #     path('api/personnel/edit/<int:pk>/', personnelviews.PersonnelRetrieveUpdate.as_view(),
 #          name='api_personnel_edit'),
 #     path('personnel/details/<str:this_national_code>/', personnelviews.personnel_details_page,

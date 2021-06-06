@@ -166,58 +166,47 @@ def create_personnel(request):
 
 
 
-# # @login_required(login_url = 'main:sign_page')
-# # def personnel_edit_page(request, this_national_code):
-# #     this_user = get_object_or_404(User, national_code = this_national_code)
+@login_required(login_url = 'main:sign_page')
+def personnel_edit_page(request, username):
+    this_user = get_object_or_404(User, username = username)
 
-# #     deputies = Deputy.objects.order_by('created_date').values('id', 'title')
-# #     managements = Management.objects.all()
-# #     managements = ManagementSerializer(managements, many = True)
-
-# #     job_groups = JobGroup.objects.order_by('created_date').values('id', 'title')
-# #     job_titles = JobTitle.objects.all()
-# #     job_titles = JobTitleSerializer(job_titles, many = True)
-
-# #     workstations = WorkStation.objects.order_by('created_date').values('id', 'title')
-# #     sections = Section.objects.all()
-# #     sections = SectionBaseSerializer(sections, many = True)
-
-# #     context = {
-# #         'ThisUser': get_user_details(this_user),
-# #         'Deputies': deputies,
-# #         'Managements': json.dumps(managements.data),
-# #         'JobGroups': job_groups,
-# #         'JobTitles': json.dumps(job_titles.data),
-# #         'WorkStations': workstations,
-# #         'Sections': json.dumps(sections.data),
-# #     }
-# #     return render(request, 'master-data/personnel/personnel-edit.html', context)
+    context = {
+        'ThisUser': get_user_details(this_user)
+    }
+    return render(request, 'master-data/personnel/personnel-edit.html', context)
 
 
-# # def get_user_details(this_user):
-# #     this_user_details = {
-# #         'national_code': this_user.national_code,
-# #         'first_name': this_user.first_name,
-# #         'last_name': this_user.last_name,
-# #         'profile': this_user.profile,
-# #         'father_s_name': this_user.father_s_name,
-# #         'birth_certificate_id': this_user.birth_certificate_id,
-# #         'birthday': this_user.birthday,
-# #         'birthplace': this_user.birthplace,
-# #         'gender': this_user.gender,
-# #         'marital_status': this_user.marital_status,
-# #         'number_of_children': this_user.number_of_children,
-# #         'degree': this_user.degree,
-# #         'telephone': this_user.telephone,
-# #         'mobile': this_user.mobile,
-# #         'address': this_user.address,
-# #         'insurance_number': this_user.insurance_number,
-# #         'organization_role': this_user.organization_role,
-# #         'job_title': json.dumps(JobTitleSerializer(this_user.job_title).data),
-# #         'management': json.dumps(ManagementSerializer(this_user.management).data),
-# #         'sections': this_user.get_sections()
-# #     }
-# #     return this_user_details
+def get_user_details(this_user):
+    this_user_details = {
+        'national_code': this_user.national_code,
+        'first_name': this_user.first_name,
+        'last_name': this_user.last_name,
+        'profile': this_user.profile,
+        'father_s_name': this_user.father_s_name,
+        'birth_certificate_id': this_user.birth_certificate_id,
+        'birthday': this_user.birthday,
+        'issue_place': this_user.issue_place,
+        'gender': this_user.gender,
+        'username': this_user.username,
+        'major': this_user.major,
+        'degree': this_user.degree,
+        'necessary_contact_number': this_user.necessary_contact_number,
+        'mobile': this_user.mobile,
+        'address': this_user.address,
+        'workplace_number': this_user.workplace_number,
+        'role': this_user.role,
+        'university_of_study': this_user.university_of_study,
+        'executive_device': this_user.executive_device,
+        'work_experience': this_user.work_experience,
+        'personnel_id': this_user.personnel_id,
+        'zip_code': this_user.zip_code,
+        'email': this_user.email,
+        'picture': this_user.picture,
+        'personal_id_card': this_user.personal_id_card,
+        'device_introduction_letter': this_user.device_introduction_letter,
+        'sample_signature': this_user.sample_signature
+    }
+    return this_user_details
 
 
 # # @login_required(login_url = 'main:sign_page')
