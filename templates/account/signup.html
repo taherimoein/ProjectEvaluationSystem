@@ -5,7 +5,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-    <title>سامانه پروژه ها | ورود</title>
+    <title>سامانه پروژه ها | ثبت نام</title>
 </head>
 <body>
     <div class="container-fluid">
@@ -54,22 +54,6 @@
                                     <h4 class="row-form-group__title">اطلاعات شخصی</h4>
                                     <br>
                                     <div class="form-group col-12 p-3">
-                                        <div class="form-row justify-content-between">
-                                            <div class="form-group col-md-4">
-                                                <label>عکس پروفایل</label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
-                                                <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                                <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
-                                                <div class="image-input-container position-relative">
-                                                    <label for="inputFile">
-                                                        <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-profile.jpg' %}" alt="عکس پروفایل">
-                                                        <input type="file" class="form-control-file" id="inputFile" onchange="readURL(this);" hidden>
-                                                        <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputFName">نام<code>*</code></label>
@@ -94,38 +78,6 @@
                                                 title="فیلد نام پدر الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
                                                 <input type="text" class="form-control" id="inputFatherName" maxlength="50">
                                             </div>
-                                            
-                                        </div>
-                                        <br>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputNationalCode">کد ملی<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد ملی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
-                                                <input type="number" class="form-control" id="inputNationalCode">
-                                            </div>
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="inputPassword">رمز عبور<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد رمز عبور الزامی است."></i>
-                                                <input type="password" class="form-control" id="inputPassword">
-                                            </div> -->
-                                            <div class="form-group col-md-4">
-                                                <label for="inputBirthCertificateNo">شماره شناسنامه<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="شماره شناسنامه الزامی است و بایستی به صورت عددی وارد گشته و حداکثر تا 10 کاراکتر باشد."></i>
-                                                <input type="number" class="form-control" id="inputBirthCertificateNo">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="form-row row-form-group">
-                                    <h4 class="row-form-group__title">اطلاعات تحصیلی</h4>
-                                    <br>
-                                    <div class="form-group col-12 p-3">
-                                        <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputGender">جنسیت<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
@@ -137,25 +89,18 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputMaritalStatus">وضعیت تاهل<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="تعیین وضعیت تأهل الزامی میباشد."></i>
-                                                <select id="inputMaritalStatus" class="form-control select2-static-component">
-                                                    <option value="0">انتخاب...</option>
-                                                    <option value="s">مجرد</option>
-                                                    <option value="m">متاهل</option>
-                                                </select>
+                                                <label for="inputNationalCode">کد ملی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد ملی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
+                                                <input type="number" class="form-control" id="inputNationalCode">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputNumberOfChildren">تعداد فرزندان</label>
+                                                <label for="inputBirthCertificateNo">شماره شناسنامه<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left"
-                                                    title="فیلد تعداد فرزندان بایستی به صورت عددی وارد گردد."></i>
-                                                <input type="number" class="form-control" id="inputNumberOfChildren">
+                                                data-placement="left"
+                                                title="شماره شناسنامه الزامی است و بایستی به صورت عددی وارد گشته و حداکثر تا 10 کاراکتر باشد."></i>
+                                                <input type="number" class="form-control" id="inputBirthCertificateNo">
                                             </div>
-                                        </div>
-                                        <br>
-                                        <div class="form-row">
+
                                             <div class="form-group col-md-4">
                                                 <label for="inputBirthDate">تاریخ تولد<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
@@ -163,15 +108,30 @@
                                                     title="فیلد تاریخ تولد اجباری است و برای وارد کردن تاریخ از تقویم تعبیه شده درون فیلد استفاده نمائید."></i>
                                                 <input type="text" class="form-control" id="inputBirthDate">
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputBirthPlace">محل تولد<code>*</code></label>
+                                            
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            
+                                            <!-- <div class="form-group col-md-4">
+                                                <label for="inputPassword">رمز عبور<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left"
-                                                    title="فیلد محل تولد الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputBirthPlace" maxlength="50">
-                                            </div>
+                                                data-placement="left"
+                                                title="فیلد رمز عبور الزامی است."></i>
+                                                <input type="password" class="form-control" id="inputPassword">
+                                            </div> -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <h4 class="row-form-group__title">اطلاعات تحصیلی</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
                                             <div class="form-group col-md-4">
-                                                <label for="inputDegree">مقطع تحصیلی<code>*</code></label>
+                                                <label for="inputDegree">مدرک تحصیلی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left" title="تعیین مقطع تحصیلی الزامی میباشد."></i>
                                                 <select id="inputDegree" class="form-control select2-static-component">
@@ -186,6 +146,24 @@
                                                     <option value="post-doctoral">فوق دکترا</option>
                                                 </select>
                                             </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputMajor">رشته تحصیلی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                                    data-placement="left"
+                                                    title="فیلد رشته تحصیلی الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                                <input type="text" class="form-control" id="inputMajor" maxlength="50">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="inputMajor">دانشگاه محل تحصیل<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                                    data-placement="left"
+                                                    title="فیلد دانشگاه محل تحصیل الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                                <input type="text" class="form-control" id="inputMajor" maxlength="50">
+                                            </div>
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -196,71 +174,37 @@
                                     <div class="form-group col-12 p-3">
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
-                                                <label for="inputInsuranceNumber">شماره بیمه<code>*</code></label>
+                                                <label for="inputexecutive_device">دستگاه اجرایی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left"
-                                                    title="شماره بیمه الزامی است و بایستی شامل یک رشته عدد 10 رقمی باشد. در صورتی که شماره بیمه شما 8 رقمی میباشد به ابتدای شماره بیمه دو رقم صفر اضافه نمائید. برای مثال چنانچه شماره بیمه برابر با 12345678 میباشد به صورت 0012345678 آن را وارد نمائید."></i>
-                                                <input type="number" class="form-control" id="inputInsuranceNumber">
+                                                    data-placement="left" title="تعیین دستگاه اجرایی الزامی میباشد."></i>
+                                                <select id="inputexecutive_device" class="form-control select2-ajax">
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputRole">سمت سازمانی<code>*</code></label>
+                                                <label for="inputRole">سمت<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
-                                                    title="فیلد سمت سازمانی الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                                    title="فیلد سمت الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
                                                 <input type="text" class="form-control" id="inputRole" maxlength="50">
                                             </div>
+
                                             <div class="form-group col-md-4">
-                                                <label for="inputCompany">شرکت<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="تعیین شرکت الزامی میباشد."></i>
-                                                <select id="inputCompany" class="form-control select2-ajax">
-                                                </select>
+                                                <label for="inputwork_experience">سابقه کاری<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد سابقه کار الزامی می باشد."></i>
+                                                <input type="text" class="form-control" id="inputwork_experience">
                                             </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="inputpersonnel_id">شماره پرسنلی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره پرسنلی الزامی می باشد."></i>
+                                                <input type="text" class="form-control" id="inputpersonnel_id">
+                                            </div>
+
+                                            
+                                            
+                                            
                                         </div>
-                                        <br>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputRelevantDeputy">معاونت<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="تعیین معاونت الزامی میباشد."></i>
-                                                <select id="inputRelevantDeputy" class="form-control select2-component">
-                                                    <option value="0">انتخاب...</option>
-                                                    {% for item in Deputies %}
-                                                        <option value="{{item.id}}">{{item.title}}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputManagement">مدیریت<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="تعیین مدیریت الزامی میباشد."></i>
-                                                <select id="inputManagement" class="form-control select2-component" disabled>
-                                                    <option value="0">انتخاب...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputJobGroup">گروه شغلی<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="گروه شغلی حتما بایستی معین گردد."></i>
-                                                <select id="inputJobGroup" class="form-control select2-component">
-                                                    <option value="0">انتخاب...</option>
-                                                    {% for item in JobGroups %}
-                                                        <option value="{{item.id}}">{{item.title}}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputJob">عنوان شغل<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="عنوان شغل حتما بایستی معین گردد."></i>
-                                                <select id="inputJob" class="form-control select2-component" disabled>
-                                                    <option value="0">انتخاب...</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <br>
@@ -269,15 +213,35 @@
                                     <br>
                                     <div class="form-group col-12 p-3">
                                         <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label for="inputAddress">آدرس<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                                    data-placement="left" title="فیلد آدرس اجباری میباشد."></i>
+                                                <textarea name="address" class="form-control" id="inputAddress" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+
                                             <div class="form-group col-md-4">
-                                                <label for="inputMobileNumber">شماره همراه<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن شماره همراه الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
-                                                <input type="number" class="form-control" id="inputMobileNumber">
+                                                <label for="inputzip_code">کد پستی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد پستی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
+                                                <input type="number" class="form-control" id="inputzip_code">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputLocalPhone">شماره ثابت</label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره ثابت بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                <input type="number" class="form-control" id="inputLocalPhone" placeholder="0343000000">
+                                                <label for="inputnecessary_contact_number">شماره تماس ضروری</label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس ضروری بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                                <input type="number" class="form-control" id="inputnecessary_contact_number" placeholder="0343000000">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputmobile">شماره تلفن همراه<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن شماره تلفن همراه الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
+                                                <input type="number" class="form-control" id="inputmobile">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputworkplace_number">شماره محل کار</label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره محل کار بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                                <input type="number" class="form-control" id="inputworkplace_number" placeholder="0343000000">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputEmail">پست الکترونیکی</label>
@@ -286,69 +250,103 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputAddress">آدرس<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="فیلد آدرس اجباری میباشد."></i>
-                                                <textarea name="address" class="form-control" id="inputAddress" rows="4"></textarea>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-row row-form-group">
                                     <h4 class="row-form-group__title">اطلاعات پروفایل</h4>
                                     <br>
-                                    <div class="form-group col-12 p-3">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="inputAccessGroup">گروه دسترسی<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="تعیین گروه دسترسی الزامی میباشد."></i>
-                                                <select id="inputAccessGroup" class="form-control select2-static-component">
-                                                    <option value="superuser">مدیر</option>
-                                                    <option value="staff">کارمند</option>
-                                                    <option value="user" selected>کاربر</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputUserStatus">وضعیت کاربر<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="وضعیت کاربر حتما بایستی معین گردد."></i>
-                                                <select id="inputUserStatus" class="form-control select2-static-component">
-                                                    <option value="1" selected>فعال</option>
-                                                    <option value="2">غیرفعال</option>
-                                                </select>
+                                    <div class=" justify-content-between">
+                                        <div class="form-group col-md-12">
+                                            <label>عکس پروفایل</label>
+                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
+                                            <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                            <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
+                                            <div class="image-input-container position-relative">
+                                                <label for="inputFile">
+                                                    <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-profile.jpg' %}" alt="عکس پروفایل">
+                                                    <input type="file" class="form-control-file" id="inputFile" onchange="readURL(this);" hidden>
+                                                    <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="form-row row-form-group">
-                                    <h4 class="row-form-group__title">بارگذاری</h4>
                                     <br>
                                     <div class="form-group col-12 p-3">
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
-                                                <label for="inputAccessGroup">گروه دسترسی<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="تعیین گروه دسترسی الزامی میباشد."></i>
-                                                <select id="inputAccessGroup" class="form-control select2-static-component">
-                                                    <option value="superuser">مدیر</option>
-                                                    <option value="staff">کارمند</option>
-                                                    <option value="user" selected>کاربر</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputUserStatus">وضعیت کاربر<code>*</code></label>
+                                                <label for="inputUsername">نام کاربری<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                    data-placement="left" title="وضعیت کاربر حتما بایستی معین گردد."></i>
-                                                <select id="inputUserStatus" class="form-control select2-static-component">
-                                                    <option value="1" selected>فعال</option>
-                                                    <option value="2">غیرفعال</option>
-                                                </select>
+                                                data-placement="left"
+                                                title="فیلد نام کاربری الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
+                                                <input type="text" class="form-control" id="inputUsername" maxlength="50">
                                             </div>
                                         </div>
+                                        
                                     </div>
+                                </div>
+                                <br>
+                                <div class="form-row row row-form-group">
+                                    <h4 class="row-form-group__title">بارگذاری</h4>
+                                    <br>
+
+                                    <div class="form-group col-md-3">
+                                        <label>عکس</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان عکس پرسنلی انتخاب نمائید."></i>
+                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
+                                        <div class="image-input-container position-relative">
+                                            <label for="inputpicture">
+                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="عکس">
+                                                <input type="file" class="form-control-file" id="inputpicture" onchange="readURL(this);" hidden>
+                                                <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>کارت شناسایی پرسنلی</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان کارت شناسایی پرسنلی انتخاب نمائید."></i>
+                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
+                                        <div class="image-input-container position-relative">
+                                            <label for="inputpersonal_id_card">
+                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="کارت شناسایی پرسنلی">
+                                                <input type="file" class="form-control-file" id="inputpersonal_id_card" onchange="readURL(this);" hidden>
+                                                <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>معرفی نامه دستکاه</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
+                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
+                                        <div class="image-input-container position-relative">
+                                            <label for="inputdevice_introduction_letter">
+                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="معرفی نامه دستکاه">
+                                                <input type="file" class="form-control-file" id="inputdevice_introduction_letter" onchange="readURL(this);" hidden>
+                                                <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label>نمونه امضا</label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
+                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب نمونه امضا الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
+                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
+                                        <div class="image-input-container position-relative">
+                                            <label for="inputsample_signature">
+                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="نمونه امضا">
+                                                <input type="file" class="form-control-file" id="inputsample_signature" onchange="readURL(this);" hidden>
+                                                <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 
                                
