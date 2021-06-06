@@ -1,4 +1,5 @@
-# from main.serializer.master_data import UserBaseSerializer, ManagementBaseSerializer, JobTitleBaseSerializer, \
+from main.serializer.master_data import UserBaseSerializer
+# , ManagementBaseSerializer, JobTitleBaseSerializer, \
 #     UserSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import  render, get_object_or_404
@@ -221,31 +222,31 @@ def personnel_edit_page(request, username):
     return render(request, 'master-data/personnel/personnel-edit.html', context)
 
 
-# def search_in_users(request):
-#     response_data = {}
-#     try:
-#         # get search
-#         this_search = request.POST.get('search')
-#         # set search regex
-#         this_search = this_search.split(' ')
-#         this_search = list(filter(lambda i: i != '', this_search))
-#         search_word_list = []
-#         for word in this_search:
-#             search_word = list(map(lambda x: x + '\s*', word.replace(' ','')[:-1]))
-#             search_word = ''.join(search_word) + word[-1]
-#             search_word_list.append(search_word)
-#         search_word = r'.*'.join(search_word_list)
-#         # search in fullname & national_code
-#         users = User.objects.annotate(full_name = Concat('first_name', Value(' '), 'last_name')).filter(Q(full_name__regex = search_word) | Q(national_code__regex = search_word))
-#         serializer = UserBaseSerializer(users, many = True)
+def search_in_users(request):
+    response_data = {}
+    try:
+        # get search
+        this_search = request.POST.get('search')
+        # set search regex
+        this_search = this_search.split(' ')
+        this_search = list(filter(lambda i: i != '', this_search))
+        search_word_list = []
+        for word in this_search:
+            search_word = list(map(lambda x: x + '\s*', word.replace(' ','')[:-1]))
+            search_word = ''.join(search_word) + word[-1]
+            search_word_list.append(search_word)
+        search_word = r'.*'.join(search_word_list)
+        # search in fullname & national_code
+        users = User.objects.annotate(full_name = Concat('first_name', Value(' '), 'last_name')).filter(Q(full_name__regex = search_word) | Q(national_code__regex = search_word))
+        serializer = UserBaseSerializer(users, many = True)
 
-#         response_data['status'] = '200'
-#         response_data['data'] = serializer.data
-#         return JsonResponse(response_data)
-#     except Exception as e:
-#         response_data['status'] = '500'
-#         response_data['error'] = str(e)
-#         return JsonResponse(response_data)
+        response_data['status'] = '200'
+        response_data['data'] = serializer.data
+        return JsonResponse(response_data)
+    except Exception as e:
+        response_data['status'] = '500'
+        response_data['error'] = str(e)
+        return JsonResponse(response_data)
 
 
 # # class PersonnelCreate(generics.CreateAPIView):

@@ -31,10 +31,9 @@ urlpatterns = [
     path('personnel/create/', personnelviews.personnel_create_page, name = 'personnel_create_page'),
     path('ajax/personnel/create/', personnelviews.create_personnel, name = 'ajax_create_personnel'),
     path('personnel/edit-<str:username>/', personnelviews.personnel_edit_page, name = 'personnel_edit_page'),
-#     path('api/personnel/edit/<int:pk>/', personnelviews.PersonnelRetrieveUpdate.as_view(),
-#          name='api_personnel_edit'),
+#     path('ajax/personnel/edit-<int:pk>/', personnelviews.PersonnelRetrieveUpdate.as_view(), name = 'ajax_personnel_edit'),
     path('personnel/details-<str:username>/', personnelviews.personnel_details_page, name = 'personnel_details_page'),
-    # path('ajax/personnel/search/', personnelviews.search_in_users, name='ajax_search_in_users'),
+    path('ajax/personnel/search/', personnelviews.search_in_users, name = 'ajax_search_in_users'),
     # Master Data "work station" --------------------------------------------------------------
 #     path('work-station/', workstationviews.work_station_list_page, name='work_station_list_page'),
 #     path('work-station/create/', workstationviews.work_station_create_page, name='work_station_create_page'),
