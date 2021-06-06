@@ -1,4 +1,4 @@
-from main.serializer.master_data import UserBaseSerializer
+from main.serializers.master_data import UserBaseSerializer
 # , ManagementBaseSerializer, JobTitleBaseSerializer, \
 #     UserSerializer
 from django.contrib.auth.decorators import login_required
