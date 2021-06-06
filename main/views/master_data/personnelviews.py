@@ -47,6 +47,7 @@ def check_personnel_fields(request):
         this_first_name = request.POST.get('first_name')
         this_last_name = request.POST.get('last_name')
         this_father_s_name = request.POST.get('father_s_name')
+        this_access_group = request.POST.get('access_group')
         this_gender = request.POST.get('gender')
         this_birth_certificate_id = request.POST.get('birth_certificate_id')
         this_national_code = request.POST.get('national_code')
@@ -103,6 +104,7 @@ def create_personnel(request):
         this_first_name = request.POST.get('first_name')
         this_last_name = request.POST.get('last_name')
         this_father_s_name = request.POST.get('father_s_name')
+        this_access_group = request.POST.get('access_group')
         this_gender = request.POST.get('gender')
         this_birth_certificate_id = request.POST.get('birth_certificate_id')
         this_national_code = request.POST.get('national_code')
@@ -131,6 +133,7 @@ def create_personnel(request):
             this_father_s_name, this_birth_certificate_id, this_national_code)
         # add other fields
         this_user.set_password(this_password)
+        this_user.access_group = this_access_group
         this_user.gender = this_gender
         this_user.birth_certificate_id = this_birth_certificate_id
         this_user.national_code = this_national_code
