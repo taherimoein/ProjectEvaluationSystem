@@ -196,7 +196,7 @@ class User(AbstractBaseUser):
     def get_fullname(self):
         return ' '.join([self.first_name, self.last_name])
 
-    def add_history(self, status, user = None, add_datetime = None, other_fileds = None):
+    def add_history(self, status, user = None, other_fileds = None, add_datetime = None,):
         if add_datetime is None:
             add_datetime = timezone.localtime(datetime.datetime.now())
         if user is not None:
@@ -204,6 +204,8 @@ class User(AbstractBaseUser):
         if status == 'create':
             self.history = {'list': [{'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M")}]}
         elif status == 'edit':
+            self.history['list'].append({'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M"), 'fields' : other_fileds})
+        elif status == 'confirmation':
             self.history['list'].append({'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M"), 'fields' : other_fileds})
         self.save()
 
