@@ -202,6 +202,7 @@ def get_user_details(this_user):
     return this_user_details
 
 
+@is_governor
 @login_required(login_url = 'main:sign_page')
 def personnel_details_page(request, username):
     this_user = get_object_or_404(User, username = username)
@@ -212,6 +213,7 @@ def personnel_details_page(request, username):
     return render(request, 'master-data/personnel/personnel-details.html', context)
 
 
+@is_governor
 @login_required(login_url = 'main:sign_page')
 def personnel_edit_page(request, username):
     this_user = get_object_or_404(User, username = username)
@@ -249,79 +251,56 @@ def search_in_users(request):
         return JsonResponse(response_data)
 
 
-# # class PersonnelCreate(generics.CreateAPIView):
-    
-# #     serializer_class = PersonnelSerializer
-# #     permission_classes = (AllowAny,)
+@is_governor
+@login_required(login_url = 'main:sign_page')
+def personnel_confirmation_of_information_page(request, username):
+    this_user = get_object_or_404(User, username = username)
+
+    context = {
+        'ThisUser': get_user_details(this_user)
+    }
+    return render(request, 'master-data/personnel/personnel-edit.html', context)
 
 
-# # class PersonnelRetrieveUpdate(generics.RetrieveUpdateAPIView):
+def confirmation_of_information_personnel(request):
+    response_data = {}
+    if request.user.is_authenticated:
+        if request.user.is_governor:
+            try:
+                # get data
+                this_user_id = request.POST.get('id')
+                this_access_group = request.POST.get('access_group')
 
-# #     serializer_class = PersonnelSerializer
-# #     permission_classes = (AllowAny,)
+                if User.objects.filter(id = this_user_id).exists():
+                    if (this_access_group == 'user') or (this_access_group == 'department_of_administration'):
+                        # get user 
+                        this_user = User.objects.get(id = this_user_id)
+                        # change user access group
+                        this_user.access_group = this_access_group
+                        this_user.active = True
+                        this_user.save()
+                        # add create history
+                        this_user.add_history('confirmation', request.user.id, {'access_group': this_access_group})
 
-# #     def get_queryset(self):
-# #         personnel = User.objects.filter(id=self.kwargs['pk'])
-# #         return personnel
-
-
-# # def create_personnel(request):
-# #     response_data = {}
-# #     if request.user.is_authenticated:
-# #         try:
-# #             # get data
-# #             this_content = request.POST.get('content')
-# #             # try:
-# #             #     this_user_profile = request.FILES['profile']
-# #             # except:
-# #             #     this_user_profile = None
-# #             # check fields
-# #             check_fields_status, error, this_user_company = check_personnel_fields(this_user_first_name, this_user_last_name, this_user_national_code, this_user_mobile, this_user_role, this_user_company, this_user_access_group, this_user_relevant_deputy, this_user_relevant_unit, this_user_active)
-# #             if check_fields_status:
-# #                 # create new object 
-# #                 this_user = User.objects.create_user(this_user_national_code, this_user_national_code)
-# #                 # add other field to user
-# #                 this_user.first_name = this_user_first_name
-# #                 this_user.last_name = this_user_last_name
-# #                 this_user.role = this_user_role
-# #                 this_user.company = this_user_company
-# #                 this_user.mobile = this_user_mobile
-# #                 this_user.access_group = this_user_access_group
-# #                 this_user.relevant_deputy = int(this_user_relevant_deputy)
-# #                 this_user.relevant_unit = int(this_user_relevant_unit)
-# #                 this_user.active = this_user_active
-# #                 if this_user_email is not None:
-# #                     if not re.search(r'^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', this_user_email):
-# #                         response_data['status'] = '400'
-# #                         response_data['error'] = 'ایمیل وارد شده معتبر نمی باشد.'
-# #                         return JsonResponse(response_data)
-# #                     else:
-# #                         this_user.email = this_user_email
-# #                 if this_user_local_telephone is not None:
-# #                     if not re.search(r'^[1-9]\d{0,1}\d{0,6}$', this_user_local_telephone):
-# #                         response_data['status'] = '400'
-# #                         response_data['error'] = 'شماره تلفن ثابت وارد شده معتبر نمی باشد.'
-# #                         return JsonResponse(response_data)
-# #                     else:
-# #                         this_user.local_telephone = this_user_local_telephone
-# #                 if this_user_profile is not None:
-# #                     this_user.profile = this_user_profile
-# #                 this_user.save()
-
-# #                 # add create history
-# #                 this_user.add_history('create', request.user.id, timezone.now())
-
-# #                 response_data['status'] = '201'
-# #                 return JsonResponse(response_data)
-# #             else:
-# #                 response_data['status'] = '400'
-# #                 response_data['error'] = error
-# #                 return JsonResponse(response_data)
-# #         except Exception as e:
-# #             response_data['status'] = '500'
-# #             response_data['error'] = str(e)
-# #             return JsonResponse(response_data)
-# #     else:
-# #         response_data['status'] = '401'
-# #         response_data['error'] = 'شما وارد سیستم نشده اید.'
-# #         return JsonResponse(response_data)
+                        response_data['status'] = '200'
+                        return JsonResponse(response_data)
+                    else:
+                        response_data['status'] = '400'
+                        response_data['error'] = 'اطلاعات به درستی ارسال نشده است.'
+                        return JsonResponse(response_data)
+                else:
+                    response_data['status'] = '404'
+                    response_data['error'] = f'کاربری با شناسه "{this_user_id}" در سیستم موجود نمی باشد.'
+                    return JsonResponse(response_data)
+            except Exception as e:
+                response_data['status'] = '500'
+                response_data['error'] = str(e)
+                return JsonResponse(response_data)
+        else:
+            response_data['status'] = '403'
+            response_data['error'] = 'شما اجازه دسترسی به این بخش را ندارید.'
+            return JsonResponse(response_data)
+    else:
+        response_data['status'] = '401'
+        response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)

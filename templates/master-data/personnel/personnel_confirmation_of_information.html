@@ -1,0 +1,168 @@
+{% load i18n static %}
+{% load filters %}
+{% csrf_token %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+<title>سامانه نظام پیشنهادها | تایید اطلاعات پرسنل</title>
+</head>
+
+<body>
+
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% block sidebar %}
+                {% include "parents/sidebar.html" %}
+            {% endblock %}
+
+            <div class="col-9">
+                <div class="row text-right">
+                    <div class="col-12">
+                        <h2 class="title_page">جزئیات پرسنل</h2>
+                        <br>
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <img class="w-100" src="{{BASE_URL}}/{{ThisUser.profile}}" alt="عکس پروفایل">
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-3">
+                                    <p class="title d-inline">کد ملی: </p>
+                                    <p class="value d-inline">{{ThisUser.national_code}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">نام: </p>
+                                    <p class="value d-inline">{{ThisUser.first_name}}</p>
+                                </div>
+                                <div>
+                                    <p class="title d-inline">نام خانوادگی: </p>
+                                    <p class="value d-inline">{{ThisUser.last_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">نام پدر: </p>
+                                <p class="value d-inline">{{ThisUser.father_s_name}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">شماره شناسنامه: </p>
+                                <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">تاریخ تولد: </p>
+                                <p class="value d-inline">{{ThisUser.birthday|date_to_jalali}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">محل تولد: </p>
+                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">جنسیت: </p>
+                                <p class="value d-inline">{{ThisUser.gender}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">وضعیت تأهل: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">تعداد فرزندان: </p>
+                                <p class="value d-inline">{{ThisUser.number_of_children}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">مقطع تحصیلی: </p>
+                                <p class="value d-inline">{{ThisUser.degree}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">شماره ثابت: </p>
+                                <p class="value d-inline">{{ThisUser.telephone}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">شماره همراه: </p>
+                                <p class="value d-inline">{{ThisUser.mobile}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="title d-inline">آدرس: </p>
+                                <p class="value d-inline">{{ThisUser.address}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">شماره بیمه: </p>
+                                <p class="value d-inline">{{ThisUser.insurance_number}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">سمت سازمانی: </p>
+                                <p class="value d-inline">{{ThisUser.organization_role}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="title d-inline">عنوان شغلی: </p>
+                                <p class="value d-inline" id="job-title"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">مدیریت: </p>
+                                <p class="value d-inline" id="management">{{ThisUser.management}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="title">قسمت های کاری: </p>
+                                <p class="value">
+                                    {% for section in ThisUser.sections %}
+                                        {{section.title}}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+    <script>
+        var jobTitle = '{{ThisUser.job_title|safe}}';
+        jobTitle = JSON.parse(jobTitle);
+        var management = '{{ThisUser.management|safe}}';
+        management = JSON.parse(management);
+
+        $("#job-title").html(jobTitle.title);
+        $("#management").html(management.title);
+    </script>
+
+</body>
+
+</html>
