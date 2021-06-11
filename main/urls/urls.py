@@ -1,4 +1,4 @@
-from main.views import base_views ,communicationviews
+from main.views import base_views, communicationviews, evaluationviews
 from django.urls import path
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,4 +23,7 @@ urlpatterns = [
     path('communications/', communicationviews.communication_list_page, name='communication_list_page'),
     path('communication/detail/', communicationviews.communication_detail_page, name='communication_detail_page'),
     path('communication/create/', communicationviews.communication_create_page, name='communication_create_page'),
+
+    #"evaluation" --------------------------------------------------------------
+    path('evaluation/', evaluationviews.evaluation_page, name='evaluation_page'),
 ]
