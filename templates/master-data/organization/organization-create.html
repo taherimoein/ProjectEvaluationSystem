@@ -112,14 +112,14 @@
                                                 <input type="text" id="inputBossFullName" class="form-control" placeholder="03400000000">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputMobile">شماره تلفن همراه<code>*</code></label>
+                                                <label for="inputBossMobile">شماره تلفن همراه<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه الزامی می باشد."></i>
-                                                <input type="number" id="inputMobile" class="form-control">
+                                                <input type="number" id="inputBossMobile" class="form-control">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputPhone">شماره تلفن ثابت<code>*</code></label>
+                                                <label for="inputBossPhone">شماره تلفن ثابت<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                <input type="number" id="inputPhone" class="form-control" placeholder="03400000000">
+                                                <input type="number" id="inputBossPhone" class="form-control" placeholder="03400000000">
                                             </div>
                                         </div>
                                         <br>
@@ -1041,6 +1041,203 @@
                 $(item).find("input[val='project-longer-than-year-month-count-til-complete']").prop('id', 'inputProjectLongerThanYearMonthCountTilComplete-' + (count - 1).toString());
             }
             $(this).parents('.project-longer-than-year-item').remove();
+        })
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            // var checks = checkDeputyFnc();
+            // if (checks) {
+                $(".blur").addClass('active disable-form');
+                $(".loading-fixed").show();
+
+                var data = {};
+
+                // Access Info
+                var generalOfficeAddress = $("#inputGeneralOfficeAddress").val();
+                var phone = $("#inputPhone").val();
+                var fax = $("#inputFax").val();
+                var email = $("#inputEmail").val();
+                var website = $("#inputWebsite").val();
+                
+                // Boss Info
+                var bossFullName = $("#inputBossFullName").val();
+                var bossMobile = $("#inputBossMobile").val();
+                var bossPhone = $("#inputBossPhone").val();
+                var bossEmail = $("#inputBossEmail").val();
+
+
+                // Deputy Info
+                var deputyElements = $(".deputy-item");
+                var deputies = [];
+                var deputyObj = {};
+
+                for (var item of deputyElements) {
+                    deputyObj.deputy_fullname = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputyObj.deputy_mobile = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputyObj.deputy_phone = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputyObj.deputy_email = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputyObj.deputy_title = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputies.push(deputyObj);
+                }
+
+                // Statistic Info
+                var hiredPersonnelCount = $("#inputHiredPersonnelCount").val();
+                var contractPersonnelCount = $("#inputContractPersonnelCount").val();
+                var buildingCount = $("#inputBuildingCount").val();
+                var weakBuldingCount = $("#inputWeakBuldingCount").val();
+                
+                // Building Info
+                var buildingElements = $(".building-item");
+                var buildings = [];
+                var buildingObj = {};
+
+                for (var item of buildingElements) {
+                    buildingObj.building_name = ($(item).find("input[val='building-name']").first().val());
+                    buildingObj.building_create_year = ($(item).find("input[val='building-create-year']").first().val());
+                    buildingObj.building_strength = ($(item).find("select[val='building-strength']").first().val());
+                    buildingObj.building_usage = ($(item).find("input[val='building-usage']").first().val());
+                    buildingObj.building_employed_count = ($(item).find("input[val='employed-count']").first().val());
+                    buildingObj.building_responsible = ($(item).find("input[val='building-responsible']").first().val());
+                    buildingObj.building_address = ($(item).find("input[val='building-address']").first().val());
+                    buildingObj.building_phone = ($(item).find("input[val='building-phone']").first().val());
+                    buildingObj.building_responsible_mobile = ($(item).find("input[val='building-responsible-mobile']").first().val());
+                    buildingObj.building_fax = ($(item).find("input[val='building-fax']").first().val());
+                    buildings.push(buildingObj);
+                }
+                
+                // Budget Info
+                var lastYearProjectCount = $("#inputLastYearProjectCount").val();
+                var completedFinancialProjectCount = $("#inputCompletedFinancialProjectCount").val();
+                var lastYearBudgetRequest = $("#inputLastYearBudgetRequest").val();
+                var lastYearBudgetDelivered = $("#inputLastYearBudgetDelivered").val();
+                var lastYearBudgetAssigned = $("#inputLastYearBudgetAssigned").val();
+                
+                // Last Year Project Info
+                var completedProjectCount = $("#inputCompletedProjectCount").val();
+                var remainingProjectCount = $("#inputRemainingProjectCount").val();
+                var projectLaterThanDeadlineCount = $("#inputProjectLaterThanDeadlineCount").val();
+                var projectLongerThanYearCount = $("#inputProjectLongerThanYearCount").val();
+                
+                // Project Later Than Deadline Info
+                var projectLaterThanDeadlineElements = $(".project-later-than-deadline-item");
+                var projectsLaterThanDeadline = [];
+                var projectLaterThanDeadlineObj = {};
+                
+                for (var item of projectLaterThanDeadlineElements) {
+                    projectLaterThanDeadlineObj.project_later_than_deadline_title = ($(item).find("input[val='project-later-than-deadline-title']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_progress = ($(item).find("input[val='project-later-than-deadline-progress']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_period = ($(item).find("input[val='project-later-than-deadline-period']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_delay = ($(item).find("input[val='project-later-than-deadline-delay']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_delay_reason = ($(item).find("input[val='project-later-than-deadline-delay-reason']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_civil_operation = ($(item).find("select[val='project-later-than-deadline-civil-operation']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_cost_spend = ($(item).find("input[val='project-later-than-deadline-cost-spend']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_contractor_name = ($(item).find("input[val='project-later-than-deadline-contractor-name']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_contractor_cell = ($(item).find("input[val='project-later-than-deadline-contractor-cell']").first().val());
+                    projectLaterThanDeadlineObj.project_later_than_deadline_month_count_til_complete = ($(item).find("input[val='project-later-than-deadline-month-count-til-complete']").first().val());
+                    projectsLaterThanDeadline.push(projectLaterThanDeadlineObj);
+                }
+
+                // Project Longer Tthan Year Info
+                var projectLongerThanYearElements = $(".project-later-than-deadline-item");
+                var projectsLongerThanYear = [];
+                var projectLongerThanYearObj = {};
+
+                for (var item of projectLongerThanYearElements) {
+                    projectLongerThanYearObj.project_longer_than_year_title = ($(item).find("input[val='project-longer-than-year-title']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_progress = ($(item).find("input[val='project-longer-than-year-progress']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_period = ($(item).find("input[val='project-longer-than-year-period']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_delay = ($(item).find("input[val='project-longer-than-year-delay']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_delay_reason = ($(item).find("input[val='project-longer-than-year-delay-reason']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_civil_operation = ($(item).find("select[val='project-longer-than-year-civil-operation']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_cost_spend = ($(item).find("input[val='project-longer-than-year-cost-spend']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_budget_more_than_predict = ($(item).find("input[val='project-longer-than-year-budget-more-than-predict']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_contractor_name = ($(item).find("input[val='project-longer-than-year-contractor-name']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_contractor_cell = ($(item).find("input[val='project-longer-than-year-contractor-cell']").first().val());
+                    projectLongerThanYearObj.project_longer_than_year_month_count_til_complete = ($(item).find("input[val='project-longer-than-year-month-count-til-complete']").first().val());
+                    projectsLongerThanYear.push(projectLongerThanYearObj);
+                }
+                
+                data.general_office_address = generalOfficeAddress;
+                data.phone = phone;
+                data.fax = fax;
+                data.email = email;
+                data.website = website;
+                data.boss_fullname = bossFullName;
+                data.boss_mobile = bossMobile;
+                data.boss_phone = bossPhone;
+                data.boss_email = bossEmail;
+                data.deputies = deputies;
+                data.hired_personnel_count = hiredPersonnelCount;
+                data.contract_personnel_count = contractPersonnelCount;
+                data.building_count = buildingCount;
+                data.weak_bulding_count = weakBuldingCount;
+                data.buildings = buildings;
+                data.last_year_project_count = lastYearProjectCount;
+                data.completed_financial_project_count = completedFinancialProjectCount;
+                data.last_year_budget_request = lastYearBudgetRequest;
+                data.last_year_budget_delivered = lastYearBudgetDelivered;
+                data.last_year_budget_assigned = lastYearBudgetAssigned;
+                data.completed_project_count = completedProjectCount;
+                data.remaining_project_count = remainingProjectCount;
+                data.project_later_than_deadline_count = projectLaterThanDeadlineCount;
+                data.project_longer_than_year_count = projectLongerThanYearCount;
+                data.projects_later_than_deadline = projectsLaterThanDeadline;
+                data.projects_longer_than_year = projectsLongerThanYear;
+
+                $.ajax(
+                    {
+                        method: 'POST',
+                        url: '{% url "master_data:ajax_create_deputy" %}',
+                        data: {
+                            content: JSON.stringify(data),
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                        },
+                        success: function (json) {
+                            console.log(json);
+                            if (json.status == '201') {
+                                $(".blur").removeClass('active');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message.success-message").show();
+                                $(".alert-message.error-message").hide();
+                                var redirectURL = '{% url "master_data:deputy_list_page" %}';
+                                setTimeout(function () {
+                                    location.replace(redirectURL);
+                                }, 1500)
+                            }
+                            else {
+                                $(".blur").removeClass('active disable-form');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                    scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                                $(".alert-message.error-message").show();
+                            }
+                        },
+                        error: function (json, status, xhr) {
+                            console.log(json);
+                            console.log(status);
+                            console.log(xhr);
+                            $(".blur").removeClass('active disable-form');
+                            $(".loading-fixed").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                            $(".alert-message.error-message").show();
+                        }
+                    }
+                )
+            // }
+            // else
+            // {
+            //     $("html, body").animate({
+            //         scrollTop: $(".alert-section").offset().top - 20
+            //     }, 1000);
+            // }
         })
     </script>
 
