@@ -5,7 +5,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-    <title>سامانه نظام پیشنهادها | لیست گروه های شغلی</title>
+    <title>سامانه پروژه ها |  لیست نامه های مکاتباتی  </title>
 </head>
 <body>
     
@@ -24,7 +24,7 @@
                 <div class="row text-right mt-3">
                     <div class="col-12">
                         <div class="add-new">
-                            <a href="{% url 'master_data:job_group_create_page' %}" class="btn btn-primary w-100">
+                            <a href="{% url 'main:communication_create_page' %}" class="btn btn-primary w-100">
                                 افزودن مورد جدید
                                 <i class="far fa-plus"></i>
                             </a>
@@ -48,7 +48,7 @@
                                 <div class="alert-message-content success-content">
                                   <i class="fas fa-check"></i>
                                   <div class="alert-message-text success-text">
-                                    گروه شغلی با موفقیت غیرفعال گردید.
+                                    لیست نامه مکاتباتی با موفقیت غیرفعال گردید.
                                   </div>
                                 </div>
                                 <div class="close-message close-success-message">
@@ -68,22 +68,32 @@
                                             عنوان
                                         </th>
                                         <th>
-                                            ویرایش
+                                            توضیحات
                                         </th>
                                         <th>
-                                            غیرفعال کردن
+                                            از طرف
+                                        </th>
+                                        <th>
+                                            ارجاع به
                                         </th>
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
-                                    {% for item in JobGroups %}
-                                        <tr>
-                                            <td>{{item.title}}</td>
-                                            <td class="text-center"><a href="{% url 'master_data:job_group_edit_page' item.id %}"><i class="cursor-pointer fas fa-pen"></i></a></td>
-                                            <td class="text-center"><i val="{{item.id}}" class="cursor-pointer fas fa-trash-alt delete-job-group"></i></td>
-                                        </tr>
-                                    {% endfor %}
+                                    <tr>
+                                        <td>
+                                            عنوان
+                                        </td>
+                                        <td>
+                                            توضیحات
+                                        </td>
+                                        <td>
+                                            از طرف
+                                        </td>
+                                        <td>
+                                            ارجاع به
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -110,7 +120,7 @@
             $.ajax (
                 {
                     method: 'POST',
-                    url: '{% url "master_data:ajax_delete_job_group" %}',
+                    url: '{.% url "master_data:ajax_delete_job_group" %}',
                     data: {
                         id: jobGroupID,
                         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
