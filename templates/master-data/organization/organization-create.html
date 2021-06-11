@@ -86,7 +86,7 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputEmail">ایمیل<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد ایمیل الزامی می باشد و بایستی یک آدرس ایمیل معتبر را وارد نمائید."></i>
-                                                <input type="text" id="inputEmail" class="form-control" placeholder="youremail@example.com">
+                                                <input type="email" id="inputEmail" class="form-control" placeholder="youremail@example.com">
                                             </div>
                                         </div>
                                         <br>
@@ -263,7 +263,7 @@
                                                             <div class="form-group col-md-4">
                                                                 <label val='employed-count' for="inputEmployedCount-1">تعداد نیروی شاغل<code>*</code></label>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد نیروی شاغل الزامی می باشد."></i>
-                                                                <input val='employed-count' type="text" id="inputEmployedCount-1" class="form-control">
+                                                                <input val='employed-count' type="number" id="inputEmployedCount-1" class="form-control">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label val='building-responsible' for="inputBuildingResponsible-1">مسئول<code>*</code></label>
@@ -284,12 +284,12 @@
                                                             <div class="form-group col-md-4">
                                                                 <label val='building-phone' for="inputBuildingPhone-1">شماره تلفن ثابت<code>*</code></label>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد."></i>
-                                                                <input val='building-phone' type="text" id="inputBuildingPhone-1" class="form-control">
+                                                                <input val='building-phone' type="number" id="inputBuildingPhone-1" class="form-control">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label val='building-responsible-mobile' for="inputBuildingResponsibleMobile-1">شماره تلفن همراه مسئول<code>*</code></label>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه مسئول الزامی می باشد."></i>
-                                                                <input val='building-responsible-mobile' type="text" id="inputBuildingResponsibleMobile-1" class="form-control">
+                                                                <input val='building-responsible-mobile' type="number" id="inputBuildingResponsibleMobile-1" class="form-control">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label val='building-fax' for="inputBuildingFax-1">فکس<code>*</code></label>
@@ -378,7 +378,7 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputProjectLongerThanYearCount">تعداد پروژه هایی که بیش از یک سال به پایان نرسیده<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه هایی که بیش از یک سال به پایان نرسیده الزامی می باشد."></i>
-                                                <input type="text" id="inputProjectLongerThanYearCount" class="form-control">
+                                                <input type="number" id="inputProjectLongerThanYearCount" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -582,18 +582,6 @@
         {% include "parents/footer.html" %}
     {% endblock %}
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              
-          </div>
-        </div>
-      </div>
-
-    <script src="{% static "js/jalali-to-georgian.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/control-fields.js" %}" type="text/javascript"></script>
-    <script src="{% static "js/base-information/company.js" %}" type="text/javascript"></script>
-
     <script>
         $("#add-deputy").click(function (e) {
             e.preventDefault();
@@ -732,12 +720,12 @@
                                 '<div class="form-group col-md-4">' +
                                     '<label val="building-phone" for="inputBuildingPhone-' + count + '">شماره تلفن ثابت<code>*</code></label>' +
                                     '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد."></i>' +
-                                    '<input val="building-phone" type="text" id="inputBuildingPhone-' + count + '" class="form-control">' +
+                                    '<input val="building-phone" type="number" id="inputBuildingPhone-' + count + '" class="form-control">' +
                                 '</div>' +
                                 '<div class="form-group col-md-4">' +
                                     '<label val="building-responsible-mobile" for="inputBuildingResponsibleMobile-' + count + '">شماره تلفن همراه مسئول<code>*</code></label>' +
                                     '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه مسئول الزامی می باشد."></i>' +
-                                    '<input val="building-responsible-mobile" type="text" id="inputBuildingResponsibleMobile-' + count + '" class="form-control">' +
+                                    '<input val="building-responsible-mobile" type="number" id="inputBuildingResponsibleMobile-' + count + '" class="form-control">' +
                                 '</div>' +
                                 '<div class="form-group col-md-4">' +
                                     '<label val="building-fax" for="inputBuildingFax-' + count + '">فکس<code>*</code></label>' +
