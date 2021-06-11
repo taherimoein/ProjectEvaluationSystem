@@ -1,0 +1,107 @@
+{% load i18n static %}
+{% csrf_token %}
+
+{% block head %}
+  {% include "parents/head.html" %}
+{% endblock %}
+
+<title>سامانه پروژه ها | ثبت پروژه جدید</title>
+</head>
+
+<body>
+
+  <div class="loading-fixed d-hide">
+    <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+  </div>
+
+  {% block header %}
+    {% include "parents/header.html" %}
+  {% endblock %}
+
+  <div class="container-fluid">
+    <div class="row">
+
+      {% block sidebar %}
+        {% include "parents/sidebar.html" %}
+      {% endblock %}
+
+      <div class="col-9">
+        <div class="row text-right">
+          <div class="col-12">
+            <div class="blur">
+              <h2 class="title_page">ثبت پروژه جدید</h2>
+              <div class="row">
+                <div class="col-12">
+                  <div class="alert-section">
+                    <div class="alert-message error-message front text-right mb-3">
+                      <div class="alert-message-content error-content">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div class="alert-message-text error-text">
+                        </div>
+                      </div>
+                      <div class="close-message close-error-message">
+                        <i class="fas fa-times"></i>
+                      </div>
+                    </div>
+                    <div class="alert-message success-message front text-right mb-3">
+                      <div class="alert-message-content success-content">
+                        <i class="fas fa-check"></i>
+                        <div class="alert-message-text success-text">
+                          پروژه جدید با موفقیت ثبت گردید.
+                        </div>
+                      </div>
+                      <div class="close-message close-success-message">
+                        <i class="fas fa-times"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputWorkstationTitle">عنوان پروژه<code>*</code></label>
+                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
+                      title="عنوان ایستگاه نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
+                    <input type="text" class="form-control" id="inputWorkstationTitle" placeholder="" maxlength="255">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="inputDescription">توضیحات</label>
+                    <textarea class="form-control" id="inputDescription" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputmoney">سال مالی</label>
+                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                        data-placement="left"
+                        title="فیلد بایستی به صورت عددی وارد گردد."></i>
+                    <input type="number" class="form-control" id="inputmoney">
+                  </div>
+                </div>
+                <br>
+
+                <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
+                <br>
+                <br>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% block footer %}
+    {% include "parents/footer.html" %}
+  {% endblock %}
+
+  <script src="{% static "js/base-information/workstation.js" %}" type="text/javascript"></script>
+
+
+</body>
+
+</html>

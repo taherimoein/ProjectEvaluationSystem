@@ -1,4 +1,4 @@
-from main.views.master_data import personnelviews
+from main.views.master_data import personnelviews , projectviews
 from django.urls import path
 
 # -----------------------------------------------------------------------------------------------------------------------------------
@@ -31,9 +31,16 @@ urlpatterns = [
     path('personnel/create/', personnelviews.personnel_create_page, name = 'personnel_create_page'),
     path('ajax/personnel/create/', personnelviews.create_personnel, name = 'ajax_create_personnel'),
     path('personnel/edit-<str:username>/', personnelviews.personnel_edit_page, name = 'personnel_edit_page'),
-#     path('ajax/personnel/edit-<int:pk>/', personnelviews.PersonnelRetrieveUpdate.as_view(), name = 'ajax_personnel_edit'),
+    #path('ajax/personnel/edit-<int:pk>/', personnelviews.PersonnelRetrieveUpdate.as_view(), name = 'ajax_personnel_edit'),
     path('personnel/details-<str:username>/', personnelviews.personnel_details_page, name = 'personnel_details_page'),
     path('ajax/personnel/search/', personnelviews.search_in_users, name = 'ajax_search_in_users'),
+    # Master Data "work station" --------------------------------------------------------------
+    path('projects/', projectviews.project_list_page, name='project_list_page'),
+    path('project/create/', projectviews.project_create_page, name='project_create_page'),
+    # path('api/work-station/create/', workstationviews.WorkStationCreate.as_view(), name='api_work_station_create'),
+    # path('work-station/edit/<str:this_code>/', workstationviews.work_station_edit_page, name='work_station_edit_page'),
+    # path('api/work-station/edit/<int:pk>/', workstationviews.WorkStationRetrieveUpdate.as_view(),
+    #      name='api_work_station_edit'),
     # Master Data "work station" --------------------------------------------------------------
 #     path('work-station/', workstationviews.work_station_list_page, name='work_station_list_page'),
 #     path('work-station/create/', workstationviews.work_station_create_page, name='work_station_create_page'),
