@@ -1,4 +1,4 @@
-from main.views.master_data import personnelviews , projectviews
+from main.views.master_data import personnelviews , projectviews , organizationviews
 from django.urls import path
 
 # -----------------------------------------------------------------------------------------------------------------------------------
@@ -39,6 +39,9 @@ urlpatterns = [
     # Master Data "work station" --------------------------------------------------------------
     path('projects/', projectviews.project_list_page, name='project_list_page'),
     path('project/create/', projectviews.project_create_page, name='project_create_page'),
+    # Master Data "organization" --------------------------------------------------------------
+    path('organizations/', organizationviews.organization_list_page, name='organization_list_page'),
+    path('organization/create/', organizationviews.organization_create_page, name='organization_create_page'),
     # path('api/work-station/create/', workstationviews.WorkStationCreate.as_view(), name='api_work_station_create'),
     # path('work-station/edit/<str:this_code>/', workstationviews.work_station_edit_page, name='work_station_edit_page'),
     # path('api/work-station/edit/<int:pk>/', workstationviews.WorkStationRetrieveUpdate.as_view(),

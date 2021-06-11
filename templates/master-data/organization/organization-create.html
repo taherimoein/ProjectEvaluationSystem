@@ -5,7 +5,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-<title>سامانه نظام پیشنهادها | ثبت شرکت جدید</title>
+<title>سامانه پروژه ها | ثبت  دستگاه اجرایی</title>
 </head>
 
 <body>
@@ -395,7 +395,7 @@
             dir: "rtl",
             ajax: {
                 method: 'POST',
-                url: "{% url 'master_data:ajax_search_in_companies' %}",
+                url: "{.% .url 'master_data:ajax_search_in_companies' %}",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -604,7 +604,7 @@
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{% url "master_data:ajax_company_create" %}',
+                        url: '{.% url "master_data:ajax_company_create" %}',
                         headers: {
                             'content-type': 'application/json',
                             'X-CSRFToken': csrftoken
@@ -623,7 +623,7 @@
                                 }, 1000);
                                 $(".alert-message.success-message").show();
                                 $(".alert-message.error-message").hide();
-                                var redirectURL = '{% url "master_data:company_list_page" %}';
+                                var redirectURL = '{.% url "master_data:company_list_page" %}';
                                 setTimeout(function () {
                                     location.replace(redirectURL);
                                 }, 1500)
