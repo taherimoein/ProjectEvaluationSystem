@@ -29,280 +29,552 @@
                 <div class="row text-right">
                     <div class="col-12">
                         <div class="blur">
-                            <br>
+                            <h2 class="title_page">ثبت  دستگاه اجرایی</h2>
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="b-light-gray">
-                                        <span class="section-title section-1-title ml-3 gray active cursor-pointer">ثبت اطلاعات شرکت</span> <span class="gray ml-3"><i class="far fa-angle-left"></i></span> <span class="section-title section-2-title gray cursor-pointer">تعیین نماینده و مدیر عامل</span>
+                                    <div class="alert-section">
+                                        <div class="alert-message error-message front text-right mb-3">
+                                            <div class="alert-message-content error-content">
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <div class="alert-message-text error-text">
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-error-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                        <div class="alert-message success-message front text-right mb-3">
+                                            <div class="alert-message-content success-content">
+                                                <i class="fas fa-check"></i>
+                                                <div class="alert-message-text success-text">
+                                                    دستگاه اجرایی جدید با موفقیت ثبت گردید.
+                                                </div>
+                                            </div>
+                                            <div class="close-message close-success-message">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <br>
-                            <h2 class="title_page">ثبت شرکت جدید</h2>
-                            <div class="row">
-                                <div class="col-12">
+                            <form>
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">اطلاعات دسترسی</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label for="inputGeneralOfficeAddress">آدرس اداره کل<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد آدرس اداره کل الزامی می باشد."></i>
+                                                <textarea class="form-control" id="inputGeneralOfficeAddress" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputPhone">شماره تلفن<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                                <input type="number" id="inputPhone" class="form-control" placeholder="03400000000">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputFax">فکس<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد فکس الزامی می باشد."></i>
+                                                <input type="number" id="inputFax" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputEmail">ایمیل<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد ایمیل الزامی می باشد و بایستی یک آدرس ایمیل معتبر را وارد نمائید."></i>
+                                                <input type="text" id="inputEmail" class="form-control" placeholder="youremail@example.com">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputWebsite">وب سایت<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد وب سایت الزامی می باشد."></i>
+                                                <input type="text" id="inputWebsite" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="section-1">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="alert-section alert-section-1">
-                                            <div class="alert-message error-message front error-section-1 text-right mb-3">
-                                                <div class="alert-message-content error-content">
-                                                    <i class="fas fa-exclamation-circle"></i>
-                                                    <div class="alert-message-text error-text error-text-section-1">
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">ریاست دستگاه اجرایی</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputBossFullName">نام و نام خانوادگی ریاست دستگاه<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="نام و نام خانوادگی ریاست دستگاه الزامی می باشد."></i>
+                                                <input type="text" id="inputBossFullName" class="form-control" placeholder="03400000000">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputMobile">شماره تلفن همراه<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه الزامی می باشد."></i>
+                                                <input type="number" id="inputMobile" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputPhone">شماره تلفن ثابت<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                                <input type="number" id="inputPhone" class="form-control" placeholder="03400000000">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputBossEmail">پست الکترونیکی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>
+                                                <input type="email" id="inputBossEmail" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">معاونت</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <br>
+                                        <div class="deputy-list">
+                                            <div class="deputy-item">
+                                                <div class="form-row row-form-group">
+                                                    <br>
+                                                    <h6 class="row-form-group__title">معاونت <span class="count">1</span></h6>
+                                                    <br>
+                                                    <div class="form-group col-12 p-3">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-fullname' for="inputDeputyFullName-1">نام و نام خانوادگی معاونت دستگاه<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام و نام خانوادگی معاونت دستگاه الزامی می باشد."></i>
+                                                                <input val='deputy-fullname' type="text" id="inputDeputyFullName-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-mobile' for="inputDeputyMobile-1">شماره تلفن همراه<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه الزامی می باشد."></i>
+                                                                <input val='deputy-mobile' type="number" id="inputDeputyMobile-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-phone' for="inputDeputyPhone-1">شماره تلفن ثابت<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
+                                                                <input val='deputy-phone' type="number" id="inputDeputyPhone-1" class="form-control" placeholder="03400000000">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-email' for="inputDeputyEmail-1">پست الکترونیکی<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>
+                                                                <input val='deputy-email' type="email" id="inputDeputyEmail-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-title' for="inputDeputyTitle-1">عنوان معاونت<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان معاونت الزامی می باشد."></i>
+                                                                <input val='deputy-title' type="text" id="inputDeputyTitle-1" class="form-control">
+                                                            </div>
+                                                        </div>                                            
                                                     </div>
                                                 </div>
-                                                <div class="close-message close-error-message">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <button id="add-deputy" class="btn btn-secondary">معاونت جدید <i class="far fa-plus"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <form>
-                                    <div class="form-row justify-content-between">
-                                        <div class="form-group col-md-4">
-                                            <label>لوگو<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب لوگو الزامی میباشد و اطمینان حاصل نمائید که فایل انتخابی حتما فرمت عکس داشته باشد."></i>
-                                            <!-- <input type="text" class="form-control" id="inputLogoURL" disabled placeholder="default.jpg"> -->
-                                            <div class="image-input-container">
-                                                <label for="inputLogo">
-                                                    <img class="cursor-pointer w-100 border-img" id="inputLogoImg" src="{% static 'images/default/default-logo.jpg' %}" alt="لوگو">
-                                                    <input type="file" class="form-control-file" id="inputLogo" onchange="readURL(this);" hidden>
-                                                    <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
-                                                </label>
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">اطلاعات آماری دستگاه اجرایی</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputHiredPersonnelCount">تعداد پرسنل استخدامی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پرسنل استخدامی الزامی می باشد."></i>
+                                                <input type="number" id="inputHiredPersonnelCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputContractPersonnelCount">تعداد نیروی قراردادی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد نیروی قراردادی الزامی می باشد."></i>
+                                                <input type="number" id="inputContractPersonnelCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputBuildingCount">تعداد ساختمان<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد ساختمان الزامی می باشد."></i>
+                                                <input type="number" id="inputBuildingCount" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputTitle">عنوان شرکت<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="عنوان شرکت الزامی میباشد و بایستی در قالب حداکثر 255 کاراکتر وارد گردد."></i>
-                                            <input type="text" class="form-control" id="inputTitle" maxlength="255">
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label for="inputType">نوع شرکت<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left" title="تعیین نوع شرکت الزامی میباشد"></i>
-                                            <select id="inputType" class="form-control">
-                                                <option value="real">حقیقی</option>
-                                                <option value="legal">حقوقی</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label for="inputCooprationType">نوع همکاری<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left" title="انتخاب نوع همکاری الزامی میباشد."></i>
-                                            <select id="inputCooprationType" class="form-control">
-                                                <option value="employer">کارفرما</option>
-                                                <option value="contractor">پیمانکار</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputParentCompany">شرکت مالک<span
-                                                    class="parent-company necessary d-hide"><code>*</code></span></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="این فیلد در صورتی که نوع همکاری پیمانکار انتخاب شده باشد الزامی میباشد."></i>
-                                            <select id="inputParentCompany" class="form-control select2-ajax" disabled>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputRegisterationNumber">شماره ثبت<span
-                                                    class="registeration-number necessary d-hide"><code>*</code></span></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="این فیلد برای شرکت های حقوقی الزامی میباشد."></i>
-                                            <input type="number" class="form-control" id="inputRegisterationNumber"
-                                                maxlength="30" disabled>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label for="inputNationalCode">شماره ملی<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="کد ملی الزامی است و بایستی به صورت 11 کاراکتر عددی وارد گشته و معتبر باشد."></i>
-                                            <input type="number" class="form-control" id="inputNationalCode" maxlength="11">
-                                        </div>
-                                    </div>
-                                    
-                                    <br>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputPhoneNumber">شماره ثابت</label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="شماره شخص جهت دسترسی و تماس تلفنی که بایستی با 0 شروع شده و شامل 11 رقم باشد."></i>
-                                            <input type="number" class="form-control" id="inputPhoneNumber" maxlength="11"
-                                                placeholder="مثال: 0343000000">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputMobileNumber-1">تلفن همراه 1</label>
-                                            <code>*</code>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="وارد کردن تلفن همراه 1 الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
-                                            <input type="number" class="form-control" id="inputMobileNumber-1"
-                                                maxlength="11">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputMobileNumber-2">تلفن همراه 2</label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="تلفن همراه 2 بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
-                                            <input type="number" class="form-control" id="inputMobileNumber-2"
-                                                maxlength="11">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-8">
-                                            <label for="inputAddress">آدرس<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left" title="فیلد آدرس الزامی میباشد."></i>
-                                            <textarea class="form-control" id="inputAddress" rows="1"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputZipCode">کد پستی<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد کد پستی الزامی میباشد و باید در قالب حداکثر 10 کاراکتر عددی وارد گردد."></i>
-                                            <input type="number" class="form-control" id="inputZipCode" maxlength="10">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputEmail">آدرس الکترونیکی</label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد آدرس الکترونیکی الزامی میباشد و بایستی یک آدرس معتبر وارد گردد."></i>
-                                            <input type="email" class="form-control" id="inputEmail"
-                                                placeholder="test@gmail.com">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputSafetyCertificateNumber">شماره گواهینامه صلاحیت
-                                                ایمنی<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد شماره گواهینامه صلاحیت ایمنی الزامی میباشد و بایستی تا حداکثر 30 کاراکتر را شامل شود."></i>
-                                            <input type="number" class="form-control" id="inputSafetyCertificateNumber"
-                                                maxlength="30">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputSafetyCertificateValidationDate">تاریخ اعتبار صلاحیت
-                                                ایمنی<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد تاریخ اعتبار صلاحیت ایمنی الزامی میباشد. برای وارد کردن تاریخ از تقویم تعبیه شده در داخل فیلد استفاده نمائید."></i>
-                                            <input type="text" class="form-control"
-                                                id="inputSafetyCertificateValidationDate">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputSafetyCertificateFile">پیوست (نسخه صلاحیت
-                                                ایمنی)<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد پیوست (نسخه صلاحیت ایمنی) الزامی میباشد."></i>
-                                            <input type="file" class="form-control-file" id="inputSafetyCertificateFile">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <button id="continue" class="btn btn-primary float-left">ادامه <i class="far fa-angle-left"></i></button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                </form>
-                            </div>
-                            <!-- <div id="section-2" class="d-hide"> -->
-                            <div id="section-2">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="alert-section alert-section-2">
-                                            <div class="alert-message error-message front error-section-2 text-right mb-3">
-                                                <div class="alert-message-content error-content">
-                                                    <i class="fas fa-exclamation-circle"></i>
-                                                    <div class="alert-message-text error-text error-text-section-2">
-                                                    </div>
-                                                </div>
-                                                <div class="close-message close-error-message">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
-                                            </div>
-                                            <div class="alert-message success-message front text-right mb-3">
-                                                <div class="alert-message-content success-content">
-                                                    <i class="fas fa-check"></i>
-                                                    <div class="alert-message-text success-text success-text-section-1">
-                                                        شرکت جدید با موفقیت ثبت گردید.
-                                                    </div>
-                                                </div>
-                                                <div class="close-message close-success-message">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputWeakBuldingCount">تعداد ساختمان های فاقد استحکام<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد ساختمان های فاقد استحکام الزامی می باشد."></i>
+                                                <input type="number" id="inputWeakBuldingCount" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <form>
-                                    <div class="form-row align-items-end">
-                                        <div class="form-group col-md-4">
-                                            <label for="inputCeo">مدیر عامل<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="انتخاب مدیر عامل شرکت الزامی است."></i>
-                                            <select class="form-control select2-ajax-user" id="inputCeo">
-                                            </select>
+                                <br>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">ساختمان</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <br>
+                                        <div class="building-list">
+                                            <div class="building-item">
+                                                <div class="form-row row-form-group">
+                                                    <br>
+                                                    <h6 class="row-form-group__title">ساختمان <span class="count">1</span></h6>
+                                                    <br>
+                                                    <div class="form-group col-12 p-3">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-name' for="inputBuildingName-1">نام ساختمان<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام ساختمان الزامی می باشد."></i>
+                                                                <input val='building-name' type="text" id="inputBuildingName-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-create-year' for="inputCreateYear-1">سال ساخت<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد سال ساخت الزامی می باشد."></i>
+                                                                <input val='building-create-year' type="number" id="inputCreateYear-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-strength' for="inputBuildingStrength-1">استحکام<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد استحکام الزامی می باشد."></i>
+                                                                <select val='building-strength' class="form-control" id="inputBuildingStrength-1">
+                                                                    <option value="yes" selected>دارد</option>
+                                                                    <option value="no">ندارد</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-usage' for="inputBuildingUsage-1">کاربری<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد کاربری الزامی می باشد."></i>
+                                                                <input val='building-usage' type="text" id="inputBuildingUsage-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='employed-count' for="inputEmployedCount-1">تعداد نیروی شاغل<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد نیروی شاغل الزامی می باشد."></i>
+                                                                <input val='employed-count' type="text" id="inputEmployedCount-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-responsible' for="inputBuildingResponsible-1">مسئول<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مسئول الزامی می باشد."></i>
+                                                                <input val='building-responsible' type="text" id="inputBuildingResponsible-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <br>                                            
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label val='building-address' for="inputBuildingAddress-1">آدرس<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد آدرس الزامی می باشد."></i>
+                                                                <textarea val='building-address' class="form-control" id="inputBuildingAddress-1" rows="3"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-phone' for="inputBuildingPhone-1">شماره تلفن ثابت<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد."></i>
+                                                                <input val='building-phone' type="text" id="inputBuildingPhone-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-responsible-mobile' for="inputBuildingResponsibleMobile-1">شماره تلفن همراه مسئول<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه مسئول الزامی می باشد."></i>
+                                                                <input val='building-responsible-mobile' type="text" id="inputBuildingResponsibleMobile-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='building-fax' for="inputBuildingFax-1">فکس<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد فکس الزامی می باشد."></i>
+                                                                <input val='building-fax' type="number" id="inputBuildingFax-1" class="form-control">
+                                                            </div>
+                                                        </div>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-2">
-                                            <button data-for="ceo" class="btn btn-info add-user">افزودن کاربر <i class="far fa-plus"></i></button>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="inputRepresentative">نماینده شرکت<code>*</code></label>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="انتخاب نماینده شرکت الزامی میباشد و از لیست کارکنان شرکت بایستی انتخاب شود."></i>
-                                            <select class="form-control select2-ajax-user" id="inputRepresentative">
-                                                <option value="0">انتخاب...</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <button data-for="representative" class="btn btn-info add-user">افزودن کاربر <i class="far fa-plus"></i></button>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <button id="add-building" class="btn btn-secondary">ساختمان جدید <i class="far fa-plus"></i></button>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <br>
+
+                                <div class="form-row row-form-group">
                                     <br>
+                                    <h4 class="row-form-group__title">اطلاعات بودجه</h4>
                                     <br>
-                                    <div class="form-row align-items-end">
-                                        <div class="form-group col-md-12">
-                                            <button id="back" class="btn btn-primary float-right"><i class="far fa-angle-right"></i> برگشت</button>
-                                            <button id="submit" class="btn btn-primary float-left">ثبت</button>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputLastYearProjectCount">تعداد پروژه های سال گذشته<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه های سال گذشته الزامی می باشد."></i>
+                                                <input type="number" id="inputLastYearProjectCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCompletedFinancialProjectCount">تعداد پروژه های محقق شده مالی<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه های محقق شده مالی الزامی می باشد."></i>
+                                                <input type="number" id="inputCompletedFinancialProjectCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputLastYearBudgetRequest">میزان بودجه درخواستی سال گذشته<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان بودجه درخواستی سال گذشته الزامی می باشد."></i>
+                                                <input type="text" id="inputLastYearBudgetRequest" class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputLastYearBudgetDelivered">بودجه محقق شده در سال گذشته<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد بودجه محقق شده در سال گذشته الزامی می باشد."></i>
+                                                <input type="text" id="inputLastYearBudgetDelivered" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputLastYearBudgetAssigned">میزان بودجه تخصیص یافته سال گذشته<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان بودجه تخصیص یافته سال گذشته الزامی می باشد."></i>
+                                                <input type="text" id="inputLastYearBudgetAssigned" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+
+                                <br>
+
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">اطلاعات پروژه های سال گذشته</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row align-items-end">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCompletedProjectCount">تعداد پروژه تکمیل یافته<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه تکمیل یافته الزامی می باشد."></i>
+                                                <input type="number" id="inputCompletedProjectCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputRemainingProjectCount">تعداد پروژه های باقی مانده<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه های باقی مانده الزامی می باشد."></i>
+                                                <input type="number" id="inputRemainingProjectCount" class="form-control">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputProjectLaterThanDeadlineCount">تعداد پروژه هایی که از زمانبندی عقب تر است<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه هایی که از زمانبندی عقب تر است الزامی می باشد."></i>
+                                                <input type="number" id="inputProjectLaterThanDeadlineCount" class="form-control">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-row align-items-end">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputProjectLongerThanYearCount">تعداد پروژه هایی که بیش از یک سال به پایان نرسیده<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد پروژه هایی که بیش از یک سال به پایان نرسیده الزامی می باشد."></i>
+                                                <input type="text" id="inputProjectLongerThanYearCount" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">پروژه هایی که از زمانبندی عقب تر است</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <br>
+                                        <div class="project-later-than-deadline-list">
+                                            <div class="project-later-than-deadline-item">
+                                                <div class="form-row row-form-group">
+                                                    <br>
+                                                    <h6 class="row-form-group__title">پروژه <span class="count">1</span></h6>
+                                                    <br>
+                                                    <div class="form-group col-12 p-3">
+                                                        <div class="form-row align-items-end">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-title' for="inputProjectLaterThanDeadlineTitle-1">عنوان پروژه ای که از زمانبندی عقب تر است<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان پروژه ای که از زمانبندی عقب تر است الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-title' type="text" id="inputProjectLaterThanDeadlineTitle-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-progress' for="inputProjectLaterThanDeadlineProgress-1">میزان پیشرفت کار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان پیشرفت کار الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-progress' type="text" id="inputProjectLaterThanDeadlineProgress-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-period' for="inputProjectLaterThanDeadlinePeriod-1">مدت زمان قرارداد<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان قرارداد الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-period' type="text" id="inputProjectLaterThanDeadlinePeriod-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-delay' for="inputProjectLaterThanDeadlineDelay-1">مدت زمان عقب افتادگی<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان عقب افتادگی الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-delay' type="text" id="inputProjectLaterThanDeadlineDelay-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-delay-reason' for="inputProjectLaterThanDeadlineDelayReason-1">علت تاخیر<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد علت تاخیر الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-delay-reason' type="text" id="inputProjectLaterThanDeadlineDelayReason-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-civil-operation' for="inputProjectLaterThanDeadlineCivilOperation-1">عملیات عمرانی فعال<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عملیات عمرانی الزامی می باشد."></i>
+                                                                <select val='project-later-than-deadline-civil-operation' class="form-control" id="inputProjectLaterThanDeadlineCivilOperation-1">
+                                                                    <option value="yes" selected>است</option>
+                                                                    <option value="no">نیست</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                            
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-cost-spend' for="inputProjectLaterThanDeadlineCostSpend-1">هزینه صرف شده<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد هزینه صرف شده الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-cost-spend' type="text" id="inputProjectLaterThanDeadlineCostSpend-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-contractor-name' for="inputProjectLaterThanDeadlineContractorName-1">نام پیمانکار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام پیمانکار الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-contractor-name' type="text" id="inputProjectLaterThanDeadlineContractorName-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-contractor-cell' for="inputProjectLaterThanDeadlineContractorCell-1">شماره تماس پیمانکار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس پیمانکار الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-contractor-cell' type="number" id="inputProjectLaterThanDeadlineContractorCell-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-later-than-deadline-month-count-til-complete' for="inputProjectLaterThanDeadlineMonthCountTilComplete-1">مدت زمان تخمینی تا اتمام پروژه (ماه)<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان تخمینی تا اتمام پروژه (ماه) الزامی می باشد."></i>
+                                                                <input val='project-later-than-deadline-month-count-til-complete' type="text" id="inputProjectLaterThanDeadlineMonthCountTilComplete-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <button id="add-project-later-than-deadline" class="btn btn-secondary">پروژه جدید <i class="far fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">پروژه هایی که از بیش از یک سال به اتمام نرسیده</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <br>
+                                        <div class="project-longer-than-year-list">
+                                            <div class="project-longer-than-year-item">
+                                                <div class="form-row row-form-group">
+                                                    <br>
+                                                    <h6 class="row-form-group__title">پروژه <span class="count">1</span></h6>
+                                                    <br>
+                                                    <div class="form-group col-12 p-3">
+                                                        <div class="form-row align-items-end">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-title' for="inputProjectLongerThanYearTitle-1">عنوان پروژه ای که از زمانبندی عقب تر است<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان پروژه ای که از زمانبندی عقب تر است الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-title' type="text" id="inputProjectLongerThanYearTitle-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-progress' for="inputProjectLongerThanYearProgress-1">میزان پیشرفت کار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان پیشرفت کار الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-progress' type="text" id="inputProjectLongerThanYearProgress-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-period' for="inputProjectLongerThanYearPeriod-1">مدت زمان قرارداد<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان قرارداد الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-period' type="text" id="inputProjectLongerThanYearPeriod-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-delay' for="inputProjectLongerThanYearDelay-1">مدت زمان عقب افتادگی<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان عقب افتادگی الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-delay' type="text" id="inputProjectLongerThanYearDelay-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-delay-reason' for="inputProjectLongerThanYearDelayReason-1">علت تاخیر<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد علت تاخیر الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-delay-reason' type="text" id="inputProjectLongerThanYearDelayReason-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-civil-operation' for="inputProjectLongerThanYearCivilOperation-1">عملیات عمرانی فعال<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عملیات عمرانی الزامی می باشد."></i>
+                                                                <select val='project-longer-than-year-civil-operation' class="form-control" id="inputProjectLongerThanYearCivilOperation-1">
+                                                                    <option value="yes" selected>است</option>
+                                                                    <option value="no">نیست</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                            
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-cost-spend' for="inputProjectLongerThanYearCostSpend-1">هزینه صرف شده<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد هزینه صرف شده الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-cost-spend' type="text" id="inputProjectLongerThanYearCostSpend-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-budget-more-than-predict' for="inputProjectLongerThanYearBudgetMoreThanPredict-1">میزان بودجه مازاد بر پیشبینی<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان بودجه مازاد بر پیشبینی الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-budget-more-than-predict' type="text" id="inputProjectLongerThanYearBudgetMoreThanPredict-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-contractor-name' for="inputProjectLongerThanYearContractorName-1">نام پیمانکار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام پیمانکار الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-contractor-name' type="text" id="inputProjectLongerThanYearContractorName-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-contractor-cell' for="inputProjectLongerThanYearContractorCell-1">شماره تماس پیمانکار<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس پیمانکار الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-contractor-cell' type="number" id="inputProjectLongerThanYearContractorCell-1" class="form-control">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='project-longer-than-year-month-count-til-complete' for="inputProjectLongerThanYearMonthCountTilComplete-1">مدت زمان تخمینی تا اتمام پروژه (ماه)<code>*</code></label>
+                                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان تخمینی تا اتمام پروژه (ماه) الزامی می باشد."></i>
+                                                                <input val='project-longer-than-year-month-count-til-complete' type="text" id="inputProjectLongerThanYearMonthCountTilComplete-1" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <button id="add-project-longer-than-year" class="btn btn-secondary">پروژه جدید <i class="far fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <br>
+                                <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
+                                <br>
+                                <br>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -323,378 +595,464 @@
     <script src="{% static "js/base-information/company.js" %}" type="text/javascript"></script>
 
     <script>
-        //#region Preparing on Load
-        kamaDatepicker('inputSafetyCertificateValidationDate', {
-            nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
-            , previousButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_prev.png"
-            , forceFarsiDigits: true
-            , markToday: true
-            , markHolidays: true
-            , highlightSelectedDay: true
-            , sync: true
-        });
-
-        $(".select2-ajax-user").select2({
-            dir: "rtl",
-            ajax: {
-                method: 'POST',
-                url: "{% url 'master_data:ajax_search_in_users' %}",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        search: params.term, // search term
-                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-                    };
-                },
-                processResults: function (data, params) {
-                    params.page = params.page || 1;
-
-                    return {
-                        results: data.data,
-                        pagination: {
-                            more: (params.page * 30) < data.total_count
-                        }
-                    };
-                },
-                cache: true
-            },
-            width: '100%',
-            placeholder: 'جستجو...',
-            minimumInputLength: 1,
-            templateResult: formatRepo,
-            templateSelection: formatRepoSelection
-        });
-
-        function formatRepo(repo) {
-            if (repo.loading) {
-                return repo.text;
-            }
-
-            var $container = $(
-                "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'></div>" +
-                "</div>" +
-                "</div>"
-            );
-
-            $container.find(".select2-result-repository__title").text(repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')');
-
-            return $container;
-        }
-
-        function formatRepoSelection(repo) {
-            if (repo.first_name && repo.last_name && repo.national_code) {
-                return repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')';
-            }
-            return repo.text;
-        }
-
-        $(".select2-ajax").select2({
-            dir: "rtl",
-            ajax: {
-                method: 'POST',
-                url: "{.% .url 'master_data:ajax_search_in_companies' %}",
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        search: params.term, // search term
-                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-                    };
-                },
-                processResults: function (data, params) {
-                    params.page = params.page || 1;
-
-                    return {
-                        results: data.data,
-                        pagination: {
-                            more: (params.page * 30) < data.total_count
-                        }
-                    };
-                },
-                cache: true
-            },
-            width: '100%',
-            placeholder: 'جستجو...',
-            minimumInputLength: 1,
-            templateResult: formatRepoCompany,
-            templateSelection: formatRepoSelectionCompany
-        });
-
-        function formatRepoCompany(repo) {
-            if (repo.loading) {
-                return repo.text;
-            }
-
-            var $container = $(
-                "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'></div>" +
-                "</div>" +
-                "</div>"
-            );
-
-            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
-
-            return $container;
-        }
-
-        function formatRepoSelectionCompany(repo) {
-            if (repo.id && repo.title && repo.national_code) {
-                return repo.title + ' (' + repo.national_code + ')';
-            }
-            return repo.text;
-        }
-        //#endregion
-
-        // $("#inputLogo").on('change', function () {
-        //     $("#inputLogoURL").val($(this).val().replace(/^C:\\fakepath\\/, "")); 
-        // })
-
-        $("#inputCompanyMembers").on('select2:select', function (e){
-            var data = e.params.data;
-
-            var memberID = parseInt(data.id);
-            var newOption = new Option(data.first_name + ' ' + data.last_name + ' (' + data.national_code + ')', memberID, false, false);
-            $('#inputRepresentative').append(newOption);
-        })
-
-        $("#inputCompanyMembers").on("select2:unselect", function (e) {
-            var data = e.params.data;
-
-            var memberID = parseInt(data.id);
-            $("#inputRepresentative option[value=" + memberID + "]").remove();
-        });
-
-        var data = {};
-        
-        continueFnc = function () {
-            var formData = new FormData();
-            var checks = checkCompanySection1Fnc();
-            if (checks) {
-                var logo = $("#inputLogo")[0].files[0];
-                var title = $("#inputTitle").val();
-                var type = $("#inputType").val();
-                var cooprationType = $("#inputCooprationType").val();
-                if (cooprationType == 'contractor')
-                {
-                    var parentCompany = $("#inputParentCompany").val();
-                    formData.append('fk_father_company', parentCompany);
-                }
-                if (type == 'legal')
-                {
-                    var registrationNumber = $("#inputRegisterationNumber").val();
-                    formData.append('registration_number', registrationNumber);
-                }
-                var nationalCode = $("#inputNationalCode").val();
-                // var companyMembers = $("#inputCompanyMembers").val();
-                var phoneNumber = $("#inputPhoneNumber").val();
-                var mobileNumber1 = $("#inputMobileNumber-1").val();
-                var mobileNumber2 = $("#inputMobileNumber-2").val();
-                var address = $("#inputAddress").val();
-                var zipcode = $("#inputZipCode").val();
-                var email = $("#inputEmail").val();
-                if (email.length != 0)
-                {
-                    formData.append('email', email);
-                }
-                var safetyCertificateNumber = $("#inputSafetyCertificateNumber").val();
-                var safetyCertificateValidationDate = customJalaliToGregorianFnc($("#inputSafetyCertificateValidationDate").val());
-                var safetyCertificateFile = $("#inputSafetyCertificateFile")[0].files[0];
-
-                formData.append('logo', logo);
-                formData.append('title', title);
-                formData.append('company_type', type);
-                formData.append('cooperation_type', cooprationType);
-                formData.append('national_code', nationalCode);
-                formData.append('telephone_number', phoneNumber);
-                formData.append('phone_number_1', mobileNumber1);
-                formData.append('phone_number_2', mobileNumber2);
-                formData.append('address', address);
-                formData.append('post_id', zipcode);
-                formData.append('safety_certificate_number', safetyCertificateNumber);
-                formData.append('validity_date_of_safety_certificate', safetyCertificateValidationDate);
-                formData.append('appendix_certificate', safetyCertificateFile);
-
-                data.company = formData;
-
-                $(".section-1-title").removeClass('active');
-                $(".section-2-title").addClass('active');
-                $("#section-1").hide();
-                $("#section-2").show();
-            }
-            else {
-                $("html, body").animate({
-                    scrollTop: $(".alert-section.alert-section-1").offset().top - 20
-                }, 1000);
-            }
-        }
-
-        var userType;
-        $(".add-user").click(function (e) {
+        $("#add-deputy").click(function (e) {
             e.preventDefault();
-            userType = $(this).attr('data-for');
+            var count = $(".deputy-item").length + 1;
+            $(".deputy-list").append('' +
+                '<div class="deputy-item">' +
+                    '<div class="form-row row-form-group">' +
+                        '<br>' +
+                        '<h6 class="row-form-group__title">معاونت <span class="count">' + count + '</span></h6>' +
+                        '<br>' +
+                        '<div class="form-group col-12 p-3">' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-fullname" for="inputDeputyFullName-' + count + '">نام و نام خانوادگی معاونت دستگاه<code>*</code></label> ' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام و نام خانوادگی معاونت دستگاه الزامی می باشد."></i>' +
+                                    '<input val="deputy-fullname" type="text" id="inputDeputyFullName-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-mobile" for="inputDeputyMobile-' + count + '">شماره تلفن همراه<code>*</code></label> ' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه الزامی می باشد."></i>' +
+                                    '<input val="deputy-mobile" type="number" id="inputDeputyMobile-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-phone" for="inputDeputyPhone-' + count + '">شماره تلفن ثابت<code>*</code></label> ' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>' +
+                                    '<input val="deputy-phone" type="number" id="inputDeputyPhone-' + count + '" class="form-control" placeholder="03400000000">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-email" for="inputDeputyEmail-' + count + '">پست الکترونیکی<code>*</code></label> ' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>' +
+                                    '<input val="deputy-email" type="email" id="inputDeputyEmail-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-title" for="inputDeputyTitle-' + count + '">عنوان معاونت<code>*</code></label> ' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان معاونت الزامی می باشد."></i>' +
+                                    '<input val="deputy-title" type="text" id="inputDeputyTitle-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row justify-content-end">' +
+                                '<div class="form-group col-md-12 text-left">' +
+                                    '<button class="btn btn-danger remove-building">حذف معاونت <i class="far fa-times"></i></span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
 
+            $('[data-toggle="tooltip"]').tooltip();
         })
 
-        $(".section-1-title").click(function () {
-            $(".section-1-title").addClass('active');
-            $(".section-2-title").removeClass('active');
-            $("#section-1").show();
-            $("#section-2").hide();
+        $(document).on('click', '.remove-deputy', function () {
+            var count = $(".deputy-item").length - 1;
+            for (item of $(this).parents('.deputy-item').nextAll('.deputy-item')) {
+                var count = parseInt($(item).find('.count').text());
+
+                $(item).find('.count').text(' ' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-fullname']").prop('for', 'inputDeputyFullName-' + (count - 1).toString());
+                $(item).find("input[val='deputy-fullname']").prop('id', 'inputDeputyFullName-' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-mobile']").prop('for', 'inputDeputyMobile-' + (count - 1).toString());
+                $(item).find("input[val='deputy-mobile']").prop('id', 'inputDeputyMobile-' + (count - 1).toString());
+                
+                $(item).find("label[val='deputy-phone']").prop('for', 'inputDeputyPhone-' + (count - 1).toString());
+                $(item).find("input[val='deputy-phone']").prop('id', 'inputDeputyPhone-' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-email']").prop('for', 'inputDeputyEmail-' + (count - 1).toString());
+                $(item).find("input[val='deputy-email']").prop('id', 'inputDeputyEmail-' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-title']").prop('for', 'inputDeputyTitle-' + (count - 1).toString());
+                $(item).find("input[val='deputy-title']").prop('id', 'inputDeputyTitle-' + (count - 1).toString());
+            }
+            $(this).parents('.deputy-item').remove();
         })
 
-        $(".section-2-title").click(function () {
-            continueFnc();
-        })
-        
-        $("#continue").click(function (e) {
+        $("#add-building").click(function (e) {
             e.preventDefault();
-            continueFnc();
+            var count = $(".building-item").length + 1;
+            $(".building-list").append('' +
+                '<div class="building-item">' +
+                    '<div class="form-row row-form-group">' +
+                        '<br>' +
+                        '<h6 class="row-form-group__title">ساختمان <span class="count">' + count + '</span></h6>' +
+                        '<br>' +
+                        '<div class="form-group col-12 p-3">' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-name" for="inputBuildingName-' + count + '">نام ساختمان<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام ساختمان الزامی می باشد."></i>' +
+                                    '<input val="building-name" type="text" id="inputBuildingName-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-create-year" for="inputCreateYear-' + count + '">سال ساخت<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد سال ساخت الزامی می باشد."></i>' +
+                                    '<input val="building-create-year" type="number" id="inputCreateYear-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-strength" for="inputBuildingStrength-' + count + '">استحکام<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد استحکام الزامی می باشد."></i>' +
+                                    '<select val="building-strength" class="form-control" id="inputBuildingStrength-' + count + '">' +
+                                        '<option value="yes" selected>دارد</option>' +
+                                        '<option value="no">ندارد</option>' +
+                                    '</select>' +
+                                '</div>' +
+                            '</div>' +
+                            '<br>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-usage" for="inputBuildingUsage-' + count + '">کاربری<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد کاربری الزامی می باشد."></i>' +
+                                    '<input val="building-usage" type="text" id="inputBuildingUsage-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="employed-count" for="inputEmployedCount-' + count + '">تعداد نیروی شاغل<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد تعداد نیروی شاغل الزامی می باشد."></i>' +
+                                    '<input val="employed-count" type="number" id="inputEmployedCount-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-responsible" for="inputBuildingResponsible-' + count + '">مسئول<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مسئول الزامی می باشد."></i>' +
+                                    '<input val="building-responsible" type="text" id="inputBuildingResponsible-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<br>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-12">' +
+                                    '<label val="building-address" for="inputBuildingAddress-' + count + '">آدرس<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد آدرس الزامی می باشد."></i>' +
+                                    '<textarea val="building-address" class="form-control" id="inputBuildingAddress-' + count + '" rows="3"></textarea>' +
+                                '</div>' +
+                            '</div>' +
+                            '<br>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-phone" for="inputBuildingPhone-' + count + '">شماره تلفن ثابت<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد."></i>' +
+                                    '<input val="building-phone" type="text" id="inputBuildingPhone-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-responsible-mobile" for="inputBuildingResponsibleMobile-' + count + '">شماره تلفن همراه مسئول<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن همراه مسئول الزامی می باشد."></i>' +
+                                    '<input val="building-responsible-mobile" type="text" id="inputBuildingResponsibleMobile-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="building-fax" for="inputBuildingFax-' + count + '">فکس<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد فکس الزامی می باشد."></i>' +
+                                    '<input val="building-fax" type="number" id="inputBuildingFax-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row justify-content-end">' +
+                                '<div class="form-group col-md-12 text-left">' +
+                                    '<button class="btn btn-danger remove-building">حذف ساختمان <i class="far fa-times"></i></span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
+                
+
+            $('[data-toggle="tooltip"]').tooltip();
         })
 
-        $("#create-user").click(function (e) {
+        $(document).on('click', '.remove-building', function (e) {
             e.preventDefault();
+            var count = $(".building-item").length - 1;
+            for (item of $(this).parents('.building-item').nextAll('.building-item')) {
+                var count = parseInt($(item).find('.count').text());
 
+                $(item).find('.count').text(' ' + (count - 1).toString());
+
+                $(item).find("label[val='building-name']").prop('for', 'inputBuildingName-' + (count - 1).toString());
+                $(item).find("input[val='building-name']").prop('id', 'inputBuildingName-' + (count - 1).toString());
+
+                $(item).find("label[val='building-create-year']").prop('for', 'inputCreateYear-' + (count - 1).toString());
+                $(item).find("input[val='building-create-year']").prop('id', 'inputCreateYear-' + (count - 1).toString());
+                
+                $(item).find("label[val='building-strength']").prop('for', 'inputBuildingStrength-' + (count - 1).toString());
+                $(item).find("select[val='building-strength']").prop('id', 'inputBuildingStrength-' + (count - 1).toString());
+
+                $(item).find("label[val='building-usage']").prop('for', 'inputBuildingUsage-' + (count - 1).toString());
+                $(item).find("input[val='building-usage']").prop('id', 'inputBuildingUsage-' + (count - 1).toString());
+
+                $(item).find("label[val='employed-count']").prop('for', 'inputEmployedCount-' + (count - 1).toString());
+                $(item).find("input[val='employed-count']").prop('id', 'inputEmployedCount-' + (count - 1).toString());
+
+                $(item).find("label[val='building-responsible']").prop('for', 'inputBuildingResponsible-' + (count - 1).toString());
+                $(item).find("input[val='building-responsible']").prop('id', 'inputBuildingResponsible-' + (count - 1).toString());
+                
+                $(item).find("label[val='building-address']").prop('for', 'inputBuildingAddress-' + (count - 1).toString());
+                $(item).find("textarea[val='building-address']").prop('id', 'inputBuildingAddress-' + (count - 1).toString());
+
+                $(item).find("label[val='building-phone']").prop('for', 'inputBuildingPhone-' + (count - 1).toString());
+                $(item).find("input[val='building-phone']").prop('id', 'inputBuildingPhone-' + (count - 1).toString());
+
+                $(item).find("label[val='building-responsible-mobile']").prop('for', 'inputBuildingResponsibleMobile-' + (count - 1).toString());
+                $(item).find("input[val='building-responsible-mobile']").prop('id', 'inputBuildingResponsibleMobile-' + (count - 1).toString());
+
+                $(item).find("label[val='building-fax']").prop('for', 'inputBuildingFax-' + (count - 1).toString());
+                $(item).find("input[val='building-fax']").prop('id', 'inputBuildingFax-' + (count - 1).toString());
+            }
+            $(this).parents('.building-item').remove();
         })
 
-        $("#submit").click(function (e) {
+        $("#add-project-later-than-deadline").click(function (e) {
             e.preventDefault();
-            var checks = checkCompanySection2Fnc();
-            if (checks) {
-                $(".blur").addClass('active disable-form');
-                $(".loading-fixed").show();
+            var count = $(".project-later-than-deadline-item").length + 1;
+            $(".project-later-than-deadline-list").append('' +
+                '<div class="project-later-than-deadline-item">' +
+                    '<div class="form-row row-form-group">' +
+                        '<br>' +
+                        '<h6 class="row-form-group__title">پروژه <span class="count">' + count + '</span></h6>' +
+                        '<br>' +
+                        '<div class="form-group col-12 p-3">' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-title" for="inputProjectLaterThanDeadlineTitle-' + count + '">عنوان پروژه ای که از زمانبندی عقب تر است<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان پروژه ای که از زمانبندی عقب تر است الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-title" type="text" id="inputProjectLaterThanDeadlineTitle-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-progress" for="inputProjectLaterThanDeadlineProgress-' + count + '">میزان پیشرفت کار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان پیشرفت کار الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-progress" type="text" id="inputProjectLaterThanDeadlineProgress-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-period" for="inputProjectLaterThanDeadlinePeriod-' + count + '">مدت زمان قرارداد<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان قرارداد الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-period" type="text" id="inputProjectLaterThanDeadlinePeriod-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-delay" for="inputProjectLaterThanDeadlineDelay-' + count + '">مدت زمان عقب افتادگی<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان عقب افتادگی الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-delay" type="text" id="inputProjectLaterThanDeadlineDelay-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-delay-reason" for="inputProjectLaterThanDeadlineDelayReason-' + count + '">علت تاخیر<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد علت تاخیر الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-delay-reason" type="text" id="inputProjectLaterThanDeadlineDelayReason-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-civil-operation" for="inputProjectLaterThanDeadlineCivilOperation-' + count + '">عملیات عمرانی فعال<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عملیات عمرانی الزامی می باشد."></i>' +
+                                    '<select val="project-later-than-deadline-civil-operation" class="form-control" id="inputProjectLaterThanDeadlineCivilOperation-' + count + '">' +
+                                        '<option value="yes" selected>است</option>' +
+                                        '<option value="no">نیست</option>' +
+                                    '</select>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-cost-spend" for="inputProjectLaterThanDeadlineCostSpend-' + count + '">هزینه صرف شده<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد هزینه صرف شده الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-cost-spend" type="text" id="inputProjectLaterThanDeadlineCostSpend-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-contractor-name" for="inputProjectLaterThanDeadlineContractorName-' + count + '">نام پیمانکار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام پیمانکار الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-contractor-name" type="text" id="inputProjectLaterThanDeadlineContractorName-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-contractor-cell" for="inputProjectLaterThanDeadlineContractorCell-' + count + '">شماره تماس پیمانکار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس پیمانکار الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-contractor-cell" type="number" id="inputProjectLaterThanDeadlineContractorCell-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-later-than-deadline-month-count-til-complete" for="inputProjectLaterThanDeadlineMonthCountTilComplete-' + count + '">مدت زمان تخمینی تا اتمام پروژه (ماه)<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان تخمینی تا اتمام پروژه (ماه) الزامی می باشد."></i>' +
+                                    '<input val="project-later-than-deadline-month-count-til-complete" type="text" id="inputProjectLaterThanDeadlineMonthCountTilComplete-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row justify-content-end">' +
+                                '<div class="form-group col-md-12 text-left">' +
+                                    '<button class="btn btn-danger remove-project-later-than-deadline">حذف پروژه <i class="far fa-times"></i></span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
 
-                var data = {};
-                var formData = new FormData();
-
-                var ceo = $("#inputCeo").val();
-                var representative = $("#inputRepresentative").val();
-
-                // data.user = user;
-                // data.user = 1;
-                // data.logo = logo;
-                // data.type = type;
-                // data.title = title;
-                // data.registration_number = registrationNumber;
-                // data.national_code = nationalCode;
-                // data.ceo = ceo;
-                // data.contractor_representative = representative;
-                // data.telephone_number = phoneNumber;
-                // data.phone_number_1 = mobileNumber1;
-                // data.phone_number_2 = mobileNumber2;
-                // data.address = address;
-                // data.post_id = zipcode;
-                // data.email = email;
-                // data.safety_certificate_number = safetyCertificateNumber;
-                // data.validity_date_of_safety_certificate = safetyCertificateValidationDate;
-                // data.appendix_certificate = safetyCertificateFile;
-
-                // formData.append('fk_staffs', companyMembers);
-                formData.append('fk_ceo', ceo);
-                formData.append('contractor_representative', representative);
-
-                // data.is_active = JSON.stringify(true);
-
-                for (var pair of formData.entries()) { console.log(pair[0] + ', ' + pair[1]); };
-                var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
-
-                $.ajax(
-                    {
-                        method: 'POST',
-                        url: '{.% url "master_data:ajax_company_create" %}',
-                        headers: {
-                            'content-type': 'application/json',
-                            'X-CSRFToken': csrftoken
-                        },
-                        contentType: false,
-                        processData: false,
-                        data: formData,
-                        success: function (json, status) {
-                            console.log(json);
-                            console.log(status);
-                            if (status == 'success') {
-                                $(".blur").removeClass('active');
-                                $(".loading-fixed").hide();
-                                $("html, body").animate({
-                                    scrollTop: $(".alert-section").offset().top - 20
-                                }, 1000);
-                                $(".alert-message.success-message").show();
-                                $(".alert-message.error-message").hide();
-                                var redirectURL = '{.% url "master_data:company_list_page" %}';
-                                setTimeout(function () {
-                                    location.replace(redirectURL);
-                                }, 1500)
-                            }
-                            else {
-                                $(".blur").removeClass('active disable-form');
-                                $(".loading-fixed").hide();
-                                $("html, body").animate({
-                                    scrollTop: $(".alert-section.alert-section-2").offset().top - 20
-                                }, 1000);
-                                $(".alert-message-text.error-text.error-text-section-2").html(json.error + ' ' + '(' + json.status + ')');
-                                $(".alert-message.error-message.error-section-2").show();
-                            }
-                        },
-                        error: function (json, status, xhr) {
-                            console.log(json);
-                            console.log(status);
-                            console.log(xhr);
-                            $(".blur").removeClass('active disable-form');
-                            $(".loading-fixed").hide();
-                            $("html, body").animate({
-                                scrollTop: $(".alert-section.alert-section-2").offset().top - 20
-                            }, 1000);
-                            $(".alert-message-text.error-text.error-text-section-2").html(xhr + ' ' + '(' + status + ')');
-                            $(".alert-message.error-message.error-section-2").show();
-                        }
-                    }
-                )
-            }
-            else {
-                $("html, body").animate({
-                    scrollTop: $(".alert-section.alert-section-2").offset().top - 20
-                }, 1000);
-            }
+            $('[data-toggle="tooltip"]').tooltip();
         })
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        $(document).on('click', '.remove-project-later-than-deadline', function (e) {
+            e.preventDefault();
+            var count = $(".project-later-than-deadline-item").length - 1;
+            for (item of $(this).parents('.project-later-than-deadline-item').nextAll('.project-later-than-deadline-item')) {
+                var count = parseInt($(item).find('.count').text());
 
-                reader.onload = function (e) {
-                    $('#inputLogoImg')
-                        .attr('src', e.target.result);
-                    // .width(180)
-                    // .height(180);
-                };
+                $(item).find('.count').text(' ' + (count - 1).toString());
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+                $(item).find("label[val='project-later-than-deadline-title']").prop('for', 'inputProjectLaterThanDeadlineTitle-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-title']").prop('id', 'inputProjectLaterThanDeadlineTitle-' + (count - 1).toString());
 
-        $("#inputCooprationType").change(function () {
-            if ($(this).val() == 'contractor') {
-                $("span.parent-company.necessary").show();
-                $("select#inputParentCompany").prop('disabled', false);
+                $(item).find("label[val='project-later-than-deadline-progress']").prop('for', 'inputProjectLaterThanDeadlineProgress-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-progress']").prop('id', 'inputProjectLaterThanDeadlineProgress-' + (count - 1).toString());
+                
+                $(item).find("label[val='project-later-than-deadline-period']").prop('for', 'inputProjectLaterThanDeadlinePeriod-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-period']").prop('id', 'inputProjectLaterThanDeadlinePeriod-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-delay']").prop('for', 'inputProjectLaterThanDeadlineDelay-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-delay']").prop('id', 'inputProjectLaterThanDeadlineDelay-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-delay-reason']").prop('for', 'inputProjectLaterThanDeadlineDelayReason-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-delay-reason']").prop('id', 'inputProjectLaterThanDeadlineDelayReason-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-civil-operation']").prop('for', 'inputProjectLaterThanDeadlineCivilOperation-' + (count - 1).toString());
+                $(item).find("select[val='project-later-than-deadline-civil-operation']").prop('id', 'inputProjectLaterThanDeadlineCivilOperation-' + (count - 1).toString());
+                
+                $(item).find("label[val='project-later-than-deadline-cost-spend']").prop('for', 'inputProjectLaterThanDeadlineCostSpend-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-cost-spend']").prop('id', 'inputProjectLaterThanDeadlineCostSpend-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-contractor-name']").prop('for', 'inputProjectLaterThanDeadlineContractorName-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-contractor-name']").prop('id', 'inputProjectLaterThanDeadlineContractorName-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-contractor-cell']").prop('for', 'inputProjectLaterThanDeadlineContractorCell-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-contractor-cell']").prop('id', 'inputProjectLaterThanDeadlineContractorCell-' + (count - 1).toString());
+
+                $(item).find("label[val='project-later-than-deadline-month-count-til-complete']").prop('for', 'inputProjectLaterThanDeadlineMonthCountTilComplete-' + (count - 1).toString());
+                $(item).find("input[val='project-later-than-deadline-month-count-til-complete']").prop('id', 'inputProjectLaterThanDeadlineMonthCountTilComplete-' + (count - 1).toString());
             }
-            else {
-                $("span.parent-company.necessary").hide();
-                $("select#inputParentCompany").prop('disabled', true);
-            }
+            $(this).parents('.project-later-than-deadline-item').remove();
         })
 
-        $("#inputType").change(function () {
-            if ($(this).val() == 'legal') {
-                $("span.registeration-number.necessary").show();
-                $("input#inputRegisterationNumber").prop('disabled', false);
+        $("#add-project-longer-than-year").click(function (e) {
+            e.preventDefault();
+            var count = $(".project-longer-than-year-item").length + 1;
+            $(".project-longer-than-year-list").append('' +
+                '<div class="project-longer-than-year-item">' +
+                    '<div class="form-row row-form-group">' +
+                        '<br>' +
+                        '<h6 class="row-form-group__title">پروژه <span class="count">' + count + '</span></h6>' +
+                        '<br>' +
+                        '<div class="form-group col-12 p-3">' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-title" for="inputProjectLaterThanDeadlineTitle-' + count + '">عنوان پروژه ای که از زمانبندی عقب تر است<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان پروژه ای که از زمانبندی عقب تر است الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-title" type="text" id="inputProjectLaterThanDeadlineTitle-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-progress" for="inputProjectLaterThanDeadlineProgress-' + count + '">میزان پیشرفت کار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان پیشرفت کار الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-progress" type="text" id="inputProjectLaterThanDeadlineProgress-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-period" for="inputProjectLaterThanDeadlinePeriod-' + count + '">مدت زمان قرارداد<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان قرارداد الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-period" type="text" id="inputProjectLaterThanDeadlinePeriod-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-delay" for="inputProjectLaterThanDeadlineDelay-' + count + '">مدت زمان عقب افتادگی<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان عقب افتادگی الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-delay" type="text" id="inputProjectLaterThanDeadlineDelay-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-delay-reason" for="inputProjectLaterThanDeadlineDelayReason-' + count + '">علت تاخیر<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد علت تاخیر الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-delay-reason" type="text" id="inputProjectLaterThanDeadlineDelayReason-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-civil-operation" for="inputProjectLaterThanDeadlineCivilOperation-' + count + '">عملیات عمرانی فعال<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عملیات عمرانی الزامی می باشد."></i>' +
+                                    '<select val="project-longer-than-year-civil-operation" class="form-control" id="inputProjectLaterThanDeadlineCivilOperation-' + count + '">' +
+                                        '<option value="yes" selected>است</option>' +
+                                        '<option value="no">نیست</option>' +
+                                    '</select>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-cost-spend" for="inputProjectLaterThanDeadlineCostSpend-' + count + '">هزینه صرف شده<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد هزینه صرف شده الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-cost-spend" type="text" id="inputProjectLaterThanDeadlineCostSpend-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-budget-more-than-predict" for="ProjectLongerThanYearBudgetMoreThanPredict-1">میزان بودجه مازاد بر پیشبینی<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد میزان بودجه مازاد بر پیشبینی الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-budget-more-than-predict" type="text" id="ProjectLongerThanYearBudgetMoreThanPredict-1" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-contractor-name" for="inputProjectLaterThanDeadlineContractorName-' + count + '">نام پیمانکار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام پیمانکار الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-contractor-name" type="text" id="inputProjectLaterThanDeadlineContractorName-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-contractor-cell" for="inputProjectLaterThanDeadlineContractorCell-' + count + '">شماره تماس پیمانکار<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس پیمانکار الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-contractor-cell" type="number" id="inputProjectLaterThanDeadlineContractorCell-' + count + '" class="form-control">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="project-longer-than-year-month-count-til-complete" for="inputProjectLaterThanDeadlineMonthCountTilComplete-' + count + '">مدت زمان تخمینی تا اتمام پروژه (ماه)<code>*</code></label>' +
+                                    '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد مدت زمان تخمینی تا اتمام پروژه (ماه) الزامی می باشد."></i>' +
+                                    '<input val="project-longer-than-year-month-count-til-complete" type="text" id="inputProjectLaterThanDeadlineMonthCountTilComplete-' + count + '" class="form-control">' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="form-row justify-content-end">' +
+                                '<div class="form-group col-md-12 text-left">' +
+                                    '<button class="btn btn-danger remove-project-longer-than-year">حذف پروژه <i class="far fa-times"></i></span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>');
+
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+
+        $(document).on('click', '.remove-project-longer-than-year', function (e) {
+            e.preventDefault();
+            var count = $(".project-longer-than-year-item").length - 1;
+            for (item of $(this).parents('.project-longer-than-year-item').nextAll('.project-longer-than-year-item')) {
+                var count = parseInt($(item).find('.count').text());
+
+                $(item).find('.count').text(' ' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-title']").prop('for', 'inputProjectLongerThanYearTitle-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-title']").prop('id', 'inputProjectLongerThanYearTitle-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-progress']").prop('for', 'inputProjectLongerThanYearProgress-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-progress']").prop('id', 'inputProjectLongerThanYearProgress-' + (count - 1).toString());
+                
+                $(item).find("label[val='project-longer-than-year-period']").prop('for', 'inputProjectLongerThanYearPeriod-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-period']").prop('id', 'inputProjectLongerThanYearPeriod-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-delay']").prop('for', 'inputProjectLongerThanYearDelay-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-delay']").prop('id', 'inputProjectLongerThanYearDelay-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-delay-reason']").prop('for', 'inputProjectLongerThanYearDelayReason-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-delay-reason']").prop('id', 'inputProjectLongerThanYearDelayReason-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-civil-operation']").prop('for', 'inputProjectLongerThanYearCivilOperation-' + (count - 1).toString());
+                $(item).find("select[val='project-longer-than-year-civil-operation']").prop('id', 'inputProjectLongerThanYearCivilOperation-' + (count - 1).toString());
+                
+                $(item).find("label[val='project-longer-than-year-cost-spend']").prop('for', 'inputProjectLongerThanYearCostSpend-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-cost-spend']").prop('id', 'inputProjectLongerThanYearCostSpend-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-budget-more-than-predict']").prop('for', 'inputProjectLongerThanYearBudgetMoreThanPredict-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-budget-more-than-predict']").prop('id', 'inputProjectLongerThanYearBudgetMoreThanPredict-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-contractor-name']").prop('for', 'inputProjectLongerThanYearContractorName-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-contractor-name']").prop('id', 'inputProjectLongerThanYearContractorName-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-contractor-cell']").prop('for', 'inputProjectLongerThanYearContractorCell-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-contractor-cell']").prop('id', 'inputProjectLongerThanYearContractorCell-' + (count - 1).toString());
+
+                $(item).find("label[val='project-longer-than-year-month-count-til-complete']").prop('for', 'inputProjectLongerThanYearMonthCountTilComplete-' + (count - 1).toString());
+                $(item).find("input[val='project-longer-than-year-month-count-til-complete']").prop('id', 'inputProjectLongerThanYearMonthCountTilComplete-' + (count - 1).toString());
             }
-            else {
-                $("span.registeration-number.necessary").hide();
-                $("input#inputRegisterationNumber").prop('disabled', true);
-            }
+            $(this).parents('.project-longer-than-year-item').remove();
         })
     </script>
 
