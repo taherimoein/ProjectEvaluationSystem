@@ -14,6 +14,18 @@ class default_history_field():
 
 
 @deconstructible
+class default_similar_projects_field():
+    def __call__(self):
+        return {'completed': 0, 'not_completed': 0}
+
+
+@deconstructible
+class default_requires_field():
+    def __call__(self):
+        return {'status': False, 'description': None}
+
+
+@deconstructible
 class create_validation_code():
     def __init__(self, size):
         self.size = size
@@ -215,3 +227,54 @@ class User(AbstractBaseUser):
         verbose_name_plural = 'کاربران'
 
 # --------------------------------------------------------------------------------------------------------------------------------------
+
+# Project (پروژه) Model
+class Project(models.Model):
+    title = models.CharField(verbose_name = 'عنوان', max_length = 255, db_index = True)
+    description = models.TextField(verbose_name = 'توضیحات پروژه')
+    fiscal_year = models.CharField(verbose_name = 'سال مالی', max_length = 4)
+    executive_device = models.CharField(verbose_name = 'دستگاه اجرایی', max_length = 255, null = True)
+    fk_user = models.ForeignKey(User, verbose_name = 'کاربر ثبت کننده', related_name = 'project_user', on_delete = models.SET_NULL, null = True)
+    attached_file = models.FileField(verbose_name = 'فایل پیوست', upload_to = 'media/files/project/', blank = True, null = True)
+    project_location_address = models.TextField(verbose_name = 'آدرس محل پروژه')
+    telephone = models.CharField(verbose_name = 'شماره تماس', max_length = 8)
+    approximate_date_preparation = models.DateField(verbose_name = 'تاریخ تقریبی بهره برداری')
+    amount_required_for_workshop = models.CharField(verbose_name = 'مبلغ مورد نیاز برای تجهیز کارگاه', max_length = 15)
+    prepayment_amount = models.CharField(verbose_name = 'مبلغ پیش پرداخت', max_length = 15)
+    initial_offered_credit_amount = models.CharField(verbose_name = 'مبلغ اعتبار پیشنهاد اولیه', max_length = 15)
+    amount_credit_increase = models.CharField(verbose_name = 'میزان مبلغ افزایش اعتبار', max_length = 15)
+    bidding_history = models.BooleanField(verbose_name = 'سابقه انجام مناقصه', default = False)
+    land_and_basic_facilities = models.BooleanField(verbose_name = 'زمین و امکانات اولیه', default = False)
+    similar_projects = JSONField(verbose_name = 'پروژه های مشابه', default = default_similar_projects_field())
+    ability_to_shred = models.BooleanField(verbose_name = 'قابلیت کوچک شدن', default = False)
+    type_of_financial_resources = models.TextField(verbose_name = 'نوع منابع مالی', blank = True, null = True)
+    applicant_name_and_role = models.CharField(verbose_name = 'نام درخواست کننده / سمت', max_length = 255)
+    requires_collaboration_between_devices = JSONField(verbose_name = 'نیاز به همکاری بین دستگاه', default = default_requires_field())
+    requires_special_permissions = JSONField(verbose_name = 'نیاز مجوز خاص', default = default_requires_field())
+    requires_special_facilities = JSONField(verbose_name = 'نیاز امکانات خاص', default = default_requires_field())
+    shared_capability_between_multiple_executive_devices = JSONField(verbose_name = 'قابلیت اشتراکی بین چند دستگاه اجرایی', default = default_requires_field())
+    shared_capability_between_several_cities = JSONField(verbose_name = 'قابلیت اشتراکی بین چند شهرستان', default = default_requires_field())
+    history = JSONField(verbose_name = 'تاریخچه', blank = True, null = True)
+    create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
+    update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
+
+    def __str__(self):
+       return "{}".format(self.title)
+
+    def add_history(self, status, user, other_fileds = None, add_datetime = None,):
+        if add_datetime is None:
+            add_datetime = timezone.localtime(datetime.datetime.now())
+        user = int(user)
+
+        if status == 'create':
+            self.history = {'list': [{'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M")}]}
+        elif status == 'edit':
+            self.history['list'].append({'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M"), 'fields' : other_fileds})
+        self.save()
+
+    class Meta:
+        ordering = ('id', 'create_date')   
+        verbose_name = "پروژه"
+        verbose_name_plural = "پروژه ها"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
