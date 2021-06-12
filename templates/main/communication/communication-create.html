@@ -5,7 +5,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-<title>سامانه نظام پیشنهادها | ایجاد گروه شغلی جدید</title>
+<title>سامانه پروژه ها | ایجاد یک نامه مکاتباتی   </title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                 <div class="row text-right">
                     <div class="col-12">
                         <div class="blur">
-                            <h2 class="title_page">ثبت گروه شغلی جدید</h2>
+                            <h2 class="title_page">ثبت یک نامه مکاتباتی</h2>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alert-section">
@@ -46,7 +46,7 @@
                                             <div class="alert-message-content success-content">
                                                 <i class="fas fa-check"></i>
                                                 <div class="alert-message-text success-text">
-                                                    گروه شغلی جدید با موفقیت ثبت گردید.
+                                                     نامه مکاتباتی جدید با موفقیت ثبت گردید.
                                                 </div>
                                             </div>
                                             <div class="close-message close-success-message">
@@ -59,52 +59,43 @@
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputJobGroupTitle">عنوان گروه شغلی<code>*</code></label>
+                                        <label for="inputJobGroupTitle">عنوان نامه مکاتباتی<code>*</code></label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                             data-placement="left"
-                                            title="عنوان گروه شغلی نباید خالی باشد و باید حداکثر تا 255 کاراکتر طول داشته باشد."></i>
+                                            title="عنوان نامه مکاتباتی نباید خالی باشد و باید حداکثر تا 255 کاراکتر طول داشته باشد."></i>
                                         <input type="text" class="form-control" id="inputJobGroupTitle" placeholder=""
                                             maxlength="255">
                                     </div>
-
                                 </div>
-                                <br>
+                                
 
-                                <div class="row mb-3">
-                                    <div class="col-12">
-                                        <div class="alert-message info-message back text-right mb-3">
-                                            <div class="alert-message-content info-content">
-                                                <i class="fas fa-info-circle"></i>
-                                                <div class="alert-message-text info-text d-inline">
-                                                    <p class="d-inline">
-                                                        وارد کردن حداقل یک شغل برای گروه شغلی الزامی میباشد و شغل های
-                                                        بیشتر اختیاری میباشد.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row-list my-3">
-                                    <div class="form-row align-items-end mb-3 main-item">
-                                        <div class="form-group col-md-4">
-                                            <label val="job" for="inputJob-1">شغل <span
-                                                    class="count">1</span></label><code>*</code>
-                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="در سطر اضافه شده حتما بایستی یک شغل نوشته شود. حداکثر طول مجاز عنوان شغل 255 کاراکتر میباشد."></i>
-                                            <input type="text" class="form-control" id="inputJob-1" maxlength="255">
-                                        </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                      <label for="inputProjectDescription">توضیحات</label>
+                                      <textarea class="form-control" id="inputProjectDescription" rows="4"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <button id="addJob" class="btn btn-secondary">سطر جدید <i class="far fa-plus"></i></button>
-                                    </div>
+                                    <label for="inputFile">پیوست<code>*</code></label>
+                                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
+                                    title="فیلد پیوست اجباری است."></i>
+                                    <input type="file" class="form-control-file" id="inputFile">
                                 </div>
                                 <br>
-                                <br>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputToUser">ارجاع به<code>*</code></label>
+                                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                            data-placement="left" title="تعیین فرد الزامی میباشد."></i>
+                                        <select id="inputToUser" class="form-control select2-component">
+                                            <option value="0">انتخاب...</option>
+                                            <option value="1">فرد 1</option>
+                                            <option value="2">فرد 2</option>
+                                        </select>
+                                      </div>
+                                </div>
+
                                 <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
                                 <br>
                                 <br>
@@ -124,22 +115,7 @@
 
     <script>
 
-        $("#addJob").click(function (e) {
-            e.preventDefault();
-            var count = $(".main-item").length + 1;
-            $(".row-list").append('' +
-                '<div class="form-row align-items-end mb-3 main-item">' +
-                    '<div class="form-group col-md-4">' +
-                        '<label val="job" for="inputJob-' + count + '">شغل <span class="count">' + count + '</span></label> ' +
-                        '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در سطر اضافه شده حتما بایستی یک شغل نوشته شود. حداکثر طول مجاز عنوان شغل 255 کاراکتر میباشد."></i>' +
-                        '<input type="text" class="form-control" id="inputJob-' + count + '">' +
-                    '</div>' +
-                    '<div class="form-group col-md-3">' +
-                        '<span class="remove-row">حذف سطر <i class="far fa-times"></i></span>' +
-                    '</div>' +
-                '</div>');
-            $('[data-toggle="tooltip"]').tooltip();
-        })
+
 
         $(document).on('click', '.remove-row', function () {
             var count = $(".row-list > .form-row").length - 1;
@@ -176,7 +152,7 @@
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{% url "master_data:ajax_create_job_group" %}',
+                        url: '{.% url "master_data:ajax_create_job_group" %}',
                         data: {
                             content: JSON.stringify(data),
                             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
@@ -190,7 +166,7 @@
                                 }, 1000);
                                 $(".alert-message.success-message").show();
                                 $(".alert-message.error-message").hide();
-                                var redirectURL = '{% url "master_data:job_group_list_page" %}';
+                                var redirectURL = '{.% url "master_data:job_group_list_page" %}';
                                 setTimeout(function () {
                                     location.replace(redirectURL);
                                 }, 1500)

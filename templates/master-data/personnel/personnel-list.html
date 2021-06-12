@@ -6,7 +6,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-    <title>سامانه نظام پیشنهادها | پرسنل</title>
+    <title>سامانه پروژه ها | پرسنل</title>
 </head>
 <body>
     
@@ -59,64 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-row text-right mt-5">
-                    <div class="col-4 form-group">
-                        <label for="inputCompany">نام دستگاه اجرایی</label>
-                        <select class="select2-ajax form-control" id="inputCompany" multiple="multiple">
-                        </select>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputFullName">نام و نام خانوادگی</label>
-                        <input type="text" id="inputFullName" class="form-control">
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputFathersName">نام پدر</label>
-                        <input type="text" id="inputFathersName" class="form-control">
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputJobGroups">گروه های شغلی</label>
-                        <select class="select2-component form-control" name="JobGroups" id="inputJobGroups" multiple="multiple">
-                            {% for item in JobGroups %}
-                                <option value="{{item.id}}">{{item.title}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputJobTitles">عناوین شغلی</label>
-                        <select class="select2-component form-control" name="JobTitles" id="inputJobTitles" multiple="multiple">
-                        </select>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputRole">سمت سازمانی</label>
-                        <input type="text" id="inputRole" class="form-control">
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputDeputy">معاونت ها</label>
-                        <select class="select2-component form-control" name="Deputy" id="inputDeputy" multiple="multiple">
-                            {% for item in Deputies %}
-                                <option value="{{item.id}}">{{item.title}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputManagement">مدیریت ها</label>
-                        <select class="select2-component form-control" name="Management" id="inputManagement" multiple="multiple">
-                        </select>
-                    </div>
-                    <div class="col-4 form-group">
-                        <label for="inputStatus">وضعیت کاربر</label>
-                        <select name="status" id="inputStatus" class="form-control">
-                            <option value="0">همه</option>
-                            <option value="1">فعال</option>
-                            <option value="2">غیر فعال</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <button id="submit" type="submit" class="btn btn-primary">
-                            اعمال فیلترها
-                        </button>
-                    </div>
-                </div>
+
 
                 <div class="row mt-5 position-relative">
                     <div class="col-12">

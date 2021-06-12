@@ -1,0 +1,314 @@
+{% load i18n static %}
+{% load filters %}
+{% csrf_token %}
+
+{% block head %}
+    {% include "parents/head.html" %}
+{% endblock %}
+
+    <title>سامانه پروژه ها | لیست  دستگاه های اجرایی</title>
+</head>
+<body>
+    
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% block sidebar %}
+                {% include "parents/sidebar.html" %}
+            {% endblock %}
+            
+            <div class="col-9">
+                <div class="row text-right mt-3">
+                    <div class="col-12">
+                        <div class="add-new">
+                            <a href="{% url 'master_data:organization_create_page' %}" class="btn btn-primary w-100">
+                                افزودن دستگاه اجرایی جدید
+                                <i class="far fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="alert-section">
+                            <div class="alert-message error-message front text-right mb-3">
+                                <div class="alert-message-content error-content">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <div class="alert-message-text error-text">
+                                    </div>
+                                </div>
+                                <div class="close-message close-error-message">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                            <div class="alert-message success-message front text-right mb-3">
+                                <div class="alert-message-content success-content">
+                                  <i class="fas fa-check"></i>
+                                  <div class="alert-message-text success-text">
+                                    دستگاه اجرایی با موفقیت حذف گردید.
+                                  </div>
+                                </div>
+                                <div class="close-message close-success-message">
+                                  <i class="fas fa-times"></i>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="blur">
+                            <table id="datatable-filterable" class="table table-bordered dt-responsive nowrap info-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            نام دستگاه اجرایی
+                                        </th>
+                                        <th>
+                                            کاربر ثبت کننده
+                                        </th>
+                                        <th>
+                                            تاریخ ثبت 
+                                        </th>
+                                        
+                                        <th>
+                                            ویرایش
+                                        </th>
+                                        <th>
+                                            حذف
+                                        </th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            نام دستگاه اجرایی
+                                        </td>
+                                        <td>
+                                            کاربر ثبت کننده
+                                        </td>
+                                        <td>
+                                            تاریخ ثبت 
+                                        </td>
+                                        
+                                        <td>
+                                            ویرایش
+                                        </td>
+                                        <td>
+                                            حذف
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="loading d-hide">
+                            <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        {% include "parents/footer.html" %}
+    {% endblock %}
+
+    <script>
+        var table = $('#datatable-filterable').DataTable({
+            order: [],
+        })
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            table.draw();
+        })
+
+        $(document).ready(function () {
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                var table = $('#datatable-filterable').DataTable();
+                var row = table.row(dataIndex).node();
+
+                var workstationTypes = $("#inputWorkstationType").val();
+
+                if (workstationTypes.length == 0) {
+                    return true;
+                }
+                for (var item of workstationTypes) {
+                    if ($(row).find('.workstation-type-td').text() == item) {
+                        return true;
+                    }
+                    
+                    else {
+
+                    }
+                }
+
+                return false;
+
+            });
+            var table = $("table").DataTable();
+
+            
+            // $(".loading").show();
+            // $(".blur").addClass('active disable-form');
+            // $.ajax (
+            //     {
+            //         method: 'GET',
+            //         url: "{.% url 'main:workstation_list_create' %}",
+            //         success: function (json, status)
+            //         {
+            //             console.log(status);
+            //             console.log(json);
+            //             if (status == "success")
+            //             {
+            //                 var tableContent;
+            //                 var editLink = '{.% url "main:workstation_edit_page" 0 %}';
+            //                 for (var item of json)
+            //                 {
+            //                     if (item.is_active)
+            //                     {
+            //                         editLink = '{.% url "main:workstation_edit_page" 0 %}';
+            //                         console.log(editLink);
+            //                         console.log(item.id);
+            //                         editLink = editLink.substr(0, editLink.length - 2) + item.id + '/';
+            //                         tableContent += '' +
+            //                         '<tr>' +
+            //                             '<td>' +
+            //                                 item.code +
+            //                             '</td>' +
+            //                             '<td>' +
+            //                                 item.title +
+            //                             '</td>' +
+            //                             // '<td>' +
+            //                             //     '{{item.section_title}}' +
+            //                             // '</td>' +
+            //                             '<td>' +
+            //                                 item.type +
+            //                             '</td>' +
+            //                             // '<td>' +
+            //                             //     '{{item.owner}}' +
+            //                             // '</td>' +
+            //                             // '<td>' +
+            //                             //     '{{item.responsible}}' +
+            //                             // '</td>' +
+            //                             '<td class="text-center">' +
+            //                                 '<a href="' + editLink + '"><i class="cursor-pointer fas fa-pen"></i></a>' +
+            //                             '</td>' +
+            //                             '<td class="text-center">' +
+            //                                 '<i val="' + item.id + '" class="cursor-pointer fas fa-trash-alt delete-workstation"></i>' +
+            //                             '</td>' +
+            //                         '</tr>';
+            //                     }
+            //                 }
+
+            //                 table.destroy();
+            //                 $("tbody").html(tableContent);
+            //                 $("table").DataTable();
+            //             }
+            //             else
+            //             {
+            //                 $(".alert-message-text.error-text").html(json.error + ' ' + '(' + status + ')');
+            //                 $(".alert-message.error-message").show();
+            //                 $("html, body").animate({
+            //                     scrollTop: $(".alert-section").offset().top - 20
+            //                 }, 1000);
+            //             }
+            //             $(".loading").hide();
+            //             $(".blur").removeClass('active disable-form');
+
+            //         },
+            //         error: function(json, xhr, status)
+            //         {
+            //             console.log(json.responseJSON.error);
+            //             console.log(xhr);
+            //             console.log(status);
+            //             $(".loading").hide();
+            //             $(".blur").removeClass('active disable-form');
+            //             $(".alert-message-text.error-text").html(json.responseJSON.error + ' ' + '(' + status + ')');
+            //             $(".alert-message.error-message").show();
+            //             $("html, body").animate({
+            //                 scrollTop: $(".alert-section").offset().top - 20
+            //             }, 1000);
+            //         }
+            //     }
+            // )
+        })
+
+        $(document).on('click', ".delete-workstation", function (){
+            $(".blur").addClass('active disable-form');
+            $(".loading-fixed").show();
+
+            var workstationID = $(this).attr('val');
+            console.log(workstationID);
+
+            data = {};
+
+            data.is_active = JSON.stringify(false);
+            
+            console.log(data);
+
+            var ajaxURL = '{.% url "main:workstation_edit" 0 %}';
+            ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + workstationID + '/';
+            var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+
+            $.ajax (
+                {
+                    method: 'PATCH',
+                    url: ajaxURL,
+                    headers: {
+                        'content-type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    dataType: 'json',
+                    data: JSON.stringify(data),
+                    success: function (json, status) {
+                        $(".blur").removeClass('active disable-form');
+                        $(".loading").hide();
+                        console.log(status);
+                        console.log(json);
+                        if (status == "success")
+                        {
+                            $(".alert-message.success-message").show();
+                            $(".alert-message.error-message").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            setTimeout( function () {
+                                window.location.reload(false);
+                            }, 1500)
+                        }
+                        else
+                        {
+                            $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                            $(".alert-message.error-message").show();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                        }
+                    },
+                    error: function (json, xhr, status) {
+                        console.log(json.responseJSON.error);
+                        console.log(xhr);
+                        console.log(status);
+                        $(".blur").removeClass('active disable-form');
+                        $(".loading").hide();
+                        $(".alert-message-text.error-text").html(json.responseJSON.error + ' ' + '(' + status + ')');
+                        $(".alert-message.error-message").show();
+                        $("html, body").animate({
+                            scrollTop: $(".alert-section").offset().top - 20
+                        }, 1000);
+                        
+                    }
+                }
+            )
+        })
+    </script>
+</body>
+</html>
