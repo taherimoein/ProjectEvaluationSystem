@@ -70,40 +70,22 @@
                                             عنوان پروژه
                                         </th>
                                         <th>
-                                            کاربر ثبت کننده
-                                        </th>
-                                        <th>
                                             تاریخ ثبت 
                                         </th>
-                                        
                                         <th>
-                                            ویرایش
-                                        </th>
-                                        <th>
-                                            حذف
+                                            ارزیابی
                                         </th>
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            عنوان پروژه
-                                        </td>
-                                        <td>
-                                            کاربر ثبت کننده
-                                        </td>
-                                        <td>
-                                            تاریخ ثبت 
-                                        </td>
-                                        
-                                        <td>
-                                            ویرایش
-                                        </td>
-                                        <td>
-                                            حذف
-                                        </td>
-                                    </tr>
+                                    {% for item in ProjectList %}
+                                        <tr>
+                                            <td>{{item.title}}</td>
+                                            <td>{{item.create_date|datetime_to_jalali}}</td>
+                                            <td class="text-center"><a href="{.% url 'main:secretary_assessment_suggestion_page' item.id %}"><i class="fas fa-clipboard-list-check"></i></a></td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>

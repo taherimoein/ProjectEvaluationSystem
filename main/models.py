@@ -26,6 +26,12 @@ class default_requires_field():
 
 
 @deconstructible
+class default_answer_field():
+    def __call__(self):
+        return {'description': None, 'datetime': None, 'file': None}
+
+
+@deconstructible
 class create_validation_code():
     def __init__(self, size):
         self.size = size
@@ -279,6 +285,30 @@ class Project(models.Model):
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 
+# Official Letter (نامه اداری) Model
+class Official_Letter(models.Model):
+    title = models.CharField(verbose_name = 'عنوان', max_length = 255, db_index = True)
+    description = models.TextField(verbose_name = 'توضیحات پروژه')
+    fk_sender = models.ForeignKey(User, verbose_name = 'کاربر ارسال کننده', related_name = 'official_letter_sender', on_delete = models.SET_NULL, null = True)
+    fk_receiver = models.ForeignKey(User, verbose_name = 'کاربر دریافت کننده', related_name = 'official_letter_receiver', on_delete = models.SET_NULL, null = True)
+    attached_file = models.FileField(verbose_name = 'فایل پیوست', upload_to = 'media/files/official_letter/', blank = True, null = True)
+    STATUS_TYPE = (
+        (0,'خوانده نشده'),
+        (1,'خوانده شده'),
+        (2,'پاسخ داده شده'),
+        (3,'دیدن پاسخ')
+    )
+    status = models.PositiveSmallIntegerField(verbose_name = 'وضعیت نامه', choices = STATUS_TYPE, default = 0)
+    answer = JSONField(verbose_name = 'پاسخ نامه', default = default_answer_field())
+    create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
+    update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
+
+    class Meta:
+        ordering = ('id', 'create_date')   
+        verbose_name = "مکاتبه"
+        verbose_name_plural = "مکاتبات"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
 
 # Project Type (انواع پروژه ها) Model
 class ProjectType(models.Model):
@@ -295,7 +325,6 @@ class ProjectType(models.Model):
         if add_datetime is None:
             add_datetime = timezone.localtime(datetime.datetime.now())
         user = int(user)
-
         if status == 'create':
             self.history = {'list': [{'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M")}]}
         elif status == 'edit':
@@ -306,3 +335,5 @@ class ProjectType(models.Model):
         ordering = ('id', 'create_date')   
         verbose_name = "نوع پروژه"
         verbose_name_plural = "انواع پروژه ها"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
