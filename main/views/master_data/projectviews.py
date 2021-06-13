@@ -39,7 +39,6 @@ def create_project(request):
             this_description = request.POST.get('description')
             this_fiscal_year = request.POST.get('fiscal_year')
             this_executive_device = request.POST.get('executive_device')
-            this_user_id = request.POST.get('user_id')
             this_project_location_address = request.POST.get('project_location_address')
             this_telephone = request.POST.get('telephone')
             this_approximate_date_preparation = request.POST.get('approximate_date_preparation')
@@ -63,9 +62,8 @@ def create_project(request):
             except:
                 this_attached_file = None
             # create project
-            this_user = User.objects.get(id = this_user_id)
             this_project = Project.objects.create(title = this_title, description = this_description, fiscal_year = this_fiscal_year,\
-                executive_device = this_executive_device, fk_user = this_user, project_location_address = this_project_location_address,\
+                executive_device = this_executive_device, fk_user = request.user, project_location_address = this_project_location_address,\
                 telephone = this_telephone, approximate_date_preparation = this_approximate_date_preparation,\
                 amount_required_for_workshop = this_amount_required_for_workshop, prepayment_amount = this_prepayment_amount,\
                 initial_offered_credit_amount = this_initial_offered_credit_amount, amount_credit_increase = this_amount_credit_increase,\
