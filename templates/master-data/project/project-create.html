@@ -163,8 +163,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="سابقه انجام مناقصه حتما بایستی معین گردد."></i>
                                             <select id="inputPbidding_history" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected >ندارد</option>
                                             </select>
                                         </div>
 
@@ -173,8 +173,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="زمین و امکانات اولیه حتما بایستی معین گردد."></i>
                                             <select id="inputPland_and_basic_facilities" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
 
@@ -199,8 +199,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت تقسیم به پروژه کوچک حتما بایستی معین گردد."></i>
                                             <select id="inputPability_to_shred" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
 
@@ -225,8 +225,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز به همکاری بین دستگاه حتما بایستی معین گردد."></i>
                                             <select id="inputPrequires_collaboration_between_devices" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
 
@@ -244,8 +244,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز مجوز خاص حتما بایستی معین گردد."></i>
                                             <select id="inputPrequires_special_permissions" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
 
@@ -263,8 +263,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز امکانات خاص حتما بایستی معین گردد."></i>
                                             <select id="inputPrequires_special_facilities" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
 
@@ -282,8 +282,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت اشتراکی بین چند دستگاه اجرایی حتما بایستی معین گردد."></i>
                                             <select id="inputPshared_capability_between_multiple_executive_devices" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -300,8 +300,8 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت اشتراکی بین چند شهرستان حتما بایستی معین گردد."></i>
                                             <select id="inputPshared_capability_between_several_cities" class="form-control select2-static-component">
-                                                <option value="1" selected>دارد</option>
-                                                <option value="2">ندارد</option>
+                                                <option value="1">دارد</option>
+                                                <option value="2" selected>ندارد</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -446,7 +446,7 @@
                 }, 1000);
                 $(".alert-message.success-message").show();
                 $(".alert-message.error-message").hide();
-                var redirectURL = '{% url "my_suggestion:my_suggestion_list_page" %}';
+                var redirectURL = '{.% url "my_suggestion:my_suggestion_list_page" %}';
                 setTimeout(function () {
                   location.replace(redirectURL);
                 }, 1500)
