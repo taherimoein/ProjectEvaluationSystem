@@ -13,13 +13,11 @@ from main.models import User, Project
 @is_governor
 @login_required(login_url = 'main:sign_page')
 def project_list_page(request):
-    # users = User.objects.annotate(fullname = Concat('first_name', Value(' '), 'last_name')) \
-    #     .order_by('create_date').values('id', 'national_code', 'fullname', 'father_s_name', \
-    #         'role', 'executive_device', 'personnel_id', 'necessary_contact_number',\
-    #         'mobile', 'username', 'access_group', 'active')
+    project_list = Project.objects.filter(fk_user = request.user).order_by('-create_date')\
+        .values('id', 'title', 'create_date')
 
     context = {
-        
+        'ProjectList': project_list
     }
     return render(request, 'master-data/project/project-list.html', context)
 
