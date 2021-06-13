@@ -25,4 +25,6 @@ urlpatterns = [
     # Master Data "projects types" --------------------------------------------------------------
     path('projectstype/', projectstypeviews.projectstype_list_page, name='projectstype_list_page'),
     path('projectstype/create/', projectstypeviews.projectstype_create_page, name='projectstype_create_page'),
+    path('ajax/projectstype/create/', projectstypeviews.create_new_project_type, name = 'ajax_create_new_project_type'),
+    path('ajax/projectstype/delete/', projectstypeviews.delete_project_type, name = 'ajax_delete_project_type'),
 ]

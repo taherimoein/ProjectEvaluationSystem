@@ -49,7 +49,7 @@
                                 <div class="alert-message-content success-content">
                                   <i class="fas fa-check"></i>
                                   <div class="alert-message-text success-text">
-                                    پروژه با موفقیت حذف گردید.
+                                    نوع پروژه با موفقیت حذف گردید.
                                   </div>
                                 </div>
                                 <div class="close-message close-success-message">
@@ -73,9 +73,6 @@
                                             امتیاز
                                         </th>
                                         <th>
-                                            ثبت کننده
-                                        </th>
-                                        <th>
                                             حذف
                                         </th>
                                     </tr>
@@ -83,18 +80,17 @@
                                 
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            شرح نوع پروژه
-                                        </td>
-                                        <td>
-                                            امتیاز
-                                        </td>
-                                        <td>
-                                            ثبت کننده
-                                        </td>
-                                        <td>
-                                            حذف
-                                        </td>
+                                        {% for item in projectstype %}
+                                            <td>
+                                                {{item.title}}
+                                            </td>
+                                            <td>
+                                                {{item.score}}
+                                            </td>
+                                            <td>
+                                                <i val="{{item.id}}" class="cursor-pointer fas fa-trash-alt delete-projecttype"></i>
+                                            </td>
+                                        {% endfor %}
                                     </tr>
                                 </tbody>
                             </table>
@@ -113,190 +109,52 @@
     {% endblock %}
 
     <script>
-        var table = $('#datatable-filterable').DataTable({
-            order: [],
-        })
-
-        $("#submit").click(function (e) {
-            e.preventDefault();
-            table.draw();
-        })
-
-        $(document).ready(function () {
-            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-                var table = $('#datatable-filterable').DataTable();
-                var row = table.row(dataIndex).node();
-
-                var workstationTypes = $("#inputWorkstationType").val();
-
-                if (workstationTypes.length == 0) {
-                    return true;
-                }
-                for (var item of workstationTypes) {
-                    if ($(row).find('.workstation-type-td').text() == item) {
-                        return true;
-                    }
-                    
-                    else {
-
-                    }
-                }
-
-                return false;
-
-            });
-            var table = $("table").DataTable();
-
-            
-            // $(".loading").show();
-            // $(".blur").addClass('active disable-form');
-            // $.ajax (
-            //     {
-            //         method: 'GET',
-            //         url: "{.% url 'main:workstation_list_create' %}",
-            //         success: function (json, status)
-            //         {
-            //             console.log(status);
-            //             console.log(json);
-            //             if (status == "success")
-            //             {
-            //                 var tableContent;
-            //                 var editLink = '{.% url "main:workstation_edit_page" 0 %}';
-            //                 for (var item of json)
-            //                 {
-            //                     if (item.is_active)
-            //                     {
-            //                         editLink = '{.% url "main:workstation_edit_page" 0 %}';
-            //                         console.log(editLink);
-            //                         console.log(item.id);
-            //                         editLink = editLink.substr(0, editLink.length - 2) + item.id + '/';
-            //                         tableContent += '' +
-            //                         '<tr>' +
-            //                             '<td>' +
-            //                                 item.code +
-            //                             '</td>' +
-            //                             '<td>' +
-            //                                 item.title +
-            //                             '</td>' +
-            //                             // '<td>' +
-            //                             //     '{{item.section_title}}' +
-            //                             // '</td>' +
-            //                             '<td>' +
-            //                                 item.type +
-            //                             '</td>' +
-            //                             // '<td>' +
-            //                             //     '{{item.owner}}' +
-            //                             // '</td>' +
-            //                             // '<td>' +
-            //                             //     '{{item.responsible}}' +
-            //                             // '</td>' +
-            //                             '<td class="text-center">' +
-            //                                 '<a href="' + editLink + '"><i class="cursor-pointer fas fa-pen"></i></a>' +
-            //                             '</td>' +
-            //                             '<td class="text-center">' +
-            //                                 '<i val="' + item.id + '" class="cursor-pointer fas fa-trash-alt delete-workstation"></i>' +
-            //                             '</td>' +
-            //                         '</tr>';
-            //                     }
-            //                 }
-
-            //                 table.destroy();
-            //                 $("tbody").html(tableContent);
-            //                 $("table").DataTable();
-            //             }
-            //             else
-            //             {
-            //                 $(".alert-message-text.error-text").html(json.error + ' ' + '(' + status + ')');
-            //                 $(".alert-message.error-message").show();
-            //                 $("html, body").animate({
-            //                     scrollTop: $(".alert-section").offset().top - 20
-            //                 }, 1000);
-            //             }
-            //             $(".loading").hide();
-            //             $(".blur").removeClass('active disable-form');
-
-            //         },
-            //         error: function(json, xhr, status)
-            //         {
-            //             console.log(json.responseJSON.error);
-            //             console.log(xhr);
-            //             console.log(status);
-            //             $(".loading").hide();
-            //             $(".blur").removeClass('active disable-form');
-            //             $(".alert-message-text.error-text").html(json.responseJSON.error + ' ' + '(' + status + ')');
-            //             $(".alert-message.error-message").show();
-            //             $("html, body").animate({
-            //                 scrollTop: $(".alert-section").offset().top - 20
-            //             }, 1000);
-            //         }
-            //     }
-            // )
-        })
-
-        $(document).on('click', ".delete-workstation", function (){
+        
+    $(".delete-projecttype").click(function () {
             $(".blur").addClass('active disable-form');
-            $(".loading-fixed").show();
-
-            var workstationID = $(this).attr('val');
-            console.log(workstationID);
-
-            data = {};
-
-            data.is_active = JSON.stringify(false);
-            
-            console.log(data);
-
-            var ajaxURL = '{.% url "main:workstation_edit" 0 %}';
-            ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + workstationID + '/';
-            var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
-
-            $.ajax (
+            $(".loading").show();
+            var projecttype_id = $(this).attr('val');
+            var thisNews = $(this);
+            $.ajax(
                 {
-                    method: 'PATCH',
-                    url: ajaxURL,
-                    headers: {
-                        'content-type': 'application/json',
-                        'X-CSRFToken': csrftoken
+                    method: 'POST',
+                    url: '{% url "master_data:ajax_delete_project_type" %}',
+                    data: {
+                      project_type_id: projecttype_id,
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                     },
-                    dataType: 'json',
-                    data: JSON.stringify(data),
-                    success: function (json, status) {
+                    success: function (json) {
                         $(".blur").removeClass('active disable-form');
                         $(".loading").hide();
-                        console.log(status);
-                        console.log(json);
-                        if (status == "success")
-                        {
+                        if (json.status == '200') {
+                            var table = $("table").DataTable();
+                            table.destroy();
+                            thisNews.parent().parent().remove();
+                            $("table").DataTable();
                             $(".alert-message.success-message").show();
-                            $(".alert-message.error-message").hide();
                             $("html, body").animate({
                                 scrollTop: $(".alert-section").offset().top - 20
                             }, 1000);
-                            setTimeout( function () {
-                                window.location.reload(false);
-                            }, 1500)
                         }
-                        else
-                        {
+                        else {
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
                             $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
                             $(".alert-message.error-message").show();
-                            $("html, body").animate({
-                                scrollTop: $(".alert-section").offset().top - 20
-                            }, 1000);
                         }
                     },
-                    error: function (json, xhr, status) {
-                        console.log(json.responseJSON.error);
-                        console.log(xhr);
+                    error: function (json, status, xhr) {
+                        console.log(json.error);
                         console.log(status);
+                        console.log(xhr);
                         $(".blur").removeClass('active disable-form');
                         $(".loading").hide();
-                        $(".alert-message-text.error-text").html(json.responseJSON.error + ' ' + '(' + status + ')');
-                        $(".alert-message.error-message").show();
                         $("html, body").animate({
                             scrollTop: $(".alert-section").offset().top - 20
                         }, 1000);
-                        
+                        $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                        $(".alert-message.error-message").show();
                     }
                 }
             )
