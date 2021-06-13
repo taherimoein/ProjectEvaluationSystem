@@ -38,7 +38,7 @@
             <div class="menu-item-subset">
 
                 <div class="menu-item-subset-single">
-                    <a href="{.% url 'master_data:deputy_list_page' %}">
+                    <a href="{% url 'master_data:personnel_details_page' request.user.username %}">
                         <div class="d-flex">
                             <div class="sub-item-part indent-part"></div>
                             <div class="sub-item-part item-option">
