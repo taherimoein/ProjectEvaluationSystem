@@ -36,9 +36,10 @@ urlpatterns = [
     path('ajax/personnel/search/', personnelviews.search_in_users, name = 'ajax_search_in_users'),
     path('personnel/confirmation-of-information-<str:username>/', personnelviews.personnel_confirmation_of_information_page, name = 'personnel_confirmation_of_information_page'),
     path('ajax/personnel/confirmation-of-information/', personnelviews.confirmation_of_information_personnel, name = 'ajax_confirmation_of_information_personnel'),
-    # Master Data "work station" --------------------------------------------------------------
-    path('projects/', projectviews.project_list_page, name='project_list_page'),
-    path('project/create/', projectviews.project_create_page, name='project_create_page'),
+    # Master Data "project" --------------------------------------------------------------
+    path('project/', projectviews.project_list_page, name = 'project_list_page'),
+    path('project/create/', projectviews.project_create_page, name = 'project_create_page'),
+    path('ajax/project/create/', projectviews.create_project, name = 'ajax_create_project'),
     # Master Data "organization" --------------------------------------------------------------
     path('organizations/', organizationviews.organization_list_page, name='organization_list_page'),
     path('organization/create/', organizationviews.organization_create_page, name='organization_create_page'),
@@ -46,32 +47,4 @@ urlpatterns = [
     # Master Data "projects types" --------------------------------------------------------------
     path('projectstype/', projectstypeviews.projectstype_list_page, name='projectstype_list_page'),
     path('projectstype/create/', projectstypeviews.projectstype_create_page, name='projectstype_create_page'),
-
-    # path('api/work-station/create/', workstationviews.WorkStationCreate.as_view(), name='api_work_station_create'),
-    # path('work-station/edit/<str:this_code>/', workstationviews.work_station_edit_page, name='work_station_edit_page'),
-    # path('api/work-station/edit/<int:pk>/', workstationviews.WorkStationRetrieveUpdate.as_view(),
-    #      name='api_work_station_edit'),
-    # Master Data "work station" --------------------------------------------------------------
-#     path('work-station/', workstationviews.work_station_list_page, name='work_station_list_page'),
-#     path('work-station/create/', workstationviews.work_station_create_page, name='work_station_create_page'),
-#     path('api/work-station/create/', workstationviews.WorkStationCreate.as_view(), name='api_work_station_create'),
-#     path('work-station/edit/<str:this_code>/', workstationviews.work_station_edit_page, name='work_station_edit_page'),
-#     path('api/work-station/edit/<int:pk>/', workstationviews.WorkStationRetrieveUpdate.as_view(),
-#          name='api_work_station_edit'),
-    # Master Data "Contract" --------------------------------------------------------------
-#     path('contract/', contractviews.contract_list_page, name = 'contract_list_page'),
-#     path('contract/create/', contractviews.contract_create_page, name = 'contract_create_page'),
-#     path('api/contract/create/', contractviews.ContractCreate.as_view(), name = 'api_contract_create'),
-#     path('contract/edit/<int:this_id>/', contractviews.contract_edit_page, name = 'contract_edit_page'),
-#     path('api/contract/edit/<int:pk>/', contractviews.ContractRetrieveUpdate.as_view(), name = 'api_contract_edit'),
-    # Master Data "management" --------------------------------------------------------------
-#     path('api/management/edit/<int:pk>/', deputyviews.ManagementRetrieveUpdate.as_view(), name='api_management_edit'),
-
-    # Master Data "job title" --------------------------------------------------------------
-
-#     path('api/job-title/edit/<int:pk>/', jobgroupviews.JobTitleRetrieveUpdate.as_view(), name='api_jobtitle_edit'),
-
-    # Master Data "section" --------------------------------------------------------------
-#     path('api/section/edit/<int:pk>/', workstationviews.SectionRetrieveUpdate.as_view(),
-#          name='api_work_station_edit'),
 ]
