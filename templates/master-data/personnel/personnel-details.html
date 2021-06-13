@@ -6,7 +6,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-<title>سامانه پروژه ها | مشاهده پروفایل </title>
+<title>سامانه پروژه ها | مشاهده پروفایل {{ThisUser.username}}</title>
 </head>
 
 <body>
@@ -29,9 +29,13 @@
                         <br>
                         <div class="row align-items-center">
                             <div class="col-md-3">
-                                <img class="w-100" src="{{BASE_URL}}/{{ThisUser.profile}}" alt="عکس پروفایل">
+                                <img class="w-100" src="{{ThisUser.profile.url}}" alt="عکس پروفایل">
                             </div>
                             <div class="col-md-9">
+                                <div class="mb-3">
+                                    <p class="title d-inline">نام کاربری: </p>
+                                    <p class="value d-inline">{{ThisUser.username}}</p>
+                                </div>
                                 <div class="mb-3">
                                     <p class="title d-inline">نام: </p>
                                     <p class="value d-inline">{{ThisUser.first_name}}</p>
@@ -41,15 +45,15 @@
                                     <p class="value d-inline">{{ThisUser.last_name}}</p>
                                 </div>
                                 <div class="mb-3">
-                                    <p class="title d-inline">نام پدر : </p>
+                                    <p class="title d-inline">نام پدر: </p>
                                     <p class="value d-inline">{{ThisUser.father_s_name}}</p>
                                 </div>
                                 <div class="mb-3">
-                                    <p class="title d-inline">جنسیت : </p>
-                                    <p class="value d-inline">{{ThisUser.gender}}</p>
+                                    <p class="title d-inline">جنسیت: </p>
+                                    <p class="value d-inline">{{ThisUser.gender|gender_to_fa}}</p>
                                 </div>
                                 <div class="mb-3">
-                                    <p class="title d-inline">کد ملی : </p>
+                                    <p class="title d-inline">کد ملی: </p>
                                     <p class="value d-inline">{{ThisUser.national_code}}</p>
                                 </div>
                                 <div class="mb-3">
@@ -58,7 +62,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <p class="title d-inline">تاریخ تولد: </p>
-                                    <p class="value d-inline"></p>
+                                    <p class="value d-inline">{{ThisUser.birthday|date_to_jalali}}</p>
                                 </div>
                             </div>
                         </div>
@@ -70,15 +74,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <p class="title d-inline">مدرک تحصیلی: </p>
-                                <p class="value d-inline">{{ThisUser.father_s_name}}</p>
+                                <p class="value d-inline">{{ThisUser.degree|degree_to_fa}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">رشته تحصیلی: </p>
-                                <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
+                                <p class="value d-inline">{{ThisUser.major}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">دانشگاه محل تحصیلی: </p>
-                                <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
+                                <p class="value d-inline">{{ThisUser.university_of_study}}</p>
                             </div>
                         </div>
                         <br>
@@ -88,20 +92,20 @@
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="title d-inline">دستکاه اجرایی: </p>
-                                <p class="value d-inline"></p>
+                                <p class="title d-inline">دستگاه اجرایی: </p>
+                                <p class="value d-inline">{{ThisUser.executive_device.title|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline"> سمت: </p>
-                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                                <p class="title d-inline">سمت: </p>
+                                <p class="value d-inline">{{ThisUser.role|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline"> سابقه کاری: </p>
-                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                                <p class="title d-inline">سابقه کاری: </p>
+                                <p class="value d-inline">{{ThisUser.work_experience|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline"> شماره پرسنلی: </p>
-                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                                <p class="title d-inline">شماره پرسنلی: </p>
+                                <p class="value d-inline">{{ThisUser.personnel_id|default_if_none:"ندارد"}}</p>
                             </div>
                         </div>
                         <br>
@@ -112,38 +116,27 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="title d-inline">آدرس: </p>
-                                <p class="value d-inline">{{ThisUser.address}}</p>
+                                <p class="value d-inline">{{ThisUser.address|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">کد پستی: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                                <p class="value d-inline">{{ThisUser.zip_code|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">شماره تماس ضروری: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                                <p class="value d-inline">{{ThisUser.necessary_contact_number|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">شماره تلفن همراه: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                                <p class="value d-inline">{{ThisUser.mobile|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">شماره محل کار: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                                <p class="value d-inline">{{ThisUser.workplace_number|default_if_none:"ندارد"}}</p>
                             </div>
                             <div class="col-md-6">
                                 <p class="title d-inline">پست الکترونیکی: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <h4>اطلاعات پروفایل</h4>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="title d-inline">نام کاربری: </p>
-                                <p class="value d-inline">{{ThisUser.number_of_children}}</p>
+                                <p class="value d-inline">{{ThisUser.email|default_if_none:"ندارد"}}</p>
                             </div>
                         </div>
                         <br>
@@ -154,22 +147,22 @@
                         <div class="form-row">
                             <div class="col-md-3">
                                 <p class="title d-inline">
-                                    <a href="#">عکس</a>
+                                    <a href="{{BASE_URL}}/{{ThisUser.picture}}">عکس</a>
                                 </p>
                             </div>
                             <div class="col-md-3">
                                 <p class="title d-inline">
-                                    <a href="#">کارت شناسایی پرسنلی</a>
+                                    <a href="{{BASE_URL}}/{{ThisUser.personal_id_card}}">کارت شناسایی پرسنلی</a>
                                 </p>
                             </div>
                             <div class="col-md-3">
                                 <p class="title d-inline">
-                                    <a href="#">معرفی نامه دستگاه</a>
+                                    <a href="{{BASE_URL}}/{{ThisUser.device_introduction_letter}}">معرفی نامه دستگاه</a>
                                 </p>
                             </div>
                             <div class="col-md-3">
                                 <p class="title d-inline">
-                                    <a href="#">نمونه امضا</a>
+                                    <a href="{{BASE_URL}}/{{ThisUser.sample_signature}}">نمونه امضا</a>
                                 </p>
                             </div>                   
                         </div>

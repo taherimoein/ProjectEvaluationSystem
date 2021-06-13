@@ -112,7 +112,7 @@ class User(AbstractBaseUser):
     issue_place = models.CharField(verbose_name = 'issue place', max_length = 50)
     # Educational Information
     DEGREE_TYPE = (
-        ('elementary ', 'ابتدایی'),
+        ('elementary', 'ابتدایی'),
         ('middle-school', 'سیکل'),
         ('diploma', 'دیپلم'),
         ('associate', 'فوق دیپلم'),
