@@ -1,27 +1,27 @@
-# from rest_framework.serializers import ModelSerializer, SerializerMethodField
-# from main.models import User
-# # from django.shortcuts import reverse
-# # from datetime import datetime
-# # import jdatetime
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
+from django.shortcuts import reverse
+from datetime import datetime
+from main.models import User
+import jdatetime
 
-# # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# # user base information 
-# class UserBaseSerializer(ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = [
-#             'id',
-#             'first_name',
-#             'last_name',
-#             'national_code'
-#         ]
-#         read_only_fields = [
-#             'id',
-#             'first_name',
-#             'last_name',
-#             'national_code'
-#         ]
+# user base information 
+class UserBaseSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'national_code'
+        ]
+        read_only_fields = [
+            'id',
+            'first_name',
+            'last_name',
+            'national_code'
+        ]
 
 
 # # personnel information 
