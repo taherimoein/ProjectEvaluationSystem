@@ -60,88 +60,96 @@
                         <form>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="inputProjectTitle">عنوان پروژه<code>*</code></label>
+                                    <label for="inputPtitle">عنوان پروژه<code>*</code></label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                     title="عنوان ایستگاه نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                    <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                    <input type="text" class="form-control" id="inputPtitle" placeholder="" maxlength="255">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputProjectDescription">توضیحات</label>
-                                    <textarea class="form-control" id="inputProjectDescription" rows="3"></textarea>
+                                    <label for="inputPdescription">توضیحات</label>
+                                    <textarea class="form-control" id="inputPdescription" rows="3"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="inputmoney">سال مالی</label>
+                                    <label for="inputPfiscal_year">سال مالی</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                         data-placement="left"
                                         title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                                    <input type="number" class="form-control" id="inputmoney">
+                                    <input type="number" class="form-control" id="inputPfiscal_year">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="inputGender">دستگاه اجرایی<code>*</code></label>
+                                    <label for="inputPexecutive_device">دستگاه اجرایی<code>*</code></label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                         data-placement="left" title="تعیین دستگاه اجرایی الزامی میباشد."></i>
-                                    <select id="inputJobGroup" class="form-control select2-component">
+                                    <select id="inputPexecutive_device" class="form-control select2-component">
                                         <option value="0">انتخاب...</option>
                                         <option value="1">دستگاه 1</option>
                                         <option value="2">دستگاه 2</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="inputFile">پیوست<code>*</code></label>
+                                    <label for="inputPattached_file">پیوست<code>*</code></label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                     title="فیلد پیوست اجباری است."></i>
-                                    <input type="file" class="form-control-file" id="inputFile">
+                                    <input type="file" class="form-control-file" id="inputPattached_file">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputProjectAddress">آدرس محل پروژه</label>
-                                    <textarea class="form-control" id="inputProjectAddress" rows="2"></textarea>
+                                    <label for="inputPproject_location_address">آدرس محل پروژه</label>
+                                    <textarea class="form-control" id="inputPproject_location_address" rows="2"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="inputMobileNumber">شماره همراه<code>*</code>(جهت کسب اطلاعات بیشتر)</label>
+                                    <label for="inputPtelephone">شماره همراه<code>*</code>(جهت کسب اطلاعات بیشتر)</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن شماره همراه الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
-                                    <input type="number" class="form-control" id="inputMobileNumber">
+                                    <input type="number" class="form-control" id="inputPtelephone">
                                 </div>
                             
                                 <div class="form-group col-md-4">
-                                    <label for="inputEndDate">تاریخ تقریبی بهره برداری<code>*</code></label>
+                                    <label for="inputPapproximate_date_preparation">تاریخ تقریبی بهره برداری<code>*</code></label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title='فیلد تاریخ تقریبی بهره برداری اجباری است و برای وارد کردن تاریخ از تقویم تعبیه شده درون فیلد استفاده نمائید..'></i>
-                                    <input type="text" class="form-control" id="inputEndDate" maxlength="10">
+                                    <input type="text" class="form-control" id="inputPapproximate_date_preparation" maxlength="10">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="inputmoney">میزان پیش پرداخت</label>
+                                    <label for="inputPamount_required_for_workshop">مبلغ مورد نیاز برای تجهیز کارگاه</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                         data-placement="left"
                                         title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                                    <input type="number" class="form-control" id="inputmoney">
+                                    <input type="number" class="form-control" id="inputPamount_required_for_workshop">
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="inputmoney">مبلغ اعتبار پیشنهادی اولیه</label>
+                                    <label for="inputPprepayment_amount">میزان پیش پرداخت</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                         data-placement="left"
                                         title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                                    <input type="number" class="form-control" id="inputmoney">
+                                    <input type="number" class="form-control" id="inputPprepayment_amount">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="inputPinitial_offered_credit_amount">مبلغ اعتبار پیشنهادی اولیه</label>
+                                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                        data-placement="left"
+                                        title="فیلد بایستی به صورت عددی وارد گردد."></i>
+                                    <input type="number" class="form-control" id="inputPinitial_offered_credit_amount">
                                 </div>
 
                                 <div class="form-group col-md-8">
-                                    <label for="inputmoney">میزان درصد احتمال افزایش مبلغ اعتبار پیشنهادی اولیه - به میزان مبلغ</label>
+                                    <label for="inputPamount_credit_increase">میزان درصد احتمال افزایش مبلغ اعتبار پیشنهادی اولیه - به میزان مبلغ</label>
                                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                         data-placement="left"
                                         title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                                    <input type="number" class="form-control" id="inputmoney">
+                                    <input type="number" class="form-control" id="inputPamount_credit_increase">
                                 </div>
                             </div>
                             <br>
@@ -151,148 +159,156 @@
                                 <div class="form-group col-12 p-3">
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label for="inputHistory">سابقه انجام مناقصه<code>*</code></label>
+                                            <label for="inputPbidding_history">سابقه انجام مناقصه<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="سابقه انجام مناقصه حتما بایستی معین گردد."></i>
-                                            <select id="inputHistory" class="form-control select2-static-component">
+                                            <select id="inputPbidding_history" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputUserStatus">زمین و امکانات اولیه<code>*</code></label>
+                                            <label for="inputPland_and_basic_facilities">زمین و امکانات اولیه<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="زمین و امکانات اولیه حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPland_and_basic_facilities" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputmoney">تعداد پروژه های مشابه <small>تکمیل نشده </small></label>
+                                            <label for="inputPsimilar_projects_y">تعداد پروژه های مشابه <small>تکمیل نشده </small></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left"
                                                 title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                                            <input type="number" class="form-control" id="inputmoney">
+                                            <input type="number" class="form-control" id="inputPsimilar_projects_y">
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputUserStatus">قابلیت تقسیم به پروژه کوچک<code>*</code></label>
+                                            <label for="inputPsimilar_projects_n">تعداد پروژه های مشابه <small>تکمیل شده </small></label>
+                                            <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                                                data-placement="left"
+                                                title="فیلد بایستی به صورت عددی وارد گردد."></i>
+                                            <input type="number" class="form-control" id="inputPsimilar_projects_n">
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label for="inputPability_to_shred">قابلیت تقسیم به پروژه کوچک<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت تقسیم به پروژه کوچک حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPability_to_shred" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputProjectTitle">نوع منابع مالی<code>*</code></label>
+                                            <label for="inputPtype_of_financial_resources">نوع منابع مالی<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نوع منابع مالی نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPtype_of_financial_resources" placeholder="" maxlength="255">
                                         </div>
 
                                         <div class="form-group col-md-4">
-                                            <label for="inputProjectTitle">نام درخواست کننده / سمت<code>*</code></label>
+                                            <label for="inputPapplicant_name_and_role">نام درخواست کننده / سمت<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نام درخواست کننده / سمت نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPapplicant_name_and_role" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <br><br>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputUserStatus">نیاز به همکاری بین دستگاه<code>*</code></label>
+                                            <label for="inputPrequires_collaboration_between_devices">نیاز به همکاری بین دستگاه<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز به همکاری بین دستگاه حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPrequires_collaboration_between_devices" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="inputProjectTitle">توضیحات<code>*</code></label>
+                                            <label for="inputPrequires_collaboration_between_devices_des">توضیحات<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="توضیحات نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPrequires_collaboration_between_devices_des" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <br><br>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputUserStatus">نیاز مجوز خاص<code>*</code></label>
+                                            <label for="inputPrequires_special_permissions">نیاز مجوز خاص<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز مجوز خاص حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPrequires_special_permissions" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="inputProjectTitle">توضیحات<code>*</code></label>
+                                            <label for="inputPrequires_special_permissions_des">توضیحات<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="توضیحات نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPrequires_special_permissions_des" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <br><br>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputUserStatus">نیاز امکانات خاص<code>*</code></label>
+                                            <label for="inputPrequires_special_facilities">نیاز امکانات خاص<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="نیاز امکانات خاص حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPrequires_special_facilities" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="inputProjectTitle">توضیحات<code>*</code></label>
+                                            <label for="inputPrequires_special_facilities_des">توضیحات<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="توضیحات نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPrequires_special_facilities_des" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <br><br>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputUserStatus">قابلیت اشتراکی بین چند دستگاه اجرایی<code>*</code></label>
+                                            <label for="inputPshared_capability_between_multiple_executive_devices">قابلیت اشتراکی بین چند دستگاه اجرایی<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت اشتراکی بین چند دستگاه اجرایی حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPshared_capability_between_multiple_executive_devices" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputProjectTitle">نام دستگاه<code>*</code></label>
+                                            <label for="inputshared_capability_between_multiple_executive_devices_list">نام دستگاه<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نام دستگاه نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputshared_capability_between_multiple_executive_devices_list" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                     <br><br>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputUserStatus">قابلیت اشتراکی بین چند شهرستان<code>*</code></label>
+                                            <label for="inputPshared_capability_between_several_cities">قابلیت اشتراکی بین چند شهرستان<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" title="قابلیت اشتراکی بین چند شهرستان حتما بایستی معین گردد."></i>
-                                            <select id="inputUserStatus" class="form-control select2-static-component">
+                                            <select id="inputPshared_capability_between_several_cities" class="form-control select2-static-component">
                                                 <option value="1" selected>دارد</option>
                                                 <option value="2">ندارد</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="inputProjectTitle">نام شهرستان<code>*</code></label>
+                                            <label for="inputPshared_capability_between_several_cities_list">نام شهرستان<code>*</code></label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نام شهرستان نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputProjectTitle" placeholder="" maxlength="255">
+                                            <input type="text" class="form-control" id="inputPshared_capability_between_several_cities_list" placeholder="" maxlength="255">
                                         </div>
                                     </div>
                                 </div>
@@ -315,7 +331,7 @@
 
     <script>
         //#region Initialization Page
-        kamaDatepicker('inputEndDate', {
+        kamaDatepicker('inputPapproximate_date_preparation', {
             nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
             , previousButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_prev.png"
             , forceFarsiDigits: true
@@ -324,6 +340,144 @@
             , highlightSelectedDay: true
             , sync: true
         });
+
+        
+        
+    $("#submit").click(function (e) {
+      e.preventDefault();
+        $(".blur").addClass('active disable-form');
+        $(".loading-fixed").show();
+        var formData = new FormData();
+        var title = $("#inputPtitle").val();
+        var description = $("#inputPdescription").val();
+        var fiscal_year = $("#inputPfiscal_year").val();
+        var executive_device = $("#inputPexecutive_device").val();
+        var project_location_address = $("#inputPproject_location_address").val();
+        var telephone = $("#inputPtelephone").val();
+        var approximate_date_preparation = $("#inputPapproximate_date_preparation").val();
+        var amount_required_for_workshop = $("#inputPamount_required_for_workshop").val();
+
+        var prepayment_amount = $("#inputprepayment_amount").val();
+        var initial_offered_credit_amount = $("#inputPinitial_offered_credit_amount").val();
+        var amount_credit_increase = $("#inputPamount_credit_increase").val();
+        var bidding_history = $("#inputPbidding_history").val();
+        var land_and_basic_facilities = $("#inputPland_and_basic_facilities").val();
+
+        var similar_projects;
+
+        var ability_to_shred = $("#inputPability_to_shred").val();
+        var type_of_financial_resources = $("#inputPtype_of_financial_resources").val();
+        var applicant_name_and_role = $("#inputPapplicant_name_and_role").val();
+        var requires_collaboration_between_devices;
+        var requires_special_permissions;
+        var requires_special_facilities;
+        var shared_capability_between_multiple_executive_devices;
+        var shared_capability_between_several_cities;
+
+
+        var file = $("#inputPattached_file")[0].files[0];
+
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('fiscal_year', fiscal_year);
+        formData.append('executive_device', executive_device);
+        formData.append('attached_file', attached_file);
+        formData.append('project_location_address', project_location_address);
+        formData.append('telephone', telephone);
+        formData.append('approximate_date_preparation', approximate_date_preparation);
+        formData.append('amount_required_for_workshop', amount_required_for_workshop);
+        formData.append('prepayment_amount', prepayment_amount);
+        formData.append('initial_offered_credit_amount', initial_offered_credit_amount);
+
+        formData.append('amount_credit_increase', amount_credit_increase);
+        formData.append('bidding_history', bidding_history);
+        formData.append('land_and_basic_facilities', land_and_basic_facilities);
+        formData.append('similar_projects', similar_projects);
+        formData.append('ability_to_shred', ability_to_shred);
+        formData.append('type_of_financial_resources', type_of_financial_resources);
+
+
+        formData.append('applicant_name_and_role', applicant_name_and_role);
+        formData.append('requires_collaboration_between_devices', requires_collaboration_between_devices);
+        formData.append('requires_special_permissions', requires_special_permissions);
+        formData.append('requires_special_facilities', requires_special_facilities);
+        formData.append('shared_capability_between_multiple_executive_devices', shared_capability_between_multiple_executive_devices);
+        formData.append('shared_capability_between_several_cities', shared_capability_between_several_cities);
+
+        var finalMembersJSON = {};
+        var membersList = [];
+        var recommenderRows = $(".row-list .added-member");
+        for (item of recommenderRows) {
+          var memberObj = {};
+          var memberID = $(item).find("select").val();
+          // if (memberID == 'null') {
+          //   memberObj['id'] = null;
+          // } else {
+            memberObj['id'] = parseInt(memberID);
+          // }
+          var memberPercentage = $(item).find(".recommender-percentage").val();
+          memberObj['percentage'] = parseInt(memberPercentage);
+
+          membersList.push(memberObj);
+        }
+        finalMembersJSON['list'] = membersList;
+
+        var finalMembersJSONListJSON = JSON.stringify(finalMembersJSON)
+
+        formData.append('members', finalMembersJSONListJSON);
+
+        var crf_token = $('input[name=csrfmiddlewaretoken]').val();
+
+        $.ajax(
+          {
+            method: 'POST',
+            url: "{.% url 'my_suggestion:ajax_user_create_suggestion' %}",
+            data: formData,
+            contentType: false,
+            processData: false,
+            headers: { "X-CSRFToken": crf_token },
+            success: function (json) {
+              if (json.status == '201') {
+                $(".alert-message-text.success-text").html('پیشنهاد مورد نظر با کد "' + json.code + '" با موفقیت ثبت گردید.');
+                $(".blur").removeClass('active');
+                $(".loading-fixed").hide();
+                $("html, body").animate({
+                  scrollTop: $(".alert-section").offset().top - 20
+                }, 1000);
+                $(".alert-message.success-message").show();
+                $(".alert-message.error-message").hide();
+                var redirectURL = '{% url "my_suggestion:my_suggestion_list_page" %}';
+                setTimeout(function () {
+                  location.replace(redirectURL);
+                }, 1500)
+              }
+              else {
+                $(".blur").removeClass('active disable-form');
+                $(".loading-fixed").hide();
+                $("html, body").animate({
+                  scrollTop: $(".alert-section.main").offset().top - 20
+                }, 1000);
+                $(".alert-message-text.error-text.error-fields-text").html(json.error + ' ' + '(' + json.status + ')');
+                $(".alert-message.error-message.error-fields").show();
+              }
+            },
+            error: function (json, status, xhr) {
+              console.log(json.error);
+              console.log(status);
+              console.log(xhr);
+              $(".blur").removeClass('active disable-form');
+              $(".loading-fixed").hide();
+              $("html, body").animate({
+                  scrollTop: $(".alert-section.main").offset().top - 20
+              }, 1000);
+              $(".alert-message-text.error-text.error-fields-text").html(xhr + ' ' + '(' + status + ')');
+              $(".alert-message.error-message.error-fields").show();
+            }
+          }
+        )
+    })
+
+        
     </script>
 
 </body>
