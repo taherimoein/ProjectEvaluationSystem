@@ -70,7 +70,7 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left" 
                                                 title="فیلد نام الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputFName" maxlength="50">
+                                                <input type="text" class="form-control" id="inputFName" maxlength="50" value="{{ThisUser.first_name}}">
                                             </div>
                                             
                                             <div class="form-group col-md-4">
@@ -78,7 +78,7 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left"
                                                 title="فیلد نام خانوادگی الزامی است و حداکثر میتواند تا 150 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputLName" maxlength="150">
+                                                <input type="text" class="form-control" id="inputLName" maxlength="150" value="{{ThisUser.last_name}}">
                                             </div>
                                             
                                             <div class="form-group col-md-4">
@@ -86,7 +86,7 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left"
                                                 title="فیلد نام پدر الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputFatherName" maxlength="50">
+                                                <input type="text" class="form-control" id="inputFatherName" maxlength="50" value="{{ThisUser.father_s_name}}">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputGender">جنسیت<code>*</code></label>
@@ -101,14 +101,14 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputNationalCode">کد ملی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد ملی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
-                                                <input type="number" class="form-control" id="inputNationalCode">
+                                                <input type="number" class="form-control" id="inputNationalCode" value="{{ThisUser.national_code}}">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputBirthCertificateNo">شماره شناسنامه<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left"
                                                 title="شماره شناسنامه الزامی است و بایستی به صورت عددی وارد گشته و حداکثر تا 10 کاراکتر باشد."></i>
-                                                <input type="number" class="form-control" id="inputBirthCertificateNo">
+                                                <input type="number" class="form-control" id="inputBirthCertificateNo" value="{{ThisUser.birth_certificate_id}}">
                                             </div>
 
                                             <div class="form-group col-md-4">
@@ -116,21 +116,8 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد تاریخ تولد اجباری است و برای وارد کردن تاریخ از تقویم تعبیه شده درون فیلد استفاده نمائید."></i>
-                                                <input type="text" class="form-control" id="inputBirthDate">
+                                                <input type="text" class="form-control" id="inputBirthDate" value="{{ThisUser.birthday|date_to_jalali}}">
                                             </div>
-                                            
-                                        </div>
-                                        <br>
-                                        <div class="form-row">
-                                            
-                                            <!-- <div class="form-group col-md-4">
-                                                <label for="inputPassword">رمز عبور<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
-                                                title="فیلد رمز عبور الزامی است."></i>
-                                                <input type="password" class="form-control" id="inputPassword">
-                                            </div> -->
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +148,7 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد رشته تحصیلی الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputMajor" maxlength="50">
+                                                <input type="text" class="form-control" id="inputMajor" maxlength="50" value="{{ThisUser.major}}">
                                             </div>
 
                                             <div class="form-group col-md-4">
@@ -169,11 +156,8 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد دانشگاه محل تحصیل الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputMajor" maxlength="50">
+                                                <input type="text" class="form-control" id="inputMajor" maxlength="50" value="{{ThisUser.university_of_study}}">
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -195,26 +179,21 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد سمت الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputRole" maxlength="50">
+                                                <input type="text" class="form-control" id="inputRole" maxlength="50" value="{{ThisUser.role|default_if_none:''}}">
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="inputwork_experience">سابقه کاری<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد سابقه کار الزامی می باشد."></i>
-                                                <input type="text" class="form-control" id="inputwork_experience">
+                                                <input type="text" class="form-control" id="inputwork_experience" value="{{ThisUser.work_experience|default_if_none:''}}">
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="inputpersonnel_id">شماره پرسنلی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره پرسنلی الزامی می باشد."></i>
-                                                <input type="text" class="form-control" id="inputpersonnel_id">
+                                                <input type="text" class="form-control" id="inputpersonnel_id" value="{{ThisUser.personnel_id|default_if_none:''}}">
                                             </div>
-
-                                            
-                                            
-                                            
                                         </div>
-                                        
                                     </div>
                                 </div>
                                 <br>
@@ -227,36 +206,47 @@
                                                 <label for="inputAddress">آدرس<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left" title="فیلد آدرس اجباری میباشد."></i>
-                                                <textarea name="address" class="form-control" id="inputAddress" rows="4"></textarea>
+                                                <textarea name="address" class="form-control" id="inputAddress" rows="4">{{ThisUser.address}}</textarea>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-row">
-
                                             <div class="form-group col-md-4">
                                                 <label for="inputzip_code">کد پستی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="کد پستی الزامی است و بایستی به صورت 10 کاراکتر عددی وارد گشته و معتبر باشد."></i>
-                                                <input type="number" class="form-control" id="inputzip_code">
+                                                <input type="number" class="form-control" id="inputzip_code" value="{{ThisUser.zip_code}}">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputnecessary_contact_number">شماره تماس ضروری</label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تماس ضروری بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                <input type="number" class="form-control" id="inputnecessary_contact_number" placeholder="0343000000">
+                                                {% if ThisUser.necessary_contact_number|length == 0 %}
+                                                    <input type="number" class="form-control" id="inputnecessary_contact_number" placeholder="0343000000">
+                                                {% else %}
+                                                    <input type="number" class="form-control" id="inputnecessary_contact_number" value="{{ThisUser.necessary_contact_number}}">
+                                                {% endif %}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputmobile">شماره تلفن همراه<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن شماره تلفن همراه الزامی بوده و بایستی با 09 شروع شده و در قالب 11 کاراکتر عددی باشد."></i>
-                                                <input type="number" class="form-control" id="inputmobile">
+                                                <input type="number" class="form-control" id="inputmobile" value="{{ThisUser.mobile}}">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputworkplace_number">شماره محل کار</label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره محل کار بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                <input type="number" class="form-control" id="inputworkplace_number" placeholder="0343000000">
+                                                {% if ThisUser.workplace_number|length == 0 %}
+                                                    <input type="number" class="form-control" id="inputworkplace_number" placeholder="0343000000">
+                                                {% else %}
+                                                    <input type="number" class="form-control" id="inputnecessary_contact_number" value="{{ThisUser.workplace_number}}">
+                                                {% endif %}
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputEmail">پست الکترونیکی</label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل به وارد نمودن این فیلد بایستی یک آدرس پست الکترونیکی معتبر را وارد نمائید."></i>
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="youremail@example.com">
+                                                {% if ThisUser.email|length == 0 %}
+                                                    <input type="email" class="form-control" id="inputEmail" placeholder="youremail@example.com">
+                                                {% else %}
+                                                    <input type="email" class="form-control" id="inputEmail" value="{{ThisUser.email}}">
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <br>
@@ -271,11 +261,9 @@
                                         <div class="form-group col-md-12">
                                             <label>عکس پروفایل</label>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
-                                            <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                            <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                             <div class="image-input-container position-relative">
                                                 <label for="inputFile">
-                                                    <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-profile.jpg' %}" alt="عکس پروفایل">
+                                                    <img id="profile" class="cursor-pointer w-100 border-img" src="{{ThisUser.profile.url}}" alt="عکس پروفایل">
                                                     <input type="file" class="form-control-file" id="inputFile" onchange="readURL(this);" hidden>
                                                     <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                                 </label>
@@ -290,21 +278,10 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                 data-placement="left"
                                                 title="فیلد نام کاربری الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputUsername" maxlength="50">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputPassword">رمز عبور جدید<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن رمز عبور الزامی بوده و بایستی به فرمت بیان شده تکمیل گردد."></i>
-                                                <input type="password" class="form-control" id="inputPassword" placeholder="رمز عبور" autocomplete="off">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="inputRepeatPassword">تکرار رمز عبور جدید<code>*</code></label>
-                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="وارد کردن تکرار رمز عبور الزامی بوده و بایستی با رمز عبور وارد شده تطابق داشته باشد."></i>
-                                                <input type="password" class="form-control" id="inputRepeatPassword" placeholder="تکرار رمز عبور" autocomplete="off">
+                                                <input type="text" class="form-control" id="inputUsername" maxlength="50" value="{{ThisUser.username}}">
                                             </div>
                                           </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                 <br>
@@ -315,10 +292,10 @@
                                     <div class="form-group col-md-3">
                                         <label>عکس</label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان عکس پرسنلی انتخاب نمائید."></i>
-                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
-                                        <div class="image-input-container position-relative">
+                                        <div class="image-input-container position-relative text-center">
                                             <label for="inputpicture">
+                                                <a href="{{BASE_URL}}/{{ThisUser.picture}}" class="btn btn-primary"> دانلود "عکس" بارگذاری شده</a>
+                                                <br><br>
                                                 <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="عکس">
                                                 <input type="file" class="form-control-file" id="inputpicture" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
@@ -329,10 +306,10 @@
                                     <div class="form-group col-md-3">
                                         <label>کارت شناسایی پرسنلی</label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان کارت شناسایی پرسنلی انتخاب نمائید."></i>
-                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
-                                        <div class="image-input-container position-relative">
+                                        <div class="image-input-container position-relative text-center">
                                             <label for="inputpersonal_id_card">
+                                                <a href="{{BASE_URL}}/{{ThisUser.personal_id_card}}" class="btn btn-primary"> دانلود "کارت شناسایی پرسنلی" بارگذاری شده</a>
+                                                <br><br>
                                                 <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="کارت شناسایی پرسنلی">
                                                 <input type="file" class="form-control-file" id="inputpersonal_id_card" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
@@ -343,10 +320,10 @@
                                     <div class="form-group col-md-3">
                                         <label>معرفی نامه دستگاه</label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
-                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
-                                        <div class="image-input-container position-relative">
+                                        <div class="image-input-container position-relative text-center">
                                             <label for="inputdevice_introduction_letter">
+                                                <a href="{{BASE_URL}}/{{ThisUser.device_introduction_letter}}" class="btn btn-primary"> دانلود "معرفی نامه دستگاه" بارگذاری شده</a>
+                                                <br><br>
                                                 <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="معرفی نامه دستکاه">
                                                 <input type="file" class="form-control-file" id="inputdevice_introduction_letter" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
@@ -357,24 +334,20 @@
                                     <div class="form-group col-md-3">
                                         <label>نمونه امضا</label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
-                                        <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب نمونه امضا الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
-                                        <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
-                                        <div class="image-input-container position-relative">
+                                        <div class="image-input-container position-relative text-center">
                                             <label for="inputsample_signature">
+                                                <a href="{{BASE_URL}}/{{ThisUser.sample_signature}}" class="btn btn-primary"> دانلود "نمونه امضا" بارگذاری شده</a>
+                                                <br><br>
                                                 <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="نمونه امضا">
                                                 <input type="file" class="form-control-file" id="inputsample_signature" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                             </label>
                                         </div>
                                     </div>
-                                    
                                 </div>
-                                
-                               
                                 <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-12 text-left">
-                                        
                                         <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
                                         <br><br>
                                     </div>
