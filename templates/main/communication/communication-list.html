@@ -1,4 +1,5 @@
 {% load i18n static %}
+{% load filters %}
 {% csrf_token %}
 
 {% block head %}
@@ -68,32 +69,34 @@
                                             عنوان
                                         </th>
                                         <th>
-                                            توضیحات
+                                            فرستنده
                                         </th>
                                         <th>
-                                            از طرف
+                                            گیرنده
                                         </th>
                                         <th>
-                                            ارجاع به
+                                            وضعیت
+                                        </th>
+                                        <th>
+                                            تاریخ
+                                        </th>
+                                        <th>
+                                            مشاهده
                                         </th>
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            عنوان
-                                        </td>
-                                        <td>
-                                            توضیحات
-                                        </td>
-                                        <td>
-                                            از طرف
-                                        </td>
-                                        <td>
-                                            ارجاع به
-                                        </td>
-                                    </tr>
+                                    {% for item in OfficialLetterList%}
+                                        <tr>
+                                            <td>{{item.title}}</td>
+                                            <td>{{item.sender}}</td>
+                                            <td>{{item.receiver}}</td>
+                                            <td>{{item.status|letter_status_to_fa}}</td>
+                                            <td>{{item.create_date|datetime_to_jalali}}</td>
+                                            <td class="text-center"><a href="{% url 'main:official_letter_details_page' item.id %}"><i class="fas fa-eye"></i></a></td>
+                                        </tr>
+                                    {% endfor%}
                                 </tbody>
                             </table>
                         </div>

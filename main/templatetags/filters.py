@@ -113,3 +113,13 @@ def degree_to_fa(value):
     except:
         return 'ندارد'
 register.filter('degree_to_fa', degree_to_fa)
+
+def letter_status_to_fa(value):
+    status = {
+        0: 'خوانده نشده',
+        1: 'خوانده شده',
+        2: 'پاسخ داده شده',
+        3: 'دیدن پاسخ'
+    }
+    return status[value]
+register.filter('letter_status_to_fa', letter_status_to_fa)

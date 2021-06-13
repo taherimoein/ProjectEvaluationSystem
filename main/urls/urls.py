@@ -17,13 +17,12 @@ urlpatterns = [
     path('forget-password/', base_views.forget_password_page, name = 'forget_password_page'),
     path('ajax/forget-password/send-validation-code/', base_views.forget_password_send_validation_code, name = 'ajax_forget_password_send_validation_code'),
     path('ajax/forget-password/change-password/', base_views.forget_password_change_password, name = 'ajax_forget_password_change_password'),
-
-
-    #"organization" --------------------------------------------------------------
-    path('communications/', communicationviews.communication_list_page, name='communication_list_page'),
-    path('communication/detail/', communicationviews.communication_detail_page, name='communication_detail_page'),
-    path('communication/create/', communicationviews.communication_create_page, name='communication_create_page'),
-
-    #"evaluation" --------------------------------------------------------------
-    path('evaluation/', evaluationviews.evaluation_page, name='evaluation_page'),
+    # organization --------------------------------------------------------------
+    path('official-letter/', communicationviews.communication_list_page, name = 'communication_list_page'),
+    path('official-letter/details-<int:pk>/', communicationviews.official_letter_details_page, name = 'official_letter_details_page'),
+    path('official-letter/create/', communicationviews.communication_create_page, name = 'communication_create_page'),
+    path('ajax/official-letter/create/', communicationviews.create_official_letter, name = 'ajax_create_official_letter'),
+    path('ajax/official-letter/answer/', communicationviews.answer_official_letter, name = 'ajax_answer_official_letter'),
+    # evaluation --------------------------------------------------------------
+    path('evaluation/', evaluationviews.evaluation_page, name = 'evaluation_page'),
 ]

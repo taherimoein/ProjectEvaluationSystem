@@ -91,7 +91,7 @@ def create_project(request):
                 this_project.shared_capability_between_several_cities = this_shared_capability_between_several_cities
             this_project.save()
 
-            response_data['status'] = '200'
+            response_data['status'] = '201'
             return JsonResponse(response_data)
         except Exception as e:
             response_data['status'] = '500'
