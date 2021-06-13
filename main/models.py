@@ -303,12 +303,37 @@ class Official_Letter(models.Model):
     create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
     update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
 
-    def __str__(self):
-       return "{}".format(self.title)
-
     class Meta:
         ordering = ('id', 'create_date')   
         verbose_name = "مکاتبه"
         verbose_name_plural = "مکاتبات"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+
+# Project Type (انواع پروژه ها) Model
+class ProjectType(models.Model):
+    title = models.TextField(verbose_name = 'شرح')
+    score = models.CharField(verbose_name = 'امتیاز', max_length = 4)
+    history = JSONField(verbose_name = 'تاریخچه', default = default_history_field())
+    create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
+    update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
+
+    def __str__(self):
+       return "{}".format(self.title)
+
+    def add_history(self, status, user, other_fileds = None, add_datetime = None,):
+        if add_datetime is None:
+            add_datetime = timezone.localtime(datetime.datetime.now())
+        user = int(user)
+        if status == 'create':
+            self.history = {'list': [{'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M")}]}
+        elif status == 'edit':
+            self.history['list'].append({'status': status, 'user': user, 'datetime': add_datetime.strftime("%Y-%m-%d %H:%M"), 'fields' : other_fileds})
+        self.save()
+
+    class Meta:
+        ordering = ('id', 'create_date')   
+        verbose_name = "نوع پروژه"
+        verbose_name_plural = "انواع پروژه ها"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
