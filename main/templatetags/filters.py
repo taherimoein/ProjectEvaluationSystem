@@ -78,17 +78,6 @@ def access_group_to_fa(value):
         return 'ندارد'
 register.filter('access_group_to_fa', access_group_to_fa)
 
-def company_type_to_fa(value):
-    try:
-        company_type = {
-            'employer': 'کارفرما',
-            'contractor': 'پیمانکار'
-        }
-        return company_type[value]
-    except:
-        return 'ندارد'
-register.filter('company_type_to_fa', company_type_to_fa)
-
 def active_to_fa(value):
     active = {
         True: 'فعال',
@@ -97,13 +86,30 @@ def active_to_fa(value):
     return active[value]
 register.filter('active_to_fa', active_to_fa)
 
+def gender_to_fa(value):
+    try:
+        gender = {
+            'm': 'مرد',
+            'f': 'زن'
+        }
+        return gender[value]
+    except:
+        return 'ندارد'
+register.filter('gender_to_fa', gender_to_fa)
 
-def work_station_type_to_fa(value):
-    workstationtype = {
-        'production': 'تولید',
-        'installation': 'تاسیسات',
-        'official': 'اداری',
-        'general': 'عمومی'
-    }
-    return workstationtype[value]
-register.filter('work_station_type_to_fa', work_station_type_to_fa)
+def degree_to_fa(value):
+    try:
+        degree = {
+            'elementary': 'ابتدایی',
+            'middle-school': 'سیکل',
+            'diploma': 'دیپلم',
+            'associate': 'فوق دیپلم',
+            'bachelor': 'لیسانس',
+            'master': 'فوق لیسانس',
+            'phd': 'دکترا',
+            'post-doctoral': 'فوق دکترا'
+        }
+        return degree[value]
+    except:
+        return 'ندارد'
+register.filter('degree_to_fa', degree_to_fa)
