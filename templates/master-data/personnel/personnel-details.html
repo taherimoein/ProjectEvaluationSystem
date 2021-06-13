@@ -6,7 +6,7 @@
     {% include "parents/head.html" %}
 {% endblock %}
 
-<title>سامانه نظام پیشنهادها | جزئیات پرسنل</title>
+<title>سامانه پروژه ها | مشاهده پروفایل </title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <div class="col-9">
                 <div class="row text-right">
                     <div class="col-12">
-                        <h2 class="title_page">جزئیات پرسنل</h2>
+                        <h2 class="title_page">اطلاعات پرسنل</h2>
                         <br>
                         <div class="row align-items-center">
                             <div class="col-md-3">
@@ -33,116 +33,149 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="mb-3">
-                                    <p class="title d-inline">کد ملی: </p>
-                                    <p class="value d-inline">{{ThisUser.national_code}}</p>
-                                </div>
-                                <div class="mb-3">
                                     <p class="title d-inline">نام: </p>
                                     <p class="value d-inline">{{ThisUser.first_name}}</p>
                                 </div>
-                                <div>
+                                <div class="mb-3">
                                     <p class="title d-inline">نام خانوادگی: </p>
                                     <p class="value d-inline">{{ThisUser.last_name}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">نام پدر : </p>
+                                    <p class="value d-inline">{{ThisUser.father_s_name}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">جنسیت : </p>
+                                    <p class="value d-inline">{{ThisUser.gender}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">کد ملی : </p>
+                                    <p class="value d-inline">{{ThisUser.national_code}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">شماره شناسنامه: </p>
+                                    <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="title d-inline">تاریخ تولد: </p>
+                                    <p class="value d-inline"></p>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <hr>
                         <br>
+                        <h4>اطلاعات تحصیلی</h4>
+                        <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="title d-inline">نام پدر: </p>
+                                <p class="title d-inline">مدرک تحصیلی: </p>
                                 <p class="value d-inline">{{ThisUser.father_s_name}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline">شماره شناسنامه: </p>
+                                <p class="title d-inline">رشته تحصیلی: </p>
+                                <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">دانشگاه محل تحصیلی: </p>
                                 <p class="value d-inline">{{ThisUser.birth_certificate_id}}</p>
                             </div>
                         </div>
                         <br>
+                        <hr>
+                        <br>
+                        <h4>اطلاعات کاری</h4>
+                        <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="title d-inline">تاریخ تولد: </p>
-                                <p class="value d-inline">{{ThisUser.birthday|date_to_jalali}}</p>
+                                <p class="title d-inline">دستکاه اجرایی: </p>
+                                <p class="value d-inline"></p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline">محل تولد: </p>
+                                <p class="title d-inline"> سمت: </p>
+                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline"> سابقه کاری: </p>
+                                <p class="value d-inline">{{ThisUser.birthplace}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline"> شماره پرسنلی: </p>
                                 <p class="value d-inline">{{ThisUser.birthplace}}</p>
                             </div>
                         </div>
                         <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="title d-inline">جنسیت: </p>
-                                <p class="value d-inline">{{ThisUser.gender}}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="title d-inline">وضعیت تأهل: </p>
-                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
-                            </div>
-                        </div>
+                        <hr>
                         <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="title d-inline">تعداد فرزندان: </p>
-                                <p class="value d-inline">{{ThisUser.number_of_children}}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="title d-inline">مقطع تحصیلی: </p>
-                                <p class="value d-inline">{{ThisUser.degree}}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <p class="title d-inline">شماره ثابت: </p>
-                                <p class="value d-inline">{{ThisUser.telephone}}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p class="title d-inline">شماره همراه: </p>
-                                <p class="value d-inline">{{ThisUser.mobile}}</p>
-                            </div>
-                        </div>
+                        <h4>اطلاعات دسترسی</h4>
                         <br>
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="title d-inline">آدرس: </p>
                                 <p class="value d-inline">{{ThisUser.address}}</p>
                             </div>
-                        </div>
-                        <br>
-                        <div class="row">
                             <div class="col-md-6">
-                                <p class="title d-inline">شماره بیمه: </p>
-                                <p class="value d-inline">{{ThisUser.insurance_number}}</p>
+                                <p class="title d-inline">کد پستی: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline">سمت سازمانی: </p>
-                                <p class="value d-inline">{{ThisUser.organization_role}}</p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="title d-inline">عنوان شغلی: </p>
-                                <p class="value d-inline" id="job-title"></p>
+                                <p class="title d-inline">شماره تماس ضروری: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p class="title d-inline">مدیریت: </p>
-                                <p class="value d-inline" id="management">{{ThisUser.management}}</p>
+                                <p class="title d-inline">شماره تلفن همراه: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">شماره محل کار: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="title d-inline">پست الکترونیکی: </p>
+                                <p class="value d-inline">{{ThisUser.marital_status}}</p>
                             </div>
                         </div>
                         <br>
+                        <hr>
+                        <br>
+                        <h4>اطلاعات پروفایل</h4>
+                        <br>
                         <div class="row">
-                            <div class="col-md-12">
-                                <p class="title">قسمت های کاری: </p>
-                                <p class="value">
-                                    {% for section in ThisUser.sections %}
-                                        {{section.title}}
-                                    {% endfor %}
+                            <div class="col-md-6">
+                                <p class="title d-inline">نام کاربری: </p>
+                                <p class="value d-inline">{{ThisUser.number_of_children}}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <h4>بارگذاری ها</h4>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <p class="title d-inline">
+                                    <a href="#">عکس</a>
                                 </p>
                             </div>
+                            <div class="col-md-3">
+                                <p class="title d-inline">
+                                    <a href="#">کارت شناسایی پرسنلی</a>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="title d-inline">
+                                    <a href="#">معرفی نامه دستگاه</a>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p class="title d-inline">
+                                    <a href="#">نمونه امضا</a>
+                                </p>
+                            </div>                   
                         </div>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
