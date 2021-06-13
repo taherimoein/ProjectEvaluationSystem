@@ -1,26 +1,36 @@
 {% load i18n static %}
+{% load filters %}
 {% csrf_token %}
 
 {% block head %}
     {% include "parents/head.html" %}
 {% endblock %}
 
-    <title>سامانه پروژه ها | ویرایش پروفایل</title>
+<title>سامانه نظام پیشنهادها | ویرایش پروفایل</title>
 </head>
+
 <body>
+
+    <div class="loading-fixed d-hide">
+        <img src="{% static "images/loading.svg" %}" alt="در حال بارگذاری...">
+    </div>
+
+    {% block header %}
+        {% include "parents/header.html" %}
+    {% endblock %}
+
     <div class="container-fluid">
-        <div class="row justify-content-center">
-                        
+        <div class="row">
+
+            {% block sidebar %}
+            {% include "parents/sidebar.html" %}
+            {% endblock %}
+
             <div class="col-9">
                 <div class="row text-right">
-                    <div class="col-12 loginpage">
+                    <div class="col-12">
                         <div class="blur">
-                            <div class="login_header text-center">
-                                <h2>سامانه بررسی پروژه ها</h2>
-                                <h4>فرمانداری استان کرمان</h4>
-                                <br><br>
-                                <h5>ثبت نام در سامانه</h5>
-                            </div>
+                            <h2 class="title_page">ویرایش پروفایل</h2>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="alert-section">
@@ -38,7 +48,7 @@
                                             <div class="alert-message-content success-content">
                                                 <i class="fas fa-check"></i>
                                                 <div class="alert-message-text success-text">
-                                                    پرسنل جدید با موفقیت ثبت گردید.
+                                                    پرسنل با موفقیت ویرایش گردید.
                                                 </div>
                                             </div>
                                             <div class="close-message close-success-message">
@@ -58,7 +68,7 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputFName">نام<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                                                data-placement="left"
+                                                data-placement="left" 
                                                 title="فیلد نام الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
                                                 <input type="text" class="form-control" id="inputFName" maxlength="50">
                                             </div>
@@ -331,7 +341,7 @@
                                     </div>
 
                                     <div class="form-group col-md-3">
-                                        <label>معرفی نامه دستکاه</label>
+                                        <label>معرفی نامه دستگاه</label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="در صورت تمایل میتوانید یک عکس به عنوان پروفایل پرسنل انتخاب نمائید."></i>
                                         <!-- <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="انتخاب عکس پروفایل الزامی است و فایل انتخابی حتما بایستی فرمت عکس داشته باشد."></i> -->
                                         <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
@@ -380,20 +390,23 @@
             </div>
         </div>
     </div>
-
-
     
     {% block footer %}
         {% include "parents/footer.html" %}
     {% endblock %}
-
 
     <script src="{% static "js/jalali-to-georgian.js" %}" type="text/javascript"></script>
     <script src="{% static "js/control-fields.js" %}" type="text/javascript"></script>
     <script src="{% static "js/base-information/personnel.js" %}" type="text/javascript"></script>
 
     <script>
+        var a = '{{ThisUser.job_title|safe}}';
+        console.log(a);
+        var b = '{{ThisUser.management|safe}}';
+        console.log(b);
 
+        console.log('{{ThisUser.birthday}}');
+        
         //#region Initialization Page
         kamaDatepicker('inputBirthDate', {
             nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
@@ -414,18 +427,18 @@
                 delay: 250,
                 data: function (params) {
                     return {
-                    search: params.term, // search term
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        search: params.term, // search term
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                     };
                 },
                 processResults: function (data, params) {
                     params.page = params.page || 1;
-                    
+
                     return {
-                    results: data.data,
-                    pagination: {
-                        more: (params.page * 30) < data.total_count
-                    }
+                        results: data.data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
                     };
                 },
                 cache: true
@@ -436,17 +449,17 @@
             templateSelection: formatRepoSelection
         });
 
-        function formatRepo (repo) {
+        function formatRepo(repo) {
             if (repo.loading) {
-            return repo.text;
+                return repo.text;
             }
 
             var $container = $(
-            "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository clearfix'>" +
                 "<div class='select2-result-repository__meta'>" +
                 "<div class='select2-result-repository__title'></div>" +
                 "</div>" +
-            "</div>"
+                "</div>"
             );
 
             $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
@@ -454,18 +467,13 @@
             return $container;
         }
 
-        function formatRepoSelection (repo) {
-            if (repo.id && repo.title && repo.national_code)
-            {
-            return repo.title + ' (' + repo.national_code + ')';
+        function formatRepoSelection(repo) {
+            if (repo.id && repo.title && repo.national_code) {
+                return repo.title + ' (' + repo.national_code + ')';
             }
             return repo.text;
         }
         //#endregion
-
-        // $("#inputFile").on('change', function () {
-        //     $("#inputFileURL").val($(this).val().replace(/^C:\\fakepath\\/, "")); 
-        // })
 
         //#region Front Functions of Page
         var managementsStr = '{{Managements|safe}}';
@@ -538,16 +546,18 @@
         //         $("#inputSection").prop('disabled', true);
         //     }
         // })
-        
+
         // var managementsStr = '{{Managements|safe}}';
         // var managementsObj = JSON.parse(managementsStr);
+        // console.log(managementsObj);
 
         // var jobTitlesStr = '{{JobTitles|safe}}';
         // var jobTitlesObj = JSON.parse(jobTitlesStr);
         // console.log(jobTitlesObj);
-
-        // var sectionsStr = '{{Sections|safe}}';
-        // var sectionsObj = JSON.parse(sectionsStr);
+        
+        var sectionsStr = '{{Sections|safe}}';
+        var sectionsObj = JSON.parse(sectionsStr);
+        console.log(sectionsObj);
 
         // $("#inputJobGroup").on('select2:select', function (e){
         //     var data = e.params.data;
@@ -605,35 +615,34 @@
         //     }
         // });
 
-        // $("#inputWorkstation").on('select2:select', function (e){
-        //     var data = e.params.data;
+        $("#inputWorkstation").on('select2:select', function (e){
+            var data = e.params.data;
 
-        //     var workstationID = parseInt(data.id);
-        //     for (var item of sectionsObj)
-        //     {
-        //         if (item['father_id'] == workstationID)
-        //         {
-        //             var newOption = new Option(item.title, item.id, false, false);
-        //             $('#inputSection').append(newOption);
-        //         }
-        //     }
-        // })
+            var workstationID = parseInt(data.id);
+            for (var item of sectionsObj)
+            {
+                if (item['father_id'] == workstationID)
+                {
+                    var newOption = new Option(item.title, item.id, false, false);
+                    $('#inputSection').append(newOption);
+                }
+            }
+        })
 
-        // $("#inputWorkstation").on("select2:unselect", function (e) {
-        //     var data = e.params.data;
+        $("#inputWorkstation").on("select2:unselect", function (e) {
+            var data = e.params.data;
 
-        //     var workstationID = parseInt(data.id);
-        //     for (var item of sectionsObj)
-        //     {
-        //         if (item['father_id'] == workstationID)
-        //         {
-        //             $("#inputSection option[value=" + item.id + "]").remove();
-        //         }
-        //     }
-        // });
+            var workstationID = parseInt(data.id);
+            for (var item of sectionsObj)
+            {
+                if (item['father_id'] == workstationID)
+                {
+                    $("#inputSection option[value=" + item.id + "]").remove();
+                }
+            }
+        });
         //#endregion
-
-        //#region Final Action
+        
         $("#submit").click(function (e) {
             e.preventDefault();
             var checks = checkPersonnelFnc();
@@ -641,14 +650,13 @@
                 $(".blur").addClass('active disable-form');
                 $(".loading-fixed").show();
                 formData = new FormData();
+                var id = '{{ThisPerson.id}}';
                 var image = $("#inputFile")[0].files[0];
                 var firstName = $("#inputFName").val();
                 var lastName = $("#inputLName").val();
                 var fatherName = $("#inputFatherName").val();
-                console.log(fatherName);
                 var nationalCode = $("#inputNationalCode").val();
-                // var password = $("#inputPassword").val();
-                // console.log(password);
+                var password = $("#inputPassword").val();
                 var birthCertificateNo = $("#inputBirthCertificateNo").val();
                 var gender = $("#inputGender").val();
                 var maritalStatus = $("#inputMaritalStatus").val();
@@ -664,7 +672,7 @@
                 // var email = $("#inputEmail").val();
                 if ($("#inputLocalPhone").val().length != 0) {
                     var localPhone = $("#inputLocalPhone").val();
-                    formData.append('telephone', phoneNumber);
+                    formData.append('local_telephone', phoneNumber);
                 }
                 // var accessGroup = $("#inputAccessGroup").val();
                 var birthDate = customJalaliToGregorianFnc($("#inputBirthDate").val());
@@ -684,23 +692,24 @@
                 
                 var jobTitle = $("#inputJob").val();
 
-                // var section = $("#inputSection").val();
+                var section = $("#inputSection").val();
 
+                formData.append('id', id);
                 formData.append('profile', image);
                 formData.append('first_name', firstName);
                 formData.append('last_name', lastName);
                 formData.append('father_s_name', fatherName);
                 formData.append('national_code', nationalCode);
-                // formData.append('password', password);
-                formData.append('birth_certificate_id', birthCertificateNo);
+                formData.append('password', password);
+                formData.append('birth_certificate_no', birthCertificateNo);
                 formData.append('gender', gender);
                 formData.append('marital_status', maritalStatus);
-                formData.append('birthplace', birthPlace);
+                formData.append('birth_place', birthPlace);
                 formData.append('insurance_number', insuranceNumber);
                 formData.append('degree', degree);
-                formData.append('organization_role', role);
+                formData.append('role', role);
                 formData.append('mobile', mobileNumber);
-                formData.append('birthday', birthDate);
+                formData.append('birthdate', birthDate);
                 formData.append('management', management);
                 // formData.append('email', email);
                 // formData.append('access_group', groupUser);
@@ -708,35 +717,26 @@
                 formData.append('company', company);
                 formData.append('address', address);
                 // formData.append('coopration_type', cooprationType);
-                formData.append('active', JSON.stringify(userStatus));
+                formData.append('active', JSON.stringify(status));
                 formData.append('job_title', jobTitle);
-                // formData.append('section', section);
-                formData.append('staff', JSON.stringify(false));
-                formData.append('superuser', JSON.stringify(false));
+                formData.append('section', section);
 
-                console.log(JSON.stringify(formData));
+                var ajaxURL = '{.% url "master_data:api_personnel_edit" 0 %}';
+                ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + id + '/';
+                
                 var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
-
-                var data = {'content': formData};
-                // formData.forEach(function(value, key){
-                //     data[key] = value;
-                //     console.log(key, value);
-                // });
-                // var json = JSON.stringify(data);
-
+                
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{.% url "master_data:api_personnel_create" %}',
+                        url: ajaxURL,
                         headers: {
                             'content-type': 'application/json',
                             'X-CSRFToken': csrftoken
                         },
-                        // scriptCharset: "utf-8" , 
-                        // contentType: "application/json; charset=utf-8",
                         contentType: false,
                         processData: false,
-                        data: data,
+                        data: formData,
                         success: function (json, status) {
                             console.log(json);
                             console.log(status);
@@ -764,8 +764,7 @@
                             }
                         },
                         error: function (json, status, xhr) {
-                            console.log(json);
-                            console.log(json.responseText);
+                            console.log(json.responseJSON.error);
                             console.log(status);
                             console.log(xhr);
                             $(".blur").removeClass('active disable-form');
@@ -773,7 +772,7 @@
                             $("html, body").animate({
                                 scrollTop: $(".alert-section").offset().top - 20
                             }, 1000);
-                            $(".alert-message-text.error-text").html(json.responseText + ' - ' + xhr + ' ' + '(' + status + ')');
+                            $(".alert-message-text.error-text").html(json.responseJSON.error + ' - ' + xhr + ' ' + '(' + status + ')');
                             $(".alert-message.error-message").show();
                         }
                     }
@@ -785,8 +784,136 @@
                 }, 1000);
             }
         })
-        //#endregion
+
+    // var jobsList = [];
+    // // var jobsGroup1Jobs = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var jobsGroup2Jobs = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var jobsGroup3Jobs = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // .
+    // // .
+    // // .
+    // // jobsList.push(jobsGroup1Jobs)
+    // // jobsList.push(jobsGroup2Jobs)
+    // // jobsList.push(jobsGroup3Jobs)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputJobGroup").on("change", function () {
+    //   $("#inputJob").empty().append(new Option("انتخاب...", "0"));
+    //   var jobGroupID = $(this).val();
+    //   if (jobGroupID != '0')
+    //   {
+    //     for (var item of jobsList[parseInt(jobGroupID) - 1])
+    //     {
+    //       $("#inputJob").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputJob").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputJob").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var jobGroupID = '{{jobgroupid}}';
+    //   $("#inputJobGroup").val(jobGroupID);
+
+    //   for (var item of jobsList[parseInt(jobGroupID) - 1])
+    //   {
+    //     $("#inputJob").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputJob").val('{{jobid}}');
+
+    // })
+
+
+    // var managementsList = [];
+    // // var deputy1Managements = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var deputy2Managements = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var deputy3Managements = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // .
+    // // .
+    // // .
+    // // managementsList.push(deputy1Managements)
+    // // managementsList.push(deputy2Managements)
+    // // managementsList.push(deputy3Managements)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputRelevantDeputy").on("change", function () {
+    //   $("#inputManagement").empty().append(new Option("انتخاب...", "0"));
+    //   var deputyID = $(this).val();
+    //   if (deputyID != '0')
+    //   {
+    //     for (var item of managementsList[parseInt(deputyID) - 1])
+    //     {
+    //       $("#inputManagement").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputManagement").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputManagement").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var deputyID = '{{deputy_id}}';
+    //   $("#inputRelevantDeputy").val(deputyID);
+
+    //   for (var item of managementsList[parseInt(deputyID) - 1])
+    //   {
+    //     $("#inputManagement").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputManagement").val('{{management_id}}');
+
+    // })
+
+    // var sectionsList = [];
+    // // var workstation1Sections = [{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var workstation2Sections = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // var workstation3Sections = {{'id': 1, 'value': value1}, {'id': 2, 'value': value2}, ...}
+    // // sectionsList.push(workstation1Sections)
+    // // sectionsList.push(workstation2Sections)
+    // // sectionsList.push(workstation3Sections)
+    // // .
+    // // .
+    // // .
+
+    // $("#inputWorkstation").on("change", function () {
+    //   $("#inputSection").empty().append(new Option("انتخاب...", "0"));
+    //   var workstationID = $(this).val();
+    //   if (workstationID != '0')
+    //   {
+    //     for (var item of sectionsList[parseInt(workstationID) - 1])
+    //     {
+    //       $("#inputSection").append(new Option(item.id, item.value));
+    //     }
+    //     $("#inputSection").prop('disabled', false);
+    //   }
+    //   else
+    //   {
+    //     $("#inputSection").prop('disabled', true);
+    //   }
+    // })
+
+    // $(document).ready(function () {
+    //   var workstationID = '{{workstation_id}}';
+    //   $("#inputWorkstation").val(workstationID);
+
+    //   for (var item of sectionsList[parseInt(workstationID) - 1])
+    //   {
+    //     $("#inputSection").append(new Option(item.id, item.value));
+    //   }
+    //   $("#inputSection").val('{{section_id}}');
+
+    // })
 
     </script>
 
 </body>
+
+</html>
