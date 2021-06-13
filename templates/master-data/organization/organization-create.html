@@ -1187,7 +1187,7 @@
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{% url "master_data:ajax_create_deputy" %}',
+                        url: '{.% url "master_data:ajax_create_deputy" %}',
                         data: {
                             content: JSON.stringify(data),
                             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
@@ -1202,7 +1202,7 @@
                                 }, 1000);
                                 $(".alert-message.success-message").show();
                                 $(".alert-message.error-message").hide();
-                                var redirectURL = '{% url "master_data:deputy_list_page" %}';
+                                var redirectURL = '{.% url "master_data:deputy_list_page" %}';
                                 setTimeout(function () {
                                     location.replace(redirectURL);
                                 }, 1500)
