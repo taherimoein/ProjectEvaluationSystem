@@ -20,7 +20,7 @@ def evaluation_user_page(request, project_id):
 
     context = {
         'ThisProject': this_project,
-        'ProjectType_list': project_type_list
+        'ProjectTypeList': project_type_list
     }
 
     return render(request, 'main/evaluation/evaluation-user-page.html', context)

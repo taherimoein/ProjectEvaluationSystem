@@ -83,7 +83,7 @@
                                         <tr>
                                             <td>{{item.title}}</td>
                                             <td>{{item.create_date|datetime_to_jalali}}</td>
-                                            <td class="text-center"><a href="{.% url 'main:secretary_assessment_suggestion_page' item.id %}"><i class="fas fa-clipboard-list-check"></i></a></td>
+                                            <td class="text-center"><a href="{% url 'main:evaluation_user_page' item.id %}"><i class="fas fa-clipboard-list-check"></i></a></td>
                                         </tr>
                                     {% endfor %}
                                 </tbody>

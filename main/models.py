@@ -262,7 +262,7 @@ class Project(models.Model):
     fk_user = models.ForeignKey(User, verbose_name = 'کاربر ثبت کننده', related_name = 'project_user', on_delete = models.SET_NULL, null = True)
     attached_file = models.FileField(verbose_name = 'فایل پیوست', upload_to = 'media/files/project/', blank = True, null = True)
     project_location_address = models.TextField(verbose_name = 'آدرس محل پروژه')
-    telephone = models.CharField(verbose_name = 'شماره تماس', max_length = 8)
+    telephone = models.CharField(verbose_name = 'شماره تماس', max_length = 11)
     approximate_date_preparation = models.DateField(verbose_name = 'تاریخ تقریبی بهره برداری')
     amount_required_for_workshop = models.CharField(verbose_name = 'مبلغ مورد نیاز برای تجهیز کارگاه', max_length = 15)
     prepayment_amount = models.CharField(verbose_name = 'مبلغ پیش پرداخت', max_length = 15)
