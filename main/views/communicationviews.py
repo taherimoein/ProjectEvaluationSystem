@@ -65,6 +65,7 @@ def create_official_letter(request):
 
 def get_official_letter_details(this_official_letter):
     this_official_letter_details = {
+        'id': this_official_letter.id,
         'title': this_official_letter.title,
         'description': this_official_letter.description,
         'sender': this_official_letter.fk_sender.get_fullname(),
