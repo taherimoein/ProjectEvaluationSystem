@@ -34,7 +34,7 @@ def project_evaluation_user(request):
             this_project_id = request.POST.get('project_id')
             if not Project.objects.filter(id = this_project_id, fk_user = request.user).exists():
                 response_data['status'] = '404'
-                response_data['error'] = 'پروژه ای با این شناسه که متعلق به شما باشد، در سیستم موجوئ نمی باشد.'
+                response_data['error'] = 'پروژه ای با این شناسه که متعلق به شما باشد، در سیستم موجود نمی باشد.'
                 return JsonResponse(response_data)
             else:
                 this_assessment = json.loads(request.POST.get('assessment'))
@@ -78,6 +78,80 @@ def project_evaluation_user(request):
         return JsonResponse(response_data)
 
 
+@is_deputy
+@login_required(login_url = 'main:sign_page')
+def evaluation_assistant_page(request, project_id):
+    this_project = get_object_or_404(Project, id = project_id)
+
+    context = {
+        'ThisProject': this_project
+    }
+
+    return render(request, 'main/evaluation/evaluation-assistant-page.html', context)
+
+
+def project_evaluation_assistant(request):
+    response_data = {}
+    if request.user.is_authenticated:
+        if request.user.is_deputy:
+            try:
+                # get data
+                this_project_id = request.POST.get('project_id')
+                if not Project.objects.filter(id = this_project_id).exists():
+                    response_data['status'] = '404'
+                    response_data['error'] = 'پروژه ای با این شناسه در سیستم موجود نمی باشد.'
+                    return JsonResponse(response_data)
+                else:
+                    this_assessment = json.loads(request.POST.get('assessment'))
+                # add evaluation project info
+                this_project = Project.objects.get(id = this_project_id)
+                # get point from assessment
+                sum_point = 0
+                sum_point += this_assessment['importance_of_project']['point']
+                sum_point += this_assessment['expert_opinion']['point']
+
+                this_project.evaluation_assistance = this_assessment
+                this_project.evaluation_point += sum_point
+                this_project.save()
+                # Calculate z
+                total_amount_of_city_s_annual_budget = this_assessment['total_amount_of_city_s_annual_budget']
+                # دریافت کل مبالغ پیشنهادی دستگاه اجرایی
+                executive_device_total_price = 0
+                for item in Project.objects.filter(executive_device = this_project.executive_device):
+                    executive_device_total_price += int(item.initial_offered_credit_amount)
+                z = total_amount_of_city_s_annual_budget / 42
+                # Calculate Z score
+                if executive_device_total_price <= z:
+                    z_point = 100
+                elif executive_device_total_price <= (2 * z):
+                    z_point = 75
+                elif executive_device_total_price <= (3 * z):
+                    z_point = 50
+                else:
+                    z_point = 20
+                # save z info
+                z_info = {'total_amount_of_city_s_annual_budget': total_amount_of_city_s_annual_budget,\
+                    'executive_device_total_price': executive_device_total_price, 'z': z, 'z_point': z_point}
+                this_project.equal_distribution_credits_between_executive_devices = z_info
+                this_project.evaluation_point += z_point
+                this_project.save()
+                
+                response_data['status'] = '200'
+                return JsonResponse(response_data)
+            except Exception as e:
+                response_data['status'] = '500'
+                response_data['error'] = str(e)
+                return JsonResponse(response_data)
+        else:
+            response_data['status'] = '403'
+            response_data['error'] = 'شما اجازه دسترسی به این بخش را ندارید.'
+            return JsonResponse(response_data)
+    else:
+        response_data['status'] = '401'
+        response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)
+
+
 @is_governor
 @login_required(login_url = 'main:sign_page')
 def evaluation_gov_page(request, project_id):
@@ -89,13 +163,3 @@ def evaluation_gov_page(request, project_id):
 
     return render(request, 'main/evaluation/evaluation-gov-page.html', context)
 
-@is_deputy
-@login_required(login_url = 'main:sign_page')
-def evaluation_assistant_page(request, project_id):
-    this_project = get_object_or_404(Project, id = project_id)
-
-    context = {
-        'ThisProject': this_project
-    }
-
-    return render(request, 'main/evaluation/evaluation-assistant-page.html', context)
