@@ -110,7 +110,7 @@ def answer_official_letter(request):
                     data = file_storage.save(this_attached_file.name, this_attached_file)
                     file_url = file_storage.url(data)
                 this_official_letter.answer['description'] = this_description
-                this_official_letter.answer['datetime'] = timezone.localtime(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')
+                this_official_letter.answer['datetime'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
                 if this_attached_file is not None:
                     this_official_letter.answer['file'] = file_url
                 this_official_letter.save()

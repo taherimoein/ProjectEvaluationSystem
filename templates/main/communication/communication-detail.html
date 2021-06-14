@@ -40,7 +40,7 @@
                                 <strong>{{OfficialLetter.receiver}}</strong>
                             </h6>
                             <br>
-                            {% if OfficialLetter.attached_file != None %}
+                            {% if OfficialLetter.attached_file|length > 0 %}
                                 <a href="/{{OfficialLetter.attached_file}}" target="_blank">دانلود فایل پیوست</a>
                             {% endif %}
                         </div>
@@ -56,8 +56,8 @@
                                 <h4>پاسخ {{OfficialLetter.receiver}}</h4>
                                 <p><strong>{{OfficialLetter.answer.datetime|str_to_jalali_datetime}}</strong></p>
                                 <p>{{OfficialLetter.answer.description}}</p>
-                                {% if OfficialLetter.answer.file != None %}
-                                    <a href="/{{OfficialLetter.answer.file}}">دانلود پیوست</a>
+                                {% if OfficialLetter.answer.file|length > 0 %}
+                                    <a href="{{OfficialLetter.answer.file}}">دانلود پیوست</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                 {% endif %}
                 <!-- reply -->
 
-                {% if OfficialLetter.answer.description == None %}
+                {% if OfficialLetter.answer.description == None  and request.user == OfficialLetter.receiver %}
                     <br>
                     <div class="row text-right">
                         <div class="col-12">
@@ -173,7 +173,7 @@
                         processData: false,
                         data: formData,
                         success: function (json) {
-                            if (json.status == '201') {
+                            if (json.status == '200') {
                                 $(".blur").removeClass('active');
                                 $(".loading-fixed").hide();
                                 $("html, body").animate({
