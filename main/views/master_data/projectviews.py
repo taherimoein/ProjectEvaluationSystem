@@ -24,6 +24,19 @@ def project_list_page(request):
 
 @is_governor
 @login_required(login_url = 'main:sign_page')
+def project_list_all_page(request):
+    project_list = Project.objects.filter(fk_user = request.user).order_by('-create_date')\
+        .values('id', 'title', 'create_date')
+
+    context = {
+        'ProjectList': project_list
+    }
+    return render(request, 'master-data/project/project-list-all.html', context)
+
+
+
+@is_governor
+@login_required(login_url = 'main:sign_page')
 def project_create_page(request):
     return render(request, 'master-data/project/project-create.html')
 

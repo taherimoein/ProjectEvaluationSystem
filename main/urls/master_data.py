@@ -17,6 +17,7 @@ urlpatterns = [
     path('ajax/personnel/confirmation-of-information/', personnelviews.confirmation_of_information_personnel, name = 'ajax_confirmation_of_information_personnel'),
     # Master Data "project" --------------------------------------------------------------
     path('project/', projectviews.project_list_page, name = 'project_list_page'),
+    path('project/all/', projectviews.project_list_all_page, name = 'project_list_all_page'),
     path('project/create/', projectviews.project_create_page, name = 'project_create_page'),
     path('ajax/project/create/', projectviews.create_project, name = 'ajax_create_project'),
     # Master Data "organization" --------------------------------------------------------------
