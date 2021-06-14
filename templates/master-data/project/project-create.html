@@ -554,7 +554,7 @@
             $.ajax(
                 {
                     method: 'POST',
-                    url: "{.% url 'my_suggestion:ajax_user_create_suggestion' %}",
+                    url: "{% url 'master_data:ajax_create_project' %}",
                     data: formData,
                     contentType: false,
                     processData: false,
@@ -568,7 +568,7 @@
                             }, 1000);
                             $(".alert-message.success-message").show();
                             $(".alert-message.error-message").hide();
-                            var redirectURL = '{.% url "my_suggestion:my_suggestion_list_page" %}';
+                            var redirectURL = '{% url "master_data:project_list_page" %}';
                             setTimeout(function () {
                                 location.replace(redirectURL);
                             }, 1500)
