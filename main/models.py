@@ -32,6 +32,18 @@ class default_answer_field():
 
 
 @deconstructible
+class default_evaluation_user_field():
+    def __call__(self):
+        return {"rationale_studies": { "item": None, "file": None, "point": None },\
+            "comprehensive_target_needs": { "item": None, "point": None },\
+            "comprehensive_necessity_of_purpose": { "item": None, "point": None },\
+            "project_implementation_time": { "item": None, "point": None },\
+            "repetition_rate": { "item": None, "point": None }, "abundance_rate":\
+            { "item": None, "point": None }, "population": { "item": None,\
+            "sub_item": None, "point": None }, "type_of_project": { "item": None, "point": None }}
+
+
+@deconstructible
 class create_validation_code():
     def __init__(self, size):
         self.size = size
@@ -189,6 +201,13 @@ class User(AbstractBaseUser):
             return True
         else:
             return False
+    
+    @property
+    def is_deputy(self):
+        if self.access_group == 'deputy_for_planning_and_civil_affairs':
+            return True
+        else:
+            return False
 
     def get_access_group(self):
         try:
@@ -260,6 +279,10 @@ class Project(models.Model):
     requires_special_facilities = JSONField(verbose_name = 'نیاز امکانات خاص', default = default_requires_field())
     shared_capability_between_multiple_executive_devices = JSONField(verbose_name = 'قابلیت اشتراکی بین چند دستگاه اجرایی', default = default_requires_field())
     shared_capability_between_several_cities = JSONField(verbose_name = 'قابلیت اشتراکی بین چند شهرستان', default = default_requires_field())
+    evaluation_governor = JSONField(verbose_name = 'ارزیابی فرماندار', blank = True, null = True)
+    evaluation_assistance = JSONField(verbose_name = 'ارزیابی مدیریت برنامه ریزی و عمرانی', blank = True, null = True)
+    evaluation_user = JSONField(verbose_name = 'ارزیابی کاربر', default = default_evaluation_user_field())
+    evaluation_point = models.PositiveIntegerField(verbose_name = 'مجموع امتیاز ارزیابی', default = 0)
     history = JSONField(verbose_name = 'تاریخچه', default = default_history_field())
     create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
     update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
