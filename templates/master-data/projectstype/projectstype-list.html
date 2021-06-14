@@ -79,8 +79,8 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <tr>
-                                        {% for item in projectstype %}
+                                    {% for item in projectstype %}
+                                        <tr>
                                             <td>
                                                 {{item.title}}
                                             </td>
@@ -90,8 +90,8 @@
                                             <td>
                                                 <i val="{{item.id}}" class="cursor-pointer fas fa-trash-alt delete-projecttype"></i>
                                             </td>
-                                        {% endfor %}
-                                    </tr>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
