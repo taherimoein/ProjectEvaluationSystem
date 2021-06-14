@@ -1,6 +1,6 @@
+from utils.decorators.access_level import is_governor, is_governor_or_deputy
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import  render, get_object_or_404
-from utils.decorators.access_level import is_governor
 from django.db.models.functions import Concat
 from django.db.models import Value, Q
 from django.http import JsonResponse
@@ -10,7 +10,6 @@ from main.models import User, Project
 
 # -------------------------------------------------------------------------------------------------------------------------------------
 
-@is_governor
 @login_required(login_url = 'main:sign_page')
 def project_list_page(request):
     project_list = Project.objects.filter(fk_user = request.user).order_by('-create_date')\
@@ -22,10 +21,10 @@ def project_list_page(request):
     return render(request, 'master-data/project/project-list.html', context)
 
 
-@is_governor
+@is_governor_or_deputy
 @login_required(login_url = 'main:sign_page')
 def project_list_all_page(request):
-    project_list = Project.objects.filter(fk_user = request.user).order_by('-create_date')\
+    project_list = Project.objects.order_by('-create_date')\
         .values('id', 'title', 'create_date')
 
     context = {
@@ -34,8 +33,6 @@ def project_list_all_page(request):
     return render(request, 'master-data/project/project-list-all.html', context)
 
 
-
-@is_governor
 @login_required(login_url = 'main:sign_page')
 def project_create_page(request):
     return render(request, 'master-data/project/project-create.html')

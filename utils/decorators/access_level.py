@@ -44,3 +44,29 @@ def is_governor(function = None):
     if function:
         return actual_decorator(function)
     return actual_decorator
+
+
+def is_deputy(function = None):
+    """
+    Decorator for views that checks that the user is logged in, redirecting
+    to the log-in page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_deputy,
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+
+
+def is_governor_or_deputy(function = None):
+    """
+    Decorator for views that checks that the user is logged in, redirecting
+    to the log-in page if necessary.
+    """
+    actual_decorator = user_passes_test(
+        lambda u: u.is_governor or u.is_deputy,
+    )
+    if function:
+        return actual_decorator(function)
+    return actual_decorator

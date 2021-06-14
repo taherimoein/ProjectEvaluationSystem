@@ -286,15 +286,11 @@
                         data-placement="left" title="تعیین نوع پروژه الزامی میباشد."></i>
                     <select id="input9" class="form-control select2-component">
                         <option value="0">انتخاب...</option>
-
-                        <option value="1">مقدار</option>
-
+                        {% for item in ProjectTypeList %}
+                            <option value="{{item.score}}">{{item.title}}</option>
+                        {% endfor %}
                     </select>
                   </div>
-                  <!-- <div class="form-group col-md-5 text-center">
-                    <br>
-                    <h5>امتیاز 30</h5>
-                  </div> -->
                 </div>
                
                 <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
