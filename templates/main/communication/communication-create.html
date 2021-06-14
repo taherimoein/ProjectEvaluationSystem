@@ -59,11 +59,11 @@
                             <form>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputJobGroupTitle">عنوان نامه مکاتباتی<code>*</code></label>
+                                        <label for="inputCommunicationTitle">عنوان نامه مکاتباتی<code>*</code></label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                             data-placement="left"
                                             title="عنوان نامه مکاتباتی نباید خالی باشد و باید حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                        <input type="text" class="form-control" id="inputJobGroupTitle" placeholder=""
+                                        <input type="text" class="form-control" id="inputCommunicationTitle" placeholder=""
                                             maxlength="255">
                                     </div>
                                 </div>
@@ -71,14 +71,12 @@
 
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                      <label for="inputProjectDescription">توضیحات</label>
-                                      <textarea class="form-control" id="inputProjectDescription" rows="4"></textarea>
+                                      <label for="inputDescription">توضیحات<code>*</code></label>
+                                      <textarea class="form-control" id="inputDescription" rows="4"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <label for="inputFile">پیوست<code>*</code></label>
-                                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
-                                    title="فیلد پیوست اجباری است."></i>
+                                    <label for="inputFile">پیوست</label>
                                     <input type="file" class="form-control-file" id="inputFile">
                                 </div>
                                 <br>
@@ -88,10 +86,7 @@
                                         <label for="inputToUser">ارجاع به<code>*</code></label>
                                         <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                             data-placement="left" title="تعیین فرد الزامی میباشد."></i>
-                                        <select id="inputToUser" class="form-control select2-component">
-                                            <option value="0">انتخاب...</option>
-                                            <option value="1">فرد 1</option>
-                                            <option value="2">فرد 2</option>
+                                        <select id="inputToUser" class="form-control select2-ajax-user">
                                         </select>
                                       </div>
                                 </div>
@@ -111,52 +106,98 @@
     {% include "parents/footer.html" %}
     {% endblock %}
 
-    <script src="{% static "js/base-information/job-group.js" %}" type="text/javascript"></script>
+    <script src="{% static "js/base-information/communication.js" %}" type="text/javascript"></script>
 
     <script>
 
+        $(".select2-ajax-user").select2({
+            dir: "rtl",
+            ajax: {
+                method: 'POST',
+                url: "{% url 'master_data:ajax_search_in_users' %}",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        search: params.term, // search term
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    };
+                },
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
 
+                    return {
+                        results: data.data,
+                        pagination: {
+                            more: (params.page * 30) < data.total_count
+                        }
+                    };
+                },
+                cache: true
+            },
+            width: '100%',
+            placeholder: 'جستجو...',
+            minimumInputLength: 1,
+            templateResult: formatRepo,
+            templateSelection: formatRepoSelection
+        });
 
-        $(document).on('click', '.remove-row', function () {
-            var count = $(".row-list > .form-row").length - 1;
-            for (item of $(this).parent().parent().nextAll('.form-row')) {
-                var count = parseInt($(item).find('.count').text());
-
-                $(item).find('.count').text(' ' + (count - 1).toString());
-                $(item).find("label[val='job']").prop('for', 'inputJob-' + (count - 1).toString());
-                $(item).find("input").prop('id', 'inputJob-' + (count - 1).toString());
+        function formatRepo(repo) {
+            if (repo.loading) {
+                return repo.text;
             }
-            $(this).parent().parent().remove();
-        })
+
+            var $container = $(
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "</div>" +
+                "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')');
+
+            return $container;
+        }
+
+        function formatRepoSelection(repo) {
+            if (repo.first_name && repo.last_name && repo.national_code) {
+                return repo.first_name + ' ' + repo.last_name + ' (' + repo.national_code + ')';
+            }
+            return repo.text;
+        }
 
         $("#submit").click(function (e) {
             e.preventDefault();
-            var checks = checkJobGroupFnc();
+            var checks = checkCommunicationFnc();
             if (checks) {
                 $(".blur").addClass('active disable-form');
                 $(".loading-fixed").show();
 
-                var data = {};
+                var formData = new FormData();
 
-                var jobGroupTitle = $("#inputJobGroupTitle").val();
-                var jobGroupJobElements = $(".main-item");
-                var jobGroupJobs = [];
+                var title = $("#inputCommunicationTitle").val();
+                var description = $("#inputDescription").val();
+                var file = $("#inputFile")[0].files[0];
+                var referToUser = $("#inputToUser").val();
 
-                for (var item of jobGroupJobElements) {
-                    jobGroupJobs.push($(item).find("input").first().val());
-                }
-
-                data['jobgroup_title'] = jobGroupTitle;
-                data['jobgroup_jobs'] = jobGroupJobs;
-
+                formData.append('title', title);                
+                formData.append('description', description);                
+                formData.append('attached_file', file);                
+                formData.append('receiver_id', referToUser);                
+                
+                var csrftoken = $("input[name=csrfmiddlewaretoken]").val();
+                
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{.% url "master_data:ajax_create_job_group" %}',
-                        data: {
-                            content: JSON.stringify(data),
-                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                        url: '{% url "main:ajax_create_official_letter" %}',
+                        headers: {
+                            'X-CSRFToken': csrftoken
                         },
+                        contentType: false,
+                        processData: false,
+                        data: formData,
                         success: function (json) {
                             if (json.status == '201') {
                                 $(".blur").removeClass('active');
@@ -166,7 +207,7 @@
                                 }, 1000);
                                 $(".alert-message.success-message").show();
                                 $(".alert-message.error-message").hide();
-                                var redirectURL = '{.% url "master_data:job_group_list_page" %}';
+                                var redirectURL = '{% url "main:communication_list_page" %}';
                                 setTimeout(function () {
                                     location.replace(redirectURL);
                                 }, 1500)
