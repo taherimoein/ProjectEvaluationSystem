@@ -16,7 +16,7 @@ from main.models import User
 
 @is_governor
 @login_required(login_url = 'main:sign_page')
-def evaluation_page(request):
+def evaluation_user_page(request):
 #     users = User.objects.annotate(fullname = Concat('first_name', Value(' '), 'last_name')) \
 #         .order_by('create_date').values('id', 'national_code', 'fullname', 'father_s_name', \
 #             'role', 'executive_device', 'personnel_id', 'necessary_contact_number',\
@@ -25,4 +25,32 @@ def evaluation_page(request):
 #     context = {
 #         'Users': users
 #     }
-    return render(request, 'main/evaluation/evaluation-page.html', )
+    return render(request, 'main/evaluation/evaluation-user-page.html', )
+
+
+
+
+@login_required(login_url = 'main:sign_page')
+def evaluation_gov_page(request):
+#     users = User.objects.annotate(fullname = Concat('first_name', Value(' '), 'last_name')) \
+#         .order_by('create_date').values('id', 'national_code', 'fullname', 'father_s_name', \
+#             'role', 'executive_device', 'personnel_id', 'necessary_contact_number',\
+#             'mobile', 'username', 'access_group', 'active')
+
+#     context = {
+#         'Users': users
+#     }
+    return render(request, 'main/evaluation/evaluation-gov-page.html', )
+
+
+@login_required(login_url = 'main:sign_page')
+def evaluation_assistant_page(request):
+#     users = User.objects.annotate(fullname = Concat('first_name', Value(' '), 'last_name')) \
+#         .order_by('create_date').values('id', 'national_code', 'fullname', 'father_s_name', \
+#             'role', 'executive_device', 'personnel_id', 'necessary_contact_number',\
+#             'mobile', 'username', 'access_group', 'active')
+
+#     context = {
+#         'Users': users
+#     }
+    return render(request, 'main/evaluation/evaluation-assistant-page.html', )

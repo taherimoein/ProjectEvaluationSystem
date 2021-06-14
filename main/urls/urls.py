@@ -24,5 +24,7 @@ urlpatterns = [
     path('ajax/official-letter/create/', communicationviews.create_official_letter, name = 'ajax_create_official_letter'),
     path('ajax/official-letter/answer/', communicationviews.answer_official_letter, name = 'ajax_answer_official_letter'),
     # evaluation --------------------------------------------------------------
-    path('evaluation/', evaluationviews.evaluation_page, name = 'evaluation_page'),
+    path('evaluation/user/', evaluationviews.evaluation_user_page, name = 'evaluation_user_page'),
+    path('evaluation/assistant/', evaluationviews.evaluation_assistant_page, name = 'evaluation_assistant_page'),
+    path('evaluation/gov/', evaluationviews.evaluation_gov_page, name = 'evaluation_gov_page'),
 ]
