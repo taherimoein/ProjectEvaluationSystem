@@ -61,6 +61,53 @@
               </div>
               <form>
                 <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <div class="alert alert-success" role="alert">
+                      <h4 class="alert-heading">تقسیم فاز های مطالعه طرح توجیهی</h4>
+                      <p>
+                        الف) مطالعات فرصت (Opportanity)
+                        <br>
+                        ب) مطالعات مقدماتی طرحی توجیهی(امکان سنجی) (Pre-feasibility Study)
+                        <br>
+                        ج) مطالعات طرح توجیهی )(امکان سنجی) (Feasibility Study)
+                        <br>
+                        د) مطالعات طرح توجیهی فنی )(امکان سنجی فنی) (Technical Study)
+                      </p>
+                      <hr>
+                      <p class="mb-0">
+                        <strong>
+                          مطالعات طرح توجیهی:
+                        </strong>
+                        <br>
+                         مطالعه و بررسی کارشناسی شده در خصوص امکان پذیری یک پروژه با طرح و یا توسعه آن . در واقع طرح امکان سنجی با طرح توجیهی فنی- اقتصادی و به طور کلی تجزیه و تحلیل شانس موفقیت پروژه می باشد و خروجی نهایی مطالعات طرح توجیهی ارائه یک مدل تصمیم گیری به ذینفعان و بانیان مجری طرح است ، که دورنمایی از وضعیت آینده و احداث طرح می باشد و از اجزاء مطالعات بازار و توجیه پذیری فنی و تجزیه و تحلیل مالی می باشد. <br>
+                          لازمه اجرای یک پروژه انجام مطالعات است . البته انواع مختلفی از مطالعات وجود دارد که باید انجام شود مانند مطالعات فرصته پیش امکان سنجی و امکان سنجی.
+                          <br>
+                          مطالعات فرصت قبل از مطالعات پیش بینی امکان سنجی انجام می شود شامل کشف فرصت های تدوین ایده پروژه ، تهیه و جمع آوری اطلاعات و پایگاه داده لازم و تایید اطلاعات و ارزیابی اولیه داده ها و اطلاعات است . مطالعه پیش امکان سنجی ، بعد از انجام مطالعه فرصت انجام می شود . هیچ کدام یک از این مطالعات جایگزین یکدیگر نیستند و هریک به منظور خاصی مورد استفاده قرار می گیرند.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-5">
+                    <label for="input0">مطالعات طرح توجیهی<code>*</code></label>
+                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                        data-placement="left" title="تعیین نیاز جامعه هدف الزامی میباشد."></i>
+                    <select id="input0" class="form-control select2-component dyn-tarh">
+                        <option value="0">فاقد مطالعات چهارگانه طرح توجیهی</option>
+                        <option value="1">فاقد مطالعات چهارگانه طرح توجیهی به طور ناقص را داراست و نیازی به پروژه نباشد و یا شرایط احداث و بودجه پذیری آن مهیا نیست</option>
+                        <option value="2">در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد. در این شرایط اگر فرد خبره ای نیاز به اجرای پروژه را تایید نماید.</option>
+                        <option value="3">نیاز به اجرای پروژه + شرایط احداث محیاست</option>
+                        <option value="4">دارای حداقل مطالعات امکان سنجی (طرح توجیهی) + دارای حداقل امکان سنجی فنی باشد</option>
+                        <option value="5">مطالعات چهارگانه نیاز به اجرای طرح و شرایط آن را محیا می داند. امکان سنجی فنی انجام گردیده است.</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-7 text-center">
+                    <br>
+                    <p id="detail-tarh">زمانی که طرح با پروژه مطالعات چهارگانه طرح توجیهی فوق را نداشته باشد ، به علت اینکه به سمت تهیه مطالعات هدایت شود</p>
+                  </div>
+                </div>
+
+                <br>
+
+                <div class="form-row">
                   <div class="form-group col-md-5">
                     <label for="input1">نیاز جامعه هدف<code>*</code></label>
                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
@@ -118,27 +165,6 @@
                         <option value="3">بیشتر از 30 ماه و کمتر از 36 ماه</option>
                         <option value="3">بیشتر از 36 ماه و کمتر از 72 ماه</option>
                         <option value="4">بیشتر از 72 ماه</option>
-                    </select>
-                  </div>
-                  <!-- <div class="form-group col-md-5 text-center">
-                    <br>
-                    <h5>امتیاز 30</h5>
-                  </div> -->
-                </div>
-
-                <br>
-
-                <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="input4">اهمیت پروژه<code>*</code></label>
-                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                        data-placement="left" title="تعیین اهمیت پروژه الزامی میباشد."></i>
-                    <select id="input4" class="form-control select2-component">
-                        <option value="0">انتخاب...</option>
-                        <option value="1">اهمیت ویژه</option>
-                        <option value="2">اهمیت متوسط</option>
-                        <option value="3">کم اهمیت (اهمیت ضعیف)</option>
-                        <option value="4">فاقد اهمیت</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -227,23 +253,18 @@
                             data-placement="left" title="تعیین جمعیت الزامی میباشد."></i>
                         <select id="input8" class="form-control select2-component">
                             <option value="0">انتخاب...</option>
-                            <option value="1">قسمت های مهم</option>
-                            <option value="2">تراکم جمعیتی زیاد</option>
-                            <option value="3">تراکم جمعیتی کم</option>
-                            <option value="4">محل تجاری دارای جمعیت که منافع عمومی ندارد با هر جمعیتی که باشد.</option>
-                            <option value="5">فاقد جمعیت</option>
+                            <option value="1">تمام شهرستان</option>
+                            <option value="2">قسمت های مهم</option>
+                            <option value="3">تراکم جمعیتی زیاد</option>
+                            <option value="4">تراکم جمعیتی کم</option>
+                            <option value="5">محل تجاری دارای جمعیت که منافع عمومی ندارد با هر جمعیتی که باشد.</option>
+                            <option value="6">فاقد جمعیت</option>
                         </select>
                       </div>
 
 
-                      <div class="form-group col-md-5">
-                        <label for="input8-1">اتخاب<code>*</code></label>
-                        <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                            data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i>
-                        <select id="input8-1" class="form-control select2-component">
-                            <option value="0">انتخاب...</option>
-                            
-                        </select>
+                      <div class="form-group col-md-5 detail-jam">
+                        
                       </div>
 
 
@@ -275,54 +296,7 @@
                     <h5>امتیاز 30</h5>
                   </div> -->
                 </div>
-                
-
-                <br>
-
-                <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="inputmanage">نقش مدیریت دستگاه اجرایی</label>
-                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                        data-placement="left"
-                        title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                    <input type="number" class="form-control" id="inputmanage">
-                  </div>
-                  <!-- <div class="form-group col-md-5 text-center">
-                    <br>
-                    <h5>امتیاز 30</h5>
-                  </div> -->
-                </div>
-
-                <br>
-
-                <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="inputmanage">نظر کارشناس</label>
-                    <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
-                        data-placement="left"
-                        title="فیلد بایستی به صورت عددی وارد گردد."></i>
-                    <input type="number" class="form-control" id="inputmanage">
-                  </div>
-                  <!-- <div class="form-group col-md-5 text-center">
-                    <br>
-                    <h5>امتیاز 30</h5>
-                  </div> -->
-                </div>
-                
-
-
-
-
-                
-                
-
-
-
-
-
-
-                
-
+               
                 <button id="submit" type="submit" class="btn btn-primary">ثبت</button>
                 <br>
                 <br>
@@ -344,16 +318,86 @@
 
   <script>
 
-    //#region Initialization Page
-    kamaDatepicker('inputEndDate', {
-        nextButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_next.png"
-        , previousButtonIcon: "https://www.jqueryscript.net/demo/Persian-Jalali-Calendar-Data-Picker-Plugin-With-jQuery-kamaDatepicker/timeir_prev.png"
-        , forceFarsiDigits: true
-        , markToday: true
-        , markHolidays: true
-        , highlightSelectedDay: true
-        , sync: true
+
+    $(".dyn-tarh").on("change", function () {
+      var select = $('.dyn-tarh').find(":selected").val();
+      switch (select) {
+        case "0":
+          text = "زمانی که طرح با پروژه مطالعات چهارگانه طرح توجیهی فوق را نداشته باشد ، به علت اینکه به سمت تهیه مطالعات هدایت شود";
+          break;
+        case "1":
+          text = "زمانی که طرح با پروژه حداقلی از یکی از مطالعات چهارگانه طرح توجیهی را به طور ناقص داشته باشد ، با براساس آنها نیازی به پروژه میباشد و با شرایط احداث و بودجه پذیری آن مهیا نیست . به معنی ساده مطالعات طرح توجیهی احداث و بودجه پذیری طرح را رد می کند و امکان موفقیت پروژه را صفر می داند";
+          break;
+        case "2":
+          text = "زمانی که طرح با پروژه دارای جزئی از مطالعات چهارگانه طرح توجیهی گرچه به طور ناقص باشد ؛ بر اساس این حداقل مطالعات نتوان تصمیم گیری کرد . در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد . در این شرایط اگر فرد خبره ای نیاز به پروژه را تایید نماید";
+          break;
+        case "3":
+          text = "زمانی که طرح با پروژه از میان مطالعات چهارگانه طرح توجیهی دارای حداقل مطالعات امکان سنجی طرح توجیهی باشد . همچنین از لحاظ مطالعات فنی دارای حداقل امکان سنجی فنی باشد . یعنی به عبارت ساده تر مطالعات طرح توجیهی حداقل مهر تایید برای احداث و بودجه پذیری دارا باشد . این حالت زمانیست که ما می توانیم به حداقل موفقیت پروژه امید داشته باشیم";
+          break;
+        case "4":
+          text = "زمانی که برای طرح مطالعات امکان سنجی چهار گانه انجام و نیاز به طرح با پروژه به اثبات رسیده است . امکان سنجی ها بیانگر این هستند که شرایط برای اجرای پروژه محیاست و امکان سنجی فنی هم بیانگر این است که در سر راه پروژه مشکلی به وجود نمی آید و می توان موفقیت پروژه را صد در صد تضمین کرد .";
+          break;
+        case "5":
+          text = "";
+          break;
+        default:
+          text = "";
+      }
+      $("#detail-tarh").html(text);
     });
+
+
+
+
+    $("#input8").on("change", function () {
+      var select = $('#input8').find(":selected").val();
+      switch (select) {
+        case "0":
+          text = '';
+          break;
+        case "1":
+          text = "";
+          break;
+        case "2":
+          text = '<label for="input8-1">انتخاب<code>*</code></label>'+
+                  '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
+                  '<select id="input8-1" class="form-control select2-component">'+
+                  '<option value="0">بخش اصلی (مرکزی) -جمعیت 121206</option>'+
+                  '<option value="1">مرکز بخش اصلی -جمعیت 60370</option>'+
+                  '<option value="2">بخش فرعی 1 -جمعیت 16927</option>'+
+                  '<option value="3">مرکز بخش فرعی 1 -جمعیت 5607</option>'+
+                  '</select>';
+          break;
+        case "3":
+          text = '<label for="input8-1">انتخاب<code>*</code></label>'+
+                  '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
+                  '<select id="input8-1" class="form-control select2-component">'+
+                  '<option value="0">با تراکم جمعیت بسیار زیاد -بالای 21440</option>'+
+                  '<option value="1">با تراکم جمعیت زیاد -بین 5708 تا 21440</option>'+
+                  '<option value="2">با تراکم جمعیت متوسط -بین 4096 تا 5707 </option>'+
+                  '<option value="3">با تراکم جمعیت کم -بین 3405 تا 4095</option>'+
+                  '</select>';
+          break;
+        case "4":
+          text = '<div class="row"><div class="form-group col-md-6">'+
+                  '<label for="input8_1">از جمعیت<code>*</code></label>'+
+                  '<input type="number" class="form-control" id="input8_1">'+
+                  '</div>'+
+                  '<div class="form-group col-md-6">'+
+                  '<label for="input8_2">تا جمعیت<code>*</code></label>'+
+                  '<input type="number" class="form-control" id="input8_2">'+
+                  '</div></div>';
+          break;
+        case "5":
+          text = "";
+          break;
+        default:
+          text = "";
+      }
+      $(".detail-jam").html(text);
+    });
+
+    
 
 </script>
 
