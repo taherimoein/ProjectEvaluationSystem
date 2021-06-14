@@ -28,5 +28,6 @@ urlpatterns = [
     path('ajax/evaluation/user/', evaluationviews.project_evaluation_user, name = 'ajax_project_evaluation_user'),
     path('evaluation/assistant/<int:project_id>/', evaluationviews.evaluation_assistant_page, name = 'evaluation_assistant_page'),
     path('ajax/evaluation/assistant/', evaluationviews.project_evaluation_assistant, name = 'ajax_project_evaluation_assistant'),
-    path('evaluation/gov/<int:project_id>/', evaluationviews.evaluation_gov_page, name = 'evaluation_gov_page'),
+    path('evaluation/governor/<int:project_id>/', evaluationviews.evaluation_governor_page, name = 'evaluation_governor_page'),
+    path('ajax/evaluation/governor/', evaluationviews.project_evaluation_governor, name = 'ajax_project_evaluation_governor'),
 ]
