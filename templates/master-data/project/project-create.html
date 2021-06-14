@@ -291,6 +291,9 @@
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نام دستگاه نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
                                             <select class="form-control select2-component" id="inputPshared_capability_between_multiple_executive_devices_list" multiple="multiple" disabled>
+                                                <option value="1">دستگاه 1</option>
+                                                <option value="2">دستگاه 2</option>
+                                                <option value="3">دستگاه 3</option>
                                             </select>
                                         </div>
                                     </div>
@@ -309,9 +312,9 @@
                                             <label for="inputPshared_capability_between_several_cities_list">نام شهرستان</label><span class="necessary-span d-hide"><code>*</code></span>
                                             <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left"
                                                 title="نام شهرستان نباید خالی باشد و حداکثر تا 255 کاراکتر طول داشته باشد."></i>
-                                            <input type="text" class="form-control" id="inputPshared_capability_between_several_cities_list" maxlength="255" disabled>
-                                            <!-- <select class="form-control select2-component" id="inputPshared_capability_between_several_cities_list" maxlength="255" multiple="multiple" disabled>
-                                            </select> -->
+                                            <!-- <input type="text" class="form-control" id="inputPshared_capability_between_several_cities_list" maxlength="255" disabled> -->
+                                            <select class="form-control select2-addable-component" id="inputPshared_capability_between_several_cities_list" maxlength="255" multiple="multiple" disabled>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -344,11 +347,11 @@
             , sync: true
         });
 
-        // $(".select2-addable-component").select2({
-        //     dir: "rtl",
-        //     width: "100%",
-        //     tags: true,
-        // })
+        $(".select2-addable-component").select2({
+            dir: "rtl",
+            width: "100%",
+            tags: true,
+        })
 
         $(".require-select").change(function() {
             var id = $(this).attr('id');
@@ -472,7 +475,14 @@
             if ($("#inputPshared_capability_between_multiple_executive_devices").val() == '1')
             {
                 shared_capability_between_multiple_executive_devices.status = true;
-                shared_capability_between_multiple_executive_devices.description = $("#inputPshared_capability_between_multiple_executive_devices_list").val();
+                // shared_capability_between_multiple_executive_devices.description = $("#inputPshared_capability_between_multiple_executive_devices_list").val();
+                var shared_capability_between_multiple_executive_devices_list = $("#inputPshared_capability_between_multiple_executive_devices_list").select2('data');
+                shared_capability_between_multiple_executive_devices.description = [];
+                for (var item of shared_capability_between_multiple_executive_devices_list)
+                {
+                    shared_capability_between_multiple_executive_devices.description.push(item.text)
+                }
+
             }
             else
             {
@@ -522,9 +532,9 @@
             formData.append('shared_capability_between_multiple_executive_devices', JSON.stringify(shared_capability_between_multiple_executive_devices));
             formData.append('shared_capability_between_several_cities', JSON.stringify(shared_capability_between_several_cities));
 
-            // for (var pair of formData.entries()) {
-            //     console.log(pair[0]+ ', ' + pair[1]); 
-            // }
+            for (var pair of formData.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
 
             
             // var finalMembersJSON = {};
@@ -577,10 +587,10 @@
                             $(".blur").removeClass('active disable-form');
                             $(".loading-fixed").hide();
                             $("html, body").animate({
-                            scrollTop: $(".alert-section.main").offset().top - 20
+                            scrollTop: $(".alert-section").offset().top - 20
                             }, 1000);
-                            $(".alert-message-text.error-text.error-fields-text").html(json.error + ' ' + '(' + json.status + ')');
-                            $(".alert-message.error-message.error-fields").show();
+                            $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                            $(".alert-message.error-message").show();
                         }
                     },
                     error: function (json, status, xhr) {
@@ -592,8 +602,8 @@
                         $("html, body").animate({
                             scrollTop: $(".alert-section.main").offset().top - 20
                         }, 1000);
-                        $(".alert-message-text.error-text.error-fields-text").html(xhr + ' ' + '(' + status + ')');
-                        $(".alert-message.error-message.error-fields").show();
+                        $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                        $(".alert-message.error-message").show();
                     }
                 }
             )
