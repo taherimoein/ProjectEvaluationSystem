@@ -361,3 +361,51 @@ class ProjectType(models.Model):
         verbose_name_plural = "انواع پروژه ها"
 
 #----------------------------------------------------------------------------------------------------------------------------------------
+
+# Executive Device (دستگاه اجرایی) Model
+class Executive_Device(models.Model):
+    code = models.CharField(verbose_name = 'کد', max_length = 3, db_index = True)
+    title = models.CharField(verbose_name = 'عنوان', max_length = 255, db_index = True)
+    year = models.CharField(verbose_name = 'سال', max_length = 4)
+    # Access information
+    address_general_administration = models.TextField(verbose_name = 'آدرس اداره کل', blank = True, null = True)
+    telephone = models.CharField(verbose_name = 'شماره تلفن', max_length = 11, blank = True, null = True)
+    fax = models.CharField(verbose_name = 'شماره فاکس', max_length = 11, blank = True, null = True)
+    email = models.EmailField(verbose_name = 'ایمیل', blank = True, null = True)
+    website = models.URLField(verbose_name = 'وب سایت', blank = True, null = True)
+    # Boss
+    boss_executive_device = JSONField(verbose_name = 'ریاست دستگاه اجرایی', blank = True, null = True)
+    # Assistance
+    assistance_executive_device = JSONField(verbose_name = 'معاونت دستگاه اجرایی', blank = True, null = True)
+    # Statistical information of the executive device
+    number_employees = models.PositiveIntegerField(verbose_name = 'تعداد پرسنل استخدامی', default = 0)
+    number_contract_staff = models.PositiveIntegerField(verbose_name = 'تعداد نیروی قراردادی', default = 0)
+    number_buildings = models.PositiveIntegerField(verbose_name = 'تعداد ساختمان', default = 0)
+    number_unreinforced_buildings = models.PositiveIntegerField(verbose_name = 'تعداد ساختمان های فاقد استحکام', default = 0)
+    # Building
+    buildings = JSONField(verbose_name = 'ساختمان های دستگاه اجرایی', blank = True, null = True)
+    # Budget information
+    number_projects_last_year = models.PositiveIntegerField(verbose_name = 'تعداد پروژه های سال گذشته', default = 0)
+    number_completed_financial_projects = models.PositiveIntegerField(verbose_name = 'تعداد پروژه های محقق شده مالی', default = 0)
+    amount_budget_requested_last_year = models.BigIntegerField(verbose_name = 'میزان بودجه درخواستی سال گذشته', default = 0)
+    budget_realized_last_year = models.BigIntegerField(verbose_name = 'بودجه محقق شده در سال گذشته', default = 0)
+    amount_budget_allocated_last_year = models.BigIntegerField(verbose_name = 'میزان بودجه تخصیص یافته سال گذشته', default = 0)
+    # Last year's project information
+    number_completed_projects = models.PositiveIntegerField(verbose_name = 'تعداد پروژه تکمیل یافته', default = 0)
+    number_projects_remaining = models.PositiveIntegerField(verbose_name = 'تعداد پروژه های باقی مانده', default = 0)
+    number_projects_is_behind_schedule = models.PositiveIntegerField(verbose_name = 'تعداد پروژه های از زمانبندی عقب تر است', default = 0)
+    number_projects_not_been_completed_more_year = models.PositiveIntegerField(verbose_name = 'تعداد پروژه هایی که بیش از یکسال به اتمام نرسیده', default = 0)
+    # Projects that are behind schedule
+    projects_behind_schedule = JSONField(verbose_name = 'پروژه های غبت از زمان بندی', blank = True, null = True)
+    # Projects that have not been completed for more than a year
+    projects_not_been_completed_more_year = JSONField(verbose_name = 'پروژه های که بیش از یکسال اتمام نشده', blank = True, null = True)
+
+    create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
+    update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
+
+    class Meta:
+        ordering = ('id', 'create_date')   
+        verbose_name = "دستگاه اجرایی"
+        verbose_name_plural = "دستگاه های اجرایی"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
