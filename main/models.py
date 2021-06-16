@@ -279,7 +279,6 @@ class Project(models.Model):
     requires_special_facilities = JSONField(verbose_name = 'نیاز امکانات خاص', default = default_requires_field())
     shared_capability_between_multiple_executive_devices = JSONField(verbose_name = 'قابلیت اشتراکی بین چند دستگاه اجرایی', default = default_requires_field())
     shared_capability_between_several_cities = JSONField(verbose_name = 'قابلیت اشتراکی بین چند شهرستان', default = default_requires_field())
-    evaluation_governor = JSONField(verbose_name = 'ارزیابی فرماندار', blank = True, null = True)
     evaluation_assistance = JSONField(verbose_name = 'ارزیابی مدیریت برنامه ریزی و عمرانی', blank = True, null = True)
     evaluation_user = JSONField(verbose_name = 'ارزیابی کاربر', blank = True, null = True)
     equal_distribution_credits_between_executive_devices = JSONField(verbose_name = 'توزیع مساوی اعتبارات بین دستگاه های اجرایی ', blank = True, null = True)
@@ -399,6 +398,8 @@ class Executive_Device(models.Model):
     projects_behind_schedule = JSONField(verbose_name = 'پروژه های غبت از زمان بندی', blank = True, null = True)
     # Projects that have not been completed for more than a year
     projects_not_been_completed_more_year = JSONField(verbose_name = 'پروژه های که بیش از یکسال اتمام نشده', blank = True, null = True)
+
+    evaluation_governor = models.IntegerField(verbose_name = 'ارزیابی فرماندار', blank = True, null = True)
 
     create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
     update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
