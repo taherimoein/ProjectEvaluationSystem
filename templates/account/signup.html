@@ -106,7 +106,7 @@
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد تاریخ تولد اجباری است و برای وارد کردن تاریخ از تقویم تعبیه شده درون فیلد استفاده نمائید."></i>
-                                                <input type="text" class="form-control" id="inputBirthDate">
+                                                <input type="text" class="form-control" id="inputBirthDate" autocomplete="off">
                                             </div>
                                             
                                         </div>
@@ -155,11 +155,11 @@
                                             </div>
 
                                             <div class="form-group col-md-4">
-                                                <label for="inputMajor">دانشگاه محل تحصیل<code>*</code></label>
+                                                <label for="inputCollegePlace">دانشگاه محل تحصیل<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                                                     data-placement="left"
                                                     title="فیلد دانشگاه محل تحصیل الزامی است و حداکثر میتواند تا 50 کاراکتر طول داشته باشد."></i>
-                                                <input type="text" class="form-control" id="inputMajor" maxlength="50">
+                                                <input type="text" class="form-control" id="inputCollegePlace" maxlength="50">
                                             </div>
 
 
@@ -265,7 +265,7 @@
                                             <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                             <div class="image-input-container position-relative">
                                                 <label for="inputFile">
-                                                    <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-profile.jpg' %}" alt="عکس پروفایل">
+                                                    <img id="profile" class="cursor-pointer w-100 border-img temp-image" src="{% static 'images/default/default-profile.jpg' %}" alt="عکس پروفایل">
                                                     <input type="file" class="form-control-file" id="inputFile" onchange="readURL(this);" hidden>
                                                     <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                                 </label>
@@ -309,7 +309,7 @@
                                         <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                         <div class="image-input-container position-relative">
                                             <label for="inputpicture">
-                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="عکس">
+                                                <img id="profile" class="cursor-pointer w-100 border-img temp-image" src="{% static 'images/default/default-upload.jpg' %}" alt="عکس">
                                                 <input type="file" class="form-control-file" id="inputpicture" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                             </label>
@@ -323,7 +323,7 @@
                                         <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                         <div class="image-input-container position-relative">
                                             <label for="inputpersonal_id_card">
-                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="کارت شناسایی پرسنلی">
+                                                <img id="profile" class="cursor-pointer w-100 border-img temp-image" src="{% static 'images/default/default-upload.jpg' %}" alt="کارت شناسایی پرسنلی">
                                                 <input type="file" class="form-control-file" id="inputpersonal_id_card" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                             </label>
@@ -337,7 +337,7 @@
                                         <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                         <div class="image-input-container position-relative">
                                             <label for="inputdevice_introduction_letter">
-                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="معرفی نامه دستکاه">
+                                                <img id="profile" class="cursor-pointer w-100 border-img temp-image" src="{% static 'images/default/default-upload.jpg' %}" alt="معرفی نامه دستکاه">
                                                 <input type="file" class="form-control-file" id="inputdevice_introduction_letter" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                             </label>
@@ -351,7 +351,7 @@
                                         <!-- <input type="text" class="form-control" id="inputFileURL" disabled="disabled" placeholder="default.jpg" hidden> -->
                                         <div class="image-input-container position-relative">
                                             <label for="inputsample_signature">
-                                                <img id="profile" class="cursor-pointer w-100 border-img" src="{% static 'images/default/default-upload.jpg' %}" alt="نمونه امضا">
+                                                <img id="profile" class="cursor-pointer w-100 border-img temp-image" src="{% static 'images/default/default-upload.jpg' %}" alt="نمونه امضا">
                                                 <input type="file" class="form-control-file" id="inputsample_signature" onchange="readURL(this);" hidden>
                                                 <div class="cursor-pointer edit-icon"><i class="fas fa-pencil"></i></div>
                                             </label>
@@ -468,279 +468,92 @@
         // })
 
         //#region Front Functions of Page
-        var managementsStr = '{{Managements|safe}}';
-        var managementsObj = JSON.parse(managementsStr);
-        
-        var jobTitlesStr = '{{JobTitles|safe}}';
-        var jobTitlesObj = JSON.parse(jobTitlesStr);
-
-        // var sectionsStr = '{{Sections|safe}}';
-        // var sectionsObj = JSON.parse(sectionsStr);
-
-        $("#inputRelevantDeputy").on("change", function () {
-            $("#inputManagement").empty().append(new Option("انتخاب...", "0"));
-            var deputyID = $(this).val();
-            if (deputyID != '0')
-            {
-                for (var item of managementsObj)
-                {
-                    if (item.fk_deputy == deputyID)
-                    {
-                        $("#inputManagement").append(new Option(item.title, item.fk_deputy));
-                    }
-                }
-                $("#inputManagement").prop('disabled', false);
-            }
-            else
-            {
-                $("#inputManagement").prop('disabled', true);
-            }
-        })
-
-
-        $("#inputJobGroup").on("change", function () {
-            $("#inputJob").empty().append(new Option("انتخاب...", "0"));
-            var jobGroupID = $(this).val();
-            if (jobGroupID != '0')
-            {
-                for (var item of jobTitlesObj)
-                {
-                    if (item.fk_jobgroup == jobGroupID)
-                    {
-                        $("#inputJob").append(new Option(item.title, item.fk_jobgroup));
-                    }
-                }
-                $("#inputJob").prop('disabled', false);
-            }
-            else
-            {
-                $("#inputJob").prop('disabled', true);
-            }
-        })
-
-
-        // $("#inputWorkstation").on("change", function () {
-        //     $("#inputSection").empty().append(new Option("انتخاب...", "0"));
-        //     var workstationID = $(this).val();
-        //     if (workstationID != '0')
-        //     {
-        //         for (var item of sectionsObj)
-        //         {
-        //             if (item.fk_workstation == workstationID)
-        //             {
-        //                 $("#inputSection").append(new Option(item.title, item.fk_workstation));
-        //             }
-        //         }
-        //         $("#inputSection").prop('disabled', false);
-        //     }
-        //     else
-        //     {
-        //         $("#inputSection").prop('disabled', true);
-        //     }
-        // })
-        
-        // var managementsStr = '{{Managements|safe}}';
-        // var managementsObj = JSON.parse(managementsStr);
-
-        // var jobTitlesStr = '{{JobTitles|safe}}';
-        // var jobTitlesObj = JSON.parse(jobTitlesStr);
-        // console.log(jobTitlesObj);
-
-        // var sectionsStr = '{{Sections|safe}}';
-        // var sectionsObj = JSON.parse(sectionsStr);
-
-        // $("#inputJobGroup").on('select2:select', function (e){
-        //     var data = e.params.data;
-
-        //     var jobGroupID = parseInt(data.id);
-        //     console.log(jobGroupID);
-        //     for (var item of jobTitlesObj)
-        //     {
-        //         if (item['fk_jobgroup'] == jobGroupID)
-        //         {
-        //             var newOption = new Option(item.title, item.id, false, false);
-        //             $('#inputJob').append(newOption);
-        //         }
-        //     }
-        // })
-
-        // $("#inputJobGroup").on("select2:unselect", function (e) {
-        //     var data = e.params.data;
-
-        //     var jobGroupID = parseInt(data.id);
-        //     for (var item of jobTitlesObj)
-        //     {
-        //         if (item['fk_jobgroup'] == jobGroupID)
-        //         {
-        //             $("#inputJob option[value=" + item.id + "]").remove();
-        //         }
-        //     }
-        // });
-
-
-        // $("#inputRelevantDeputy").on('select2:select', function (e){
-        //     var data = e.params.data;
-
-        //     var deputyID = parseInt(data.id);
-        //     for (var item of managementsObj)
-        //     {
-        //         if (item['fk_deputy'] == deputyID)
-        //         {
-        //             var newOption = new Option(item.title, item.id, false, false);
-        //             $('#inputManagement').append(newOption);
-        //         }
-        //     }
-        // })
-
-        // $("#inputRelevantDeputy").on("select2:unselect", function (e) {
-        //     var data = e.params.data;
-
-        //     var deputyID = parseInt(data.id);
-        //     for (var item of managementsObj)
-        //     {
-        //         if (item['fk_deputy'] == deputyID)
-        //         {
-        //             $("#inputManagement option[value=" + item.id + "]").remove();
-        //         }
-        //     }
-        // });
-
-        // $("#inputWorkstation").on('select2:select', function (e){
-        //     var data = e.params.data;
-
-        //     var workstationID = parseInt(data.id);
-        //     for (var item of sectionsObj)
-        //     {
-        //         if (item['father_id'] == workstationID)
-        //         {
-        //             var newOption = new Option(item.title, item.id, false, false);
-        //             $('#inputSection').append(newOption);
-        //         }
-        //     }
-        // })
-
-        // $("#inputWorkstation").on("select2:unselect", function (e) {
-        //     var data = e.params.data;
-
-        //     var workstationID = parseInt(data.id);
-        //     for (var item of sectionsObj)
-        //     {
-        //         if (item['father_id'] == workstationID)
-        //         {
-        //             $("#inputSection option[value=" + item.id + "]").remove();
-        //         }
-        //     }
-        // });
         //#endregion
 
         //#region Final Action
         $("#submit").click(function (e) {
             e.preventDefault();
-            var checks = checkPersonnelFnc();
-            if (checks) {
+            // var checks = checkPersonnelFnc();
+            if (true) {
                 $(".blur").addClass('active disable-form');
                 $(".loading-fixed").show();
                 formData = new FormData();
-                var image = $("#inputFile")[0].files[0];
+                
                 var firstName = $("#inputFName").val();
                 var lastName = $("#inputLName").val();
                 var fatherName = $("#inputFatherName").val();
-                console.log(fatherName);
-                var nationalCode = $("#inputNationalCode").val();
-                // var password = $("#inputPassword").val();
-                // console.log(password);
-                var birthCertificateNo = $("#inputBirthCertificateNo").val();
                 var gender = $("#inputGender").val();
-                var maritalStatus = $("#inputMaritalStatus").val();
-                var birthPlace = $("#inputBirthPlace").val();
-                var insuranceNumber = $("#inputInsuranceNumber").val();
-                var degree = $("#inputDegree").val();
-                var role = $("#inputRole").val();
-                if ($("#inputNumberOfChildren").val().length != 0) {
-                    var numberOfChildren = $("#inputNumberOfChildren").val();
-                    formData.append('number_of_children', numberOfChildren);
-                }
-                var mobileNumber = $("#inputMobileNumber").val();
-                // var email = $("#inputEmail").val();
-                if ($("#inputLocalPhone").val().length != 0) {
-                    var localPhone = $("#inputLocalPhone").val();
-                    formData.append('telephone', phoneNumber);
-                }
-                // var accessGroup = $("#inputAccessGroup").val();
+                var nationalCode = $("#inputNationalCode").val();
+                var birthCertificateNo = $("#inputBirthCertificateNo").val();
                 var birthDate = customJalaliToGregorianFnc($("#inputBirthDate").val());
-                // var relevantDeputy = $("#inputRelevantDeputy").val();
-                var management = $("#inputManagement").val();
-                var company = $("#inputCompany").val();
+                var degree = $("#inputDegree").val();
+                var major = $("#inputMajor").val();
+                var collegePlace = $("#inputCollegePlace").val();
+                var executive_device = $("#inputPexecutive_device option:selected").text();
+                var role = $("#inputRole").val();
+                var workExperience = $("#inputwork_experience").val();
+                var personnelID = $("#inputpersonnel_id").val();
                 var address = $("#inputAddress").val();
-                // var cooprationType = $("#inputCooprationType").val();
-                // var management = $("#inputManagement").val();
-                var userStatus;
-                if ($("#inputUserStatus").val() == '1') {
-                    userStatus = true;
-                }
-                else {
-                    userStatus = false;
-                }
-                
-                var jobTitle = $("#inputJob").val();
+                var zipCode = $("#inputzip_code").val();
+                var necessaryContactNumber = $("#inputnecessary_contact_number").val();
+                var mobileNumber = $("#inputmobile").val();
+                var workplaceNumber = $("#inputworkplace_number").val();
+                var email = $("#inputEmail").val();
+                var image = $("#inputFile")[0].files[0];
+                var username = $("#inputUsername").val();
+                var password = $("#inputPassword").val();
+                var repeatPassword = $("#inputRepeatPassword").val();
+                var picture = $("#inputpicture")[0].files[0];
+                var personnelIDCard = $("#inputpersonal_id_card")[0].files[0];
+                var deviceIntroductionLetter = $("#inputdevice_introduction_letter")[0].files[0];
+                var signatureSample = $("#inputsample_signature")[0].files[0];
 
-                // var section = $("#inputSection").val();
-
-                formData.append('profile', image);
+                formData.append('username', username);
+                formData.append('password', password);
                 formData.append('first_name', firstName);
                 formData.append('last_name', lastName);
                 formData.append('father_s_name', fatherName);
-                formData.append('national_code', nationalCode);
-                // formData.append('password', password);
-                formData.append('birth_certificate_id', birthCertificateNo);
                 formData.append('gender', gender);
-                formData.append('marital_status', maritalStatus);
-                formData.append('birthplace', birthPlace);
-                formData.append('insurance_number', insuranceNumber);
-                formData.append('degree', degree);
-                formData.append('organization_role', role);
-                formData.append('mobile', mobileNumber);
+                formData.append('birth_certificate_id', birthCertificateNo);
+                formData.append('national_code', nationalCode);
                 formData.append('birthday', birthDate);
-                formData.append('management', management);
-                // formData.append('email', email);
-                // formData.append('access_group', groupUser);
-                // formData.append('relevant_deputy', relevantDeputy);
-                formData.append('company', company);
+                formData.append('degree', degree);
+                formData.append('major', major);
+                formData.append('university_of_study', collegePlace);
+                formData.append('executive_device', executive_device);
+                formData.append('role', role);
+                formData.append('work_experience', workExperience);
+                formData.append('personnel_id', personnelID);
                 formData.append('address', address);
-                // formData.append('coopration_type', cooprationType);
-                formData.append('active', JSON.stringify(userStatus));
-                formData.append('job_title', jobTitle);
-                // formData.append('section', section);
-                formData.append('staff', JSON.stringify(false));
-                formData.append('superuser', JSON.stringify(false));
+                formData.append('zip_code', zipCode);
+                formData.append('mobile', mobileNumber);
+                formData.append('necessary_contact_number', necessaryContactNumber);
+                formData.append('workplace_number', workplaceNumber);
+                formData.append('email', email);
+                formData.append('profile', image);
+                formData.append('picture', picture);
+                formData.append('personal_id_card', personnelIDCard);
+                formData.append('device_introduction_letter', deviceIntroductionLetter);
+                formData.append('sample_signature', signatureSample);
 
-                console.log(JSON.stringify(formData));
                 var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
 
-                var data = {'content': formData};
                 // formData.forEach(function(value, key){
-                //     data[key] = value;
                 //     console.log(key, value);
                 // });
-                // var json = JSON.stringify(data);
 
                 $.ajax(
-                    {
+                                    {
                         method: 'POST',
-                        url: '{.% url "master_data:api_personnel_create" %}',
+                        url: '{% url "main:ajax_signup" %}',
                         headers: {
-                            'content-type': 'application/json',
                             'X-CSRFToken': csrftoken
                         },
-                        // scriptCharset: "utf-8" , 
-                        // contentType: "application/json; charset=utf-8",
                         contentType: false,
                         processData: false,
-                        data: data,
+                        data: formData,
                         success: function (json, status) {
-                            console.log(json);
-                            console.log(status);
-                            if (status == 'success') {
+                            if (json.status == '201') {
                                 $(".blur").removeClass('active');
                                 $(".loading-fixed").hide();
                                 $("html, body").animate({

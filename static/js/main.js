@@ -60,15 +60,14 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#profile')
+            $(input).prev('.temp-image').first()
                 .attr('src', e.target.result);
-            // .width(180)
-            // .height(180);
         };
 
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 $(".datatable").DataTable({
     'order': []
 });
