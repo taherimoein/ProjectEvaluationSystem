@@ -401,6 +401,7 @@ class Executive_Device(models.Model):
 
     evaluation_governor = models.IntegerField(verbose_name = 'ارزیابی فرماندار', blank = True, null = True)
 
+    publish = models.BooleanField(verbose_name = 'وضعیت انتشار', default = True)
     create_date = models.DateTimeField(verbose_name = 'تاریخ ثبت', auto_now_add = True)
     update_date = models.DateTimeField(verbose_name = 'تاریخ بروزرسانی', auto_now = True)
 

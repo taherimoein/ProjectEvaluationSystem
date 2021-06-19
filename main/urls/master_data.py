@@ -20,12 +20,15 @@ urlpatterns = [
     path('project/all/', projectviews.project_list_all_page, name = 'project_list_all_page'),
     path('project/create/', projectviews.project_create_page, name = 'project_create_page'),
     path('ajax/project/create/', projectviews.create_project, name = 'ajax_create_project'),
+    path('project/details-<int:pk>/', projectviews.project_details_page, name = 'ajax_project_details_page'),
     # Master Data "organization" --------------------------------------------------------------
     path('organizations/', organizationviews.organization_list_page, name = 'organization_list_page'),
     path('organization/create/', organizationviews.organization_create_page, name = 'organization_create_page'),
     path('ajax/organization/create/', organizationviews.create_organization, name = 'ajax_create_organization'),
     path('organization/evaluation-governor/<int:organization_id>/', organizationviews.evaluation_governor_page, name = 'evaluation_governor_page'),
     path('ajax/organization/evaluation-governor/', organizationviews.executive_device_evaluation_governor, name = 'ajax_executive_device_evaluation_governor'),
+    path('ajax/organization/deactivate/', organizationviews.deactivate_executive_device, name = 'ajax_deactivate_executive_device'),
+    path('ajax/organization/search/', organizationviews.search_in_executive_device, name = 'ajax_search_in_executive_device'),
     # Master Data "projects types" --------------------------------------------------------------
     path('projectstype/', projectstypeviews.projectstype_list_page, name = 'projectstype_list_page'),
     path('projectstype/create/', projectstypeviews.projectstype_create_page, name = 'projectstype_create_page'),

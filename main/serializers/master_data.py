@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
+from main.models import User, Executive_Device
 from django.shortcuts import reverse
 from datetime import datetime
-from main.models import User
 import jdatetime
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -21,6 +21,22 @@ class UserBaseSerializer(ModelSerializer):
             'first_name',
             'last_name',
             'national_code'
+        ]
+
+
+# executive_device information 
+class ExecutiveDeviceSerializer(ModelSerializer):
+    class Meta:
+        model = Executive_Device
+        fields = [
+            'id',
+            'title',
+            'code',
+        ]
+        read_only_fields = [
+            'id',
+            'title',
+            'code',
         ]
 
 

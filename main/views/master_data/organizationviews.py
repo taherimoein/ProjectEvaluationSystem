@@ -1,3 +1,4 @@
+from main.serializers.master_data import ExecutiveDeviceSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import  render, get_object_or_404
 from utils.decorators.access_level import is_governor
@@ -12,15 +13,12 @@ from main.models import User, Executive_Device
 
 @login_required(login_url = 'main:sign_page')
 def organization_list_page(request):
-    #     users = User.objects.annotate(fullname = Concat('first_name', Value(' '), 'last_name')) \
-    #         .order_by('create_date').values('id', 'national_code', 'fullname', 'father_s_name', \
-    #             'role', 'executive_device', 'personnel_id', 'necessary_contact_number',\
-    #             'mobile', 'username', 'access_group', 'active')
+    executive_device_list = Executive_Device.objects.filter(publist = True)
 
-    #     context = {
-    #         'Users': users
-    #     }
-    return render(request, 'master-data/organization/organization-list.html', )
+    context = {
+        'ExecutiveDeviceList': executive_device_list
+    }
+    return render(request, 'master-data/organization/organization-list.html', context)
 
 
 @login_required(login_url = 'main:sign_page')
@@ -110,15 +108,15 @@ def executive_device_evaluation_governor(request):
                     return JsonResponse(response_data)
                 else:
                     this_assessment = request.POST.get('assessment')
-                # add evaluation executive_device info
-                this_organization = Executive_Device.objects.get(id = this_organization_id)
-                # get point from assessment
-                this_organization.evaluation_governor = int(this_assessment)
-                this_organization.evaluation_point += int(this_assessment)
-                this_organization.save()
-                
-                response_data['status'] = '200'
-                return JsonResponse(response_data)
+                    # add evaluation executive_device info
+                    this_organization = Executive_Device.objects.get(id = this_organization_id)
+                    # get point from assessment
+                    this_organization.evaluation_governor = int(this_assessment)
+                    this_organization.evaluation_point += int(this_assessment)
+                    this_organization.save()
+                    
+                    response_data['status'] = '200'
+                    return JsonResponse(response_data)
             except Exception as e:
                 response_data['status'] = '500'
                 response_data['error'] = str(e)
@@ -130,4 +128,65 @@ def executive_device_evaluation_governor(request):
     else:
         response_data['status'] = '401'
         response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)
+
+
+def deactivate_executive_device(request):
+    response_data = {}
+    if request.user.is_authenticated:
+        if request.user.is_governor:
+            try:
+                # get data
+                this_organization_id = request.POST.get('organization_id')
+                if not Executive_Device.objects.filter(id = this_organization_id).exists():
+                    response_data['status'] = '404'
+                    response_data['error'] = 'دستگاه اجرایی با این شناسه در سیستم موجود نمی باشد.'
+                    return JsonResponse(response_data)
+                else:
+                    # get organization
+                    this_organization = Executive_Device.objects.get(id = this_organization_id)
+                    # get point from assessment
+                    this_organization.publish = False
+                    this_organization.save()
+                    
+                    response_data['status'] = '200'
+                    return JsonResponse(response_data)
+            except Exception as e:
+                response_data['status'] = '500'
+                response_data['error'] = str(e)
+                return JsonResponse(response_data)
+        else:
+            response_data['status'] = '403'
+            response_data['error'] = 'شما اجازه دسترسی به این بخش را ندارید.'
+            return JsonResponse(response_data)
+    else:
+        response_data['status'] = '401'
+        response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)
+
+
+def search_in_executive_device(request):
+    response_data = {}
+    try:
+        # get search
+        this_search = request.POST.get('search')
+        # set search regex
+        this_search = this_search.split(' ')
+        this_search = list(filter(lambda i: i != '', this_search))
+        search_word_list = []
+        for word in this_search:
+            search_word = list(map(lambda x: x + '\s*', word.replace(' ','')[:-1]))
+            search_word = ''.join(search_word) + word[-1]
+            search_word_list.append(search_word)
+        search_word = r'.*'.join(search_word_list)
+        # search in fullname & national_code
+        executive_device_list = Executive_Device.objects.filter(title__regex = search_word)
+        serializer = ExecutiveDeviceSerializer(executive_device_list, many = True)
+
+        response_data['status'] = '200'
+        response_data['data'] = serializer.data
+        return JsonResponse(response_data)
+    except Exception as e:
+        response_data['status'] = '500'
+        response_data['error'] = str(e)
         return JsonResponse(response_data)

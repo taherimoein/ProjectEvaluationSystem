@@ -6,7 +6,7 @@ from django.db.models import Value, Q
 from django.http import JsonResponse
 import json
 # get model
-from main.models import User, Project
+from main.models import User, Project, Executive_Device
 
 # -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -109,3 +109,51 @@ def create_project(request):
         response_data['status'] = '401'
         response_data['error'] = 'شما وارد سیستم نشده اید.'
         return JsonResponse(response_data)
+
+
+def get_project_details(this_project):
+    this_executive_device = Executive_Device.objects.get(title = this_project.executive_device)
+
+    this_project_details = {
+        'title': this_project.title,
+        'description': this_project.description,
+        'fiscal_year': this_project.fiscal_year,
+        'executive_device': this_project.executive_device,
+        'fk_user': this_project.fk_user,
+        'attached_file': this_project.attached_file,
+        'project_location_address': this_project.project_location_address,
+        'telephone': this_project.telephone,
+        'approximate_date_preparation': this_project.approximate_date_preparation,
+        'amount_required_for_workshop': this_project.amount_required_for_workshop,
+        'prepayment_amount': this_project.prepayment_amount,
+        'initial_offered_credit_amount': this_project.initial_offered_credit_amount,
+        'amount_credit_increase': this_project.amount_credit_increase,
+        'bidding_history': this_project.bidding_history,
+        'land_and_basic_facilities': this_project.land_and_basic_facilities,
+        'similar_projects': this_project.similar_projects,
+        'ability_to_shred': this_project.ability_to_shred,
+        'type_of_financial_resources': this_project.type_of_financial_resources,
+        'applicant_name_and_role': this_project.applicant_name_and_role,
+        'requires_collaboration_between_devices': this_project.requires_collaboration_between_devices,
+        'requires_special_permissions': this_project.requires_special_permissions,
+        'requires_special_facilities': this_project.requires_special_facilities,
+        'shared_capability_between_multiple_executive_devices': this_project.shared_capability_between_multiple_executive_devices,
+        'shared_capability_between_several_cities': this_project.shared_capability_between_several_cities,
+        'evaluation_assistance': this_project.evaluation_assistance,
+        'evaluation_user': this_project.evaluation_user,
+        'executive_device_point': this_executive_device.evaluation_governor,
+        'equal_distribution_credits_between_executive_devices': this_project.equal_distribution_credits_between_executive_devices,
+        'evaluation_point': this_project.evaluation_point,
+        'create_date': this_project.evaluation_point
+    }
+    return this_project_details
+
+
+@login_required(login_url = 'main:sign_page')
+def project_details_page(request, pk):
+    this_project = get_object_or_404(Project, id = pk)
+
+    context = {
+        'ThisProject': get_project_details(this_project)
+    }
+    return render(request, 'master-data/project/project-details.html', context)
