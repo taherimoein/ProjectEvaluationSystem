@@ -387,7 +387,7 @@
             dir: "rtl",
             ajax: {
                 method: 'POST',
-                url: "{.% url 'master_data:ajax_search_in_companies' %}",
+                url: "{% url 'master_data:ajax_search_in_executive_device' %}",
                 dataType: 'json',
                 delay: 250,
                 data: function (params) {
@@ -427,14 +427,14 @@
                 "</div>"
             );
 
-            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.national_code + ')');
+            $container.find(".select2-result-repository__title").text(repo.title + ' (' + repo.code + ')');
 
             return $container;
         }
 
         function formatRepoSelection(repo) {
-            if (repo.id && repo.title && repo.national_code) {
-                return repo.title + ' (' + repo.national_code + ')';
+            if (repo.id && repo.title && repo.code) {
+                return repo.title + ' (' + repo.code + ')';
             }
             return repo.text;
         }

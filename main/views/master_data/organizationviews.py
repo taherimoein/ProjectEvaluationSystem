@@ -13,7 +13,7 @@ from main.models import User, Executive_Device
 
 @login_required(login_url = 'main:sign_page')
 def organization_list_page(request):
-    executive_device_list = Executive_Device.objects.filter(publist = True)
+    executive_device_list = Executive_Device.objects.filter(publish = True)
 
     context = {
         'ExecutiveDeviceList': executive_device_list
@@ -47,7 +47,7 @@ def create_organization(request):
             this_number_unreinforced_buildings = request.POST.get('number_unreinforced_buildings')
             this_buildings = json.loads(request.POST.get('buildings'))
             this_projects_behind_schedule = json.loads(request.POST.get('projects_behind_schedule'))
-            this_projects_not_been_completed_more_year = request.POST.get('projects_not_been_completed_more_year')
+            this_projects_not_been_completed_more_year = json.loads(request.POST.get('projects_not_been_completed_more_year'))
             this_number_projects_last_year = request.POST.get('number_projects_last_year')
             this_number_completed_financial_projects = request.POST.get('number_completed_financial_projects')
             this_amount_budget_requested_last_year = request.POST.get('amount_budget_requested_last_year')
@@ -59,8 +59,8 @@ def create_organization(request):
             this_number_projects_not_been_completed_more_year = request.POST.get('number_projects_not_been_completed_more_year')
             # create organization
             this_organization = Executive_Device.objects.create(code = this_code, title = this_title, year = this_year,\
-                executive_device = this_executive_device, telephone = this_telephone, fax = this_fax, email = this_email,\
-                address_general_administration = this_address_general_administration, approximate_date_preparation = this_approximate_date_preparation,\
+                telephone = this_telephone, fax = this_fax, email = this_email,\
+                address_general_administration = this_address_general_administration,\
                 website = this_website, boss_executive_device = this_boss_executive_device, assistance_executive_device = this_assistance_executive_device,\
                 number_employees = this_number_employees, number_contract_staff = this_number_contract_staff, number_buildings = this_number_buildings,\
                 number_unreinforced_buildings = this_number_unreinforced_buildings, buildings = this_buildings, projects_behind_schedule = this_projects_behind_schedule,\

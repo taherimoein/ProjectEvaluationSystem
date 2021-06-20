@@ -58,6 +58,30 @@
                                 </div>
                             </div>
                             <form>
+                                <div class="form-row row-form-group">
+                                    <br>
+                                    <h4 class="row-form-group__title">اطلاعات پایه</h4>
+                                    <br>
+                                    <div class="form-group col-12 p-3">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCode">کد<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد کد الزامی می باشد."></i>
+                                                <input type="text" class="form-control" id="inputCode">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputTitle">نام<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد نام الزامی می باشد."></i>
+                                                <input type="text" class="form-control" id="inputTitle">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputYear">سال<code>*</code></label>
+                                                <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد سال الزامی می باشد."></i>
+                                                <input type="number" class="form-control" id="inputYear">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br>
                                 <div class="form-row row-form-group">
                                     <br>
@@ -109,7 +133,7 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputBossFullName">نام و نام خانوادگی ریاست دستگاه<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="نام و نام خانوادگی ریاست دستگاه الزامی می باشد."></i>
-                                                <input type="text" id="inputBossFullName" class="form-control" placeholder="03400000000">
+                                                <input type="text" id="inputBossFullName" class="form-control">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputBossMobile">شماره تلفن همراه<code>*</code></label>
@@ -117,13 +141,21 @@
                                                 <input type="number" id="inputBossMobile" class="form-control">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="inputBossPhone">شماره تلفن ثابت<code>*</code></label>
+                                                <label for="inputBossPhone-1">شماره تلفن ثابت 1<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                <input type="number" id="inputBossPhone" class="form-control" placeholder="03400000000">
+                                                <input type="number" id="inputBossPhone-1" class="form-control" placeholder="03400000000">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputBossPhone-2">شماره تلفن ثابت 2</label>
+                                                <input type="number" id="inputBossPhone-2" class="form-control" placeholder="03400000000">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputBossPhone-3">شماره تلفن ثابت 3</label>
+                                                <input type="number" id="inputBossPhone-3" class="form-control" placeholder="03400000000">
+                                            </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputBossEmail">پست الکترونیکی<code>*</code></label>
                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>
@@ -158,23 +190,35 @@
                                                                 <input val='deputy-mobile' type="number" id="inputDeputyMobile-1" class="form-control">
                                                             </div>
                                                             <div class="form-group col-md-4">
-                                                                <label val='deputy-phone' for="inputDeputyPhone-1">شماره تلفن ثابت<code>*</code></label>
+                                                                <label val='deputy-phone-1' for="inputDeputyPhone-1-1">شماره تلفن ثابت 1</label><code>*</code>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>
-                                                                <input val='deputy-phone' type="number" id="inputDeputyPhone-1" class="form-control" placeholder="03400000000">
+                                                                <input val='deputy-phone-1' type="number" id="inputDeputyPhone-1-1" class="form-control" placeholder="03400000000">
                                                             </div>
                                                         </div>
+                                                        <br>
                                                         <div class="form-row">
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-phone-2' for="inputDeputyPhone-2-1">شماره تلفن ثابت 2</label>
+                                                                <input val='deputy-phone-2' type="number" id="inputDeputyPhone-2-1" class="form-control" placeholder="03400000000">
+                                                            </div>
+                                                            <div class="form-group col-md-4">
+                                                                <label val='deputy-phone-3' for="inputDeputyPhone-3-1">شماره تلفن ثابت 3</label>
+                                                                <input val='deputy-phone-3' type="number" id="inputDeputyPhone-3-1" class="form-control" placeholder="03400000000">
+                                                            </div>
                                                             <div class="form-group col-md-4">
                                                                 <label val='deputy-email' for="inputDeputyEmail-1">پست الکترونیکی<code>*</code></label>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>
                                                                 <input val='deputy-email' type="email" id="inputDeputyEmail-1" class="form-control">
                                                             </div>
+                                                        </div>                                            
+                                                        <br>
+                                                        <div class="form-row">
                                                             <div class="form-group col-md-4">
                                                                 <label val='deputy-title' for="inputDeputyTitle-1">عنوان معاونت<code>*</code></label>
                                                                 <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان معاونت الزامی می باشد."></i>
                                                                 <input val='deputy-title' type="text" id="inputDeputyTitle-1" class="form-control">
                                                             </div>
-                                                        </div>                                            
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -605,17 +649,29 @@
                                     '<input val="deputy-mobile" type="number" id="inputDeputyMobile-' + count + '" class="form-control">' +
                                 '</div>' +
                                 '<div class="form-group col-md-4">' +
-                                    '<label val="deputy-phone" for="inputDeputyPhone-' + count + '">شماره تلفن ثابت<code>*</code></label> ' +
+                                    '<label val="deputy-phone-1" for="inputDeputyPhone-1-' + count + '">شماره تلفن ثابت 1</label><code>*</code> ' +
                                     '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد شماره تلفن ثابت الزامی می باشد و بایستی شامل 11 کاراکتر عددی باشد (شامل پیش شماره شهر)."></i>' +
-                                    '<input val="deputy-phone" type="number" id="inputDeputyPhone-' + count + '" class="form-control" placeholder="03400000000">' +
+                                    '<input val="deputy-phone-1" type="number" id="inputDeputyPhone-1-' + count + '" class="form-control" placeholder="03400000000">' +
                                 '</div>' +
                             '</div>' +
+                            '<br>' +
                             '<div class="form-row">' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-phone-2" for="inputDeputyPhone-2-' + count + '">شماره تلفن ثابت 2</label> ' +
+                                    '<input val="deputy-phone-2" type="number" id="inputDeputyPhone-2-' + count + '" class="form-control" placeholder="03400000000">' +
+                                '</div>' +
+                                '<div class="form-group col-md-4">' +
+                                    '<label val="deputy-phone-3" for="inputDeputyPhone-3-' + count + '">شماره تلفن ثابت 3</label> ' +
+                                    '<input val="deputy-phone-3" type="number" id="inputDeputyPhone-3-' + count + '" class="form-control" placeholder="03400000000">' +
+                                '</div>' +
                                 '<div class="form-group col-md-4">' +
                                     '<label val="deputy-email" for="inputDeputyEmail-' + count + '">پست الکترونیکی<code>*</code></label> ' +
                                     '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد پست الکترونیکی الزامی می باشد."></i>' +
                                     '<input val="deputy-email" type="email" id="inputDeputyEmail-' + count + '" class="form-control">' +
                                 '</div>' +
+                            '</div>' +
+                            '<br>' +
+                            '<div class="form-row">' +
                                 '<div class="form-group col-md-4">' +
                                     '<label val="deputy-title" for="inputDeputyTitle-' + count + '">عنوان معاونت<code>*</code></label> ' +
                                     '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip" data-placement="left" title="فیلد عنوان معاونت الزامی می باشد."></i>' +
@@ -647,8 +703,14 @@
                 $(item).find("label[val='deputy-mobile']").prop('for', 'inputDeputyMobile-' + (count - 1).toString());
                 $(item).find("input[val='deputy-mobile']").prop('id', 'inputDeputyMobile-' + (count - 1).toString());
                 
-                $(item).find("label[val='deputy-phone']").prop('for', 'inputDeputyPhone-' + (count - 1).toString());
-                $(item).find("input[val='deputy-phone']").prop('id', 'inputDeputyPhone-' + (count - 1).toString());
+                $(item).find("label[val='deputy-phone-1']").prop('for', 'inputDeputyPhone-1-' + (count - 1).toString());
+                $(item).find("input[val='deputy-phone-1']").prop('id', 'inputDeputyPhone-1-' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-phone-2']").prop('for', 'inputDeputyPhone-2-' + (count - 1).toString());
+                $(item).find("input[val='deputy-phone-2']").prop('id', 'inputDeputyPhone-2-' + (count - 1).toString());
+
+                $(item).find("label[val='deputy-phone-3']").prop('for', 'inputDeputyPhone-3-' + (count - 1).toString());
+                $(item).find("input[val='deputy-phone-3']").prop('id', 'inputDeputyPhone-3-' + (count - 1).toString());
 
                 $(item).find("label[val='deputy-email']").prop('for', 'inputDeputyEmail-' + (count - 1).toString());
                 $(item).find("input[val='deputy-email']").prop('id', 'inputDeputyEmail-' + (count - 1).toString());
@@ -1052,6 +1114,11 @@
 
                 var data = {};
 
+                // Base Info
+                var code = $("#inputCode").val();
+                var title = $("#inputTitle").val();
+                var year = $("#inputYear").val();
+
                 // Access Info
                 var generalOfficeAddress = $("#inputGeneralOfficeAddress").val();
                 var phone = $("#inputPhone").val();
@@ -1062,7 +1129,9 @@
                 // Boss Info
                 var bossFullName = $("#inputBossFullName").val();
                 var bossMobile = $("#inputBossMobile").val();
-                var bossPhone = $("#inputBossPhone").val();
+                var bossPhone1 = $("#inputBossPhone-1").val();
+                var bossPhone2 = $("#inputBossPhone-2").val();
+                var bossPhone3 = $("#inputBossPhone-3").val();
                 var bossEmail = $("#inputBossEmail").val();
 
 
@@ -1070,13 +1139,16 @@
                 var deputyElements = $(".deputy-item");
                 var deputies = [];
                 var deputyObj = {};
-
+                
                 for (var item of deputyElements) {
+                    deputyObj = {};
                     deputyObj.deputy_fullname = ($(item).find("input[val='deputy-fullname']").first().val());
-                    deputyObj.deputy_mobile = ($(item).find("input[val='deputy-fullname']").first().val());
-                    deputyObj.deputy_phone = ($(item).find("input[val='deputy-fullname']").first().val());
-                    deputyObj.deputy_email = ($(item).find("input[val='deputy-fullname']").first().val());
-                    deputyObj.deputy_title = ($(item).find("input[val='deputy-fullname']").first().val());
+                    deputyObj.deputy_mobile = ($(item).find("input[val='deputy-mobile']").first().val());
+                    deputyObj.deputy_phone_1 = ($(item).find("input[val='deputy-phone-1']").first().val());
+                    deputyObj.deputy_phone_2 = ($(item).find("input[val='deputy-phone-2']").first().val());
+                    deputyObj.deputy_phone_3 = ($(item).find("input[val='deputy-phone-3']").first().val());
+                    deputyObj.deputy_email = ($(item).find("input[val='deputy-email']").first().val());
+                    deputyObj.deputy_title = ($(item).find("input[val='deputy-title']").first().val());
                     deputies.push(deputyObj);
                 }
 
@@ -1092,13 +1164,14 @@
                 var buildingObj = {};
 
                 for (var item of buildingElements) {
+                    buildingObj = {};
                     buildingObj.building_name = ($(item).find("input[val='building-name']").first().val());
                     buildingObj.building_create_year = ($(item).find("input[val='building-create-year']").first().val());
                     buildingObj.building_strength = ($(item).find("select[val='building-strength']").first().val());
                     buildingObj.building_usage = ($(item).find("input[val='building-usage']").first().val());
                     buildingObj.building_employed_count = ($(item).find("input[val='employed-count']").first().val());
                     buildingObj.building_responsible = ($(item).find("input[val='building-responsible']").first().val());
-                    buildingObj.building_address = ($(item).find("input[val='building-address']").first().val());
+                    buildingObj.building_address = ($(item).find("textarea[val='building-address']").first().val());
                     buildingObj.building_phone = ($(item).find("input[val='building-phone']").first().val());
                     buildingObj.building_responsible_mobile = ($(item).find("input[val='building-responsible-mobile']").first().val());
                     buildingObj.building_fax = ($(item).find("input[val='building-fax']").first().val());
@@ -1124,6 +1197,7 @@
                 var projectLaterThanDeadlineObj = {};
                 
                 for (var item of projectLaterThanDeadlineElements) {
+                    projectLaterThanDeadlineObj = {};
                     projectLaterThanDeadlineObj.project_later_than_deadline_title = ($(item).find("input[val='project-later-than-deadline-title']").first().val());
                     projectLaterThanDeadlineObj.project_later_than_deadline_progress = ($(item).find("input[val='project-later-than-deadline-progress']").first().val());
                     projectLaterThanDeadlineObj.project_later_than_deadline_period = ($(item).find("input[val='project-later-than-deadline-period']").first().val());
@@ -1138,11 +1212,12 @@
                 }
 
                 // Project Longer Tthan Year Info
-                var projectLongerThanYearElements = $(".project-later-than-deadline-item");
+                var projectLongerThanYearElements = $(".project-longer-than-year-item");
                 var projectsLongerThanYear = [];
                 var projectLongerThanYearObj = {};
 
                 for (var item of projectLongerThanYearElements) {
+                    projectLongerThanYearObj = {};
                     projectLongerThanYearObj.project_longer_than_year_title = ($(item).find("input[val='project-longer-than-year-title']").first().val());
                     projectLongerThanYearObj.project_longer_than_year_progress = ($(item).find("input[val='project-longer-than-year-progress']").first().val());
                     projectLongerThanYearObj.project_longer_than_year_period = ($(item).find("input[val='project-longer-than-year-period']").first().val());
@@ -1157,39 +1232,81 @@
                     projectsLongerThanYear.push(projectLongerThanYearObj);
                 }
                 
-                data.general_office_address = generalOfficeAddress;
-                data.phone = phone;
-                data.fax = fax;
-                data.email = email;
-                data.website = website;
-                data.boss_fullname = bossFullName;
-                data.boss_mobile = bossMobile;
-                data.boss_phone = bossPhone;
-                data.boss_email = bossEmail;
-                data.deputies = deputies;
-                data.hired_personnel_count = hiredPersonnelCount;
-                data.contract_personnel_count = contractPersonnelCount;
-                data.building_count = buildingCount;
-                data.weak_bulding_count = weakBuldingCount;
-                data.buildings = buildings;
-                data.last_year_project_count = lastYearProjectCount;
-                data.completed_financial_project_count = completedFinancialProjectCount;
-                data.last_year_budget_request = lastYearBudgetRequest;
-                data.last_year_budget_delivered = lastYearBudgetDelivered;
-                data.last_year_budget_assigned = lastYearBudgetAssigned;
-                data.completed_project_count = completedProjectCount;
-                data.remaining_project_count = remainingProjectCount;
-                data.project_later_than_deadline_count = projectLaterThanDeadlineCount;
-                data.project_longer_than_year_count = projectLongerThanYearCount;
-                data.projects_later_than_deadline = projectsLaterThanDeadline;
-                data.projects_longer_than_year = projectsLongerThanYear;
+                // data.code = code;
+                // data.title = title;
+                // data.year = year;
+                // data.address_general_administration = generalOfficeAddress;
+                // data.telephone = phone;
+                // data.fax = fax;
+                // data.email = email;
+                // data.website = website;
+                // data.boss_executive_device = {};
+                // data.boss_executive_device.boss_fullname = bossFullName;
+                // data.boss_executive_device.boss_mobile = bossMobile;
+                // data.boss_executive_device.boss_phone_1 = bossPhone1;
+                // data.boss_executive_device.boss_phone_2 = bossPhone2;
+                // data.boss_executive_device.boss_phone_3 = bossPhone3;
+                // data.boss_executive_device.boss_email = bossEmail;
+                // data.assistance_executive_device = deputies;
+                // data.number_employees = hiredPersonnelCount;
+                // data.number_contract_staff = contractPersonnelCount;
+                // data.number_buildings = buildingCount;
+                // data.number_unreinforced_buildings = weakBuldingCount;
+                // data.buildings = buildings;
+                // data.number_projects_last_year = lastYearProjectCount;
+                // data.number_completed_financial_projects = completedFinancialProjectCount;
+                // data.amount_budget_requested_last_year = lastYearBudgetRequest;
+                // data.budget_realized_last_year = lastYearBudgetDelivered;
+                // data.amount_budget_allocated_last_year = lastYearBudgetAssigned;
+                // data.number_completed_projects = completedProjectCount;
+                // data.number_projects_remaining = remainingProjectCount;
+                // data.number_projects_is_behind_schedule = projectLaterThanDeadlineCount;
+                // data.number_projects_not_been_completed_more_year = projectLongerThanYearCount;
+                // data.projects_behind_schedule = projectsLaterThanDeadline;
+                // data.projects_not_been_completed_more_year = projectsLongerThanYear;
 
+                var bossExecutiveDevice = {};
+                bossExecutiveDevice.boss_fullname = bossFullName;
+                bossExecutiveDevice.boss_mobile = bossMobile;
+                bossExecutiveDevice.boss_phone_1 = bossPhone1;
+                bossExecutiveDevice.boss_phone_2 = bossPhone2;
+                bossExecutiveDevice.boss_phone_3 = bossPhone3;
+                bossExecutiveDevice.boss_email = bossEmail;
+
+                
+                // console.log(data);
+                
                 $.ajax(
                     {
                         method: 'POST',
-                        url: '{.% url "master_data:ajax_create_deputy" %}',
+                        url: '{% url "master_data:ajax_create_organization" %}',
                         data: {
-                            content: JSON.stringify(data),
+                            code: code,
+                            title: title,
+                            year: year,
+                            address_general_administration: generalOfficeAddress,
+                            telephone: phone,
+                            fax: fax,
+                            email: email,
+                            website: website,
+                            boss_executive_device: JSON.stringify(bossExecutiveDevice),
+                            assistance_executive_device: JSON.stringify(deputies),
+                            number_employees: hiredPersonnelCount,
+                            number_contract_staff: contractPersonnelCount,
+                            number_buildings: buildingCount,
+                            number_unreinforced_buildings: weakBuldingCount,
+                            buildings: JSON.stringify(buildings),
+                            number_projects_last_year: lastYearProjectCount,
+                            number_completed_financial_projects: completedFinancialProjectCount,
+                            amount_budget_requested_last_year: lastYearBudgetRequest,
+                            budget_realized_last_year: lastYearBudgetDelivered,
+                            amount_budget_allocated_last_year: lastYearBudgetAssigned,
+                            number_completed_projects: completedProjectCount,
+                            number_projects_remaining: remainingProjectCount,
+                            number_projects_is_behind_schedule: projectLaterThanDeadlineCount,
+                            number_projects_not_been_completed_more_year: projectLongerThanYearCount,
+                            projects_behind_schedule: JSON.stringify(projectsLaterThanDeadline),
+                            projects_not_been_completed_more_year: JSON.stringify(projectsLongerThanYear),
                             csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                         },
                         success: function (json) {
@@ -1202,7 +1319,7 @@
                                 }, 1000);
                                 $(".alert-message.success-message").show();
                                 $(".alert-message.error-message").hide();
-                                var redirectURL = '{.% url "master_data:deputy_list_page" %}';
+                                var redirectURL = '{% url "master_data:organization_list_page" %}';
                                 setTimeout(function () {
                                     location.replace(redirectURL);
                                 }, 1500)
