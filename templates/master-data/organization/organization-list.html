@@ -70,7 +70,7 @@
                                             نام دستگاه اجرایی
                                         </th>
                                         <th>
-                                            کاربر ثبت کننده
+                                            رئیس دستگاه اجرایی
                                         </th>
                                         <th>
                                             تاریخ ثبت 
@@ -86,24 +86,26 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            نام دستگاه اجرایی
-                                        </td>
-                                        <td>
-                                            کاربر ثبت کننده
-                                        </td>
-                                        <td>
-                                            تاریخ ثبت 
-                                        </td>
-                                        
-                                        <td>
-                                            ویرایش
-                                        </td>
-                                        <td>
-                                            حذف
-                                        </td>
-                                    </tr>
+                                    {% for item in ExecutiveDeviceList %}
+                                        <tr>
+                                            <td>
+                                               {{item.title}}
+                                            </td>
+                                            <td>
+                                                {{item.boss_executive_device.boss_fullname}}
+                                            </td>
+                                            <td>
+                                                {{item.create_date|datetime_to_jalali}}
+                                            </td>
+                                            
+                                            <td>
+                                                {{item.title}}
+                                            </td>
+                                            <td>
+                                                {{item.title}}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
