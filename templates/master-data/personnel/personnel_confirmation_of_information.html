@@ -23,6 +23,33 @@
             {% endblock %}
 
             <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                      <div class="alert-section">
+                        <div class="alert-message error-message front text-right mb-3">
+                          <div class="alert-message-content error-content">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div class="alert-message-text alert-message.error-message error-text">
+                            </div>
+                          </div>
+                          <div class="close-message close-error-message">
+                            <i class="fas fa-times"></i>
+                          </div>
+                        </div>
+                        <div class="alert-message success-message front text-right mb-3">
+                          <div class="alert-message-content success-content">
+                            <i class="fas fa-check"></i>
+                            <div class="alert-message-text success-text alert-message.success-message">
+                                 با موفقیت ثبت شد.
+                            </div>
+                          </div>
+                          <div class="close-message close-success-message">
+                            <i class="fas fa-times"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="row text-right">
                     <div class="col-12">
                         <h2 class="title_page">جزئیات پرسنل</h2>
@@ -143,6 +170,19 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <br><br>
+                                    <label for="user_role">دسترسی کاربر: </label>
+                                    <select id="user_role">
+                                        <option value="user">کاربر عادی</option>
+                                        <option value="department_of_administration">ریاست اداره</option>
+                                    </select>
+                                    <br>
+                                    <button id="send_user_roles" class="btn btn-primary">تغییر نقش و فعال کردن کاربر</button>
+                                    <br><br>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,13 +194,65 @@
     {% endblock %}
 
     <script>
-        var jobTitle = '{{ThisUser.job_title|safe}}';
-        jobTitle = JSON.parse(jobTitle);
-        var management = '{{ThisUser.management|safe}}';
-        management = JSON.parse(management);
 
-        $("#job-title").html(jobTitle.title);
-        $("#management").html(management.title);
+        $("#send_user_roles").click(function (e) {
+            e.preventDefault();
+            
+                $(".blur").addClass('active disable-form');
+                $(".loading-fixed").show();
+                var rule = $("#user_role").val();
+                var ID = '{{ThisUser.id}}';
+                $.ajax (
+                    {
+                        method: 'POST',
+                        url: '{% url "master_data:ajax_confirmation_of_information_personnel" %}',
+                        data: {
+                            access_group: rule,
+                            id: ID,
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        },
+                        success: function (json) {
+                            if (json.status == "200")
+                            {
+                                $(".blur").removeClass('active');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message.success-message").show();
+                                $(".alert-message.error-message").hide();
+                                var redirectURL = '{% url "master_data:personnel_list_page" %}';
+                                setTimeout(function () {
+                                location.replace(redirectURL);
+                                }, 1500)
+                            }
+                            else {
+                                $(".blur").removeClass('active disable-form');
+                                $(".loading-fixed").hide();
+                                $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                                }, 1000);
+                                $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                                $(".alert-message.error-message").show();
+                            }
+                        },
+                        error: function (json, status, xhr) {
+                            console.log(json.error);
+                            console.log(status);
+                            console.log(xhr);
+                            $(".blur").removeClass('active disable-form');
+                            $(".loading-fixed").hide();
+                            $("html, body").animate({
+                                scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                            $(".alert-message.error-message").show();
+                        }
+                    }
+                ) 
+        })
+      
+      
     </script>
 
 </body>
