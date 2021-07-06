@@ -91,12 +91,12 @@
                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                         data-placement="left" title="تعیین نیاز جامعه هدف الزامی میباشد."></i>
                     <select id="inputRationaleStudies" class="form-control select2-component dyn-tarh">
-                        <option value="0">فاقد مطالعات چهارگانه طرح توجیهی</option>
-                        <option value="1">فاقد مطالعات چهارگانه طرح توجیهی به طور ناقص را داراست و نیازی به پروژه نباشد و یا شرایط احداث و بودجه پذیری آن مهیا نیست</option>
-                        <option value="2">در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد. در این شرایط اگر فرد خبره ای نیاز به اجرای پروژه را تایید نماید.</option>
-                        <option value="3">نیاز به اجرای پروژه + شرایط احداث محیاست</option>
-                        <option value="4">دارای حداقل مطالعات امکان سنجی (طرح توجیهی) + دارای حداقل امکان سنجی فنی باشد</option>
-                        <option value="5">مطالعات چهارگانه نیاز به اجرای طرح و شرایط آن را محیا می داند. امکان سنجی فنی انجام گردیده است.</option>
+                        <option value="-50">فاقد مطالعات چهارگانه طرح توجیهی</option>
+                        <option value="0">فاقد مطالعات چهارگانه طرح توجیهی به طور ناقص را داراست و نیازی به پروژه نباشد و یا شرایط احداث و بودجه پذیری آن مهیا نیست</option>
+                        <option value="25">در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد. در این شرایط اگر فرد خبره ای نیاز به اجرای پروژه را تایید نماید.</option>
+                        <option value="25">نیاز به اجرای پروژه + شرایط احداث محیاست</option>
+                        <option value="50">دارای حداقل مطالعات امکان سنجی (طرح توجیهی) + دارای حداقل امکان سنجی فنی باشد</option>
+                        <option value="100">مطالعات چهارگانه نیاز به اجرای طرح و شرایط آن را محیا می داند. امکان سنجی فنی انجام گردیده است.</option>
                     </select>
                   </div>
                   <div class="form-group col-md-7 text-right">
@@ -117,10 +117,10 @@
                         data-placement="left" title="تعیین نیاز جامع هدف الزامی میباشد."></i>
                     <select id="inputNeedsOfTargetCommunity" class="form-control select2-component">
                         <option value="0">انتخاب...</option>
-                        <option value="1">علایق جامع هدف</option>
-                        <option value="2">منافع فرهنگی و اداری</option>
-                        <option value="3">منافع اقتصادی</option>
-                        <option value="3">نیاز های اساسی جامع هدف</option>
+                        <option value="30">علایق جامع هدف</option>
+                        <option value="50">منافع فرهنگی و اداری</option>
+                        <option value="70">منافع اقتصادی</option>
+                        <option value="100">نیاز های اساسی جامع هدف</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -138,11 +138,11 @@
                         data-placement="left" title="تعیین ضرورت جامع هدف الزامی میباشد."></i>
                     <select id="inputNecessityOfTargetCommunity" class="form-control select2-component">
                         <option value="0">انتخاب...</option>
-                        <option value="1">فاقد ضرورت</option>
-                        <option value="2">ضرورت اجتماعی</option>
-                        <option value="3">ضرورت سیاسی</option>
-                        <option value="4">ضرورت امنیتی</option>
-                        <option value="5">همه موارد</option>
+                        <option value="0">فاقد ضرورت</option>
+                        <option value="20">ضرورت اجتماعی</option>
+                        <option value="30">ضرورت سیاسی</option>
+                        <option value="50">ضرورت امنیتی</option>
+                        <option value="100">همه موارد</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -159,15 +159,15 @@
                     <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
                         data-placement="left" title="تعیین مدت زمان اجرا الزامی میباشد."></i>
                     <select id="inputExecutionTime" class="form-control select2-component">
-                        <option value="0">انتخاب...</option>
-                        <option value="1">کمتر از 6 ماه</option>
-                        <option value="2">بیشتر از 6 ماه و کمتر از 12 ماه</option>
-                        <option value="3">بیشتر از 12 ماه و کمتر از 18 ماه</option>
-                        <option value="3">بیشتر از 18 ماه و کمتر از 24 ماه</option>
-                        <option value="3">بیشتر از 24 ماه و کمتر از 30 ماه</option>
-                        <option value="3">بیشتر از 30 ماه و کمتر از 36 ماه</option>
-                        <option value="3">بیشتر از 36 ماه و کمتر از 72 ماه</option>
-                        <option value="4">بیشتر از 72 ماه</option>
+                        <option value="-1000">انتخاب...</option>
+                        <option value="100">کمتر از 6 ماه</option>
+                        <option value="75">بیشتر از 6 ماه و کمتر از 12 ماه</option>
+                        <option value="50">بیشتر از 12 ماه و کمتر از 18 ماه</option>
+                        <option value="25">بیشتر از 18 ماه و کمتر از 24 ماه</option>
+                        <option value="15">بیشتر از 24 ماه و کمتر از 30 ماه</option>
+                        <option value="0">بیشتر از 30 ماه و کمتر از 36 ماه</option>
+                        <option value="-100">بیشتر از 36 ماه و کمتر از 72 ماه</option>
+                        <option value="-1000">بیشتر از 72 ماه</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -203,11 +203,11 @@
                         data-placement="left" title="تعیین نرخ تکرار الزامی میباشد."></i>
                         <small>پروژه های همسانی که در شعاع موثر هم قرار میگیرند و باهم در فرایند ارزیابی شرکت میکنند.</small>
                     <select id="inputRepetitionRate" class="form-control select2-component">
-                        <option value="0">انتخاب...</option>
-                        <option value="1">در شعاع موثر هم یک عدد</option>
-                        <option value="2">در شعاع موثر هم دو عدد</option>
-                        <option value="3">در شعاع موثر هم سه عدد</option>
-                        <option value="4">بیش از سه</option>
+                        <option value="-25">انتخاب...</option>
+                        <option value="100">در شعاع موثر هم یک عدد</option>
+                        <option value="50">در شعاع موثر هم دو عدد</option>
+                        <option value="10">در شعاع موثر هم سه عدد</option>
+                        <option value="-25">بیش از سه</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -226,11 +226,11 @@
                         data-placement="left" title="تعیین نرخ فراوانی الزامی میباشد."></i>
                         <small>مقایسه پروژه با پروژه های همسان که در شعاع موثر موجود هستند و یا پروژه هایی که در حال بهره برداری و دارای استحکام هستند.</small>
                     <select id="inputAbundanceRate" class="form-control select2-component">
-                        <option value="0">انتخاب...</option>
-                        <option value="1">در شعاع موثر هم یک عدد</option>
-                        <option value="2">در شعاع موثر هم دو عدد</option>
-                        <option value="3">در شعاع موثر هم سه عدد</option>
-                        <option value="4">بیش از سه</option>
+                        <option value="-25">انتخاب...</option>
+                        <option value="100">در شعاع موثر هم یک عدد</option>
+                        <option value="50">در شعاع موثر هم دو عدد</option>
+                        <option value="10">در شعاع موثر هم سه عدد</option>
+                        <option value="-25">بیش از سه</option>
                     </select>
                   </div>
                   <!-- <div class="form-group col-md-5 text-center">
@@ -256,12 +256,12 @@
                             data-placement="left" title="تعیین جمعیت الزامی میباشد."></i>
                         <select id="inputPopulation" class="form-control select2-component">
                             <option value="0">انتخاب...</option>
-                            <option value="1">تمام شهرستان</option>
+                            <option value="150">تمام شهرستان</option>
                             <option value="2">قسمت های مهم</option>
                             <option value="3">تراکم جمعیتی زیاد</option>
                             <option value="4">تراکم جمعیتی کم</option>
-                            <option value="5">محل تجاری دارای جمعیت که منافع عمومی ندارد با هر جمعیتی که باشد.</option>
-                            <option value="6">فاقد جمعیت</option>
+                            <option value="0">محل تجاری دارای جمعیت که منافع عمومی ندارد با هر جمعیتی که باشد.</option>
+                            <option value="-150">فاقد جمعیت</option>
                         </select>
                       </div>
 
@@ -365,20 +365,20 @@
           text = '<label for="inputPopulation-1">انتخاب<code>*</code></label>'+
                   '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
                   '<select id="inputPopulation-1" class="form-control select2-component">'+
-                  '<option value="0">بخش اصلی (مرکزی) -جمعیت 121206</option>'+
-                  '<option value="1">مرکز بخش اصلی -جمعیت 60370</option>'+
-                  '<option value="2">بخش فرعی 1 -جمعیت 16927</option>'+
-                  '<option value="3">مرکز بخش فرعی 1 -جمعیت 5607</option>'+
+                  '<option value="100">بخش اصلی (مرکزی) -جمعیت 121206</option>'+
+                  '<option value="90">مرکز بخش اصلی -جمعیت 60370</option>'+
+                  '<option value="85">بخش فرعی 1 -جمعیت 16927</option>'+
+                  '<option value="75">مرکز بخش فرعی 1 -جمعیت 5607</option>'+
                   '</select>';
           break;
         case "3":
           text = '<label for="inputPopulation-1">انتخاب<code>*</code></label>'+
                   '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
                   '<select id="inputPopulation-1" class="form-control select2-component">'+
-                  '<option value="0">با تراکم جمعیت بسیار زیاد -بالای 21440</option>'+
-                  '<option value="1">با تراکم جمعیت زیاد -بین 5708 تا 21440</option>'+
-                  '<option value="2">با تراکم جمعیت متوسط -بین 4096 تا 5707 </option>'+
-                  '<option value="3">با تراکم جمعیت کم -بین 3405 تا 4095</option>'+
+                  '<option value="75">با تراکم جمعیت بسیار زیاد -بالای 21440</option>'+
+                  '<option value="70">با تراکم جمعیت زیاد -بین 5708 تا 21440</option>'+
+                  '<option value="65">با تراکم جمعیت متوسط -بین 4096 تا 5707 </option>'+
+                  '<option value="60">با تراکم جمعیت کم -بین 3405 تا 4095</option>'+
                   '</select>';
           break;
         case "4":
@@ -455,7 +455,65 @@
           }
           else if (populationPoint == 4)
           {
-            populationSubTitle = $("#inputPopulation_1").val() + '-' + $("#inputPopulation_2").val();;
+            populationSubTitle = $("#inputPopulation_1").val() + '-' + $("#inputPopulation_2").val();
+            if(parseInt($("#inputPopulation_1").val()) >=2141 && parseInt($("#inputPopulation_2").val()) <= 3404){
+              populationPoint = 57;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 1293 && parseInt($("#inputPopulation_2").val()) <= 2140){
+              populationPoint = 54;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 992 && parseInt($("#inputPopulation_2").val()) <= 1292){
+              populationPoint = 51;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 688 && parseInt($("#inputPopulation_2").val()) <= 991){
+              populationPoint = 48;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 483 && parseInt($("#inputPopulation_2").val()) <= 687){
+              populationPoint = 45;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 327 && parseInt($("#inputPopulation_2").val()) <= 482){
+              populationPoint = 42;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 133 && parseInt($("#inputPopulation_2").val()) <= 326){
+              populationPoint = 39;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 83 && parseInt($("#inputPopulation_2").val()) <= 132){
+              populationPoint = 36;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 65 && parseInt($("#inputPopulation_2").val()) <= 82){
+              populationPoint = 33;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 48 && parseInt($("#inputPopulation_2").val()) <= 64){
+              populationPoint = 30;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 47 && parseInt($("#inputPopulation_2").val()) <= 38){
+              populationPoint = 27;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 37 && parseInt($("#inputPopulation_2").val()) <= 24){
+              populationPoint = 24;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 23 && parseInt($("#inputPopulation_2").val()) <= 16){
+              populationPoint = 21;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 15 && parseInt($("#inputPopulation_2").val()) <= 12){
+              populationPoint = 18;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 11 && parseInt($("#inputPopulation_2").val()) <= 9){
+              populationPoint = 15;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 8 && parseInt($("#inputPopulation_2").val()) <= 7){
+              populationPoint = 12;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 6 && parseInt($("#inputPopulation_2").val()) <= 5){
+              populationPoint = 9;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 4 && parseInt($("#inputPopulation_2").val()) <= 3){
+              populationPoint = 6;
+            }
+            else if (parseInt($("#inputPopulation_1").val()) >= 2 && parseInt($("#inputPopulation_2").val()) <= 1){
+              populationPoint = 3;
+            }
+            
           }
 
           //project type
