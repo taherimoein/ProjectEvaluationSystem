@@ -29,11 +29,7 @@ def personnel_list_page(request):
 @is_governor
 @login_required(login_url = 'main:sign_page')
 def personnel_create_page(request):
-
-    context = {
-
-    }
-    return render(request, 'master-data/personnel/personnel-create.html', context)
+    return render(request, 'master-data/personnel/personnel-create.html')
 
 
 def check_personnel_fields(request):
@@ -172,6 +168,7 @@ def create_personnel(request):
 
 def get_user_details(this_user):
     this_user_details = {
+        'id': this_user.id,
         'national_code': this_user.national_code,
         'first_name': this_user.first_name,
         'last_name': this_user.last_name,
@@ -449,7 +446,7 @@ def personnel_confirmation_of_information_page(request, username):
     context = {
         'ThisUser': get_user_details(this_user)
     }
-    return render(request, 'master-data/personnel/personnel-edit.html', context)
+    return render(request, 'master-data/personnel/personnel_confirmation_of_information.html', context)
 
 
 def confirmation_of_information_personnel(request):
@@ -462,7 +459,7 @@ def confirmation_of_information_personnel(request):
                 this_access_group = request.POST.get('access_group')
 
                 if User.objects.filter(id = this_user_id).exists():
-                    if (this_access_group == 'user') or (this_access_group == 'department_of_administration'):
+                    if this_access_group in ['user', 'department_of_administration']:
                         # get user 
                         this_user = User.objects.get(id = this_user_id)
                         # change user access group

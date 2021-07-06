@@ -235,7 +235,7 @@ class User(AbstractBaseUser):
 
     def add_history(self, status, user = None, other_fileds = None, add_datetime = None,):
         if add_datetime is None:
-            add_datetime = timezone.localtime(datetime.datetime.now())
+            add_datetime = datetime.datetime.now()
         if user is not None:
             user = int(user)
         if status == 'create':

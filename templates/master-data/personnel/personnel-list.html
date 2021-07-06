@@ -112,8 +112,8 @@
                                 <tbody>
                                     {% for item in Users %}
                                         <tr>
-                                            <td class="text-center"><a href="{.% url 'master_data:personnel_details_page' item.username %}">{{item.username}}</a></td>
-                                            <td class="full-name text-center"><a href="{.% url 'master_data:personnel_details_page' item.national_code %}">{{item.fullname}}</a></td>
+                                            <td class="text-center"><a href="{% url 'master_data:personnel_details_page' item.username %}">{{item.username}}</a></td>
+                                            <td class="full-name text-center"><a href="{% url 'master_data:personnel_details_page' item.username %}">{{item.fullname}}</a></td>
                                             <td class="father-name">{{item.father_s_name}}</td>
                                             <td class="national-code">{{item.national_code}}</td>
                                             <td class="executive-device">{{item.executive_device}}</td>
@@ -122,8 +122,12 @@
                                             <td class="necessary-contact-number">{{item.necessary_contact_number}}</td>
                                             <td class="mobile">{{item.mobile|default_if_none:"ندارد"}}</td>
                                             <td class="access_group">{{item.access_group|access_group_to_fa}}</td>
-                                            <td class="status" val="{% if item.active %}accepted{% else %}rejected{% endif %}"><span class="status {% if item.active %}accepted{% else %}rejected{% endif %}">{{item.active|active_to_fa}}</span></td>
-                                            <td class="text-center"><a href="{.% url 'master_data:personnel_edit_page' item.national_code %}"><i class="fas fa-pencil"></i></a></td>
+                                            {% if item.active %}
+                                                <td class="status"><span class="status accepted">فعال</span></td>
+                                            {% else %}
+                                                <td class="status"><a href="{% url 'master_data:personnel_confirmation_of_information_page' item.username %}"><span class="status rejected">غیرفعال - تایید کاربر</span></a></td>
+                                            {% endif %}
+                                            <td class="text-center"><a href="{% url 'master_data:personnel_edit_page' item.username %}"><i class="fas fa-pencil"></i></a></td>
                                             <td class="text-center"><i val="{{item.id}}" class="cursor-pointer fas fa-trash-alt delete-personnel"></i></td>
                                         </tr>
                                     {% endfor %}

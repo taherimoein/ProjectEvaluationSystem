@@ -30,7 +30,6 @@ def projectstype_list_page(request):
 def projectstype_create_page(request):
     return render(request, 'master-data/projectstype/projectstype-create.html', )
 
-
      
 # create new project_type
 def create_new_project_type(request):
@@ -73,8 +72,7 @@ def create_new_project_type(request):
         response_data['status'] = '401'
         response_data['error'] = 'شما وارد سیستم نشده اید.'
         return JsonResponse(response_data)
-
-      
+ 
 
 # delete ProjectType
 def delete_project_type(request):
