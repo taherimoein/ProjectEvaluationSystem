@@ -120,6 +120,71 @@
 
   <script>
 
+  $("#submit").click(function (e) {
+        e.preventDefault();
+            $(".blur").addClass('active disable-form');
+            $(".loading-fixed").show();
+
+            var projectID = '{{ThisProject.id}}';
+
+            var data = {};
+
+            var importanceOfProject = parseInt($("#input4").val());
+            var assistantScore = parseInt($("#inputmanage").val());
+
+            data.importance_of_project = {'point': importanceOfProject};
+            data.expert_opinion = {'point': assistantScore};
+
+            $.ajax(
+              {
+                  method: 'POST',
+                  url: "{% url 'main:ajax_project_evaluation_user' %}",
+                  data: {
+                    project_id: projectID,
+                    assessment: JSON.stringify(data),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                  },
+                  success: function (json) {
+                    if (json.status == "200")
+                      {
+                          $(".blur").removeClass('active');
+                          $(".loading-fixed").hide();
+                          $("html, body").animate({
+                          scrollTop: $(".alert-section").offset().top - 20
+                          }, 1000);
+                          $(".alert-message.success-message").show();
+                          $(".alert-message.error-message").hide();
+                          var redirectURL = '{% url "master_data:project_list_all_page" %}';
+                          setTimeout(function () {
+                            location.replace(redirectURL);
+                          }, 1500)
+                      }
+                      else {
+                          $(".blur").removeClass('active disable-form');
+                          $(".loading-fixed").hide();
+                          $("html, body").animate({
+                          scrollTop: $(".alert-section").offset().top - 20
+                          }, 1000);
+                          $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                          $(".alert-message.error-message").show();
+                      }
+                  },
+                  error: function (json, xhr, status) {
+                    console.log(json.error);
+                      console.log(status);
+                      console.log(xhr);
+                      $(".blur").removeClass('active disable-form');
+                      $(".loading-fixed").hide();
+                      $("html, body").animate({
+                          scrollTop: $(".alert-section").offset().top - 20
+                      }, 1000);
+                      $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                      $(".alert-message.error-message").show();
+                  }
+              }
+            )
+  })
+
   </script>
 
 
