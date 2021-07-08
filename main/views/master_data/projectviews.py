@@ -25,7 +25,7 @@ def project_list_page(request):
 @login_required(login_url = 'main:sign_page')
 def project_list_all_page(request):
     project_list = Project.objects.order_by('-create_date')\
-        .values('id', 'title', 'create_date')
+        .values('id', 'title','evaluation_point','create_date')
 
     context = {
         'ProjectList': project_list

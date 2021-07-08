@@ -63,6 +63,9 @@
                                             تاریخ ثبت 
                                         </th>
                                         <th>
+                                            امتیاز
+                                        </th>
+                                        <th>
                                             ارزیابی
                                         </th>
                                     </tr>
@@ -73,6 +76,7 @@
                                         <tr>
                                             <td>{{item.title}}</td>
                                             <td>{{item.create_date|datetime_to_jalali}}</td>
+                                            <td>{{item.evaluation_point}}</td>
                                             {% if request.user.is_governor %}
                                                 <td class="text-center"><a href="{% url 'master_data:evaluation_governor_page' item.id %}"><i class="fas fa-clipboard-list-check"></i></a></td>
                                             {% else %}
