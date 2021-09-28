@@ -11,6 +11,9 @@
                 <div class="bio">
                     <span>نام و نام خانوادگی : </span>
                     <span>{{request.user.get_fullname}}</span>
+                    <br>
+                    <span>نقش : </span>
+                    <span>{{request.user.get_access_group_display}}</span>
                 </div>
                 <div class="company">
                     <span> </span>

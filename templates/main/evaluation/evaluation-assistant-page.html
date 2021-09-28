@@ -60,6 +60,242 @@
                 </div>
               </div>
               <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">تقسیم فاز های مطالعه طرح توجیهی</h4>
+                        <p>
+                          الف) مطالعات فرصت (Opportanity)
+                          <br>
+                          ب) مطالعات مقدماتی طرحی توجیهی(امکان سنجی) (Pre-feasibility Study)
+                          <br>
+                          ج) مطالعات طرح توجیهی (امکان سنجی) (Feasibility Study)
+                          <br>
+                          د) مطالعات طرح توجیهی فنی (امکان سنجی فنی) (Technical Study)
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                          <strong>
+                            مطالعات طرح توجیهی:
+                          </strong>
+                          <br>
+                           مطالعه و بررسی کارشناسی شده در خصوص امکان پذیری یک پروژه با طرح و یا توسعه آن . در واقع طرح امکان سنجی با طرح توجیهی فنی- اقتصادی و به طور کلی تجزیه و تحلیل شانس موفقیت پروژه می باشد و خروجی نهایی مطالعات طرح توجیهی ارائه یک مدل تصمیم گیری به ذینفعان و بانیان مجری طرح است ، که دورنمایی از وضعیت آینده و احداث طرح می باشد و از اجزاء مطالعات بازار و توجیه پذیری فنی و تجزیه و تحلیل مالی می باشد. <br>
+                            لازمه اجرای یک پروژه انجام مطالعات است . البته انواع مختلفی از مطالعات وجود دارد که باید انجام شود مانند مطالعات فرصته پیش امکان سنجی و امکان سنجی.
+                            <br>
+                            مطالعات فرصت قبل از مطالعات پیش بینی امکان سنجی انجام می شود شامل کشف فرصت های تدوین ایده پروژه ، تهیه و جمع آوری اطلاعات و پایگاه داده لازم و تایید اطلاعات و ارزیابی اولیه داده ها و اطلاعات است . مطالعه پیش امکان سنجی ، بعد از انجام مطالعه فرصت انجام می شود . هیچ کدام یک از این مطالعات جایگزین یکدیگر نیستند و هریک به منظور خاصی مورد استفاده قرار می گیرند.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                      <label for="inputRationaleStudies">مطالعات طرح توجیهی<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین نیاز جامعه هدف الزامی میباشد."></i>
+                      <select id="inputRationaleStudies" class="form-control select2-component dyn-tarh">
+                          <option value="-50">فاقد مطالعات چهارگانه طرح توجیهی</option>
+                          <option value="0">فاقد مطالعات چهارگانه طرح توجیهی به طور ناقص را داراست و نیازی به پروژه نباشد و یا شرایط احداث و بودجه پذیری آن مهیا نیست</option>
+                          <option value="25">در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد. در این شرایط اگر فرد خبره ای نیاز به اجرای پروژه را تایید نماید.</option>
+                          <option value="25">نیاز به اجرای پروژه + شرایط احداث محیاست</option>
+                          <option value="50">دارای حداقل مطالعات امکان سنجی (طرح توجیهی) + دارای حداقل امکان سنجی فنی باشد</option>
+                          <option value="100">مطالعات چهارگانه نیاز به اجرای طرح و شرایط آن را محیا می داند. امکان سنجی فنی انجام گردیده است.</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-7 text-right">
+                      <div id="detail-tarh">
+                        <label>توضیحات</label>
+                        <br>
+                        زمانی که طرح با پروژه مطالعات چهارگانه طرح توجیهی فوق را نداشته باشد ، به علت اینکه به سمت تهیه مطالعات هدایت شود
+                      </div>
+                    </div>
+                  </div>
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputNeedsOfTargetCommunity">نیاز جامع هدف<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین نیاز جامع هدف الزامی میباشد."></i>
+                      <select id="inputNeedsOfTargetCommunity" class="form-control select2-component">
+                          <option value="0">انتخاب...</option>
+                          <option value="30">علایق جامع هدف</option>
+                          <option value="50">منافع فرهنگی و اداری</option>
+                          <option value="70">منافع اقتصادی</option>
+                          <option value="100">نیاز های اساسی جامع هدف</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputNecessityOfTargetCommunity">ضرورت جامع هدف<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین ضرورت جامع هدف الزامی میباشد."></i>
+                      <select id="inputNecessityOfTargetCommunity" class="form-control select2-component">
+                          <option value="0">انتخاب...</option>
+                          <option value="0">فاقد ضرورت</option>
+                          <option value="20">ضرورت اجتماعی</option>
+                          <option value="30">ضرورت سیاسی</option>
+                          <option value="50">ضرورت امنیتی</option>
+                          <option value="100">همه موارد</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputExecutionTime">مدت زمان اجرا<code>*</code><small>(مدت زمان بهره برداری)</small></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین مدت زمان اجرا الزامی میباشد."></i>
+                      <select id="inputExecutionTime" class="form-control select2-component">
+                          <option value="-1000">انتخاب...</option>
+                          <option value="100">کمتر از 6 ماه</option>
+                          <option value="75">بیشتر از 6 ماه و کمتر از 12 ماه</option>
+                          <option value="50">بیشتر از 12 ماه و کمتر از 18 ماه</option>
+                          <option value="25">بیشتر از 18 ماه و کمتر از 24 ماه</option>
+                          <option value="15">بیشتر از 24 ماه و کمتر از 30 ماه</option>
+                          <option value="0">بیشتر از 30 ماه و کمتر از 36 ماه</option>
+                          <option value="-100">بیشتر از 36 ماه و کمتر از 72 ماه</option>
+                          <option value="-1000">بیشتر از 72 ماه</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <!-- <div class="form-group col-md-5">
+                      <label for="inputEqualDistributionBetweenExecutiveDevices">توزیع مساوات بین دستگاه های اجرایی<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین توزیع مساوات بین دستگاه های اجرایی الزامی میباشد."></i>
+                      <select id="inputEqualDistributionBetweenExecutiveDevices" class="form-control select2-component">
+                          <option value="0">انتخاب...</option>
+                          
+                      </select>
+                    </div> -->
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputRepetitionRate">نرخ تکرار<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین نرخ تکرار الزامی میباشد."></i>
+                          <small>پروژه های همسانی که در شعاع موثر هم قرار میگیرند و باهم در فرایند ارزیابی شرکت میکنند.</small>
+                      <select id="inputRepetitionRate" class="form-control select2-component">
+                          <option value="-25">انتخاب...</option>
+                          <option value="100">در شعاع موثر هم یک عدد</option>
+                          <option value="50">در شعاع موثر هم دو عدد</option>
+                          <option value="10">در شعاع موثر هم سه عدد</option>
+                          <option value="-25">بیش از سه</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+                  
+  
+                  <br>
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputAbundanceRate">نرخ فراوانی<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین نرخ فراوانی الزامی میباشد."></i>
+                          <small>مقایسه پروژه با پروژه های همسان که در شعاع موثر موجود هستند و یا پروژه هایی که در حال بهره برداری و دارای استحکام هستند.</small>
+                      <select id="inputAbundanceRate" class="form-control select2-component">
+                          <option value="-25">انتخاب...</option>
+                          <option value="100">در شعاع موثر هم یک عدد</option>
+                          <option value="50">در شعاع موثر هم دو عدد</option>
+                          <option value="10">در شعاع موثر هم سه عدد</option>
+                          <option value="-25">بیش از سه</option>
+                      </select>
+                    </div>
+                    <!-- <div class="form-group col-md-5 text-center">
+                      <br>
+                      <h5>امتیاز 30</h5>
+                    </div> -->
+                  </div>
+                  
+  
+  
+  
+  
+  
+                  <div class="form-row row-form-group">
+                    <h4 class="row-form-group__title">جمعیت</h4>
+                    <br>
+                    <div class="form-group col-12 p-3">
+                      
+                      <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label for="inputPopulation">جمعیت<code>*</code></label>
+                          <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                              data-placement="left" title="تعیین جمعیت الزامی میباشد."></i>
+                          <select id="inputPopulation" class="form-control select2-component">
+                              <option value="0">انتخاب...</option>
+                              <option value="150">تمام شهرستان</option>
+                              <option value="2">قسمت های مهم</option>
+                              <option value="3">تراکم جمعیتی زیاد</option>
+                              <option value="4">تراکم جمعیتی کم</option>
+                              <option value="0">محل تجاری دارای جمعیت که منافع عمومی ندارد با هر جمعیتی که باشد.</option>
+                              <option value="-150">فاقد جمعیت</option>
+                          </select>
+                        </div>
+  
+  
+                        <div class="form-group col-md-5 detail-jam">
+                          
+                        </div>
+  
+  
+                      </div>
+                      
+  
+  
+                    </div>
+  
+                    
+                  </div>
+  
+            
+  
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputProjectType">نوع پروژه<code>*</code></label>
+                      <i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"
+                          data-placement="left" title="تعیین نوع پروژه الزامی میباشد."></i>
+                      <select id="inputProjectType" class="form-control select2-component">
+                          <option value="0">انتخاب...</option>
+                          {% for item in ProjectTypeList %}
+                              <option value="{{item.score}}">{{item.title}}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
 
 
                 <div class="form-row">
@@ -124,70 +360,326 @@
 
   <script>
 
+    
+
+$(".dyn-tarh").on("change", function () {
+      var select = $('.dyn-tarh').find(":selected").val();
+
+      var att_file = '<label for="inputPattached_file">پیوست</label>'+
+                      '<input type="file" class="form-control-file" id="inputPattached_file"><br>';
+      var label_text = '<label>توضیحات</label><br>';
+      switch (select) {
+        case "0":
+          text = label_text +"زمانی که طرح با پروژه مطالعات چهارگانه طرح توجیهی فوق را نداشته باشد ، به علت اینکه به سمت تهیه مطالعات هدایت شود";
+          break;
+        case "1":
+          text = att_file + label_text + "زمانی که طرح با پروژه حداقلی از یکی از مطالعات چهارگانه طرح توجیهی را به طور ناقص داشته باشد ، با براساس آنها نیازی به پروژه میباشد و با شرایط احداث و بودجه پذیری آن مهیا نیست . به معنی ساده مطالعات طرح توجیهی احداث و بودجه پذیری طرح را رد می کند و امکان موفقیت پروژه را صفر می داند";
+          break;
+        case "2":
+          text = att_file + label_text + "زمانی که طرح با پروژه دارای جزئی از مطالعات چهارگانه طرح توجیهی گرچه به طور ناقص باشد ؛ بر اساس این حداقل مطالعات نتوان تصمیم گیری کرد . در صورتی که شرایط بودجه پذیری آن نیز مهیا باشد . در این شرایط اگر فرد خبره ای نیاز به پروژه را تایید نماید";
+          break;
+        case "3":
+          text = att_file+ label_text +"زمانی که طرح با پروژه از میان مطالعات چهارگانه طرح توجیهی دارای حداقل مطالعات امکان سنجی طرح توجیهی باشد . همچنین از لحاظ مطالعات فنی دارای حداقل امکان سنجی فنی باشد . یعنی به عبارت ساده تر مطالعات طرح توجیهی حداقل مهر تایید برای احداث و بودجه پذیری دارا باشد . این حالت زمانیست که ما می توانیم به حداقل موفقیت پروژه امید داشته باشیم";
+          break;
+        case "4":
+          text = att_file+label_text+"زمانی که برای طرح مطالعات امکان سنجی چهار گانه انجام و نیاز به طرح با پروژه به اثبات رسیده است . امکان سنجی ها بیانگر این هستند که شرایط برای اجرای پروژه محیاست و امکان سنجی فنی هم بیانگر این است که در سر راه پروژه مشکلی به وجود نمی آید و می توان موفقیت پروژه را صد در صد تضمین کرد .";
+          break;
+        case "5":
+          text = att_file+"";
+          break;
+        default:
+          text = "";
+      }
+      $("#detail-tarh").html(text);
+    });
+
+
+
+
+    $("#inputPopulation").on("change", function () {
+      var select = $('#inputPopulation').find(":selected").val();
+      switch (select) {
+        case "0":
+          text = '';
+          break;
+        case "1":
+          text = "";
+          break;
+        case "2":
+          text = '<label for="inputPopulation-1">انتخاب<code>*</code></label>'+
+                  '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
+                  '<select id="inputPopulation-1" class="form-control select2-component">'+
+                  '<option value="100">بخش اصلی (مرکزی) -جمعیت 121206</option>'+
+                  '<option value="90">مرکز بخش اصلی -جمعیت 60370</option>'+
+                  '<option value="85">بخش فرعی 1 -جمعیت 16927</option>'+
+                  '<option value="75">مرکز بخش فرعی 1 -جمعیت 5607</option>'+
+                  '</select>';
+          break;
+        case "3":
+          text = '<label for="inputPopulation-1">انتخاب<code>*</code></label>'+
+                  '<i class="fal fa-info-circle tooltip-arrow" data-toggle="tooltip"data-placement="left" title="تعیین جزئیات جمعیت الزامی میباشد."></i> '+
+                  '<select id="inputPopulation-1" class="form-control select2-component">'+
+                  '<option value="75">با تراکم جمعیت بسیار زیاد -بالای 21440</option>'+
+                  '<option value="70">با تراکم جمعیت زیاد -بین 5708 تا 21440</option>'+
+                  '<option value="65">با تراکم جمعیت متوسط -بین 4096 تا 5707 </option>'+
+                  '<option value="60">با تراکم جمعیت کم -بین 3405 تا 4095</option>'+
+                  '</select>';
+          break;
+        case "4":
+          text = '<div class="row"><div class="form-group col-md-6">'+
+                  '<label for="inputPopulation_1">از جمعیت<code>*</code></label>'+
+                  '<input type="number" class="form-control" id="inputPopulation_1">'+
+                  '</div>'+
+                  '<div class="form-group col-md-6">'+
+                  '<label for="inputPopulation_2">تا جمعیت<code>*</code></label>'+
+                  '<input type="number" class="form-control" id="inputPopulation_2">'+
+                  '</div></div>';
+          break;
+        case "5":
+          text = "";
+          break;
+        default:
+          text = "";
+      }
+      $(".detail-jam").html(text);
+    });
+
+
   $("#submit").click(function (e) {
         e.preventDefault();
             $(".blur").addClass('active disable-form');
             $(".loading-fixed").show();
 
-            var projectID = '{{ThisProject.id}}';
-            var Bodje = parseInt($('#inputbudje').val());
+            
+          var formData = new FormData();
+
             var data = {};
 
-            var importanceOfProject = parseInt($("#input4").val());
-            var assistantScore = parseInt($("#inputmanage").val());
+            //rationale studies
+            var rationaleStudiesTitle = $("#inputRationaleStudies option:selected").text();
+            var rationaleStudiesPoint = parseInt($("#inputRationaleStudies").val());
 
-            data.importance_of_project = {'point': importanceOfProject};
-            data.expert_opinion = {'point': assistantScore};
-            data.total_amount_of_city_s_annual_budget = Bodje;
+            if (rationaleStudiesPoint == !0)
+            {
+              var file = $("#inputPattached_file")[0].files[0];
+              formData.append('rationale_studies_file', file);
+            }
+
+            //needs of target community
+            var needsOfTargetCommunityTitle = $("#inputNeedsOfTargetCommunity option:selected").text();
+            var needsOfTargetCommunityPoint = parseInt($("#inputNeedsOfTargetCommunity").val());
+
+            //necessity of target community
+            var necessityOfTargetCommunityTitle = $("#inputNecessityOfTargetCommunity option:selected").text();
+            var necessityOfTargetCommunityPoint = parseInt($("#inputNecessityOfTargetCommunity").val());
+
+            //execution time
+            var executionTimeTitle = $("#inputExecutionTime option:selected").text();
+            var executionTimePoint = parseInt($("#inputExecutionTime").val());
+
+            //equal distribution between executive devices
+            var equalDistributionBetweenExecutiveDevicesTitle = $("#inputEqualDistributionBetweenExecutiveDevices option:selected").text();
+            var equalDistributionBetweenExecutiveDevicesPoint = parseInt($("#inputEqualDistributionBetweenExecutiveDevices").val());
+
+            //repetition rate
+            var repitionRateTitle = $("#inputRepetitionRate option:selected").text();
+            var repitionRatePoint = parseInt($("#inputRepetitionRate").val());
+
+            //abundance rate
+            var abundanceRateTitle = $("#inputAbundanceRate option:selected").text();
+            var abundanceRatePoint = parseInt($("#inputAbundanceRate").val());
+
+            //population
+            var populationTitle = $("#inputPopulation option:selected").text();
+            var populationPoint = parseInt($("#inputPopulation").val());
+            var populationSubTitle = '';
+
+            if (populationPoint == 2 || populationPoint == 3)
+            {
+              populationSubTitle = $("#inputPopulation-1 option:selected").text();
+              populationPoint =  parseInt($("#inputPopulation-1").val());
+            }
+            else if (populationPoint == 4)
+            {
+              populationSubTitle = $("#inputPopulation_1").val() + '-' + $("#inputPopulation_2").val();
+              if(parseInt($("#inputPopulation_1").val()) >=2141 && parseInt($("#inputPopulation_2").val()) <= 3404){
+                populationPoint = 57;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 1293 && parseInt($("#inputPopulation_2").val()) <= 2140){
+                populationPoint = 54;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 992 && parseInt($("#inputPopulation_2").val()) <= 1292){
+                populationPoint = 51;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 688 && parseInt($("#inputPopulation_2").val()) <= 991){
+                populationPoint = 48;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 483 && parseInt($("#inputPopulation_2").val()) <= 687){
+                populationPoint = 45;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 327 && parseInt($("#inputPopulation_2").val()) <= 482){
+                populationPoint = 42;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 133 && parseInt($("#inputPopulation_2").val()) <= 326){
+                populationPoint = 39;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 83 && parseInt($("#inputPopulation_2").val()) <= 132){
+                populationPoint = 36;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 65 && parseInt($("#inputPopulation_2").val()) <= 82){
+                populationPoint = 33;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 48 && parseInt($("#inputPopulation_2").val()) <= 64){
+                populationPoint = 30;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 47 && parseInt($("#inputPopulation_2").val()) <= 38){
+                populationPoint = 27;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 37 && parseInt($("#inputPopulation_2").val()) <= 24){
+                populationPoint = 24;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 23 && parseInt($("#inputPopulation_2").val()) <= 16){
+                populationPoint = 21;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 15 && parseInt($("#inputPopulation_2").val()) <= 12){
+                populationPoint = 18;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 11 && parseInt($("#inputPopulation_2").val()) <= 9){
+                populationPoint = 15;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 8 && parseInt($("#inputPopulation_2").val()) <= 7){
+                populationPoint = 12;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 6 && parseInt($("#inputPopulation_2").val()) <= 5){
+                populationPoint = 9;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 4 && parseInt($("#inputPopulation_2").val()) <= 3){
+                populationPoint = 6;
+              }
+              else if (parseInt($("#inputPopulation_1").val()) >= 2 && parseInt($("#inputPopulation_2").val()) <= 1){
+                populationPoint = 3;
+              }
+              
+            }
+
+            //project type
+            var projectTypeTitle = $("#inputProjectType option:selected").text();
+            var projectTypePoint = parseInt($("#inputProjectType").val());
+
+            data.rationale_studies = {"item": rationaleStudiesTitle, "point": rationaleStudiesPoint};
+            data.comprehensive_target_needs = {"item": needsOfTargetCommunityTitle, "point": needsOfTargetCommunityPoint};
+            data.comprehensive_necessity_of_purpose = {"item": necessityOfTargetCommunityTitle, "point": necessityOfTargetCommunityPoint};
+            data.project_implementation_time = {"item": executionTimeTitle, "point": executionTimePoint};
+            data.repetition_rate = {"item": repitionRateTitle, "point": repitionRatePoint};
+            data.abundance_rate = {"item": abundanceRateTitle, "point": abundanceRatePoint};
+            data.population = {"item": populationTitle, "sub_item": populationSubTitle, "point": populationPoint};
+            data.type_of_project = {"item": projectTypeTitle, "point": projectTypePoint};
+
+            formData.append('assessment', JSON.stringify(data));
+
+            // for (var pair of formData.entries()) {
+            //     console.log(pair[0] + ', ' + pair[1]);
+            // }
+
+            var csrf_token = $('input[name=csrfmiddlewaretoken]').val();
 
             $.ajax(
-              {
-                  method: 'POST',
-                  url: "{% url 'main:ajax_project_evaluation_assistant' %}",
-                  data: {
-                    project_id: projectID,
-                    assessment: JSON.stringify(data),
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-                  },
-                  success: function (json) {
-                    if (json.status == "200")
-                      {
-                          $(".blur").removeClass('active');
-                          $(".loading-fixed").hide();
-                          $("html, body").animate({
-                          scrollTop: $(".alert-section").offset().top - 20
-                          }, 1000);
-                          $(".alert-message.success-message").show();
-                          $(".alert-message.error-message").hide();
-                          var redirectURL = '{% url "master_data:project_list_all_page" %}';
-                          setTimeout(function () {
-                            location.replace(redirectURL);
-                          }, 1500)
-                      }
-                      else {
-                          $(".blur").removeClass('active disable-form');
-                          $(".loading-fixed").hide();
-                          $("html, body").animate({
-                          scrollTop: $(".alert-section").offset().top - 20
-                          }, 1000);
-                          $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
-                          $(".alert-message.error-message").show();
-                      }
-                  },
-                  error: function (json, xhr, status) {
-                    console.log(json.error);
-                      console.log(status);
-                      console.log(xhr);
-                      $(".blur").removeClass('active disable-form');
-                      $(".loading-fixed").hide();
-                      $("html, body").animate({
-                          scrollTop: $(".alert-section").offset().top - 20
-                      }, 1000);
-                      $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
-                      $(".alert-message.error-message").show();
-                  }
-              }
+                {
+                    method: 'POST',
+                    url: "{% url 'main:ajax_project_evaluation_user' %}",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    headers: { "X-CSRFToken": csrf_token },
+                    success: function (json) {
+                        if (json.status == "200")
+                        {
+
+                          var projectID = '{{ThisProject.id}}';
+                          var Bodje = parseInt($('#inputbudje').val());
+                          var data = {};
+
+                          var importanceOfProject = parseInt($("#input4").val());
+                          var assistantScore = parseInt($("#inputmanage").val());
+
+                          data.importance_of_project = {'point': importanceOfProject};
+                          data.expert_opinion = {'point': assistantScore};
+                          data.total_amount_of_city_s_annual_budget = Bodje;
+
+                          $.ajax(
+                            {
+                                method: 'POST',
+                                url: "{% url 'main:ajax_project_evaluation_assistant' %}",
+                                data: {
+                                  project_id: projectID,
+                                  assessment: JSON.stringify(data),
+                                  csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                                },
+                                success: function (json) {
+                                  if (json.status == "200")
+                                    {
+                                        $(".blur").removeClass('active');
+                                        $(".loading-fixed").hide();
+                                        $("html, body").animate({
+                                        scrollTop: $(".alert-section").offset().top - 20
+                                        }, 1000);
+                                        $(".alert-message.success-message").show();
+                                        $(".alert-message.error-message").hide();
+                                        var redirectURL = '{% url "master_data:project_list_all_page" %}';
+                                        setTimeout(function () {
+                                          location.replace(redirectURL);
+                                        }, 1500)
+                                    }
+                                    else {
+                                        $(".blur").removeClass('active disable-form');
+                                        $(".loading-fixed").hide();
+                                        $("html, body").animate({
+                                        scrollTop: $(".alert-section").offset().top - 20
+                                        }, 1000);
+                                        $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                                        $(".alert-message.error-message").show();
+                                    }
+                                },
+                                error: function (json, xhr, status) {
+                                  console.log(json.error);
+                                    console.log(status);
+                                    console.log(xhr);
+                                    $(".blur").removeClass('active disable-form');
+                                    $(".loading-fixed").hide();
+                                    $("html, body").animate({
+                                        scrollTop: $(".alert-section").offset().top - 20
+                                    }, 1000);
+                                    $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                                    $(".alert-message.error-message").show();
+                                }
+                            }
+                          )
+                        }
+                        else {
+                            $(".blur").removeClass('active disable-form');
+                            $(".loading-fixed").hide();
+                            $("html, body").animate({
+                            scrollTop: $(".alert-section").offset().top - 20
+                            }, 1000);
+                            $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                            $(".alert-message.error-message").show();
+                        }
+                    },
+                    error: function (json, status, xhr) {
+                        console.log(json.error);
+                        console.log(status);
+                        console.log(xhr);
+                        $(".blur").removeClass('active disable-form');
+                        $(".loading-fixed").hide();
+                        $("html, body").animate({
+                            scrollTop: $(".alert-section").offset().top - 20
+                        }, 1000);
+                        $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                        $(".alert-message.error-message").show();
+                    }
+                }
             )
+
   })
 
   </script>
