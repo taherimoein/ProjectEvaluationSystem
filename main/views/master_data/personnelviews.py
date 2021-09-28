@@ -491,3 +491,77 @@ def confirmation_of_information_personnel(request):
         response_data['status'] = '401'
         response_data['error'] = 'شما وارد سیستم نشده اید.'
         return JsonResponse(response_data)
+
+
+# deactive personal
+def deactive_personal(request):
+    response_data = {}
+    if request.user.is_authenticated:
+        if request.user.is_governor:
+            try:
+                # get data
+                this_user_id = request.POST.get('user_id')
+                # check exists data
+                if User.objects.filter(id = this_user_id).exists():
+                    # get this user
+                    this_user = User.objects.get(id = this_user_id)
+                    # deactive object
+                    this_user.active = False
+                    this_user.save()
+
+                    response_data['status'] = '200'
+                    return JsonResponse(response_data)
+                else:
+                    # not exists data
+                    response_data['status'] = '404'
+                    response_data['error'] = 'کاربری با این شناسه موجود نیست.'
+                    return JsonResponse(response_data)
+            except Exception as e:
+                response_data['status'] = '500'
+                response_data['error'] = str(e)
+                return JsonResponse(response_data)
+        else:
+            response_data['status'] = '403'
+            response_data['error'] = 'شما اجازه دسترسی به این بخش را ندارید.'
+            return JsonResponse(response_data)
+    else:
+        response_data['status'] = '401'
+        response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)
+
+
+# active personal
+def active_personal(request):
+    response_data = {}
+    if request.user.is_authenticated:
+        if request.user.is_governor:
+            try:
+                # get data
+                this_user_id = request.POST.get('user_id')
+                # check exists data
+                if User.objects.filter(id = this_user_id).exists():
+                    # get this user
+                    this_user = User.objects.get(id = this_user_id)
+                    # active object
+                    this_user.active = True
+                    this_user.save()
+
+                    response_data['status'] = '200'
+                    return JsonResponse(response_data)
+                else:
+                    # not exists data
+                    response_data['status'] = '404'
+                    response_data['error'] = 'کاربری با این شناسه موجود نیست.'
+                    return JsonResponse(response_data)
+            except Exception as e:
+                response_data['status'] = '500'
+                response_data['error'] = str(e)
+                return JsonResponse(response_data)
+        else:
+            response_data['status'] = '403'
+            response_data['error'] = 'شما اجازه دسترسی به این بخش را ندارید.'
+            return JsonResponse(response_data)
+    else:
+        response_data['status'] = '401'
+        response_data['error'] = 'شما وارد سیستم نشده اید.'
+        return JsonResponse(response_data)

@@ -148,11 +148,7 @@
     {% endblock %}
 
     <script>
-        var managementsStr = '{{Managements|safe}}';
-        var managementsObj = JSON.parse(managementsStr);
 
-        var jobTitlesStr = '{{JobTitles|safe}}';
-        var jobTitlesObj = JSON.parse(jobTitlesStr);
 
 
         $("#inputJobGroups").on('select2:select', function (e){
@@ -356,75 +352,56 @@
             return repo.text;
         }
         
-        $(document).on('click', ".delete-personnel", function (){
-            $(".blur").addClass('active disable-form');
-            $(".loading-fixed").show();
+        </script>
+       
 
-            var personnelID = $(this).attr('val');
-            console.log(personnelID);
-
-            data = {};
-            data.active = JSON.stringify(false);
-            console.log(data);
-
-            var ajaxURL = '{.% url "master_data:api_personnel_edit" 0 %}';
-            ajaxURL = ajaxURL.substr(0, ajaxURL.length - 2) + personnelID + '/';
-
-            console.log(ajaxURL);
-
-            var csrftoken = $('input[name=csrfmiddlewaretoken]').val();
-
-            $.ajax (
-                {
-                    method: 'PATCH',
-                    url: ajaxURL,
-                    headers: {
-                        'content-type': 'application/json',
-                        'X-CSRFToken': csrftoken
-                    },
-                    dataType: 'json',
-                    data: JSON.stringify(data),
-                    success: function (json, status) {
-                        $(".blur").removeClass('active disable-form');
-                        $(".loading").hide();
-                        console.log(status);
-                        console.log(json);
-                        if (status == "success")
-                        {
-                            $(".alert-message.success-message").show();
-                            $(".alert-message.error-message").hide();
-                            $("html, body").animate({
-                                scrollTop: $(".alert-section").offset().top - 20
-                            }, 1000);
-                            setTimeout( function () {
+<script>
+    $(document).on('click', ".delete-personnel", function (){
+        $(".blur").addClass('active disable-form');
+        $(".loading").show();
+        var UserID = $(this).attr('val');
+        var thisNews = $(this);
+        $.ajax(
+            {
+                method: 'POST',
+                url: '{% url "master_data:ajax_deactive_personal" %}',
+                data: {
+                    user_id: UserID,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function (json) {
+                    $(".blur").removeClass('active disable-form');
+                    $(".loading").hide();
+                    if (json.status == '200') {
+                        setTimeout( function () {
                                 window.location.reload(false);
-                            }, 1500)
-                        }
-                        else
-                        {
-                            $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
-                            $(".alert-message.error-message").show();
-                            $("html, body").animate({
-                                scrollTop: $(".alert-section").offset().top - 20
-                            }, 1000);
-                        }
-                    },
-                    error: function (json, xhr, status) {
-                        console.log(json);
-                        // console.log(json.responseJSON.error);
-                        console.log(xhr);
-                        console.log(status);
-                        $(".blur").removeClass('active disable-form');
-                        $(".loading").hide();
-                        $(".alert-message-text.error-text").html(' ' + '(' + status + ')');
-                        $(".alert-message.error-message").show();
+                        }, 1500)
+                    }
+                    else {
                         $("html, body").animate({
                             scrollTop: $(".alert-section").offset().top - 20
                         }, 1000);
+                        $(".alert-message-text.error-text").html(json.error + ' ' + '(' + json.status + ')');
+                        $(".alert-message.error-message").show();
                     }
+                },
+                error: function (json, status, xhr) {
+                    console.log(json.error);
+                    console.log(status);
+                    console.log(xhr);
+                    $(".blur").removeClass('active disable-form');
+                    $(".loading").hide();
+                    $("html, body").animate({
+                        scrollTop: $(".alert-section").offset().top - 20
+                    }, 1000);
+                    $(".alert-message-text.error-text").html(xhr + ' ' + '(' + status + ')');
+                    $(".alert-message.error-message").show();
                 }
-            )
-        })
+            }
+        )
+    
+    })
+
     </script>
     
 </body>
