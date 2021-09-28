@@ -103,6 +103,18 @@
     <script>
         var table = $('#datatable-filterable').DataTable({
             order: [],
+            "dom":"<'mb-3'B>lfrtip",
+            buttons: [{
+                extend: 'excel',
+                title: null,
+                text: 'دانلود فایل اکسل',
+                className: 'btn btn-success',
+                filename: 'all_project_list',
+                sheetName: 'all_project_list',
+                exportOptions: {
+                    columns: [ 0, 1, 2]
+                }
+            }],
         })
 
         $("#submit").click(function (e) {
